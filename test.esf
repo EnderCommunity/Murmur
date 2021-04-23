@@ -10,6 +10,7 @@ EnderScript, and all the functions that it can use.
 
 */
 
+
 //(!) It is recommended that you start variable names with a capital letter!
 
 int Num1 = 0, Num2 = 1, Num3 = 2; //Integers use the type 'int'
