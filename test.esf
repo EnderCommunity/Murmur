@@ -1,0 +1,38 @@
+/*
+
+EnderScript | (C) EnderCommunity
+--------------------------------------------------------------------------------
+This is an experimental language that is to be kept a secure for now. It's still
+not even functional.
+
+This is a pitch file for EnderScript that will include the general syntax for
+EnderScript, and all the functions that it can use.
+
+*/
+
+//(!) It is recommended that you start variable names with a capital letter!
+
+int Num1 = 0, Num2 = 1, Num3 = 2; //Integers use the type 'int'
+
+float Floa1 = 0.00, Floa2 = 0.01, Floa3 = 0.02; //Decimal numbers use the type 'float'
+
+double Doub1 = 0.00, Doub2 = 0.01, Doub3 = 0.02; //Decimal numbers, that may be long, use the type 'double'
+
+char Cha1 = 'A', Cha2 = 'B', Cha3 = 'C'; //You can also use normal quotes ("E"), characters use the type 'char'
+
+string Str1 = "Hello there!", Str2 = "I'm a string!", Str3 = "I can be up to 2048 characters in length!"; //You can use variables with the type 'string' to store text
+
+
+//Maybe don't give developers access to these functions
+/*Allocate<int> AllocatedNumber = 10; //You can use the 'alloc<type>' identifier to allocate a specific amount of bytes
+Pointer<int> Poi1 = Num1;
+Pointer<double> Poi2 = Doub1;*/
+//point a as fjekfakwfwa;
+
+//You could make it so the user can specify a block of code that will not be
+//parsed by the compiler. It would be basically a block of code that will run
+//C code without any parser interferance.
+
+//EnderScript should automatically detect the use of libraries, and include them in the final C code!
+
+//(Introduce Rules in EnderScript???)
