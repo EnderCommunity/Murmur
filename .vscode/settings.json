@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*html": "html",
+        "*.html": "html",
+        "mode.h": "c",
+        "extra.h": "c"
+    }
+}

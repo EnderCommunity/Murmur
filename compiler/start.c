@@ -12,8 +12,6 @@ int main(int argc, char *argv[], char *envp[]){
 
     printf("[Debug] Received the path: \"%s\"\n", *path);
 
-    //[START] Get the content of the file
-
     FILE *fptr = files_OpenFileStream(*path);
 
     struct FileContent fDat = files_GetAllData(fptr);
@@ -25,7 +23,10 @@ int main(int argc, char *argv[], char *envp[]){
     }
 
     fclose(fptr);
-    //[END] Get the content of the file
+
+    #include "preprocessor/mode.c"
+
+    SetMode(fDat);
 
     printf("\n\n[Debug] Compiler still opened. Press enter to close the compiler.\n");
 

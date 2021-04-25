@@ -5,6 +5,7 @@
 struct FileContent {
     char *content;
     int length;
+    int *rows;
 };
 
 FILE* files_OpenFileStream(char path[]){
@@ -37,7 +38,7 @@ struct FileContent files_GetAllData(FILE *fptr){
     while((currChar = fgetc(fptr)) != EOF)
         data.content[data.length++] = currChar;
 
-    data.content[data.length+1] = '\0';
+    data.content[data.length+1] = EOF;
 
     return data;
 
