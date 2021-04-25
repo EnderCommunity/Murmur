@@ -23,6 +23,8 @@ Copy the extension folder *`/enderscript-vsc`* to the extension directory.
 ## To-Do List
 
 There are instructions for the building process of the compiler and libraries of EnderScript:
+*Follow the instructions in the `test.esf` file on how should the language work*
 
 - [ ] *Research the best algorithms for an efficient memory-managment*
-- [ ] *Follow the instructions in the `test.esf` file on how should the language work*
+- [ ] *Write a first-post compiler using C that compiles the basic parts of EnderScript (e.g. preprocessor, types, functions, classes, string manipulation, and files managment)*
+- [ ] *Write a second-post compiler that compiles the rest of the language fundamentals and functionality*

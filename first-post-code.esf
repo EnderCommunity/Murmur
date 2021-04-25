@@ -1,19 +1,22 @@
 /*
-
 EnderScript | (C) EnderCommunity
 --------------------------------------------------------------------------------
 This is a pitch file for EnderScript that will include the general syntax for
 EnderScript, and all the functions that it can use.
 
+This is EnderScript code that can be processed by the first-post compiler!
 */
 
+//(!) All the functions that start with a # are preprocessor functions
 
-//(!) It is recommended that you start variable names with a capital letter!
-#import <System>; //This will allow you to import EnderScript-native libraries!
 #import "path/to/myfile.esf"; //This will allow you to import EnderScript files!
 #import "path/to/mymodule1.esmf" as object Module1; //This will allow you to import EnderScript modules!
 function Module2;
 #import "path/to/mymodule2.esmf" as Module2; //This will allow you to import EnderScript modules!
+
+#define ZERO 0 //You can use the `#define` function to define a variable that will be replaced by the provided value before the execution of this code
+
+//(!) It is recommended that you start variable names with a capital letter!
 
 int Num1 = 0, Num2 = 1, Num3 = 2; //Integers use the type 'int'
 
@@ -33,13 +36,7 @@ file File1 = new FileStream("path/filename.txt"), File2 = new FileStream("path/f
 You could also do this: `new FileStream::File(...)`;
 */
 
-object Obj1 = {}, Obj2 = {}, Obj3 = {};
-
 delete Num1, Cha2, File, HexData, Obj1; //You can delete variables. What happens when you delete a variable comes down to the type of the variable itself (e.g. When you delete a variable of the type 'file', the file stream will be closed)
-
-const int Const1 = 0;
-const string Const2 = "Hi!";
-const file Const3 = new FileStream("path/filename.txt"); //You can't close this stream until! It will be closed once the process is closed
 
 /*
 delete Const3; //This will result in an error;
@@ -66,44 +63,13 @@ function Func3 = function::Int(){
 }
 
 int Test1 = 0;
-private int Test2 = 0; //Functions inside and outside the current function can't access this variable (In this case, the function is located in the index-scope, it can't be accessed by functions are defined by the program here)
 
 function::Int Exm(int a, function b, function::Int c){
-    keep int b = a; //This variable can be accessed anywhere in the program now!
+    keep int b = a; //This variable can be accessed the next time this function gets executed!
     b; //You can't really know what is the output of this function!
     c; //You know that this is a function that returns an int!
 }
 
-Exm.b; //the value of this is 'null'!
-
-
-Exm(5);
-
-Exm.b; //the value of this is 5!
-
-
-class Object {
-    private int a; //This variable can be only accessed within this class!
-    public int b; //This variable can be accessed outside this class!
-    int c = 0; //This variable can be accessed outside this class!
-    Constructor(){ //This is the constructor function of this class!
-        //This function is called when you use the 'new Object()' function!
-    }
-    Constructor(int b){ //This is the constructor function of this class!
-        //This function is called when you use the 'new Object(<int>)' function!
-    }
-    /*
-    function::Void Constructor(){ //This is also a Constructor function!
-        //But this will throw an error if the Constructor has already been declared!
-    }
-    */
-    function::Void d(){ //This function can be accessed outside this class!
-        //
-    }
-    private function::Void e(){ //This function can be only accessed within this class!
-        //
-    }
-};
 exit 0; //Exit the program with a success code! You could use `SUCCESS` for 0, or 'FAILURE' for -1
 //exit FAILURE; //Exit the program with a failure code!
 
