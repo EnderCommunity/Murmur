@@ -96,7 +96,7 @@ class Object {
         //
         return
     }
-    private function::Void d(){ //This function can be only accessed within this class!
+    private function::Void e(){ //This function can be only accessed within this class!
         //
     }
 };
