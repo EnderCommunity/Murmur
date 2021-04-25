@@ -9,6 +9,11 @@ EnderScript, and all the functions that it can use.
 
 
 //(!) It is recommended that you start variable names with a capital letter!
+#import <System>; //This will allow you to import EnderScript-native libraries!
+#import "path/to/myfile.esf"; //This will allow you to import EnderScript files!
+#import "path/to/myfile.esmf" as object a; //This will allow you to import EnderScript modules!
+
+object a = import "path/to/myfile.esmf"; //This will allow you to import EnderScript modules!
 
 int Num1 = 0, Num2 = 1, Num3 = 2; //Integers use the type 'int'
 
@@ -64,7 +69,7 @@ int Test1 = 0;
 private int Test2 = 0; //Functions inside and outside the current function can't access this variable (In this case, the function is located in the index-scope, it can't be accessed by functions are defined by the program here)
 
 function::Int Exm(int a, function b, function::Int c){
-    public int b = a; //This variable can be accessed anywhere in the program now!
+    keep int b = a; //This variable can be accessed anywhere in the program now!
     b; //You can't really know what is the output of this function!
     c; //You know that this is a function that returns an int!
 }

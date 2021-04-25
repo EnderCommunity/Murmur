@@ -15,7 +15,8 @@
         "languages": [{
             "id": "enderscript",
             "extensions": [
-                ".esf"
+                ".esf",
+                ".esmf"
             ],
             "aliases": [
                 "EnderScript",
