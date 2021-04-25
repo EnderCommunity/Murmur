@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include "libraries/files/general.h"
 
 int main(int argc, char *argv[], char *envp[]){
@@ -13,11 +11,6 @@ int main(int argc, char *argv[], char *envp[]){
         scanf("%s", *path);
 
     printf("[Debug] Received the path: \"%s\"\n", *path);
-
-    if(strlen(*path) == 0){
-        perror("[Error] Received an invalid path!\n");
-        exit(EXIT_FAILURE);
-    }
 
     //[START] Get the content of the file
 

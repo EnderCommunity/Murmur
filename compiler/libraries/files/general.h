@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct FileContent {
     char *content;
@@ -7,6 +8,11 @@ struct FileContent {
 };
 
 FILE* files_OpenFileStream(char path[]){
+
+    if(strlen(path) == 0 || (char *)path == NULL){
+        perror("[Error] Received an invalid path!\n");
+        exit(EXIT_FAILURE);
+    }
 
     FILE *fptr = fopen(path, "r");
 
