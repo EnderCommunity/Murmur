@@ -26,5 +26,5 @@ There are instructions for the building process of the compiler and libraries of
 *Follow the instructions in the `test.esf` file on how should the language work*
 
 - [ ] *Research the best algorithms for an efficient memory-managment*
-- [ ] *Write a first-post compiler using C that compiles the basic parts of EnderScript (e.g. preprocessor, types, functions, classes, string manipulation, and files managment)*
-- [ ] *Write a second-post compiler using EnderScript that compiles the rest of the language fundamentals and functionality (e.g. memory processing and garbage collection, objects, and classes)*
+- [ ] *Write a first-post compiler stage using C that compiles the basic parts of EnderScript (e.g. preprocessor, types, functions, classes, string manipulation, and files managment)*
+- [ ] *Write a second-post compiler stage using EnderScript that compiles the rest of the language fundamentals and functionality (e.g. memory processing and garbage collection, objects, and classes)*
