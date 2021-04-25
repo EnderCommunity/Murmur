@@ -20,6 +20,95 @@ char Cha1 = 'A', Cha2 = 'B', Cha3 = 'C'; //You can also use normal quotes ("E"),
 
 string Str1 = "Hello there!", Str2 = "I'm a string!", Str3 = "I can be up to 2048 characters in length!"; //You can use variables with the type 'string' to store text
 
+bool Bool1 = true, Bool2 = false; //Boolean variables use the type 'bool'
+
+file File1 = new FileStream("path/filename.txt"), File2 = new FileStream("path/filename.txt", false), File3 = new FileStream("path/filename.txt", true); //the 2nd argument determines whether the file should be in a read-only mode or not. It's set to 'false' by default.
+
+/*
+You could also do this: `new FileStream::File(...)`;
+*/
+
+object Obj1 = {}, Obj2 = {}, Obj3 = {};
+
+delete Num1, Cha2, File, HexData, Obj1; //You can delete variables. What happens when you delete a variable comes down to the type of the variable itself (e.g. When you delete a variable of the type 'file', the file stream will be closed)
+
+const int Const1 = 0;
+const string Const2 = "Hi!";
+const file Const3 = new FileStream("path/filename.txt"); //You can't close this stream until! It will be closed once the process is closed
+
+/*
+delete Const3; //This will result in an error;
+Const3 = new FileStream("path/filename.txt"); //This too!
+*/
+
+int[] Array1 = new Array::Int(10);
+string[] Array2 = new Array::String(10);
+file[] Array3 = new Array::File(10);
+
+Array1 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+Array2 = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+
+function::Int Func1(int a){
+    return a;
+}
+
+function::Void Func2(){
+    //
+}
+
+function Func3 = function::Int(){
+    return 0;
+}
+
+int Test1 = 0;
+private int Test2 = 0; //Functions inside and outside the current function can't access this variable (In this case, the function is located in the index-scope, it can't be accessed by functions are defined by the program here)
+
+function::Int Exm(int a, function b, function::Int c){
+    public int b = a; //This variable can be accessed anywhere in the program now!
+    b; //You can't really know what is the output of this function!
+    c; //You know that this is a function that returns an int!
+}
+
+Exm.b; //the value of this is 'null'!
+
+
+Exm(5);
+
+Exm.b; //the value of this is 5!
+
+
+class Object {
+    private int a; //This variable can be only accessed within this class!
+    public int b; //This variable can be accessed outside this class!
+    int c = 0; //This variable can be accessed outside this class!
+    Constructor(){ //This is the constructor function of this class!
+        //This function is called when you use the 'new Object()' function!
+    }
+    Constructor(int b){ //This is the constructor function of this class!
+        //This function is called when you use the 'new Object(<int>)' function!
+    }
+    /*
+    function::Void Constructor(){ //This is also a Constructor function!
+        //But this will throw an error if the Constructor has already been declared!
+    }
+    */
+    function::Void d(){ //This function can be accessed outside this class!
+        //
+        return
+    }
+    private function::Void d(){ //This function can be only accessed within this class!
+        //
+    }
+};
+
+//You can think if functions variable management as it is in classes in C#!
+
+/*
+function::Int Hmm(function::function::c Callback){ //This is wrong, nested type determinations aren't supported!
+    //
+}
+*/
+
 
 //Maybe don't give developers access to these functions
 /*Allocate<int> AllocatedNumber = 10; //You can use the 'alloc<type>' identifier to allocate a specific amount of bytes
