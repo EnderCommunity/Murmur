@@ -1,0 +1,3 @@
+struct ProcessInfo {
+    int firstPostOnly;
+};
