@@ -4,6 +4,14 @@ EnderScript - *you may also refer to it by "ES" or "ECMSL-2021" (EnderCommunity 
 
 The file extension of *ES* files is *`.esf`*. (Which stands for *`"EnderScript File"`*)
 
+## Compiler input
+
+For now, you can send input to the compiler in two ways:
+
+- *By drag-dropping the desired file on the `start.exe` executable.*
+
+- *By starting the `start.exe` executable and typing in the path of the desired file.*
+
 ## Syntax and Functions
 
 ***Check the file `test.esf` for more info***
@@ -26,5 +34,5 @@ There are instructions for the building process of the compiler and libraries of
 *Follow the instructions in the `test.esf` file on how should the language work*
 
 - [ ] *Research the best algorithms for an efficient memory-managment*
-- [ ] *Write a first-post compiler stage using C that compiles the basic parts of EnderScript (e.g. preprocessor, types, functions, classes, string manipulation, and files managment)*
+- [ ] *Write a first-post compiler stage using C that compiles the basic parts of EnderScript (e.g. preprocessor, types, functions, string manipulation, and files managment)*
 - [ ] *Write a second-post compiler stage using EnderScript that compiles the rest of the language fundamentals and functionality (e.g. memory processing and garbage collection, objects, and classes)*
