@@ -225,7 +225,7 @@
                     "include": "#lock-statement"
                 },
                 {
-                    "include": "#using-statement"
+                    "include": "#exit-statement"
                 },
                 {
                     "include": "#labeled-statement"
@@ -351,7 +351,7 @@
         },
         "using-directive": {
             "patterns": [{
-                    "begin": "\\b(import)\\b\\s+(static)\\s+",
+                    "begin": "\\b(exit)\\b\\s+(static)\\s+",
                     "beginCaptures": {
                         "1": {
                             "name": "keyword.other.using.cs"
@@ -366,7 +366,7 @@
                     }]
                 },
                 {
-                    "begin": "\\b(import)\\s+(?=(@?[_[:alpha:]][_[:alnum:]]*)\\s*=)",
+                    "begin": "\\b(exit)\\s+(?=(@?[_[:alpha:]][_[:alnum:]]*)\\s*=)",
                     "beginCaptures": {
                         "1": {
                             "name": "keyword.other.using.cs"
@@ -388,7 +388,7 @@
                     ]
                 },
                 {
-                    "begin": "\\b(import)\\s*",
+                    "begin": "\\b(exit)\\s*",
                     "beginCaptures": {
                         "1": {
                             "name": "keyword.other.using.cs"
@@ -2110,8 +2110,8 @@
                 }
             ]
         },
-        "using-statement": {
-            "begin": "(?<!\\.)\\b(import)\\b\\s*(?=\\()",
+        "exit-statement": {
+            "begin": "(?<!\\.)\\b(exit)\\b\\s*(?=\\()",
             "beginCaptures": {
                 "1": {
                     "name": "keyword.other.using.cs"
@@ -2171,7 +2171,7 @@
             ]
         },
         "local-variable-declaration": {
-            "begin": "(?x)\n(?:\n  (?:(\\bimport)\\s+)?\n  (?:(\\bref)\\s+(?:(\\breadonly)\\s+)?)?(\\bvar\\b)| # ref local\n  (?<type_name>\n    (?:\n      (?:ref\\s+(?:readonly\\s+)?)?   # ref local\n      (?:\n        (?:(?<identifier>@?[_[:alpha:]][_[:alnum:]]*)\\s*\\:\\:\\s*)? # alias-qualification\n        (?<name_and_type_args> # identifier + type arguments (if any)\n          \\g<identifier>\\s*\n          (?<type_args>\\s*<(?:[^<>]|\\g<type_args>)+>\\s*)?\n        )\n        (?:\\s*\\.\\s*\\g<name_and_type_args>)* | # Are there any more names being dotted into?\n        (?<tuple>\\s*\\((?:[^\\(\\)]|\\g<tuple>)+\\))\n      )\n      (?:\\s*\\?\\s*)? # nullable suffix?\n      (?:\\s* # array suffix?\n        \\[\n          (?:\\s*,\\s*)* # commata for multi-dimensional arrays\n        \\]\n        \\s*\n        (?:\\?)? # arrays can be nullable reference types\n        \\s*\n      )*\n    )\n  )\n)\\s+\n(\\g<identifier>)\\s*\n(?!=>)\n(?=,|;|=|\\))",
+            "begin": "(?x)\n(?:\n  (?:(\\busing)\\s+)?\n  (?:(\\bref)\\s+(?:(\\breadonly)\\s+)?)?(\\bvar\\b)| # ref local\n  (?<type_name>\n    (?:\n      (?:ref\\s+(?:readonly\\s+)?)?   # ref local\n      (?:\n        (?:(?<identifier>@?[_[:alpha:]][_[:alnum:]]*)\\s*\\:\\:\\s*)? # alias-qualification\n        (?<name_and_type_args> # identifier + type arguments (if any)\n          \\g<identifier>\\s*\n          (?<type_args>\\s*<(?:[^<>]|\\g<type_args>)+>\\s*)?\n        )\n        (?:\\s*\\.\\s*\\g<name_and_type_args>)* | # Are there any more names being dotted into?\n        (?<tuple>\\s*\\((?:[^\\(\\)]|\\g<tuple>)+\\))\n      )\n      (?:\\s*\\?\\s*)? # nullable suffix?\n      (?:\\s* # array suffix?\n        \\[\n          (?:\\s*,\\s*)* # commata for multi-dimensional arrays\n        \\]\n        \\s*\n        (?:\\?)? # arrays can be nullable reference types\n        \\s*\n      )*\n    )\n  )\n)\\s+\n(\\g<identifier>)\\s*\n(?!=>)\n(?=,|;|=|\\))",
             "beginCaptures": {
                 "1": {
                     "name": "keyword.other.using.cs"

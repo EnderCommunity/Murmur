@@ -11,9 +11,9 @@ EnderScript, and all the functions that it can use.
 //(!) It is recommended that you start variable names with a capital letter!
 #import <System>; //This will allow you to import EnderScript-native libraries!
 #import "path/to/myfile.esf"; //This will allow you to import EnderScript files!
-#import "path/to/myfile.esmf" as object a; //This will allow you to import EnderScript modules!
-
-object a = import "path/to/myfile.esmf"; //This will allow you to import EnderScript modules!
+#import "path/to/mymodule1.esmf" as object Module1; //This will allow you to import EnderScript modules!
+function Module2;
+#import "path/to/mymodule2.esmf" as Module2; //This will allow you to import EnderScript modules!
 
 int Num1 = 0, Num2 = 1, Num3 = 2; //Integers use the type 'int'
 
@@ -99,12 +99,14 @@ class Object {
     */
     function::Void d(){ //This function can be accessed outside this class!
         //
-        return
     }
     private function::Void e(){ //This function can be only accessed within this class!
         //
     }
 };
+exit 0; //Exit the program with a success code! You could use `SUCCESS` for 0, or 'FAILURE' for -1
+//exit FAILURE; //Exit the program with a failure code!
+
 
 //You can think if functions variable management as it is in classes in C#!
 
