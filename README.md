@@ -27,4 +27,4 @@ There are instructions for the building process of the compiler and libraries of
 
 - [ ] *Research the best algorithms for an efficient memory-managment*
 - [ ] *Write a first-post compiler using C that compiles the basic parts of EnderScript (e.g. preprocessor, types, functions, classes, string manipulation, and files managment)*
-- [ ] *Write a second-post compiler that compiles the rest of the language fundamentals and functionality*
+- [ ] *Write a second-post compiler using EnderScript that compiles the rest of the language fundamentals and functionality*
