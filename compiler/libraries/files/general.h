@@ -20,9 +20,9 @@ FILE* files_OpenFileStream(char path[]){
     return fptr;
 }
 
-FileContent files_GetAllData(FILE *fptr){
+FileContent* files_GetAllData(FILE *fptr){
 
-    FileContent data;
+    FileContent *data;
     int len = 0;
     char *con;
     char currChar;
@@ -32,9 +32,9 @@ FileContent files_GetAllData(FILE *fptr){
 
     con[len++] = '\0';
 
-    _Str *str = defStr('L');
+    //_Str *str = defStr('L');
 
-    setStrVal(str, con);
+    //setStrVal(str, con);
     //printf("%s", getStrVal(str));
 
     //Deb();
@@ -45,7 +45,12 @@ FileContent files_GetAllData(FILE *fptr){
 
     //Deb();
     //setStrVal(data.content, *str->con);
-    data.content = str;
+
+    //Deb();
+    //data->con = (_Str *)defStr('L');
+    setStrVal(data->con, con); //Crash!
+
+    //str;
 
     //Deb();
     //printf("%s", getStrVal(data.content));
