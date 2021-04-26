@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include "process.h"
 #include "../libraries/files/extra.h"
+#include "../types/FileContent.h"
 
-struct ProcessInfo SetMode(struct FileContent fileData){
+struct ProcessInfo SetMode(FileContent fileData){
 
     struct ProcessInfo CurrentProcess = {0};
 
-    int *fRows = files_SplitLines(fileData.content);
+    /*int *fRows = files_GetLines(fileData.content);
+    int i = 0;
+    while(fRows[i] >= 0){
+        printf("%d", fRows[i]);
+    }*/
 
     //Incomplete!
 
