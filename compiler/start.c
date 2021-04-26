@@ -33,11 +33,11 @@ int main(int argc, char *argv[], char *envp[]){
 
     DebugWithPath("Getting the content of: ", *path, 1);
 
-    FileContent fDat = files_GetAllData(fptr);
+    FileContent *fDat = files_GetAllData(fptr);
 
     Debug("Printing the current file content: ", 1);
 
-    printf("dedede%sdedede", fDat.content);
+    printf("dedede%sdedede", *(fDat->con));
 
     /*int i = 0;
     while(fDat.content[i] != EOF){
@@ -63,7 +63,7 @@ int main(int argc, char *argv[], char *envp[]){
 
     Debug("Compiler still on hold.", 1);
 
-    exit(EXIT_SUCCESS);
+    //exit(EXIT_SUCCESS);
 
     return 0;
 }
