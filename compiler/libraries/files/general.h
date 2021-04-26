@@ -1,12 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-struct FileContent {
-    char *content;
-    int length;
-    int *rows;
-};
+//#include "../types/String.h"
 
 FILE* files_OpenFileStream(char path[]){
 
@@ -25,20 +20,38 @@ FILE* files_OpenFileStream(char path[]){
     return fptr;
 }
 
-struct FileContent files_GetAllData(FILE *fptr){
+FileContent files_GetAllData(FILE *fptr){
 
-    struct FileContent data;
-
-    data.content = (char *)calloc(1, sizeof(char));
-
-    data.length = 0;
-
+    FileContent data;
+    int len = 0;
+    char *con;
     char currChar;
 
     while((currChar = fgetc(fptr)) != EOF)
-        data.content[data.length++] = currChar;
+        con[len++] = currChar;
 
-    data.content[data.length+1] = EOF;
+    con[len++] = '\0';
+
+    _Str *str = defStr('L');
+
+    setStrVal(str, con);
+    //printf("%s", getStrVal(str));
+
+    //Deb();
+    //realloc(&data, sizeof(FileContent) + (str->len - 1)*sizeof(char));
+    
+    //Deb();
+    //realloc(&(data.content), (str->len)*sizeof(char));
+
+    //Deb();
+    //setStrVal(data.content, *str->con);
+    data.content = str;
+
+    //Deb();
+    //printf("%s", getStrVal(data.content));
+
+    //Deb();
+    //free(con);
 
     return data;
 
