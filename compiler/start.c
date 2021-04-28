@@ -13,25 +13,31 @@ void Deb(){ //Minimal debug
 
 #include "debug.c"
 
-int main(int argc, char *argv[], char *envp[]){
+int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
-    Debug("Started the compiler", 1);
+    RegDebStr(); //Start the debuging timer
 
-    char *path[255];
+    Debug("Starting the compiler", 0);
+
+    char path[255];
+    char *pathPtr = path;
+
     if (argv[1] != NULL)
-        *path = argv[1];
-    else
-        scanf("%s", *path);
+        strcpy(path, argv[1]);
+    else{
+        fgets(path, 255, stdin);
+        path[strcspn(path, "\n")] = 0;
+    }
 
     //printf("[Debug] Received the path: \"%s\"\n", *path);
-    DebugWithPath("Received the path: ", *path, 1);
+    DebugWithPath("Received the path: ", path, 0);
 
 
-    DebugWithPath("Opening the filestream of: ", *path, 1);
+    //DebugWithPath("Opening the filestream of: ", path, 0);
 
-    FILE *fptr = files_OpenFileStream(*path);
+    /*FILE *fptr = files_OpenFileStream(pathPtr); //This is garbage
 
-    DebugWithPath("Getting the content of: ", *path, 1);
+    //DebugWithPath("Getting the content of: ", pathPtr, 0);
 
     FileContent *fDat = files_GetAllData(fptr);
 
@@ -48,18 +54,20 @@ int main(int argc, char *argv[], char *envp[]){
         printf("%c", fDat.content[i]);
     }*/
 
-    printf("\n");
+    //printf("\n");
     //DebugWithPath("Closing the filestream of: ", *path, 1);
 
     //fclose(fptr);
 
-    DebugWithPath("Closed the filestream of: ", *path, 1);
+    //DebugWithPath("Closed the filestream of: ", pathPtr, 1);
 
     //free(*path);
 
     //#include "preprocessor/mode.h"
 
     //SetMode(fDat);
+
+    RegDebEnd(); //End the debuging timer
 
     Debug("Compiler still on hold.", 1);
 
