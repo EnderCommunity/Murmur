@@ -1,6 +1,13 @@
-#Flags --type
-//This function will tell the compiler that this file only needs the first-post compiling process
-//DO NOT USE THIS FUNCTION IN YOUR PROJECTS!
+##head --skip
+//This is the head of the file, you can place flags here.
+//If you want to use the head functionality, you need to make sure that the
+//first line starts with the string `##head `, and no comments should follow
+//the head arguments.
+
+//Here are the available flags for you to use:
+
+//`--skip` - You're telling the compiler to not compile this file, the compiler
+//will assume that this is a C file with the `.esf` extension.
 
 /*
 EnderScript | (C) EnderCommunity
