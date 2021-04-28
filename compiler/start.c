@@ -8,12 +8,14 @@ void Deb(){ //Minimal debug
 }
 
 #include "libraries/types/String.h"
-#include "libraries/types/FileContent.h"
+//#include "libraries/types/FileContent.h"
 #include "libraries/files/general.h"
 
-#include "files_gen.c"
+#include "libraries/files/gen.c"
 
 #include "debug.c"
+
+void compile(FILE *filePtr, char path[], int isFull);
 
 int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
@@ -70,6 +72,12 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
     //SetMode(fDat);
 
+    FILE *mainFilePtr = OpnStrm(path);
+
+    compile(mainFilePtr, path, 1); //Initiate the compiling process
+
+    fclose(mainFilePtr);
+
     RegDebEnd(); //End the debuging timer
 
     Debug("Compiler still on hold.", 1);
@@ -79,12 +87,26 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     return 0;
 }
 
-char* compile(char path[], int isFull){ //Compile a file and it's content
-    char *compiledCode;
+//#include "preprocessor/process.h"
+#include "preprocessor/checker.h"
+
+
+void compile(FILE *filePtr, char *path, int isFull){ //Compile a file and it's content
+
+    FILE *tmpFilePtr = genFilStr(); //Create a temporary file for the compiling process
+
+    FileInfo *fileInf = checkFlags(filePtr, path, isFull); //A object that contains the file info!
+
+    printf("\nMode: %c\n", fileInf->mode);
+    printf("\nIs Full: %d\n", fileInf->isFull);
+    printf("\nCurrent Line Content: %s\n", fileInf->currLineCon);
+    printf("\nPath: %s\n", fileInf->path);
+
+    /*char *compiledCode;
     if(isFull){
         FILE *test = genFilStr();
         return NULL;
     }else{
         return compiledCode;
-    }
+    }*/
 }
