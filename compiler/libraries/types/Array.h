@@ -1,4 +1,4 @@
-typedef struct{
+typedef struct{ //An array object
     int length;
     int *cLength;
     char *type;
@@ -10,7 +10,7 @@ typedef struct{
     };
 } Array;
 
-typedef struct{
+typedef struct{ //A multidimensional array object
     int length;
     int dimensions;
 } MDArray;

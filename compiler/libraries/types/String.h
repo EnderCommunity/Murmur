@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-typedef struct {
+typedef struct { //A string structure
     int maxLen;
     int len;
     char typ;
     char **con;
 } _Str;
 
-static _Str* defStr(char type){
+static _Str* defStr(char type){ //Define a string
     _Str *tmp = malloc(sizeof(_Str));
     tmp->con = (char **)malloc(sizeof(char));
     tmp->typ = type;
@@ -22,7 +22,7 @@ static _Str* defStr(char type){
     return tmp;
 }
 
-static void setStrVal(_Str *tmp, char *value){
+static void setStrVal(_Str *tmp, char *value){ //Set a string's value
     tmp->len = strlen(value);
     if(tmp->len <= tmp->maxLen){
         realloc(tmp, sizeof(_Str) + (tmp->len-1)*sizeof(char));
@@ -50,11 +50,11 @@ static void setStrVal(_Str *tmp, char *value){
     //Deb();
 }
 
-static char** getStrVal(_Str *tmp){
+static char** getStrVal(_Str *tmp){ //Get a string's value
     return tmp->con;
 }
 
-static void merStrVal(_Str *tmp, char *str){ //FAILS
+/*static void merStrVal(_Str *tmp, char *str){ //FAILS
     Deb();
     tmp->len += strlen(str);
     Deb();
@@ -68,4 +68,4 @@ static void merStrVal(_Str *tmp, char *str){ //FAILS
         strcat(*tmp->con, str);
     }else
         0; //Throw an error!!!!
-}
+}*/
