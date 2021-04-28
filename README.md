@@ -20,7 +20,7 @@ For now, you can send input to the compiler in two ways:
 
 ## Syntax and Functions
 
-***Check the file `test.esf` for more info***
+***Empty, check the provided `.esf` files for now!***
 
 ## Extensions
 
