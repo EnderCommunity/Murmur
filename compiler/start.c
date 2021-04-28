@@ -36,8 +36,6 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     //printf("[Debug] Received the path: \"%s\"\n", *path);
     DebugWithPath("Received the path: ", path, 0);
 
-    FILE *test = genFilStr();
-
     //DebugWithPath("Opening the filestream of: ", path, 0);
 
     /*FILE *fptr = files_OpenFileStream(pathPtr); //This is garbage
@@ -81,6 +79,12 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     return 0;
 }
 
-void compile(char path[], int isFull){ //Compile a file and it's content
-    //
+char* compile(char path[], int isFull){ //Compile a file and it's content
+    char *compiledCode;
+    if(isFull){
+        FILE *test = genFilStr();
+        return NULL;
+    }else{
+        return compiledCode;
+    }
 }

@@ -207,6 +207,9 @@
                     "include": "#break-or-continue-statement"
                 },
                 {
+                    "include": "#pass-statement"
+                },
+                {
                     "include": "#throw-statement"
                 },
                 {
@@ -1457,6 +1460,14 @@
                 },
                 "2": {
                     "name": "keyword.control.flow.continue.cs"
+                }
+            }
+        },
+        "pass-statement": {
+            "match": "(?<!\\.)\\b(?:(pass))\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.flow.break.cs"
                 }
             }
         },
