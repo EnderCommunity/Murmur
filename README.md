@@ -6,7 +6,7 @@ The file extension of *ES* files is *`.esf`*. (Which stands for *`"EnderScript F
 
 The file extension of *ES* module files is *`.esmf`*. (Which stands for *`"EnderScript Module File"`*)
 
-## contributing
+## Contributing
 
 Everyone is welcomed to contribute to this project in any way they want. (e.g. help code the compiler, or help with the pitching process)
 
