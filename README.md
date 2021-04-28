@@ -4,6 +4,8 @@ EnderScript - *you may also refer to it by "ES" or "ECMSL-2021" (EnderCommunity 
 
 The file extension of *ES* files is *`.esf`*. (Which stands for *`"EnderScript File"`*)
 
+The file extension of *ES* module files is *`.esmf`*. (Which stands for *`"EnderScript Module File"`*)
+
 ## The Compiling Process
 
 This is a graph of the current plan for the way the compiler works.
