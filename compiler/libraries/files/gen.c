@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "libraries/rand/random.h"
+#include "../rand/random.h"
 
 static FILE* genFilStr(){ //Create a new file in the `/tmp` directory
 
-    char *rnd = randStr(10, "NSC");
+    char *rnd = randStr(10, "NSC"), *str;
 
-    char *str = apdStr("tmp/", rnd);
+    str = apdStr("tmp/", rnd);
 
     str = apdStr(str, ".tesf");
 

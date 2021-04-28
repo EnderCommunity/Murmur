@@ -3,16 +3,18 @@
 #include <time.h>
 #include "../types/string/extr.h"
 
-static int mRan(int minVal, int maxVal){ //Generate a random number
+int mRan(int minVal, int maxVal){ //Generate a random number
     int ran = rand() % (int)(maxVal + 1);
     while(ran < minVal || ran > maxVal) //This is a bad idea
         ran = rand() % (int)(maxVal + 1);
+    //printf("\n1: %d\n2: %d\n", ran, rand() % (maxVal - minVal) + minVal);
     return ran;
+    //return rand() % (maxVal - minVal) + minVal;
 }
 
-static char* randStr(size_t size, char *mode) { //Generate a random string
+char* randStr(int size, char *mode) { //Generate a random string
 
-    char *str = malloc(sizeof(char)*(size + 1)), *chrSet;
+    char *str = newStr(size + 1), *chrSet = newStr(62);
 
     if(getChrIndx(mode, 'N') != -1)
         chrSet = apdStr(chrSet, "0123456789");
@@ -24,9 +26,9 @@ static char* randStr(size_t size, char *mode) { //Generate a random string
         chrSet = apdStr(chrSet, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
     if (size) {
-        for (size_t n = 0; n <= size; n++) {
-            int key = mRan(0, sizeof(chrSet));
-            str[n] = chrSet[key];
+        for (int n = 0; n < size; n++) {
+            int ran = mRan(0, sizeof(chrSet)/sizeof(char));
+            str[n] = chrSet[ran];
         }
         str[size] = '\0';
     }
