@@ -7,7 +7,7 @@ typedef struct {
     char **con;
 } _Str;
 
-_Str* defStr(char type){
+static _Str* defStr(char type){
     _Str *tmp = malloc(sizeof(_Str));
     tmp->con = (char **)malloc(sizeof(char));
     tmp->typ = type;
@@ -22,7 +22,7 @@ _Str* defStr(char type){
     return tmp;
 }
 
-void setStrVal(_Str *tmp, char *value){
+static void setStrVal(_Str *tmp, char *value){
     tmp->len = strlen(value);
     if(tmp->len <= tmp->maxLen){
         realloc(tmp, sizeof(_Str) + (tmp->len-1)*sizeof(char));
@@ -50,11 +50,11 @@ void setStrVal(_Str *tmp, char *value){
     //Deb();
 }
 
-char** getStrVal(_Str *tmp){
+static char** getStrVal(_Str *tmp){
     return tmp->con;
 }
 
-void merStrVal(_Str *tmp, char *str){ //FAILS
+static void merStrVal(_Str *tmp, char *str){ //FAILS
     Deb();
     tmp->len += strlen(str);
     Deb();

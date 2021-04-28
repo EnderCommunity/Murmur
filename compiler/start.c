@@ -11,11 +11,15 @@ void Deb(){ //Minimal debug
 #include "libraries/types/FileContent.h"
 #include "libraries/files/general.h"
 
+#include "files_gen.c"
+
 #include "debug.c"
 
 int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
     RegDebStr(); //Start the debuging timer
+
+    srand(time(NULL));
 
     Debug("Starting the compiler", 0);
 
@@ -32,6 +36,7 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     //printf("[Debug] Received the path: \"%s\"\n", *path);
     DebugWithPath("Received the path: ", path, 0);
 
+    FILE *test = genFilStr();
 
     //DebugWithPath("Opening the filestream of: ", path, 0);
 
@@ -74,4 +79,8 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     //exit(EXIT_SUCCESS);
 
     return 0;
+}
+
+void compile(char path[], int isFull){
+    //
 }
