@@ -3,7 +3,7 @@
 #include <string.h>
 //#include "../types/String.h"
 
-static FILE* files_OpenFileStream(char path[]){
+static FILE* files_OpenFileStream(char path[]){ //Open a file stream
 
     if(strlen(path) == 0 || (char *)path == NULL){
         perror("[Error] Received an invalid path!\n");
@@ -20,7 +20,7 @@ static FILE* files_OpenFileStream(char path[]){
     return fptr;
 }
 
-static FileContent* files_GetAllData(FILE *fptr){
+static FileContent* files_GetAllData(FILE *fptr){ //Get the data of a file
 
     FileContent *data;
     int len = 0;

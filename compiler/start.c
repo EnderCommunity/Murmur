@@ -81,6 +81,6 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     return 0;
 }
 
-void compile(char path[], int isFull){
+void compile(char path[], int isFull){ //Compile a file and it's content
     //
 }

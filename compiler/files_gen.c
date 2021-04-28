@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "libraries/rand/random.h"
 
-static FILE* genFilStr(){ //Used to create a new file
+static FILE* genFilStr(){ //Create a new file in the `/tmp` directory
 
     char *rnd = randStr(10, "NSC");
 

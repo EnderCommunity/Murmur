@@ -3,7 +3,7 @@
 #include "../libraries/files/extra.h"
 #include "../types/FileContent.h"
 
-struct ProcessInfo SetMode(FileContent fileData){
+struct ProcessInfo SetMode(FileContent fileData){ //Set the compiling mode
 
     struct ProcessInfo CurrentProcess = {0};
 

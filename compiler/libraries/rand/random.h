@@ -3,14 +3,14 @@
 #include <time.h>
 #include "../types/string/extr.h"
 
-static int mRan(int minVal, int maxVal){
+static int mRan(int minVal, int maxVal){ //Generate a random number
     int ran = rand() % (int)(maxVal + 1);
     while(ran < minVal || ran > maxVal) //This is a bad idea
         ran = rand() % (int)(maxVal + 1);
     return ran;
 }
 
-static char* randStr(size_t size, char *mode) {
+static char* randStr(size_t size, char *mode) { //Generate a random string
 
     char *str = malloc(sizeof(char)*(size + 1)), *chrSet;
 
