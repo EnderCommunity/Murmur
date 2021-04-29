@@ -3,7 +3,8 @@
 #include <string.h>
 #include <time.h> // for clock_t, clock(), CLOCKS_PER_SEC
 
-    // to store the execution time of code
+//Leave me a alone...
+
 double timSpt = 0.0;
 clock_t timBeg, timEnd;
 
