@@ -12,8 +12,21 @@ int getStrIndx(char *str, char *strForChk){ //Get the index of a string in a str
     printf("\n1st String: %s\n2nd String: %s\n1: %d\n2: %d\n", str, strForChk, strlen(str), position);
     return substringLength;*/
     //return ((char *)strstr(str, strForChk) - str);
-    int indx = (char *)strstr(str, strForChk) - str;
+    int indx = strstr(str, strForChk) - str;
     return indx >= 0 ? indx : -1;
+}
+
+int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appearance of a string inside a string
+
+    int lIndx, mIndx = -1;
+
+    do{
+        lIndx = mIndx;
+        mIndx = getStrIndx(str, strForChk);
+        str += lIndx - mIndx + strlen(strForChk);
+    } while(mIndx != -1);
+
+    return lIndx;
 }
 
 int inStrRng(char *str, char *strForChk){ //Check if a string exists inside a string

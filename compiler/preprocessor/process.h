@@ -23,9 +23,10 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
     //printf("\nPath String: %s\n", tmp->path);
     //printf("\nPath Len: %d\n", strlen(tmp->path));
     //printf("\nPath `.esf` index: %d\nPath `.esmf` index: %d\n", getStrIndx((tmp->path), ".esf"), getStrIndx(tmp->path, ".esmf"));
-    if(getStrIndx(tmp->path, ".esf") == strlen(tmp->path) - 4) //A normal file!
+    //printf("\nTEST: %d\n", getLstStrIndx(tmp->path, ".esf"));
+    if(getLstStrIndx(tmp->path, ".esf") == strlen(tmp->path) - 4) //A normal file!
         tmp->mode = 'N';
-    else if(getStrIndx(tmp->path, ".esmf") == strlen(tmp->path) - 5) //A module file!
+    else if(getLstStrIndx(tmp->path, ".esmf") == strlen(tmp->path) - 5) //A module file!
         tmp->mode = 'M';
     else //This will result in an error!!!!
         tmp->mode = 'U';
