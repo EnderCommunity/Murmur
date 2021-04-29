@@ -20,7 +20,7 @@ void compile(FILE *filePtr, char path[], int isFull);
 
 int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
-    RegDebStr(); //Start the debuging timer
+    RegDebStr(); //Start the debugging timer
 
     srand(time(NULL));
 
@@ -44,9 +44,9 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
     fclose(mainFilePtr);
 
-    RegDebEnd(); //End the debuging timer
+    RegDebEnd(); //End the debugging timer
 
-    Debug("Compiler still on hold.", 1);
+    Deb();
 
     //exit(EXIT_SUCCESS);
 
@@ -64,9 +64,9 @@ void compile(FILE *filePtr, char *path, int isFull){ //Compile a file and it's c
     FileInfo *fileInf = checkFlags(filePtr, path, isFull); //A object that contains the file info!
 
     printf("\nMode: %c\n", fileInf->mode);
-    printf("\nIs Full: %d\n", fileInf->isFull);
-    printf("\nCurrent Line Content: %s\n", fileInf->currLineCon);
-    printf("\nPath: %s\n", fileInf->path);
+    printf("Is Full: %d\n", fileInf->isFull);
+    printf("Current Line Content: %s\n", fileInf->currLineCon);
+    printf("Path: %s\n", fileInf->path);
 
     /*char *compiledCode;
     if(isFull){
