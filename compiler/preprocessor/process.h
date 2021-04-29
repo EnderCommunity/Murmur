@@ -20,15 +20,17 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
     tmp->isFull = isFull; //Is this a full compiling process?
     tmp->mode = 'N';
     fgets(tmp->currLineCon, 509, tmp->filePtr);
-    printf("%d\n%d\n", getStrIndx(path, ".esf"), getStrIndx(path, ".esmf"));
-    if(getStrIndx(path, ".esf") == strlen(path) - 5)
+    //printf("\nPath String: %s\n", tmp->path);
+    //printf("\nPath Len: %d\n", strlen(tmp->path));
+    //printf("\nPath `.esf` index: %d\nPath `.esmf` index: %d\n", getStrIndx((tmp->path), ".esf"), getStrIndx(tmp->path, ".esmf"));
+    if(getStrIndx(tmp->path, ".esf") == strlen(tmp->path) - 4) //A normal file!
+        tmp->mode = 'N';
+    else if(getStrIndx(tmp->path, ".esmf") == strlen(tmp->path) - 5) //A module file!
         tmp->mode = 'M';
-    else if(getStrIndx(path, ".esmf") == strlen(path) - 6)
-        tmp->mode = 'M';
-    else
+    else //This will result in an error!!!!
         tmp->mode = 'U';
-    if(getStrIndx(tmp->currLineCon, "##EnderScript") == 0){
-        if(inStrRng(tmp->currLineCon, "--skip"))
+    if(getStrIndx(tmp->currLineCon, "##head") == 0) { //The head function is present!
+        if(inStrRng(tmp->currLineCon, "--skip")) //This file will be skipped!
             tmp->mode = 'S';
     }
     return tmp;
