@@ -15,6 +15,5 @@ static FILE* genFilStr(){ //Create a new file in the `/tmp` directory
     FILE *tmpPtr = fopen(str, "w");
 
     return tmpPtr;
-    //return (FILE *)fopen(apdStr("/tmp/", randStr(10, "NSC")), "w");
 
 }

@@ -3,14 +3,15 @@
 #include <stdlib.h>
 
 void Deb(){ //Minimal debug
-    printf("!!!debug");
+
+    printf("[Debug] ");
     system("pause");
+
 }
 
 #include "libraries/types/String.h"
 //#include "libraries/types/FileContent.h"
 #include "libraries/files/general.h"
-
 #include "libraries/files/gen.c"
 
 #include "debug.c"
@@ -35,42 +36,7 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
         path[strcspn(path, "\n")] = 0;
     }
 
-    //printf("[Debug] Received the path: \"%s\"\n", *path);
     DebugWithPath("Received the path: ", path, 0);
-
-    //DebugWithPath("Opening the filestream of: ", path, 0);
-
-    /*FILE *fptr = files_OpenFileStream(pathPtr); //This is garbage
-
-    //DebugWithPath("Getting the content of: ", pathPtr, 0);
-
-    FileContent *fDat = files_GetAllData(fptr);
-
-    Debug("Printing the current file content: ", 1);
-
-    printf("dedede%sdedede", *(fDat->con));
-
-    /*int i = 0;
-    while(fDat.content[i] != EOF){
-        printf("%c", fDat.content);
-        i++;
-    }*/
-    /*for(int i = 0; i < fDat.length; i++){
-        printf("%c", fDat.content[i]);
-    }*/
-
-    //printf("\n");
-    //DebugWithPath("Closing the filestream of: ", *path, 1);
-
-    //fclose(fptr);
-
-    //DebugWithPath("Closed the filestream of: ", pathPtr, 1);
-
-    //free(*path);
-
-    //#include "preprocessor/mode.h"
-
-    //SetMode(fDat);
 
     FILE *mainFilePtr = OpnStrm(path);
 
@@ -85,9 +51,9 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     //exit(EXIT_SUCCESS);
 
     return 0;
+
 }
 
-//#include "preprocessor/process.h"
 #include "preprocessor/checker.h"
 
 
@@ -109,4 +75,5 @@ void compile(FILE *filePtr, char *path, int isFull){ //Compile a file and it's c
     }else{
         return compiledCode;
     }*/
+
 }
