@@ -14,7 +14,7 @@ Everyone is welcomed to contribute to this project in any way they want. (e.g. h
 
 This is a graph of the current plan for the way the compiler works.
 
-![plan.png](./github/photos/plan.png)
+![plan.png](./github/photos/plan.svg)
 
 ## Compiler input
 
