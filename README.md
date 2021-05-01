@@ -12,7 +12,7 @@ Everyone is welcomed to contribute to this project in any way they want. (e.g. h
 
 ## The Compiling Process
 
-This is a graph of the current plan for the way the compiler works.
+This is a diagram of the current plan for the compiling process:
 
 ![plan.png](./github/photos/plan.svg)
 
