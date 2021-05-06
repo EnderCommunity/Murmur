@@ -17,13 +17,13 @@ static _Str* defStr(char type){ //Define a string
     tmp->typ = type;
 
     if(type == 'L')
-        tmp->maxLen = 536870900;
+        tmp->maxLen = MAX_LONG_STRING_LENGTH;
     else if(type == 'N')
-        tmp->maxLen = 5368709;
+        tmp->maxLen = MAX_NORMAL_STRING_LENGTH;
     else if(type == 'S')
-        tmp->maxLen = 309;
+        tmp->maxLen = MAX_SHORT_STRING_LENGTH;
     else
-        tmp->maxLen = type;
+        tmp->maxLen = (int)type;
 
     return tmp;
 

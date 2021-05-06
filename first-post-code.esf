@@ -10,7 +10,7 @@ This is EnderScript code that can be processed by the first-post compiler!
 //(!) All the functions that start with a # are preprocessor functions
 
 #import "path/to/myfile.esf"; //This will allow you to import EnderScript files!
-#import "path/to/mymodule1.esmf" as object Module1; //This will allow you to import EnderScript modules!
+#import "path/to/mymodule1.esmf" as string Module1; //This will allow you to import EnderScript modules!
 function Module2;
 #import "path/to/mymodule2.esmf" as Module2; //This will allow you to import EnderScript modules!
 
