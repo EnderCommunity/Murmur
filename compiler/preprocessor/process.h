@@ -8,23 +8,27 @@ typedef struct{
     char *path; //The path of the file
     FILE *filePtr; //The file pointer, it should always point to the current line that is being processed
     FILE *fileStrPtr; //The file pointer, it should always point to the first line of the file
+    int currLine;
+    int currCol;
     char *currLineCon;
 
 } FileInfo;
 
 FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object to keep track of each file's mode
 
-    FileInfo *tmp = malloc(sizeof(FileInfo) + sizeof(char)*(254 + 508));
+    FileInfo *tmp = malloc(sizeof(FileInfo) + sizeof(char)*(MAX_PATH_LENGTH + MAX_LINE_LENGTH - 2));
 
-    tmp->path = malloc(sizeof(char)*255); //The max path length is 255 characters
+    tmp->path = malloc(sizeof(char)*MAX_PATH_LENGTH); //The max path length is 255 characters
     tmp->path = path;
-    tmp->currLineCon = malloc(sizeof(char)*509);
+    tmp->currLineCon = malloc(sizeof(char)*MAX_LINE_LENGTH);
     tmp->filePtr = file;
     tmp->fileStrPtr = file;
     tmp->isFull = isFull; //Is this a full compiling process?
     tmp->mode = 'N';
+    tmp->currLine = 1;
+    tmp->currCol = 1;
 
-    fgets(tmp->currLineCon, 509, tmp->filePtr);
+    fgets(tmp->currLineCon, MAX_LINE_LENGTH, tmp->filePtr);
 
     if(getLstStrIndx(tmp->path, ".esf") == strlen(tmp->path) - 4) //A normal file!
         tmp->mode = 'N';

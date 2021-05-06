@@ -57,9 +57,30 @@ char* newStr(int size) { //Create a new string
 
 }
 
-char* rszStr(char *str, int size) { //Create a new string
+char* rszStr(char *str, int size) { //Resize a string
 
     str = realloc(str, sizeof(char)*size);
+
+    return str;
+
+}
+
+char* getStrPrt(char *str, int strIndx, int endIndx) { //Resize a string
+    /*if(strIndx == endIndx){
+        //Throw an error!
+    }else */if(endIndx > strlen(str) || endIndx < strIndx){
+        //Throw an error!
+    }else if(strIndx > strlen(str) || strIndx < 0){
+        //Throw an error!
+    }else{
+        char *nStr = malloc((endIndx - strIndx + 2)*sizeof(char));
+        for(int i = 0; strIndx <= endIndx; strIndx++, i++){
+            nStr[i] = str[strIndx];
+            if(endIndx == strIndx)
+                nStr[++i] = '\0';
+        }
+        str = nStr;
+    }
 
     return str;
 
