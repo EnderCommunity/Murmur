@@ -26,8 +26,9 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
     do {
 
-        fileInf = chkForCom(fileInf);
-        fileInf = chkForPprFunc(fileInf);
+        fileInf = chkForCom(fileInf); //Remove the comments
+
+        fileInf = chkForPprFunc(fileInf); //Check for the preprocessor functions
 
         //fileInf->currLineCon;
 
