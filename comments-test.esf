@@ -1,0 +1,53 @@
+/*
+test
+*/
+@
+int a = 0;
+@
+/*
+
+test
+
+*/
+@
+int b = 0;
+@
+/* test
+*/
+@
+int c = 0;
+@
+/*
+test */
+@
+int d = 0;
+@
+/* test */
+@
+int e = 0;
+@
+//test
+@
+int f = 0;
+@
+// test
+@
+int g = 0;
+@
+ // test
+@
+int h = 0;
+@
+ //test
+@
+int i = 0;
+@
+int j = 0; //test
+@
+int k = 0;//test
+@
+int l = 0; // test
+@
+int m = 0;// test
+@
+ 

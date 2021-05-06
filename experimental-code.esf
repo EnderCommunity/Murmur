@@ -1,0 +1,24 @@
+//These are just experimental features!
+
+int t = 1;
+
+//Experiment A1:
+
+function::get->t GetT();
+
+//This would be the same as this:
+
+function::Int GetT(){
+    return t;
+}
+
+
+//Experiment A2:
+
+function::set->t SetT();
+
+//This would be the same as this:
+
+function::Void SetT(int v){
+    t = v;
+}
