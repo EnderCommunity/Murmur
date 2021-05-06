@@ -5,7 +5,7 @@ FileInfo* chngFileCol(FileInfo *tmp, int col){
 
     tmp->currCol = col;
 
-    tmp->currLineCon = getStrPrt(tmp->currLineCon, tmp->currCol - 1, strlen(tmp->currLineCon));
+    tmp->currLineCon = getStrPrt(tmp->currLineCon, tmp->currCol - 1, strlen(tmp->currLineCon), 0);
 
     return tmp;
 
@@ -31,7 +31,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
         //fileInf->currLineCon;
 
-        if(strlen(fileInf->currLineCon) != 0)
+        if(!isStrEmpty(fileInf->currLineCon))
             fprintf(desFilePtr, "@[%d,%d]%s", fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
 
         if(fileInf->currCol == 1) //This can break easily!
