@@ -18,11 +18,13 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
     fileInf->mode;
     fileInf->isFull;
     fileInf->currLineCon;
+    fileInf->currOLineCon;
     fileInf->path;
     fileInf->filePtr;
     fileInf->fileStrPtr;
     fileInf->currLine;
     fileInf->currCol;
+    fileInf->nextCol;
 
     do {
 
