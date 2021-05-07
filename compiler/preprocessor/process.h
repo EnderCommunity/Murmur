@@ -10,7 +10,9 @@ typedef struct{
     FILE *fileStrPtr; //The file pointer, it should always point to the first line of the file
     int currLine;
     int currCol;
+    int nextCol;
     char *currLineCon;
+    char *currOLineCon;
 
 } FileInfo;
 
@@ -21,14 +23,17 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
     tmp->path = malloc(sizeof(char)*MAX_PATH_LENGTH); //The max path length is 255 characters
     tmp->path = path;
     tmp->currLineCon = malloc(sizeof(char)*MAX_LINE_LENGTH);
+    tmp->currOLineCon = malloc(sizeof(char)*MAX_LINE_LENGTH);
     tmp->filePtr = file;
     tmp->fileStrPtr = file;
     tmp->isFull = isFull; //Is this a full compiling process?
     tmp->mode = 'N';
     tmp->currLine = 1;
     tmp->currCol = 1;
+    tmp->nextCol = 1;
 
-    fgets(tmp->currLineCon, MAX_LINE_LENGTH, tmp->filePtr);
+    fgets(tmp->currOLineCon, MAX_LINE_LENGTH, tmp->filePtr);
+    strcpy(tmp->currLineCon, tmp->currOLineCon);
 
     if(getLstStrIndx(tmp->path, ".esf") == strlen(tmp->path) - 4) //A normal file!
         tmp->mode = 'N';
@@ -36,9 +41,9 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
         tmp->mode = 'M';
     else //This will result in an error!!!!
         tmp->mode = 'U';
-    if(getStrIndx(tmp->currLineCon, "##head") == 0) { //The head function is present!
+    if(getStrIndx(tmp->currOLineCon, "##head") == 0) { //The head function is present!
 
-        if(inStrRng(tmp->currLineCon, "--skip")) //This file will be skipped!
+        if(inStrRng(tmp->currOLineCon, "--skip")) //This file will be skipped!
             tmp->mode = 'S';
 
     }

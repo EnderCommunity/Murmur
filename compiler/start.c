@@ -74,22 +74,15 @@ void preprocess(FILE *filePtr, char *path, int isFull, FILE *desFilePtr){ //Comp
     printf("\n[Debug] Mode: %c\n", fileInf->mode);
     printf("[Debug] Is Full: %d\n", fileInf->isFull);
     printf("[Debug] Current Line Content: %s\n", fileInf->currLineCon);
+    printf("[Debug] Current Line Original Content: %s\n", fileInf->currOLineCon);
     printf("[Debug] Path: %s\n", fileInf->path);
-    fileInf->filePtr;
-    fileInf->fileStrPtr;
+    //fileInf->filePtr;
+    //fileInf->fileStrPtr;
 
     ppcRead(fileInf, desFilePtr); //Let the preprocessor do it's thing!
 
-    desFileStrPtr; //This file should have all the needed code, preprocessed, with no comments!
+    //desFileStrPtr; //This file should have all the needed code, preprocessed, with no comments!
 
     //You can start to parse this file!
-
-    /*char *compiledCode;
-    if(isFull){
-        FILE *test = genFilStr();
-        return NULL;
-    }else{
-        return compiledCode;
-    }*/
 
 }

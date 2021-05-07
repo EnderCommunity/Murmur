@@ -3,6 +3,9 @@
         "*html": "html",
         "*.html": "html",
         "*.h": "c",
-        "*.c": "c"
+        "*.c": "c",
+        "*.esf": "enderscript",
+        "*.esmf": "enderscript",
+        "*.tesf": "tmp-enderscript"
     }
 }

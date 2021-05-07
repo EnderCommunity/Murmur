@@ -91,6 +91,14 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
 
 }
 
+char* remStrPrt(char *str, char *strForRem) { //Remove a part of a string
+
+    int indx = getStrIndx(str, strForRem);
+
+    return (indx != 0) ? apdStr(getStrPrt(str, 0, indx, 0), getStrPrt(str, indx + strlen(strForRem), strlen(str), 0)) : getStrPrt(str, strlen(strForRem), strlen(str), 0);
+
+}
+
 int numOfCharInStr(char *str, char cha){ //Get the number of times a char appeared in a string
 
     int n = 0;
