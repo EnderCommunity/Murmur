@@ -76,13 +76,22 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
         //Throw an error!
     }else{
         char *nStr = malloc((endIndx - strIndx + 2 + (endLine ? 1 : 0))*sizeof(char));
-        for(int i = 0; strIndx <= endIndx; strIndx++, i++){
-            nStr[i] = str[strIndx];
-            if(endIndx == strIndx){
-                if(endLine)
-                    nStr[++i] = '\n';
-                nStr[++i] = '\0';
+        if(strIndx != endIndx)
+            for(int i = 0; strIndx <= endIndx; strIndx++, i++){
+                nStr[i] = str[strIndx];
+                if(endIndx == strIndx){
+                    if(endLine)
+                        nStr[++i] = '\n';
+                    nStr[++i] = '\0';
+                }
             }
+        else{
+            printf("\n@@@@@@@@@@@@@@@@@@\n");
+            char *tmp = malloc(sizeof(char)*2);
+            tmp[0] = str[strIndx];
+            tmp[1] = '\0';
+            strcpy(nStr, tmp);
+            free(tmp);
         }
         str = nStr;
     }

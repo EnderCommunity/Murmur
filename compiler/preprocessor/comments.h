@@ -2,16 +2,28 @@ FileInfo* chkForCom(FileInfo *curFile){
 
     int indx;
 
-    if(inStrRng(curFile->currLineCon, "/*") && 0){ //Not working!
+    if(inStrRng(curFile->currLineCon, "/*")){ //Not working!
 
         indx = getStrIndx(curFile->currLineCon, "/*");
 
 
         if(indx == 0){
 
-            curFile->nextCol = getStrIndx(curFile->currLineCon, "*/") + 2;
+            if(inStrRng(curFile->currLineCon, "*/")){
 
-            curFile->currLineCon = getStrPrt(curFile->currLineCon, curFile->nextCol, strlen(curFile->currLineCon), 0);
+                curFile->nextCol = getStrIndx(curFile->currLineCon, "*/") + 2;
+
+                strcpy(curFile->currLineCon, " ");
+
+            }else{
+
+                //The end is in another line!
+
+            }
+
+            //curFile->nextCol = getStrIndx(curFile->currLineCon, "*/") + 2;
+
+            //curFile->currLineCon = getStrPrt(curFile->currLineCon, curFile->nextCol, strlen(curFile->currLineCon), 0);
             
 
         }else{ //Skip the comment until the next loop!
@@ -20,9 +32,9 @@ FileInfo* chkForCom(FileInfo *curFile){
 
             //You've got a problem with the columns!
 
-            curFile->nextCol = indx;
+            //curFile->nextCol = indx;
 
-            curFile->currLineCon = getStrPrt(curFile->currLineCon, 0, indx - 1, 0); //Skip the comment and the content until the next loop!
+            //curFile->currLineCon = getStrPrt(curFile->currLineCon, 0, indx - 1, 0); //Skip the comment and the content until the next loop!
 
             //curFile->currLineCon = apdStr(getStrPrt(curFile->currLineCon, 0, indx, 0), getStrPrt(curFile->currLineCon, curFile->currCol, strlen(curFile->currLineCon), 0));
 
@@ -34,17 +46,18 @@ FileInfo* chkForCom(FileInfo *curFile){
 
         indx = getStrIndx(curFile->currLineCon, "//");
 
+
         printf("\n[Debug] Line Content: %s\n[Debug] '//' Index: %d", curFile->currLineCon, indx);
 
-        printf("\n@@BEFORE: %s@@", curFile->currLineCon);
+        printf("\n--BEFORE: %s--", curFile->currLineCon);
 
 
-        if(indx == 0){
-            (curFile->currLineCon)[0] = '\0';
-        }else
+        if(indx == 0)
+            strcpy(curFile->currLineCon, "");
+        else
             curFile->currLineCon = getStrPrt(curFile->currLineCon, 0, indx - 1, 1);
 
-        printf("\n@@AFTER: %s@@", curFile->currLineCon);
+        printf("\n--AFTER: %s--", curFile->currLineCon);
 
     }
 

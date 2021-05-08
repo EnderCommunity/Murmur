@@ -37,9 +37,13 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
         if(!isStrEmpty(fileInf->currLineCon))
             fprintf(desFilePtr, "@[%d,%d]%s", fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
 
+        printf("\n[Debug]nextCol: %d, currCol: %d, OLen: %d, Line: %d\n", fileInf->nextCol, fileInf->currCol, strlen(fileInf->currOLineCon), fileInf->currLine);
+
         if(fileInf->nextCol == fileInf->currCol || fileInf->nextCol == strlen(fileInf->currOLineCon)){ //Get next line only if the column is still set to 1 or if it's set to the last column in the current line
 
-            fgets(fileInf->currLineCon, MAX_LINE_LENGTH, fileInf->filePtr); //Move to the next line!
+            fgets(fileInf->currOLineCon, MAX_LINE_LENGTH, fileInf->filePtr); //Move to the next line!
+
+            strcpy(fileInf->currLineCon, fileInf->currOLineCon);
 
             fileInf->currLine++;
 
