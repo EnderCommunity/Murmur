@@ -52,11 +52,12 @@ int m = 0;// test13
 @
 /* test21 */
 @
-[(!): this is crashing the compiler!]/* test14 */ /* test15 */ /* test16 */
+[!!!: all the lines after line 54 cause the compiler to crash]
+/\* test14 */ /\* test15 */ /\* test16 */ [!]
 @
-int n = 0;/* test17 */
+int n = 0;/\* test17 */ [!]
 @
-[(!): this is crashing the compiler!]/* test18 */int o = 0;
+/\* test18 */int o = 0; [!]
 @
-/* test19 */int p = 0;/* test20 */
+/\* test19 */int p = 0;/\* test20 */ [!]
 @

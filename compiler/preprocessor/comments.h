@@ -4,16 +4,36 @@ FileInfo* chkForCom(FileInfo *curFile){
 
     if(inStrRng(curFile->currLineCon, "/*")){ //Not working!
 
+        printf("\n Current Line: %d, Current Column: %d.", curFile->currLine, curFile->currCol);
+
+        Deb();
+
         indx = getStrIndx(curFile->currLineCon, "/*");
+
+        printf("\n \"/*\"-'s Index: %d", indx);
+
+        Deb();
 
 
         if(indx == 0){
+
+            printf("ML (Same Line) comment: %d\n", inStrRng(curFile->currLineCon, "*/"));
 
             if(inStrRng(curFile->currLineCon, "*/")){
 
                 curFile->nextCol = getStrIndx(curFile->currLineCon, "*/") + 2;
 
-                strcpy(curFile->currLineCon, " ");
+                printf("Next Col: %d\n", curFile->nextCol);
+
+
+                if(curFile->nextCol >= strlen(curFile->currLineCon) + 1)
+                    strcpy(curFile->currLineCon, " "); //NOT CORRECT!
+                else
+                    curFile->currLineCon = getStrPrt(curFile->currLineCon, curFile->nextCol, strlen(curFile->currLineCon), 0);
+
+
+                printf("Line Con: %s\n", curFile->currLineCon);
+
 
             }else{
 
@@ -27,6 +47,16 @@ FileInfo* chkForCom(FileInfo *curFile){
             
 
         }else{ //Skip the comment until the next loop!
+
+            printf("\nSkipped line!");
+
+            curFile->nextCol = getStrIndx(curFile->currLineCon, "/*");
+
+            printf("\nNext Col: %d", curFile->nextCol);
+
+            curFile->currLineCon = getStrPrt(curFile->currLineCon, 0, indx, 0);
+
+            printf("\nLine Con: %s", curFile->currLineCon);
 
             //curFile->currCol = 1;
 
@@ -42,7 +72,7 @@ FileInfo* chkForCom(FileInfo *curFile){
 
         printf("\n[Debug] Line Content: %s\n[Debug] '/*' Index: %d", curFile->currLineCon, indx);
 
-    }else if(inStrRng(curFile->currLineCon, "//")){ //Fully functional!
+    }else if(0 & inStrRng(curFile->currLineCon, "//")){ //COULD BREAK, multi-linear comments should be processed first!
 
         indx = getStrIndx(curFile->currLineCon, "//");
 
