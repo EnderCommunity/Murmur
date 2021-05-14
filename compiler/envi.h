@@ -20,9 +20,9 @@
 //these settings give you the option to get a copy of these files in the directory of
 //the file you compiled)
 
-#define OUTPUT_LOG_FILE 0 //Output a `.log` file (Logs files may affect the speed of
+/* ! */ #define OUTPUT_LOG_FILE 0 //Output a `.log` file (Logs files may affect the speed of
 //the compiler severely. The log file stream is constantly closed and re-opened to
 //ensure that the user will get the logs even when the compiler crashes.)
-#define OUTPUT_TEMP_FILE 0 //Output a `.tesf` file (stage one code)
-#define OUTPUT_C_CODE_FILE 0 //Output a `.c` file (stage two code)
-#define OUTPUT_EXECUTABLE 1 //Output an executable file (stage three code)
+/* ! */ #define OUTPUT_TEMP_FILE 0 //Output a `.tesf` file (stage one code)
+/* ! */ #define OUTPUT_C_CODE_FILE 0 //Output a `.c` file (stage two code)
+/* ! */ #define OUTPUT_EXECUTABLE 1 //Output an executable file (stage three code)
