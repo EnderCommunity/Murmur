@@ -26,10 +26,12 @@ FileInfo* chkForCom(FileInfo *curFile){
                 printf("Next Col: %d\n", curFile->nextCol);
 
 
-                if(curFile->nextCol >= strlen(curFile->currLineCon) + 1)
+                printf("\n NC: %d, CLCL: %d", curFile->nextCol, strlen(curFile->currLineCon));
+
+                if(curFile->nextCol >= strlen(curFile->currLineCon) - 1)
                     strcpy(curFile->currLineCon, " "); //NOT CORRECT!
                 else
-                    curFile->currLineCon = getStrPrt(curFile->currLineCon, curFile->nextCol, strlen(curFile->currLineCon), 0);
+                    curFile->currLineCon = getStrPrt(curFile->currLineCon, curFile->nextCol - 1, strlen(curFile->currLineCon) - 1, 0);
 
 
                 printf("Line Con: %s\n", curFile->currLineCon);
