@@ -68,35 +68,34 @@ char* rszStr(char *str, int size) { //Resize a string
 }
 
 char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part from a string
-    /*if(strIndx == endIndx){
-        //Throw an error!
-    }else */if(endIndx > strlen(str) || endIndx < strIndx){
-        //Throw an error!
-    }else if(strIndx > strlen(str) || strIndx < 0){
-        //Throw an error!
-    }else{
-        char *nStr = malloc((endIndx - strIndx + 2 + (endLine ? 1 : 0))*sizeof(char));
-        if(strIndx != endIndx)
-            for(int i = 0; strIndx <= endIndx; strIndx++, i++){
-                nStr[i] = str[strIndx];
-                if(endIndx == strIndx){
-                    if(endLine)
-                        nStr[++i] = '\n';
-                    nStr[++i] = '\0';
-                }
-            }
-        else{
-            printf("\n@@@@@@@@@@@@@@@@@@\n");
-            char *tmp = malloc(sizeof(char)*2);
-            tmp[0] = str[strIndx];
-            tmp[1] = '\0';
-            strcpy(nStr, tmp);
-            free(tmp);
-        }
-        str = nStr;
-    }
 
-    return str;
+    int s = (((endIndx - strIndx != 0) ? endIndx - strIndx : 1) + 2 + (endLine ? 1 : 0))*sizeof(char);
+    char *nStr = malloc(s);
+
+    memset(nStr, 0x00, s); //Clear the new memory
+
+    if(endIndx > strlen(str) || endIndx < strIndx){
+        //Throw an error!
+        Deb();
+    }else if(strIndx > strlen(str) || strIndx < 0){
+        Deb();
+        //Throw an error!
+    }else
+        for(int i = 0; strIndx <= endIndx; strIndx++, i++){
+            nStr[i] = str[strIndx];
+            if(endIndx == strIndx){
+                if(endLine)
+                    nStr[++i] = '\n';
+                nStr[++i] = '\0';
+            }
+        }
+
+    Deb();
+    printf("--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------");
+    printf("@@%s@@", nStr);
+    printf("--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------");
+
+    return nStr;
 
 }
 
