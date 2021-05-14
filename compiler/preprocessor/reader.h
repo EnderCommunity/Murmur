@@ -28,9 +28,11 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
     do {
 
-        fileInf = chkForCom(fileInf); //Remove the comments
+        if(!isStrEmpty(fileInf->currLineCon))
+            fileInf = chkForCom(fileInf); //Remove the comments
 
-        fileInf = chkForPprFunc(fileInf); //Check for the preprocessor functions
+        if(!isStrEmpty(fileInf->currLineCon))
+            fileInf = chkForPprFunc(fileInf); //Check for the preprocessor functions
 
         //fileInf->currLineCon;
 
@@ -39,7 +41,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
         printf("\n[Debug]nextCol: %d, currCol: %d, OLen: %d, Line: %d\n", fileInf->nextCol, fileInf->currCol, strlen(fileInf->currOLineCon), fileInf->currLine);
 
-        if(fileInf->nextCol == fileInf->currCol || fileInf->nextCol == strlen(fileInf->currOLineCon)){ //Get next line only if the column is still set to 1 or if it's set to the last column in the current line
+        if(fileInf->nextCol == fileInf->currCol || fileInf->nextCol >= strlen(fileInf->currOLineCon) - 1){ //Get next line only if the column is still set to 1 or if it's set to the last column in the current line
 
             fgets(fileInf->currOLineCon, MAX_LINE_LENGTH, fileInf->filePtr); //Move to the next line!
 
