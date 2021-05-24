@@ -28,6 +28,8 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
     do {
 
+        writeLogLine("Preprocessor", 0, "New processing loop started.", 1, fileInf->currLine, fileInf->currCol);
+
         if(!isStrEmpty(fileInf->currLineCon))
             fileInf = chkForCom(fileInf); //Remove the comments
 
