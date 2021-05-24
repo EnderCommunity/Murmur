@@ -36,14 +36,16 @@ function::Void SetT(int v){
 //#setsize Custom 500 //You will also be able to assigne a size limit for objects (Maybe)
 
 
-^int Num1 = 0, Num2 = 1, Num3 = 2; //Integers use the type 'int'
+int Num = 0; //The size of this variable is set to the default of integers
 
-^float Floa1 = 0.00, Floa2 = 0.01, Floa3 = 0.02; //Decimal numbers use the type 'float'
+^int Num1 = 0, Num2 = 1, Num3 = 2; //Integers use the type 'int' (the size of each variable is set to 1 bytes!)
 
-^double Doub1 = 0.00, Doub2 = 0.01, Doub3 = 0.02; //Decimal numbers, that may be long, use the type 'double'
+^float Floa1 = 0.00, Floa2 = 0.01, Floa3 = 0.02; //Decimal numbers use the type 'float' (the size of each variable is set to 5 bytes!)
 
-^string Str1 = "Hello there!", Str2 = "I'm a string!", Str3 = "I can be up to 2048 characters in length!"; //You can use variables with the type 'string' to store text
+^double Doub1 = 0.00, Doub2 = 0.01, Doub3 = 0.02; //Decimal numbers, that may be long, use the type 'double' (the size of each variable is set to 10 bytes!)
 
-^file File1 = new FileStream("path/filename.txt"), File2 = new FileStream("path/filename.txt", false), File3 = new FileStream("path/filename.txt", true); //the 2nd argument determines whether the file should be in a read-only mode or not. It's set to 'false' by default.
+^string Str1 = "Hello there!", Str2 = "I'm a string!", Str3 = "I can be up to 2048 characters in length!"; //You can use variables with the type 'string' to store text (the size of each variable is set to 50 bytes!)
+
+^file File1 = new FileStream("path/filename.txt"), File2 = new FileStream("path/filename.txt", false), File3 = new FileStream("path/filename.txt", true); //the 2nd argument determines whether the file should be in a read-only mode or not. It's set to 'false' by default. (the size of each variable is set to 500 bytes!)
 
 //&[type] means that the variable is gonna allocate only a specific amount of memory
