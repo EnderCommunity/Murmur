@@ -27,6 +27,7 @@ function::Void SetT(int v){
 //Experiment B1:
 
 //To apply these size changes, you need to put the power ("^") operator before the type statement
+#setsize global 2 //Set all ^<type> vairables that do not have a specified custom size to be 2 bytes in size!
 #setsize int 1 //Set Integers to be 1 bytes in size!
 #setsize float 5 //Set floats to be 5 bytes in size!
 #setsize double 10 //Set doubles to be 10 bytes in size!
@@ -48,4 +49,4 @@ int Num = 0; //The size of this variable is set to the default of integers
 
 ^file File1 = new FileStream("path/filename.txt"), File2 = new FileStream("path/filename.txt", false), File3 = new FileStream("path/filename.txt", true); //the 2nd argument determines whether the file should be in a read-only mode or not. It's set to 'false' by default. (the size of each variable is set to 500 bytes!)
 
-//&[type] means that the variable is gonna allocate only a specific amount of memory
+//^<type> means that the variable is gonna allocate only the specified amount of memory in the setsize method
