@@ -16,25 +16,35 @@ int getStrIndx(char *str, char *strForChk){ //Get the index of a string in a str
 
 }
 
-int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appearance of a string inside a string
+char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part from a string
 
-    int lIndx, mIndx = -1;
+    int s = (((endIndx - strIndx != 0) ? endIndx - strIndx : 1) + 2 + (endLine ? 1 : 0))*sizeof(char);
+    char *nStr = malloc(s);
 
-    do{
+    memset(nStr, 0x00, s); //Clear the new memory
 
-        lIndx = mIndx;
-        mIndx = getStrIndx(str, strForChk);
+    if(endIndx > strlen(str) || endIndx < strIndx){
+        //Throw an error!
+        //Deb();
+    }else if(strIndx > strlen(str) || strIndx < 0){
+        //Deb();
+        //Throw an error!
+    }else
+        for(int i = 0; strIndx <= endIndx; strIndx++, i++){
+            nStr[i] = str[strIndx];
+            if(endIndx == strIndx){
+                if(endLine)
+                    nStr[++i] = '\n';
+                nStr[++i] = '\0';
+            }
+        }
 
-        str += lIndx - mIndx + strlen(strForChk);
+    /*Deb();
+    printf("--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------");
+    printf("@@%s@@", nStr);
+    printf("--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------");*/
 
-    } while(mIndx != -1);
-
-    return lIndx;
-}
-
-int inStrRng(char *str, char *strForChk){ //Check if a string exists inside a string
-
-    return strstr(str, strForChk) != NULL;
+    return nStr;
 
 }
 
@@ -49,11 +59,112 @@ char* apdStr(char *dest, char *str){ //Append two stings
 
 }
 
+char* remStrPrt(char *str, char *strForRem) { //Remove a part of a string (Unintended behaviours noticed, new fix)
+
+    int indx = getStrIndx(str, strForRem);
+
+    return (indx == -1) ?
+        str
+        :
+        ((indx != 0) ?
+            apdStr(getStrPrt(str, 0, indx - 1, 0), getStrPrt(str, indx + strlen(strForRem), strlen(str), 0))
+            :
+            getStrPrt(str, strlen(strForRem), strlen(str), 0))
+        ;
+
+}
+
+char* genFillStr(int len){
+
+    char *nStr = malloc((len + 1)*sizeof(char));
+
+    memset(nStr, 0x00, (len + 1)*sizeof(char)); //Clear the new memory
+
+    for(int i = 0; i < len; i++)
+        nStr[i] = FILLER_STRING_CHAR;
+    nStr[len] = '\0';
+
+    return nStr;
+
+}
+
+int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appearance of a string inside a string
+
+    //"Hello there, I'm here!", "e"
+
+    /*int lIndx, mIndx = -1, strLen = strlen(str), oStrLen = strLen, strIndx = 0;
+
+    printf("\nStr `%s` {", str);
+
+    do{
+
+        lIndx = mIndx;
+        mIndx = getStrIndx(str, strForChk);
+        strIndx += mIndx;
+
+        printf("[`%d`, ", mIndx);
+
+        if(lIndx != -1)
+            strLen -= mIndx + strlen(strForChk);
+
+        printf("`%d`]", oStrLen - strLen - strlen(strForChk));
+        printf(" (`%d`), ", strIndx);
+
+        str = getStrPrt(str, mIndx + strlen(strForChk), strlen(str) - 1, 0);
+
+        //str += lIndx - mIndx + strlen(strForChk);
+
+    } while(mIndx != -1);
+
+    printf("}\n");
+
+    return oStrLen - strLen;*/
+    //return lIndx;
+
+
+
+    //char *str, char *strForChk
+    int indx = -1, fIndx = indx;
+
+    //printf("\n{ ");
+
+    do{
+
+        indx = getStrIndx(str, strForChk);
+
+        //printf("[%d, ", indx);
+
+        str = apdStr(genFillStr(strlen(strForChk)), remStrPrt(str, strForChk)); //Could overflow!
+
+        //printf("`%s`], ", str);
+
+        //char* apdStr(char *dest, char *str){ //Append two stings
+        //char* remStrPrt(char *str, char *strForRem) { //Remove a part of a string
+
+        if(indx != -1)
+            fIndx = indx;
+
+    }while(indx != -1);
+
+    //printf("# }\n");
+
+    return fIndx;
+
+}
+
+int inStrRng(char *str, char *strForChk){ //Check if a string exists inside a string
+
+    return strstr(str, strForChk) != NULL;
+
+}
+
 char* newStr(int size) { //Create a new string
 
     char * tmp = malloc(sizeof(char)*size);
 
-    tmp[0] = '\0';
+    memset(tmp, 0x00, sizeof(char)*size); //Clear the new memory
+
+    //tmp[0] = '\0';
 
     return tmp;
 
@@ -64,46 +175,6 @@ char* rszStr(char *str, int size) { //Resize a string
     str = realloc(str, sizeof(char)*size);
 
     return str;
-
-}
-
-char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part from a string
-
-    int s = (((endIndx - strIndx != 0) ? endIndx - strIndx : 1) + 2 + (endLine ? 1 : 0))*sizeof(char);
-    char *nStr = malloc(s);
-
-    memset(nStr, 0x00, s); //Clear the new memory
-
-    if(endIndx > strlen(str) || endIndx < strIndx){
-        //Throw an error!
-        Deb();
-    }else if(strIndx > strlen(str) || strIndx < 0){
-        Deb();
-        //Throw an error!
-    }else
-        for(int i = 0; strIndx <= endIndx; strIndx++, i++){
-            nStr[i] = str[strIndx];
-            if(endIndx == strIndx){
-                if(endLine)
-                    nStr[++i] = '\n';
-                nStr[++i] = '\0';
-            }
-        }
-
-    Deb();
-    printf("--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------");
-    printf("@@%s@@", nStr);
-    printf("--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------");
-
-    return nStr;
-
-}
-
-char* remStrPrt(char *str, char *strForRem) { //Remove a part of a string
-
-    int indx = getStrIndx(str, strForRem);
-
-    return (indx != 0) ? apdStr(getStrPrt(str, 0, indx, 0), getStrPrt(str, indx + strlen(strForRem), strlen(str), 0)) : getStrPrt(str, strlen(strForRem), strlen(str), 0);
 
 }
 

@@ -14,8 +14,12 @@ void Deb(){ //Minimal debug
 //#include "libraries/types/FileContent.h"
 #include "libraries/files/general.h"
 #include "libraries/files/gen.c"
+#include "libraries/paths/paths.h"
+
+#include "workstation.c"
 
 #include "debug.c"
+#include "log.c"
 
 void preprocess(FILE *filePtr, char *path, int isFull, FILE *desFilePtr);
 
@@ -37,6 +41,14 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
         path[strcspn(path, "\n")] = 0;
     }
 
+    //Get the path of the folder that contains the current file
+
+    //Start a workstation
+    setupWrkstn(pathPtr);
+
+    //Start logging the session
+    newLogFile(apdStr(wrkstn.Path, apdStr(wrkstn.Name, ".log")));
+
     DebugWithPath("Received the path: ", path, 0);
 
     FILE *mainFilePtr = OpnStrm(path);
@@ -44,16 +56,21 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     FILE *tmpFilePtr = genFilStr(); //Create a temporary file for the compiling process
     //There should be only one file per process
 
+    writeLogLine("Compiler Manager", 0, "Starting the preprocessor.", 0, 0, 0);
     preprocess(mainFilePtr, path, 1, tmpFilePtr); //Initiate the compiling process
 
     fclose(mainFilePtr);
     fclose(tmpFilePtr);
+
+    writeLogLine("Compiler Manager", 0, "Closed all files sessions.", 0, 0, 0);
 
     RegDebEnd(); //End the debugging timer
 
     Deb();
 
     //exit(EXIT_SUCCESS);
+
+    writeLogLine("Compiler Manager", 0, "Task finished successfully! (Ending process)", 0, 0, 0);
 
     return 0;
 
