@@ -1,14 +1,17 @@
 FileInfo* chkForCom(FileInfo *curFile){
 
+    if(waitForComm)
+        writeLogLine("Preprocessor", 0, "Looking for the end of the multi-linear comment that has been detected!", 0, 0, 0);
+    else
+        writeLogLine("Preprocessor", 0, "Checking for comments...", 1, curFile->currLine, curFile->currCol);
+
     int indx;
 
-    if(inStrRng(curFile->currLineCon, "//")){ //COULD BREAK, multi-linear comments should be processed first!
+    if(!waitForComm && inStrRng(curFile->currLineCon, "//")){ //COULD BREAK, multi-linear comments should be processed first!
 
         indx = getStrIndx(curFile->currLineCon, "//");
 
-        printf("\n[Debug] Line Content: %s\n[Debug] \"//\"-'s Index: %d", curFile->currLineCon, indx);
-
-        printf("\n--BEFORE: %s--", curFile->currLineCon);
+        writeLogLine("Preprocessor", 0, "A single line comment has been detected!", 1, curFile->currLine, curFile->currCol + indx);
 
         if(indx == 0)
             strcpy(curFile->currLineCon, "");
@@ -17,89 +20,42 @@ FileInfo* chkForCom(FileInfo *curFile){
 
         //There is no need to set a next column value since everything after the linear comment operator will be ignored anyway!
 
-        printf("\n--AFTER: %s--", curFile->currLineCon);
-
-    }else if(0 & inStrRng(curFile->currLineCon, "/*")){ //Not working!
-
-        printf("\n Current Line: %d, Current Column: %d.", curFile->currLine, curFile->currCol);
-
-        Deb();
+    }else if(!waitForComm && inStrRng(curFile->currLineCon, "/*")){ //Not working!
 
         indx = getStrIndx(curFile->currLineCon, "/*");
 
-        printf("\n \"/*\"-'s Index: %d", indx);
-
-        Deb();
+        writeLogLine("Preprocessor", 0, "A multi-linear comment has been detected!", 1, curFile->currLine, curFile->currCol + indx);
 
         if(indx == 0){
+
             //Start a loop to find the end of this comment!
-        }else{
-            //Ignore the comment for now, and check the code before the comment!
-        }
+            indx = getStrIndx(curFile->currLineCon, "*/");
+            if(indx != -1){
 
-
-        /*if(indx == 0){
-
-            printf("ML (Same Line) comment: %d\n", inStrRng(curFile->currLineCon, "*\/"));
-
-            if(inStrRng(curFile->currLineCon, "*\/")){
-
-                curFile->nextCol = getStrIndx(curFile->currLineCon, "*\/") + 2;
-                curFile->currCol = curFile->nextCol;
-
-                printf("Next Col: %d\n", curFile->nextCol);
-
-
-                printf("\n NC: %d, CLCL: %d", curFile->nextCol, strlen(curFile->currLineCon));
-
-                if(curFile->nextCol >= strlen(curFile->currLineCon) - 1)
-                    strcpy(curFile->currLineCon, " "); //NOT CORRECT!
-                else{
-                    printf("\nBEFORE: %s", curFile->currLineCon);
-                    curFile->currLineCon = getStrPrt(curFile->currLineCon, curFile->nextCol - 1, strlen(curFile->currLineCon) - 1, 0);
-                    printf("\nAFTER: %s", curFile->currLineCon);
-                }
-
-
-                printf("Line Con: %s\n", curFile->currLineCon);
-
+                curFile->nextCol += indx + 2;
+                strcpy(curFile->currLineCon, ""); //Do not insert the current line content into the .tesf file
 
             }else{
-
-                //The end is in another line!
-
+                waitForComm = 1;
             }
 
-            //curFile->nextCol = getStrIndx(curFile->currLineCon, "*\/") + 2;
+        }else{
 
-            //curFile->currLineCon = getStrPrt(curFile->currLineCon, curFile->nextCol, strlen(curFile->currLineCon), 0);
-            
+            curFile->nextCol += indx; //Ignore the comment for now, and check the code before the comment!
+            curFile->currLineCon = getStrPrt(curFile->currLineCon, 0, indx - 1, 1);
 
-        }else{ //Skip the comment until the next loop!
+        }
 
-            /*printf("\nSkipped line!");
+    }else if(waitForComm && inStrRng(curFile->currLineCon, "*/")){
 
-            curFile->nextCol = getStrIndx(curFile->currLineCon, "/*");
+        indx = getStrIndx(curFile->currLineCon, "*/");
+        curFile->nextCol += indx + 2;
 
-            printf("\nNext Col: %d", curFile->nextCol);
+        writeLogLine("Preprocessor", 0, "The end of the multi-linear comment has been detected!", 1, curFile->currLine, curFile->nextCol);
 
-            curFile->currLineCon = getStrPrt(curFile->currLineCon, 0, indx, 0);
+        strcpy(curFile->currLineCon, "");
 
-            printf("\nLine Con: %s", curFile->currLineCon);*\/
-
-            //curFile->currCol = 1;
-
-            //You've got a problem with the columns!
-
-            //curFile->nextCol = indx;
-
-            //curFile->currLineCon = getStrPrt(curFile->currLineCon, 0, indx - 1, 0); //Skip the comment and the content until the next loop!
-
-            //curFile->currLineCon = apdStr(getStrPrt(curFile->currLineCon, 0, indx, 0), getStrPrt(curFile->currLineCon, curFile->currCol, strlen(curFile->currLineCon), 0));
-
-        }*/
-
-        printf("\n[Debug] Line Content: %s\n[Debug] '/*' Index: %d", curFile->currLineCon, indx);
+        waitForComm = 0; //You found the end of the comment, stop!
 
     }
 

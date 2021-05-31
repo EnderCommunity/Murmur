@@ -29,15 +29,16 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
     }else if(strIndx > strlen(str) || strIndx < 0){
         //Deb();
         //Throw an error!
-    }else
-        for(int i = 0; strIndx <= endIndx; strIndx++, i++){
+    }else{
+        int i;
+        for(i = 0; strIndx < endIndx; strIndx++, i++){
             nStr[i] = str[strIndx];
-            if(endIndx == strIndx){
-                if(endLine)
-                    nStr[++i] = '\n';
-                nStr[++i] = '\0';
-            }
         }
+        if(endLine)
+            nStr[++i] = '\n';
+        nStr[++i] = '\0';
+    }
+
 
     /*Deb();
     printf("--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------");
