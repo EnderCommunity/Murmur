@@ -23,13 +23,16 @@
 #define PATH_SLASH "\\"
 
 
-//Output (NOTE: all these files are still gonna be generated in the `/tmp` directory,
-//these settings give you the option to get a copy of these files in the directory of
-//the file you compiled)
+//Output (NOTE: some of these files might still get generated in the `/tmp` directory)
 
-/* ! */ #define OUTPUT_LOG_FILE 1 //Output a `.log` file (Logs files may affect the speed of
+#define OUTPUT_LOG_FILE 1 //Output a `.log` file (Logs files may affect the speed of
 //the compiler severely. The log file stream is constantly closed and re-opened to
 //ensure that the user will get the logs even when the compiler crashes.)
-/* ! */ #define OUTPUT_TEMP_FILE 0 //Output a `.tesf` file (stage one code)
-/* ! */ #define OUTPUT_C_CODE_FILE 0 //Output a `.c` file (stage two code)
-/* ! */ #define OUTPUT_EXECUTABLE 1 //Output an executable file (stage three code)
+#define OUTPUT_TEMP_FILE 1 //Output a `.tesf` file (stage one code)
+/* (!) Still not implemented */ #define OUTPUT_C_CODE_FILE 0 //Output a `.c` file (stage two code)
+/* (!) Still not implemented */ #define OUTPUT_EXECUTABLE 1 //Output an executable file (stage three code)
+
+
+//Process End Management
+
+/* (!) Still not implemented */ #define EMPTY_COMPILER_TMP_DIR //Empty the `/compiler/tmp/` directory at the end of every process

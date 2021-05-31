@@ -2,13 +2,21 @@
 #include <stdlib.h>
 #include "../rand/random.h"
 
-static FILE* genFilStr(){ //Create a new file in the `/tmp` directory
+static FILE* genFilStr(char *pth){ //Create a new file in the `/tmp` directory
 
-    char *rnd = randStr(10, "NSC"), *str;
+    char *str;
 
-    str = apdStr("tmp/", rnd);
+    if(OUTPUT_TEMP_FILE)
+        str = apdStr(pth, ".tesf");
+    else{
 
-    str = apdStr(str, ".tesf");
+        char *rnd = randStr(10, "NSC");
+
+        str = apdStr("tmp/", rnd);
+
+        str = apdStr(str, ".tesf");
+
+    }
 
     printf("%s\n", str);
 
