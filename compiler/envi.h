@@ -2,7 +2,6 @@
 
 
 
-
 //Files
 
 #define MAX_LINE_LENGTH 509 //The maximum line length in files
@@ -12,9 +11,9 @@
 
 //Strings
 
-#define MAX_LONG_STRING_LENGTH 536870900 //The maximum long string length
-#define MAX_NORMAL_STRING_LENGTH 5368709 //The maximum normal string length
-#define MAX_SHORT_STRING_LENGTH 309 //The maximum short string length
+/* (!) Still not implemented */ #define MAX_LONG_STRING_LENGTH 819208 //The maximum long string length
+/* (!) Still not implemented */ #define MAX_NORMAL_STRING_LENGTH 2048 //The maximum normal string length
+/* (!) Still not implemented */ #define MAX_SHORT_STRING_LENGTH 256 //The maximum short string length
 #define FILLER_STRING_CHAR '0' //The character used to generate a filler string
 
 
