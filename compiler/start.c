@@ -97,7 +97,11 @@ void preprocess(FILE *filePtr, char *path, int isFull, FILE *desFilePtr){ //Comp
     //fileInf->filePtr;
     //fileInf->fileStrPtr;
 
-    ppcRead(fileInf, desFilePtr); //Let the preprocessor do it's thing!
+    if(fileInf->mode == 'S'){
+        writeLogLine("Preprocessor", 0, "The skip flag has been detected! (Skipping to the final stage)", 0, 0, 0);
+    }else{
+        ppcRead(fileInf, desFilePtr); //Let the preprocessor do it's thing!
+    }
 
     //desFileStrPtr; //This file should have all the needed code, preprocessed, with no comments!
 
