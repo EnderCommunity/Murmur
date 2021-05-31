@@ -53,8 +53,9 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
     FILE *mainFilePtr = OpnStrm(path);
 
-    FILE *tmpFilePtr = genFilStr(); //Create a temporary file for the compiling process
+    FILE *tmpFilePtr = genFilStr(apdStr(wrkstn.Path, wrkstn.Name)); //Create a temporary file for the compiling process
     //There should be only one file per process
+    //Note: the generated files will get deleted automatically in the future, unless the 'OUTPUT_TEMP_FILE' environment variable is set to 'true'/'1'
 
     writeLogLine("Compiler Manager", 0, "Starting the preprocessor.", 0, 0, 0);
     preprocess(mainFilePtr, path, 1, tmpFilePtr); //Initiate the compiling process
