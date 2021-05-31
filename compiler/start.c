@@ -27,7 +27,7 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
     RegDebStr(); //Start the debugging timer
 
-    srand(time(NULL));
+    srand(time(NULL)); //Randomise the number generator output
 
     Debug("Starting the compiler", 0);
 
@@ -82,6 +82,8 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
 
 void preprocess(FILE *filePtr, char *path, int isFull, FILE *desFilePtr){ //Compile a file and it's content
+
+    writeLogLine("Preprocessor", 0, "Preprocessor started!", 0, 0, 0);
 
     FILE *desFileStrPtr = desFilePtr; //Save the start pointer!
 

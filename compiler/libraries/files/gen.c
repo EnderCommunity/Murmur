@@ -4,11 +4,12 @@
 
 static FILE* genFilStr(char *pth){ //Create a new file in the `/tmp` directory
 
+    //char *str = malloc(MAX_PATH_LENGTH*sizeof(char));
     char *str;
 
-    if(OUTPUT_TEMP_FILE)
+    if(OUTPUT_TEMP_FILE){
         str = apdStr(pth, ".tesf");
-    else{
+    }else{
 
         char *rnd = randStr(10, "NSC");
 
@@ -21,6 +22,8 @@ static FILE* genFilStr(char *pth){ //Create a new file in the `/tmp` directory
     printf("%s\n", str);
 
     FILE *tmpPtr = fopen(str, "w");
+
+    //free(str);
 
     return tmpPtr;
 

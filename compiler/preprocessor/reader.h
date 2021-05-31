@@ -11,6 +11,8 @@ FileInfo* chngFileCol(FileInfo *tmp, int col){
 
 }
 
+int waitForComm = 0;
+
 #include "comments.h"
 
 void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
@@ -26,43 +28,62 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
     fileInf->currCol;
     fileInf->nextCol;
 
-    do {
+    int keepLoop = 1;
+
+    while(keepLoop){
 
         writeLogLine("Preprocessor", 0, "New processing loop started.", 1, fileInf->currLine, fileInf->currCol);
 
         if(!isStrEmpty(fileInf->currLineCon))
             fileInf = chkForCom(fileInf); //Remove the comments
 
-        if(!isStrEmpty(fileInf->currLineCon))
+        if(!isStrEmpty(fileInf->currLineCon) && !waitForComm){
+
+            writeLogLine("Preprocessor", 0, "Checking for preprocessor methods...", 1, fileInf->currLine, fileInf->currCol);
             fileInf = chkForPprFunc(fileInf); //Check for the preprocessor functions
 
-        //fileInf->currLineCon;
+        }
 
-        if(!isStrEmpty(fileInf->currLineCon))
+        if(!isStrEmpty(fileInf->currLineCon) && !waitForComm){
+
             fprintf(desFilePtr, "@[%d,%d]%s", fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
+
+            writeLogLine("Preprocessor", 0, "Inserted the filtered code into the temporary output file.", 0, 0, 0);
+
+        }
 
         printf("\n[Debug]nextCol: %d, currCol: %d, OLen: %d, Line: %d\n", fileInf->nextCol, fileInf->currCol, strlen(fileInf->currOLineCon), fileInf->currLine);
 
-        if(fileInf->nextCol == fileInf->currCol || fileInf->nextCol >= strlen(fileInf->currOLineCon) - 1){ //Get next line only if the column is still set to 1 or if it's set to the last column in the current line
+        if(keepLoop && (fileInf->nextCol == fileInf->currCol || fileInf->nextCol >= strlen(fileInf->currOLineCon) + 1)){ //Get next line only if the column is still set to 1 or if it's set to the last column in the current line
+
+            writeLogLine("Preprocessor", 0, "Getting the content of the next line...", 0, 0, 0);
 
             fgets(fileInf->currOLineCon, MAX_LINE_LENGTH, fileInf->filePtr); //Move to the next line!
 
-            strcpy(fileInf->currLineCon, fileInf->currOLineCon);
+            keepLoop = !feof(fileInf->filePtr);
 
-            fileInf->currLine++;
+            if(keepLoop){
 
-            fileInf->currCol = 1;
-            fileInf->nextCol = 1;
+                strcpy(fileInf->currLineCon, fileInf->currOLineCon);
+
+                fileInf->currLine++;
+
+                fileInf->currCol = 1;
+                fileInf->nextCol = 1;
+
+            }
 
         }else{
 
+            writeLogLine("Preprocessor", 0, "Getting the current line content starting from the specified column...", 0, 0, 0);
+
             //Move the column content!
-            fileInf->currLineCon = getStrPrt(fileInf->currOLineCon, fileInf->nextCol - 1, strlen(fileInf->currOLineCon), 0);
+            fileInf->currLineCon = getStrPrt(fileInf->currOLineCon, fileInf->nextCol - 1, strlen(fileInf->currOLineCon) - 1, 0);
 
             fileInf->currCol = fileInf->nextCol;
 
         }
 
-    } while(!feof(fileInf->filePtr));
+    }
 
 }
