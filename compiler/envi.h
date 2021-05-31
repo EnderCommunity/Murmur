@@ -32,7 +32,7 @@
 /* (!) Still not implemented */ #define OUTPUT_C_CODE_FILE 0 //Output a `.c` file (stage two code)
 /* (!) Still not implemented */ #define OUTPUT_EXECUTABLE 1 //Output an executable file (stage three code)
 
+//Compiler Process
 
-//Process End Management
-
-/* (!) Still not implemented */ #define EMPTY_COMPILER_TMP_DIR //Empty the `/compiler/tmp/` directory at the end of every process
+#define ENABLE_PREPROCESSOR_SKIP_FLAG 1 //Enable the head `--skip` preprocessor flag
+/* (!) Still not implemented */ #define EMPTY_COMPILER_TMP_DIR 0 //Empty the `/compiler/tmp/` directory at the end of every process

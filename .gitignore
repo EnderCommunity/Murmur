@@ -1,4 +1,6 @@
 /TEMP
-/compiler/tmp/*.tesf
+/compiler/tmp/*
 *.lnk
 *.log
+*.tesf
+!*/*.keep
