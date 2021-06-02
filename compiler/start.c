@@ -46,6 +46,8 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     //Start a workstation
     setupWrkstn(pathPtr);
 
+    printf("\n Workstation Path: \"%s\"\nWorkstation Name: \"%s\"\n", wrkstn.Path, wrkstn.Name);
+
     //Start logging the session
     newLogFile(apdStr(wrkstn.Path, apdStr(wrkstn.Name, ".log")));
 

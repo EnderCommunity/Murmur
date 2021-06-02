@@ -11,7 +11,7 @@ void newLogFile(char *path){
         globalLogFile.path = path;
         globalLogFile.filePtr = fopen(globalLogFile.path, "w");
 
-        fprintf(globalLogFile.filePtr, "[?][LOG SYSTEM] => Created a log file successfully!\n");
+        fprintf(globalLogFile.filePtr, "[?][LOG SYSTEM] => Created a log file successfully!\n[!][Compiler Manager] => The workingstation directory has been set to \"%s\"", wrkstn.Path);
 
         fclose(globalLogFile.filePtr);
 

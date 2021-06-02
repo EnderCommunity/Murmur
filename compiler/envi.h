@@ -14,7 +14,7 @@
 /* (!) Still not implemented */ #define MAX_LONG_STRING_LENGTH 819208 //The maximum long string length
 /* (!) Still not implemented */ #define MAX_NORMAL_STRING_LENGTH 2048 //The maximum normal string length
 /* (!) Still not implemented */ #define MAX_SHORT_STRING_LENGTH 256 //The maximum short string length
-#define FILLER_STRING_CHAR '0' //The character used to generate a filler string
+#define FILLER_STRING_CHAR '\t' //The character used to generate a filler string
 
 
 //Paths
