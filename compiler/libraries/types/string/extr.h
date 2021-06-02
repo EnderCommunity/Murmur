@@ -91,63 +91,18 @@ char* genFillStr(int len){
 
 int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appearance of a string inside a string
 
-    //"Hello there, I'm here!", "e"
-
-    /*int lIndx, mIndx = -1, strLen = strlen(str), oStrLen = strLen, strIndx = 0;
-
-    printf("\nStr `%s` {", str);
-
-    do{
-
-        lIndx = mIndx;
-        mIndx = getStrIndx(str, strForChk);
-        strIndx += mIndx;
-
-        printf("[`%d`, ", mIndx);
-
-        if(lIndx != -1)
-            strLen -= mIndx + strlen(strForChk);
-
-        printf("`%d`]", oStrLen - strLen - strlen(strForChk));
-        printf(" (`%d`), ", strIndx);
-
-        str = getStrPrt(str, mIndx + strlen(strForChk), strlen(str) - 1, 0);
-
-        //str += lIndx - mIndx + strlen(strForChk);
-
-    } while(mIndx != -1);
-
-    printf("}\n");
-
-    return oStrLen - strLen;*/
-    //return lIndx;
-
-
-
-    //char *str, char *strForChk
     int indx = -1, fIndx = indx;
-
-    //printf("\n{ ");
 
     do{
 
         indx = getStrIndx(str, strForChk);
 
-        //printf("[%d, ", indx);
-
         str = apdStr(genFillStr(strlen(strForChk)), remStrPrt(str, strForChk)); //Could overflow!
-
-        //printf("`%s`], ", str);
-
-        //char* apdStr(char *dest, char *str){ //Append two stings
-        //char* remStrPrt(char *str, char *strForRem) { //Remove a part of a string
 
         if(indx != -1)
             fIndx = indx;
 
     }while(indx != -1);
-
-    //printf("# }\n");
 
     return fIndx;
 
