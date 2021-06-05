@@ -34,10 +34,10 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
         writeLogLine("Preprocessor", 0, "New processing loop started.", 1, fileInf->currLine, fileInf->currCol);
 
-        if(!isStrEmpty(fileInf->currLineCon))
+        if(ENABLE_COMMENTS && !isStrEmpty(fileInf->currLineCon))
             fileInf = chkForCom(fileInf); //Remove the comments
 
-        if(!isStrEmpty(fileInf->currLineCon) && !waitForComm){
+        if(ENABLE_PREPROCESSOR_METHODS && !isStrEmpty(fileInf->currLineCon) && !waitForComm){
 
             writeLogLine("Preprocessor", 0, "Checking for preprocessor methods...", 1, fileInf->currLine, fileInf->currCol);
             fileInf = chkForPprFunc(fileInf); //Check for the preprocessor functions
@@ -46,6 +46,10 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
         if(!isStrEmpty(fileInf->currLineCon) && !waitForComm){
 
+            //if((fileInf->currLineCon)[strlen(fileInf->currLineCon) - 1] == '\n')
+            //    (fileInf->currLineCon)[strlen(fileInf->currLineCon) - 1] = '\0';
+
+            //fprintf(desFilePtr, "@[%d,%d]%s\n", fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
             fprintf(desFilePtr, "@[%d,%d]%s", fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
 
             writeLogLine("Preprocessor", 0, "Inserted the filtered code into the temporary output file.", 0, 0, 0);

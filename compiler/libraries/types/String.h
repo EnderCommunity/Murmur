@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-typedef struct { //A string structure
+/*typedef struct { //A string structure
 
     int maxLen;
     int len;
@@ -48,4 +48,4 @@ static char** getStrVal(_Str *tmp){ //Get a string's value
 
     return tmp->con;
 
-}
+}*/
