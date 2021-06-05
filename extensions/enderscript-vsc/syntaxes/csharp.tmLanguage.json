@@ -492,7 +492,7 @@
             ]
         },
         "namespace-declaration": {
-            "begin": "\\b(namespace)\\s+",
+            "begin": "\\b(group)\\s+",
             "beginCaptures": {
                 "1": {
                     "name": "keyword.other.namespace.cs"
@@ -540,10 +540,10 @@
             "match": "(?<!\\.)\\b(new|function|private|public|const|delete)\\b"
         },
         "class-declaration": {
-            "begin": "(?=\\bclass\\b)",
+            "begin": "(?=\\bset\\b)",
             "end": "(?<=\\})",
             "patterns": [{
-                    "begin": "(?x)\n\\b(class)\\b\\s+\n(@?[_[:alpha:]][_[:alnum:]]*)\\s*",
+                    "begin": "(?x)\n\\b(set)\\b\\s+\n(@?[_[:alpha:]][_[:alnum:]]*)\\s*",
                     "beginCaptures": {
                         "1": {
                             "name": "keyword.other.class.cs"
@@ -953,7 +953,7 @@
             ]
         },
         "property-declaration": {
-            "begin": "(?x)\n\n# The negative lookahead below ensures that we don't match nested types\n# or other declarations as properties.\n(?![[:word:][:space:]]*\\b(?:class|interface|struct|enum|event)\\b)\n\n(?<return_type>\n  (?<type_name>\n    (?:\n      (?:ref\\s+(?:readonly\\s+)?)?   # ref return\n      (?:\n        (?:(?<identifier>@?[_[:alpha:]][_[:alnum:]]*)\\s*\\:\\:\\s*)? # alias-qualification\n        (?<name_and_type_args> # identifier + type arguments (if any)\n          \\g<identifier>\\s*\n          (?<type_args>\\s*<(?:[^<>]|\\g<type_args>)+>\\s*)?\n        )\n        (?:\\s*\\.\\s*\\g<name_and_type_args>)* | # Are there any more names being dotted into?\n        (?<tuple>\\s*\\((?:[^\\(\\)]|\\g<tuple>)+\\))\n      )\n      (?:\\s*\\?\\s*)? # nullable suffix?\n      (?:\\s* # array suffix?\n        \\[\n          (?:\\s*,\\s*)* # commata for multi-dimensional arrays\n        \\]\n        \\s*\n        (?:\\?)? # arrays can be nullable reference types\n        \\s*\n      )*\n    )\n  )\\s+\n)\n(?<interface_name>\\g<type_name>\\s*\\.\\s*)?\n(?<property_name>\\g<identifier>)\\s*\n(?=\\{|=>|$)",
+            "begin": "(?x)\n\n# The negative lookahead below ensures that we don't match nested types\n# or other declarations as properties.\n(?![[:word:][:space:]]*\\b(?:set|interface|struct|enum|event)\\b)\n\n(?<return_type>\n  (?<type_name>\n    (?:\n      (?:ref\\s+(?:readonly\\s+)?)?   # ref return\n      (?:\n        (?:(?<identifier>@?[_[:alpha:]][_[:alnum:]]*)\\s*\\:\\:\\s*)? # alias-qualification\n        (?<name_and_type_args> # identifier + type arguments (if any)\n          \\g<identifier>\\s*\n          (?<type_args>\\s*<(?:[^<>]|\\g<type_args>)+>\\s*)?\n        )\n        (?:\\s*\\.\\s*\\g<name_and_type_args>)* | # Are there any more names being dotted into?\n        (?<tuple>\\s*\\((?:[^\\(\\)]|\\g<tuple>)+\\))\n      )\n      (?:\\s*\\?\\s*)? # nullable suffix?\n      (?:\\s* # array suffix?\n        \\[\n          (?:\\s*,\\s*)* # commata for multi-dimensional arrays\n        \\]\n        \\s*\n        (?:\\?)? # arrays can be nullable reference types\n        \\s*\n      )*\n    )\n  )\\s+\n)\n(?<interface_name>\\g<type_name>\\s*\\.\\s*)?\n(?<property_name>\\g<identifier>)\\s*\n(?=\\{|=>|$)",
             "beginCaptures": {
                 "1": {
                     "patterns": [{
