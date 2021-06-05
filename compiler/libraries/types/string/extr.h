@@ -23,20 +23,24 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
 
     memset(nStr, 0x00, s); //Clear the new memory
 
-    if(endIndx > strlen(str) || endIndx < strIndx){
+    if((endIndx > strlen(str) || endIndx < strIndx) || (strIndx < 0 || strIndx > strlen(str))){
+
         //Throw an error!
-        //Deb();
-    }else if(strIndx > strlen(str) || strIndx < 0){
-        //Deb();
-        //Throw an error!
+        writeLogLine("Library Component", 2, "ERROR", 0, 0, 0);
+        exit(-1);
+
     }else{
+
         int i;
-        for(i = 0; strIndx < endIndx; strIndx++, i++){
+
+        for(i = 0; strIndx < endIndx; strIndx++, i++)
             nStr[i] = str[strIndx];
-        }
+
         if(endLine)
             nStr[++i] = '\n';
+
         nStr[++i] = '\0';
+
     }
 
 
@@ -194,7 +198,7 @@ int isStrEmpty(char *str){
     int whiSpc = 0;
 
     for(int i = 0; str[i] != '\0'; i++)
-        if(isspace(str[i]) || str[i] == '\n' || str[i] == '\t' || str[i] == '\0' || str[i] == '\a' || str[i] == '\b' || str[i] == '\f' || str[i] == '\r' || str[i] == '\v')
+        if(isspace(str[i]) || str[i] == FILLER_STRING_CHAR || str[i] == '\n' || str[i] == '\t' || str[i] == '\0' || str[i] == '\a' || str[i] == '\b' || str[i] == '\f' || str[i] == '\r' || str[i] == '\v')
             whiSpc++;
 
     return whiSpc == strlen(str);

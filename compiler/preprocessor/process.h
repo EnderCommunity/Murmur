@@ -42,7 +42,7 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
     else //This will result in an error!!!!
         tmp->mode = 'U';
 
-    if(getStrIndx(tmp->currOLineCon, "##head") == 0) { //The head function is present!
+    if(ENABLE_PREPROCESSOR_HEADER && getStrIndx(tmp->currOLineCon, "##head") == 0) { //The head function is present!
 
         if(ENABLE_PREPROCESSOR_SKIP_FLAG & inStrRng(tmp->currOLineCon, "--skip")) //This file will be skipped!
             tmp->mode = 'S';

@@ -15,11 +15,13 @@
 /* (!) Still not implemented */ #define MAX_NORMAL_STRING_LENGTH 2048 //The maximum normal string length
 /* (!) Still not implemented */ #define MAX_SHORT_STRING_LENGTH 256 //The maximum short string length
 #define FILLER_STRING_CHAR '\t' //The character used to generate a filler string
+#define FILLER_STRING_CHAR_TYP_STR "\t" //The character used to generate a filler string (in a string type)
 
 
 //Paths
 
 #define PATH_SLASH "\\"
+#define PATH_SLASH_TYP_CHAR '\\'
 
 
 //Output (NOTE: some of these files might still get generated in the `/tmp` directory)
@@ -29,9 +31,14 @@
 //ensure that the user will get the logs even when the compiler crashes.)
 #define OUTPUT_TEMP_FILE 1 //Output a `.tesf` file (stage one code)
 /* (!) Still not implemented */ #define OUTPUT_C_CODE_FILE 0 //Output a `.c` file (stage two code)
-/* (!) Still not implemented */ #define OUTPUT_EXECUTABLE 1 //Output an executable file (stage three code)
+/* (!) Still not implemented */ #define OUTPUT_EXECUTABLE 0 //Output an executable file (stage three code)
 
 //Compiler Process
 
+#define ENABLE_PREPROCESSOR_METHODS 1 //Enable preprocessor methods (will not effect the header method)
+#define ENABLE_PREPROCESSOR_HEADER 1 //Enable the `##header` method
 #define ENABLE_PREPROCESSOR_SKIP_FLAG 1 //Enable the head `--skip` preprocessor flag
+#define ENABLE_COMMENTS 1 //Enable comments detection an filtering
+#define SUPPORT_LINEAR_COMMENTS 1 //The compiler will identify and remove linear comments from your code when this option is enabled
+#define SUPPORT_MULTI_LINEAR_COMMENTS 1 //The compiler will identify and remove multi-linear comments from your code when this option is enabled
 /* (!) Still not implemented */ #define EMPTY_COMPILER_TMP_DIR 0 //Empty the `/compiler/tmp/` directory at the end of every process

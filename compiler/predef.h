@@ -1,0 +1,1 @@
+void writeLogLine(char *title, int type, char *message, int lines, int line, int col);
