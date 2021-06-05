@@ -1,0 +1,24 @@
+/*
+EnderScript | (C) EnderCommunity
+--------------------------------------------------------------------------------
+This is a pitch file for EnderScript that will include the general syntax for
+EnderScript, and all the functions that it can use.
+
+This is the structure of a normal EnderScript program
+*/
+
+//(!) All the functions that start with a # are preprocessor functions
+
+//You need to place your preprocessor methods outside of code groups!
+
+#define ZERO 0 //You can use the `#define` function to define a variable that will be replaced by the provided value before the execution of this code
+
+group Name { //Groups can help you keep a whole block of code within one structure to better organise your code
+    set a { //Sets can be used to completely seperate functions from one another, in case you wanted to prevent other sets from accessing some variables or functions
+        function::Int Main(string[] envi, int length){ //This is the main function in the program!
+            return 0; //This is the final program output code
+        }
+    }
+}
+
+//(!) Nothing other than preprocessor methods are allowed here!
