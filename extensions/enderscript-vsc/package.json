@@ -9,7 +9,7 @@
         "vscode": "0.10.x"
     },
     "scripts": {
-        "update-grammar": "node ../node_modules/vscode-grammar-updater/bin dotnet/csharp-tmLanguage grammars/csharp.tmLanguage ./syntaxes/csharp.tmLanguage.json"
+        "update-grammar": "node ../node_modules/vscode-grammar-updater/bin dotnet/enderscript-tmLanguage grammars/enderscript.tmLanguage ./syntaxes/enderscript.tmLanguage.json"
     },
     "contributes": {
         "languages": [{
@@ -29,12 +29,12 @@
         }],
         "grammars": [{
             "language": "enderscript",
-            "scopeName": "source.cs",
-            "path": "./syntaxes/csharp.tmLanguage.json"
+            "scopeName": "source.esde",
+            "path": "./syntaxes/enderscript.tmLanguage.json"
         }],
         "snippets": [{
             "language": "enderscript",
-            "path": "./snippets/csharp.code-snippets"
+            "path": "./snippets/enderscript.code-snippets"
         }]
     },
     "repository": {
