@@ -1,0 +1,64 @@
+#header --hi
+//^ The header is used to give the compiler nessessary information before it
+//starts compiling the code. Flags start with the operators "--". If you do not
+//wish to pass any information to the compiler, you can just remove it.
+
+/*
+
+EnderScript | (C) EnderCommunity
+------------------------------------------------------------------------------------
+This is a pitch file for EnderScript that will include the syntax and structure
+of EnderScript, and all the functions that it can use.
+
+(!) This is nowhere near being final, this is all just a pitch.
+
+*/
+
+// (!) All the functions used outside of groups are seen by the compiler as
+//preprocessor fucntions! So any normal code outside of groups that is not a
+//preprocessor-related feature will cause the compiler to exit with an error.
+
+using system.io; //Tell the compiler that the program is going to use the "system" 
+                 //input/output library
+import "path/to/my/file.esf"; //Import another EnderScript file!
+define ZERO 0; //You can use the `define` function to define a variable that
+               //will be replaced by the provided value before the execution
+               //of this code
+
+// (!) Modules may not be necessary anymore with this new arrangement
+
+group Start { //Groups can help you keep a whole block of code within one
+              //structure to better organise your code
+
+    @public //You should specify the group state here!
+
+    //Groups can only contain classes, any normal code here will cause the
+    //program to crash.
+
+    class Program { //Classes can be used to completely seperate functions from one
+                    //another, in case you wanted to prevent other classes from
+                    //accessing some variables or functions
+
+        @public //You should specify the class state here!
+
+        // (!) You cannot assign a state to functions
+
+        function::Int Main(string[] envi, int length){ //This is the main
+                                                       //function in the program!
+
+            Func(); //You can access any function inside this class
+
+            return 0; //This is the final program output code
+
+        }
+
+        function::Void Func(){
+                //^ This is the return type of the function!
+
+            //Your code goes here!
+
+        }
+
+    }
+
+}

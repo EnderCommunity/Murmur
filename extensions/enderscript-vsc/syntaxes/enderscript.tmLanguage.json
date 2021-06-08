@@ -4,6 +4,8 @@
     "scopeName": "source.esde",
     "patterns": [{
             "include": "#preprocessor"
+        }, {
+            "include": "#state-statement"
         },
         {
             "include": "#comment"
@@ -61,8 +63,9 @@
         "type-declarations": {
             "patterns": [{
                     "include": "#preprocessor"
-                },
-                {
+                }, {
+                    "include": "#state-statement"
+                }, {
                     "include": "#comment"
                 },
                 {
@@ -94,6 +97,9 @@
         "class-or-struct-members": {
             "patterns": [{
                     "include": "#preprocessor"
+                },
+                {
+                    "include": "#state-statement"
                 },
                 {
                     "include": "#comment"
@@ -147,6 +153,9 @@
                     "include": "#preprocessor"
                 },
                 {
+                    "include": "#state-statement"
+                },
+                {
                     "include": "#comment"
                 },
                 {
@@ -172,6 +181,9 @@
         "statement": {
             "patterns": [{
                     "include": "#preprocessor"
+                },
+                {
+                    "include": "#state-statement"
                 },
                 {
                     "include": "#comment"
@@ -208,6 +220,15 @@
                 },
                 {
                     "include": "#pass-statement"
+                },
+                {
+                    "include": "#using-statement"
+                },
+                {
+                    "include": "#import-statement"
+                },
+                {
+                    "include": "#define-statement"
                 },
                 {
                     "include": "#throw-statement"
@@ -250,6 +271,9 @@
         "expression": {
             "patterns": [{
                     "include": "#preprocessor"
+                },
+                {
+                    "include": "#state-statement"
                 },
                 {
                     "include": "#comment"
@@ -537,13 +561,13 @@
         },
         "storage-modifier": {
             "name": "storage.modifier.esde",
-            "match": "(?<!\\.)\\b(new|function|private|public|const|delete)\\b"
+            "match": "(?<!\\.)\\b(new|function|const|delete)\\b"
         },
         "class-declaration": {
-            "begin": "(?=\\bset\\b)",
+            "begin": "(?=\\bclass\\b)",
             "end": "(?<=\\})",
             "patterns": [{
-                    "begin": "(?x)\n\\b(set)\\b\\s+\n(@?[_[:alpha:]][_[:alnum:]]*)\\s*",
+                    "begin": "(?x)\n\\b(class)\\b\\s+\n(@?[_[:alpha:]][_[:alnum:]]*)\\s*",
                     "beginCaptures": {
                         "1": {
                             "name": "keyword.other.class.esde"
@@ -586,6 +610,9 @@
                 },
                 {
                     "include": "#preprocessor"
+                },
+                {
+                    "include": "#state-statement"
                 },
                 {
                     "include": "#comment"
@@ -675,6 +702,9 @@
                             "include": "#preprocessor"
                         },
                         {
+                            "include": "#state-statement"
+                        },
+                        {
                             "include": "#comment"
                         },
                         {
@@ -703,6 +733,9 @@
                 },
                 {
                     "include": "#preprocessor"
+                },
+                {
+                    "include": "#state-statement"
                 },
                 {
                     "include": "#comment"
@@ -758,6 +791,9 @@
                     "include": "#preprocessor"
                 },
                 {
+                    "include": "#state-statement"
+                },
+                {
                     "include": "#comment"
                 }
             ]
@@ -809,6 +845,9 @@
                 },
                 {
                     "include": "#preprocessor"
+                },
+                {
+                    "include": "#state-statement"
                 },
                 {
                     "include": "#comment"
@@ -871,6 +910,9 @@
                 },
                 {
                     "include": "#preprocessor"
+                },
+                {
+                    "include": "#state-statement"
                 }
             ]
         },
@@ -953,7 +995,7 @@
             ]
         },
         "property-declaration": {
-            "begin": "(?x)\n\n# The negative lookahead below ensures that we don't match nested types\n# or other declarations as properties.\n(?![[:word:][:space:]]*\\b(?:set|interface|struct|enum|event)\\b)\n\n(?<return_type>\n  (?<type_name>\n    (?:\n      (?:ref\\s+(?:readonly\\s+)?)?   # ref return\n      (?:\n        (?:(?<identifier>@?[_[:alpha:]][_[:alnum:]]*)\\s*\\:\\:\\s*)? # alias-qualification\n        (?<name_and_type_args> # identifier + type arguments (if any)\n          \\g<identifier>\\s*\n          (?<type_args>\\s*<(?:[^<>]|\\g<type_args>)+>\\s*)?\n        )\n        (?:\\s*\\.\\s*\\g<name_and_type_args>)* | # Are there any more names being dotted into?\n        (?<tuple>\\s*\\((?:[^\\(\\)]|\\g<tuple>)+\\))\n      )\n      (?:\\s*\\?\\s*)? # nullable suffix?\n      (?:\\s* # array suffix?\n        \\[\n          (?:\\s*,\\s*)* # commata for multi-dimensional arrays\n        \\]\n        \\s*\n        (?:\\?)? # arrays can be nullable reference types\n        \\s*\n      )*\n    )\n  )\\s+\n)\n(?<interface_name>\\g<type_name>\\s*\\.\\s*)?\n(?<property_name>\\g<identifier>)\\s*\n(?=\\{|=>|$)",
+            "begin": "(?x)\n\n# The negative lookahead below ensures that we don't match nested types\n# or other declarations as properties.\n(?![[:word:][:space:]]*\\b(?:class|interface|struct|enum|event)\\b)\n\n(?<return_type>\n  (?<type_name>\n    (?:\n      (?:ref\\s+(?:readonly\\s+)?)?   # ref return\n      (?:\n        (?:(?<identifier>@?[_[:alpha:]][_[:alnum:]]*)\\s*\\:\\:\\s*)? # alias-qualification\n        (?<name_and_type_args> # identifier + type arguments (if any)\n          \\g<identifier>\\s*\n          (?<type_args>\\s*<(?:[^<>]|\\g<type_args>)+>\\s*)?\n        )\n        (?:\\s*\\.\\s*\\g<name_and_type_args>)* | # Are there any more names being dotted into?\n        (?<tuple>\\s*\\((?:[^\\(\\)]|\\g<tuple>)+\\))\n      )\n      (?:\\s*\\?\\s*)? # nullable suffix?\n      (?:\\s* # array suffix?\n        \\[\n          (?:\\s*,\\s*)* # commata for multi-dimensional arrays\n        \\]\n        \\s*\n        (?:\\?)? # arrays can be nullable reference types\n        \\s*\n      )*\n    )\n  )\\s+\n)\n(?<interface_name>\\g<type_name>\\s*\\.\\s*)?\n(?<property_name>\\g<identifier>)\\s*\n(?=\\{|=>|$)",
             "beginCaptures": {
                 "1": {
                     "patterns": [{
@@ -1465,6 +1507,30 @@
         },
         "pass-statement": {
             "match": "(?<!\\.)\\b(?:(pass))\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.flow.break.esde"
+                }
+            }
+        },
+        "using-statement": {
+            "match": "(?<!\\.)\\b(?:(using))\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.flow.break.esde"
+                }
+            }
+        },
+        "import-statement": {
+            "match": "(?<!\\.)\\b(?:(import))\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.flow.break.esde"
+                }
+            }
+        },
+        "define-statement": {
+            "match": "(?<!\\.)\\b(?:(define))\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.flow.break.esde"
@@ -3755,6 +3821,55 @@
             "beginCaptures": {
                 "1": {
                     "name": "punctuation.separator.hash.esde"
+                }
+            },
+            "end": "(?<=$)",
+            "patterns": [{
+                    "include": "#comment"
+                },
+                {
+                    "include": "#preprocessor-define-or-undef"
+                },
+                {
+                    "include": "#preprocessor-if-or-elif"
+                },
+                {
+                    "include": "#preprocessor-else-or-endif"
+                },
+                {
+                    "include": "#preprocessor-warning-or-error"
+                },
+                {
+                    "include": "#preprocessor-region"
+                },
+                {
+                    "include": "#preprocessor-endregion"
+                },
+                {
+                    "include": "#preprocessor-load"
+                },
+                {
+                    "include": "#preprocessor-r"
+                },
+                {
+                    "include": "#preprocessor-line"
+                },
+                {
+                    "include": "#preprocessor-pragma-warning"
+                },
+                {
+                    "include": "#preprocessor-pragma-checksum"
+                }
+            ]
+        },
+        "state-statement": {
+            "name0": "meta.preprocessor.esde",
+            "name": "keyword.control.flow.break.esde",
+            "begin": "^\\s*(\\@)\\s*",
+            "beginCaptures": {
+                "1": {
+                    "name0": "punctuation.separator.hash.esde",
+                    "name": "keyword.control.flow.break.esde"
                 }
             },
             "end": "(?<=$)",
