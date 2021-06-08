@@ -1,18 +1,15 @@
 {
-	"registrations": [
-		{
-			"component": {
-				"type": "git",
-				"git": {
-					"name": "dotnet/csharp-tmLanguage",
-					"repositoryUrl": "https://github.com/dotnet/csharp-tmLanguage",
-					"commitHash": "4d14854c9bfc9d84cce625d2bfebaac9741b9db8"
-				}
-			},
-			"license": "MIT",
-			"version": "0.1.0",
-			"description": "The file syntaxes/csharp.tmLanguage.json was derived from https://github.com/dotnet/csharp-tmLanguage"
-		}
-	],
-	"version": 1
+    "registrations": [{
+        "component": {
+            "type": "git",
+            "git": {
+                "name": "EnderCommunity/EnderScript",
+                "repositoryUrl": "https://github.com/EnderCommunity/EnderScript"
+            }
+        },
+        "license": "MIT",
+        "version": "0.0.1",
+        "description": "This is a modified version of the C# VSCode extension!"
+    }],
+    "version": 1
 }
