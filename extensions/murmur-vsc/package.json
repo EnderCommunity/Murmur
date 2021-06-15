@@ -1,0 +1,42 @@
+{
+    "name": "murmur",
+    "displayName": "%displayName%",
+    "description": "%description%",
+    "version": "0.0.1",
+    "publisher": "EnderCommunity",
+    "license": "MIT",
+    "engines": {
+        "vscode": "0.10.x"
+    },
+    "scripts": {
+        "update-grammar": "node ../node_modules/vscode-grammar-updater/bin dotnet/murmur-tmLanguage grammars/murmur.tmLanguage ./syntaxes/murmur.tmLanguage.json"
+    },
+    "contributes": {
+        "languages": [{
+            "id": "murmur",
+            "extensions": [
+                ".mur",
+                ".murm"
+            ],
+            "aliases": [
+                "Murmur",
+                "Mur",
+                "ECMSL-2021"
+            ],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "murmur",
+            "scopeName": "source.esde",
+            "path": "./syntaxes/murmur.tmLanguage.json"
+        }],
+        "snippets": [{
+            "language": "murmur",
+            "path": "./snippets/murmur.code-snippets"
+        }]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/EnderCommunity/Murmur.git"
+    }
+}

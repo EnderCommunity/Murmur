@@ -3,8 +3,8 @@
         "component": {
             "type": "git",
             "git": {
-                "name": "EnderCommunity/EnderScript",
-                "repositoryUrl": "https://github.com/EnderCommunity/EnderScript"
+                "name": "EnderCommunity/Murmur",
+                "repositoryUrl": "https://github.com/EnderCommunity/Murmur"
             }
         },
         "license": "MIT",
