@@ -1,0 +1,103 @@
+html,
+body {
+    background-color: #f3f3f3;
+}
+
+.topbar {
+    background-color: white;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: 100px;
+    overflow: hidden;
+    box-shadow: 0px -4px 8px black;
+}
+
+.topbar * {
+    display: inline-block;
+}
+
+.topbar .logo {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    position: absolute;
+}
+
+.topbar .options {
+    margin-left: 100px;
+    font-size: 20px;
+    padding: 38px 10px;
+    width: calc(100% - 100px - 20px - 280px);
+    overflow: hidden;
+    margin-right: 8px;
+    height: 100px;
+}
+
+.topbar .options * {
+    margin: 0px 18px;
+}
+
+.topbar .side {
+    width: 256px;
+    font-size: 20px;
+    padding: 0px;
+    overflow: hidden;
+    text-align: center;
+    height: 100px;
+    position: absolute;
+    right: 16px;
+    top: 0px;
+}
+
+.button {
+    background-color: #1139f3;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin: 21px auto;
+    box-shadow: 1px 1px 4px #6b85ff;
+    cursor: pointer;
+    transition: box-shadow 0.16s;
+}
+
+.button:hover {
+    box-shadow: 1px 2px 8px #1841ff;
+}
+
+.button:active {
+    box-shadow: 1px 2px 8px #1841ff;
+    background-color: #0024ce;
+}
+
+[no-select],
+img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+[select] {
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+    -webkit-user-drag: all;
+    -khtml-user-drag: all;
+    -moz-user-drag: all;
+    -o-user-drag: all;
+    user-drag: all;
+}
+
+[disabled] {
+    pointer-events: none !important;
+    opacity: 0.2;
+    filter: saturate(0.8);
+}

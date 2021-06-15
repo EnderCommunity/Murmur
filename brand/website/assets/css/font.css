@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,500;0,900;1,100;1,300;1,500;1,900&display=swap');
+h,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+text,
+a,
+button,
+.button {
+    font-family: 'Poppins', sans-serif;
+}
