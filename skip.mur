@@ -1,4 +1,4 @@
-##head --skip
+#head --skip
 //This is the head of the file, you can place flags here.
 //If you want to use the head functionality, you need to make sure that the
 //first line starts with the string `##head `, and no comments should follow

@@ -27,7 +27,7 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
     tmp->filePtr = file;
     tmp->fileStrPtr = file;
     tmp->isFull = isFull; //Is this a full compiling process?
-    tmp->mode = 'N';
+    tmp->mode = 'U';
     tmp->currLine = 1;
     tmp->currCol = 1;
     tmp->nextCol = 1;
@@ -35,14 +35,12 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
     fgets(tmp->currOLineCon, MAX_LINE_LENGTH, tmp->filePtr);
     strcpy(tmp->currLineCon, tmp->currOLineCon);
 
-    if(getLstStrIndx(tmp->path, ".esf") == strlen(tmp->path) - 4) //A normal file!
+    if(getLstStrIndx(tmp->path, ".mur") == strlen(tmp->path) - 4) //A normal file!
         tmp->mode = 'N';
-    else if(getLstStrIndx(tmp->path, ".esmf") == strlen(tmp->path) - 5) //A module file!
+    else if(getLstStrIndx(tmp->path, ".murm") == strlen(tmp->path) - 5) //A module file!
         tmp->mode = 'M';
-    else //This will result in an error!!!!
-        tmp->mode = 'U';
 
-    if(ENABLE_PREPROCESSOR_HEADER && getStrIndx(tmp->currOLineCon, "##head") == 0) { //The head function is present!
+    if(ENABLE_PREPROCESSOR_HEADER && getStrIndx(tmp->currOLineCon, "#head") == 0) { //The head function is present!
 
         if(ENABLE_PREPROCESSOR_SKIP_FLAG & inStrRng(tmp->currOLineCon, "--skip")) //This file will be skipped!
             tmp->mode = 'S';
