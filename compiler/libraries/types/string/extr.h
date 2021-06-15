@@ -57,10 +57,12 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
 
 char* apdStr(char *dest, char *str){ //Append two stings
 
-    char* rslt = calloc(strlen(dest) + strlen(str), sizeof(char));
+    char* rslt = malloc((strlen(dest) + strlen(str) + 1)*sizeof(char));
 
     strcpy(rslt, dest);
     strcat(rslt, str);
+
+    rslt[strlen(rslt)] = '\0';
 
     return rslt;
 
@@ -154,27 +156,15 @@ int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appea
 
     int indx = -1; //V = -1
 
-    //printf("\nString: %s", str);
-    //printf("\nStringForChk: %s", strForChk);
-    //printf("\nStart Index: %d", indx);
-
-    //Deb();
-
     for(int tmp = getStrIndx(str, strForChk); tmp != -1; tmp = getStrIndx(str, strForChk)){ // (Loop)
 
         indx += tmp + strlen(strForChk); //V += I + L
 
-        //printf("\nCurrent Index: %d", indx);
-        //Deb();
-
-        str = getStrPrt(str, tmp + strlen(strForChk) - 1, strlen(str), 0);
-
-        //printf("\nNew string: %s", str);
-        //Deb();
+        str = getStrPrt(str, tmp + strlen(strForChk), strlen(str), 0);
 
     }
 
-    indx -= strlen(str) - 1; // V -= (L - 1)
+    indx -= strlen(strForChk) - 1; // V -= (L - 1)
 
     return indx;
 

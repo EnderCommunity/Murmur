@@ -36,16 +36,22 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     char *pathPtr = path;
 
     if (argc != 0){
+
         strcpy(path, argv[1]);
+
         path[strlen(path)] = '\0'; //Make sure a string-end char is always at the end of this environment variable
+
     }else{
+
         fgets(path, 255, stdin);
+
         path[strcspn(path, "\n") - 1] = '\0'; //Make sure to replace the new line char with a string-end char
+
     }
 
     //Get the path of the folder that contains the current file
 
-    printf("Path: `%s`", path);
+    DebugWithPath("Received the path: ", path, 0);
 
     //Start a workstation
     setupWrkstn(pathPtr);
@@ -55,7 +61,7 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     //Start logging the session
     newLogFile(apdStr(wrkstn.Path, apdStr(wrkstn.Name, ".log")));
 
-    DebugWithPath("Received the path: ", path, 0);
+    writeLogLine("Compiler Manager", 0, "Testing the `writeLogLine` function", 0, 0, 0);
 
     FILE *mainFilePtr = OpnStrm(path);
 
