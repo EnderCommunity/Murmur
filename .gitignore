@@ -2,5 +2,5 @@
 /compiler/tmp/*
 *.lnk
 *.log
-*.tesf
+*.tmp
 !*/*.keep
