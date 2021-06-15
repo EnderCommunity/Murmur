@@ -8,14 +8,14 @@ static FILE* genFilStr(char *pth){ //Create a new file in the `/tmp` directory
     char *str;
 
     if(OUTPUT_TEMP_FILE){
-        str = apdStr(pth, ".tesf");
+        str = apdStr(pth, ".tmp");
     }else{
 
         char *rnd = randStr(10, "NSC");
 
         str = apdStr("tmp/", rnd);
 
-        str = apdStr(str, ".tesf");
+        str = apdStr(str, ".tmp");
 
     }
 

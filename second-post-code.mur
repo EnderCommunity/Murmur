@@ -1,0 +1,52 @@
+/*
+Murmur | (C) EnderCommunity
+--------------------------------------------------------------------------------
+This is a pitch file for Murmur that will include the general syntax for
+Murmur, and all the functions that it can use.
+
+This is Murmur code that can't be processed by the first-post compiler!
+*/
+
+//(!) All the functions that start with a # are preprocessor functions
+//(!!) The first-stage compiler will ignore this import type!
+
+#import <System>; //This will allow you to import Murmur-native libraries!
+
+//(!) It is recommended that you start variable names with a capital letter!
+
+object Obj1 = {}, Obj2 = {}, Obj3 = {};
+
+const int Const1 = 0;
+const string Const2 = "Hi!";
+const file Const3 = new FileStream("path/filename.txt"); //You can't close this stream until! It will be closed once the process is closed
+
+/*
+delete Const3; //This will result in an error;
+Const3 = new FileStream("path/filename.txt"); //This too!
+*/
+
+private int Test2 = 0; //Functions inside and outside the current function can't access this variable (In this case, the function is located in the index-scope, it can't be accessed by functions are defined by the program here)
+
+
+class Object {
+    private int a; //This variable can be only accessed within this class!
+    public int b; //This variable can be accessed outside this class!
+    int c = 0; //This variable can be accessed outside this class!
+    Constructor(){ //This is the constructor function of this class!
+        //This function is called when you use the 'new Object()' function!
+    }
+    Constructor(int b){ //This is the constructor function of this class!
+        //This function is called when you use the 'new Object(<int>)' function!
+    }
+    /*
+    function::Void Constructor(){ //This is also a Constructor function!
+        //But this will throw an error if the Constructor has already been declared!
+    }
+    */
+    function::Void d(){ //This function can be accessed outside this class!
+        //
+    }
+    private function::Void e(){ //This function can be only accessed within this class!
+        //
+    }
+};

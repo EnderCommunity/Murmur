@@ -1,0 +1,52 @@
+//These are just experimental features!
+
+int t = 1;
+
+//Experiment A1:
+
+function::get->t GetT();
+
+//This would be the same as this:
+
+function::Int GetT(){
+    return t;
+}
+
+
+//Experiment A2:
+
+function::set->t SetT();
+
+//This would be the same as this:
+
+function::Void SetT(int v){
+    t = v;
+}
+
+
+//Experiment B1:
+
+//To apply these size changes, you need to put the power ("^") operator before the type statement
+#setsize global 2 //Set all ^<type> vairables that do not have a specified custom size to be 2 bytes in size!
+#setsize int 1 //Set Integers to be 1 bytes in size!
+#setsize float 5 //Set floats to be 5 bytes in size!
+#setsize double 10 //Set doubles to be 10 bytes in size!
+#setsize string 50 //Set strings to be 50 bytes in size!
+#setsize file 500 //Set files capacity to be 500 bytes in size!
+
+//#setsize Custom 500 //You will also be able to assigne a size limit for objects (Maybe)
+
+
+int Num = 0; //The size of this variable is set to the default of integers
+
+^int Num1 = 0, Num2 = 1, Num3 = 2; //Integers use the type 'int' (the size of each variable is set to 1 bytes!)
+
+^float Floa1 = 0.00, Floa2 = 0.01, Floa3 = 0.02; //Decimal numbers use the type 'float' (the size of each variable is set to 5 bytes!)
+
+^double Doub1 = 0.00, Doub2 = 0.01, Doub3 = 0.02; //Decimal numbers, that may be long, use the type 'double' (the size of each variable is set to 10 bytes!)
+
+^string Str1 = "Hello there!", Str2 = "I'm a string!", Str3 = "I can be up to 2048 characters in length!"; //You can use variables with the type 'string' to store text (the size of each variable is set to 50 bytes!)
+
+^file File1 = new FileStream("path/filename.txt"), File2 = new FileStream("path/filename.txt", false), File3 = new FileStream("path/filename.txt", true); //the 2nd argument determines whether the file should be in a read-only mode or not. It's set to 'false' by default. (the size of each variable is set to 500 bytes!)
+
+//^<type> means that the variable is gonna allocate only the specified amount of memory in the setsize method

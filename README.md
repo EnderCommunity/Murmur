@@ -1,10 +1,10 @@
-# EnderScript
+# Murmur
 
-EnderScript - *you may also refer to it by "ES" or "ECMSL-2021" (EnderCommunity Maintained Scripting Language 2021)* - is an experimental programming language. ***It's still not even functional, this is all just a pitch of the language itself.*** *ES* code compiles down to C code, which is then compiled to machine code.
+Murmur - *you may also refer to it by "Mur" or "ECMSL-2021" (EnderCommunity Maintained Scripting Language - 2021)* - is an experimental programming language. ***It's still not even functional, this is all just a pitch of the language itself.*** *Mur* code compiles down to C code, which is then compiled to machine code.
 
-The file extension of *ES* files is *`.esf`*. (Which stands for *`"EnderScript File"`*)
+The file extension of *Mur* files is *`.mur`*.
 
-The file extension of *ES* module files is *`.esmf`*. (Which stands for *`"EnderScript Module File"`*)
+The file extension of *Mur* module files is *`.murm`*. (Which stands for *`"Murmur Module"`*)
 
 ## Contributing
 
@@ -26,7 +26,7 @@ For now, you can send input to the compiler in two ways:
 
 ## Syntax and Functions
 
-***Empty, check the provided `.esf` files for now!***
+***Empty, check the provided `.mur` files for now!***
 
 ## Extensions
 
@@ -34,7 +34,7 @@ You'll find instructions on how to use the provided extensions for the perfect d
 
 ### Visual Studio Code
 
-Copy the extension folder *`/enderscript-vsc`* to the extension directory.
+Copy the extension folder *`/murmur-vsc`* to the extension directory.
 
 *The extension folder directory on Windows is `%USERPROFILE%\.vscode\extensions`*.
 
@@ -42,8 +42,8 @@ Copy the extension folder *`/enderscript-vsc`* to the extension directory.
 
 ## To-Do List
 
-There are instructions for the building process of the compiler and libraries of EnderScript:
-*Follow the instructions in the `test.esf` file on how should the language work*
+There are instructions for the building process of the compiler and libraries of Murmur:
+*Follow the instructions in the `test.mur` file on how should the language work*
 
 - [ ] *Research the best algorithms for an efficient memory-managment*
-- [ ] *Write a compiler using C that compiles EnderScript to C code*
+- [ ] *Write a compiler using C that compiles Murmur to C code*

@@ -11,10 +11,10 @@
 
 /*
 
-EnderScript | (C) EnderCommunity
+Murmur | (C) EnderCommunity
 ------------------------------------------------------------------------------------
-This is a pitch file for EnderScript that will include the syntax and structure
-of EnderScript, and all the functions that it can use.
+This is a pitch file for Murmur that will include the syntax and structure
+of Murmur, and all the functions that it can use.
 
 (!) This is nowhere near being final, this is all just a pitch.
 
@@ -27,7 +27,7 @@ of EnderScript, and all the functions that it can use.
 using system.io; //Tell the compiler that the program is going to use the "system"
                  //input/output library
 
-import "path/to/my/file.esf"; //Import another EnderScript file!
+import "path/to/my/file.esf"; //Import another Murmur file!
 
 define ZERO 0; //You can use the `define` function to define a variable that
                //will be replaced by the provided value before the execution
@@ -53,7 +53,7 @@ group Start { //Groups can help you keep a whole block of code within one
 
         function::Int Main(string[] envi, int length){ //This is the main
                                                        //function in the program!
-                                                       //All EnderScript programs
+                                                       //All Murmur programs
                                                        //should include a main
                                                        //function.
 

@@ -1,10 +1,10 @@
 /*
-EnderScript | (C) EnderCommunity
+Murmur | (C) EnderCommunity
 --------------------------------------------------------------------------------
-This is a pitch file for EnderScript that will include the general syntax for
-EnderScript, and all the functions that it can use.
+This is a pitch file for Murmur that will include the general syntax for
+Murmur, and all the functions that it can use.
 
-This is the structure of a normal EnderScript program
+This is the structure of a normal Murmur program
 */
 
 //(!) All the functions that start with a # are preprocessor functions
