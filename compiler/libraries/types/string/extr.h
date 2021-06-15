@@ -11,6 +11,8 @@ int getChrIndx(char *str, char chr){ //Get the index of a char in a string
 int getStrIndx(char *str, char *strForChk){ //Get the index of a string in a string (weird behaviour has been noticed)
 
     int indx = strstr(str, strForChk) - str;
+    //int indx = strlen(str) - strlen(strstr(str, strForChk)) + 1;
+    //int indx = strlen(str) - strlen(strstr(str, strForChk));
 
     return indx >= 0 ? indx : -1;
 
@@ -95,7 +97,7 @@ char* genFillStr(int len){
 
 int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appearance of a string inside a string
 
-    int indx = -1, fIndx = indx;
+    /*int indx = -1, fIndx = indx;
 
     do{
 
@@ -108,7 +110,73 @@ int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appea
 
     }while(indx != -1);
 
-    return fIndx;
+    return fIndx;*/
+
+    //int indx = -1, lIndx;
+
+    //do {
+
+        //lIndx = indx; //Keep track of the current result-index
+
+        //int tmp = getStrIndx(str, strForChk);
+
+        //indx += getStrIndx(str, strForChk); //Get the first occurrence indx
+
+        //strstr("0", "1");
+
+    //}while(indx != -1);
+
+        //"Hehehe, hi!", "h", -1
+        //"ehe, hi!", "h", -1 + 2 + L
+        //"e, hi!", "h", -1 + 2 + L + 1 + L
+        //"i!", "h", -1 + 2 + L + 1 + L + 3 + L
+        //"i!", "h", 5 + 3*L - (L - 1)
+
+        //"Hehehe, hi!", "he", -1
+        //"he, hi!", "he", -1 + 2 + L
+        //", hi!", "he", -1 + 2 + L + 0 + L
+        //", hi!", "he", 1 + 2*L - (L - 1)
+
+
+        //"...hehehehehe, hi!", "he", -1
+        //"hehehehe, hi!", "he", -1 + 3 + L
+        //"hehehe, hi!", "he", -1 + 3 + L + 0 + L
+        //"hehe, hi!", "he", -1 + 3 + L + 0 + L + 0 + L
+        //"he, hi!", "he", -1 + 3 + L + 0 + L + 0 + L + 0 + L
+        //", hi!", "he", -1 + 3 + L + 0 + L + 0 + L + 0 + L + 0 + L
+        //", hi!", "he", 2 + 5*L - (L - 1)
+
+
+    //V = -1;
+    //V += I + L (Loop)
+    //v -= (L - 1)
+
+
+    int indx = -1; //V = -1
+
+    //printf("\nString: %s", str);
+    //printf("\nStringForChk: %s", strForChk);
+    //printf("\nStart Index: %d", indx);
+
+    //Deb();
+
+    for(int tmp = getStrIndx(str, strForChk); tmp != -1; tmp = getStrIndx(str, strForChk)){ // (Loop)
+
+        indx += tmp + strlen(strForChk); //V += I + L
+
+        //printf("\nCurrent Index: %d", indx);
+        //Deb();
+
+        str = getStrPrt(str, tmp + strlen(strForChk) - 1, strlen(str), 0);
+
+        //printf("\nNew string: %s", str);
+        //Deb();
+
+    }
+
+    indx -= strlen(str) - 1; // V -= (L - 1)
+
+    return indx;
 
 }
 
