@@ -37,6 +37,11 @@ body {
 
 .topbar .options * {
     margin: 0px 18px;
+    font-weight: 300;
+}
+
+.topbar .options *.selected {
+    font-weight: 400;
 }
 
 .topbar .side {
