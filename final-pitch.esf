@@ -1,7 +1,13 @@
-#header --hi
+#header --no-comments --no-states
 //^ The header is used to give the compiler nessessary information before it
 //starts compiling the code. Flags start with the operators "--". If you do not
 //wish to pass any information to the compiler, you can just remove it.
+
+//The available flags are:
+//"--no-comments": can be used to tell the compiler to not look for comments in this
+//file
+//"--no-states": can be used to tell the compiler that this file does not contain any
+//state definitions
 
 /*
 
@@ -18,12 +24,16 @@ of EnderScript, and all the functions that it can use.
 //preprocessor fucntions! So any normal code outside of groups that is not a
 //preprocessor-related feature will cause the compiler to exit with an error.
 
-using system.io; //Tell the compiler that the program is going to use the "system" 
+using system.io; //Tell the compiler that the program is going to use the "system"
                  //input/output library
+
 import "path/to/my/file.esf"; //Import another EnderScript file!
+
 define ZERO 0; //You can use the `define` function to define a variable that
                //will be replaced by the provided value before the execution
                //of this code
+
+setsize int 2; //Set a custom size of memory (in bytes) to allocate for any type
 
 // (!) Modules may not be necessary anymore with this new arrangement
 
@@ -41,12 +51,24 @@ group Start { //Groups can help you keep a whole block of code within one
 
         @public //You should specify the class state here!
 
-        // (!) You cannot assign a state to functions
-
         function::Int Main(string[] envi, int length){ //This is the main
                                                        //function in the program!
+                                                       //All EnderScript programs
+                                                       //should include a main
+                                                       //function.
+
+            @public //This is a public function! (It can be accessed from anywhere
+                    //outside this class)
 
             Func(); //You can access any function inside this class
+
+            ^int a = 0; //This variable will allocate the custom set amount of
+                        //memory specified at the start of this program!
+
+            int b = 1; //This variable will allocate the default amount of
+                       //memory set by the compiler
+
+            Test(a, 1); //You can pass all types of variables to other functions
 
             return 0; //This is the final program output code
 
@@ -55,7 +77,34 @@ group Start { //Groups can help you keep a whole block of code within one
         function::Void Func(){
                 //^ This is the return type of the function!
 
+            @private //This is a private function! (It can be accessed only by
+                     //other functions inside this class)
+
             //Your code goes here!
+
+        }
+
+        function::^int Test(^int a, int b){
+
+            @public
+
+            a = (^int) b;
+
+            return a;
+
+        }
+
+    }
+
+    class CustomType { //???
+
+        @type
+
+        int a = 0;
+
+        function::CustomType Constructor(){
+
+            //
 
         }
 

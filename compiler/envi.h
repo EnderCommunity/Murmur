@@ -33,12 +33,27 @@
 /* (!) Still not implemented */ #define OUTPUT_C_CODE_FILE 0 //Output a `.c` file (stage two code)
 /* (!) Still not implemented */ #define OUTPUT_EXECUTABLE 0 //Output an executable file (stage three code)
 
-//Compiler Process
+
+
+//Preprocessor
 
 #define ENABLE_PREPROCESSOR_METHODS 1 //Enable preprocessor methods (will not effect the header method)
 #define ENABLE_PREPROCESSOR_HEADER 1 //Enable the `##header` method
 #define ENABLE_PREPROCESSOR_SKIP_FLAG 1 //Enable the head `--skip` preprocessor flag
+
+
+//Comments
+
 #define ENABLE_COMMENTS 1 //Enable comments detection an filtering
 #define SUPPORT_LINEAR_COMMENTS 1 //The compiler will identify and remove linear comments from your code when this option is enabled
 #define SUPPORT_MULTI_LINEAR_COMMENTS 1 //The compiler will identify and remove multi-linear comments from your code when this option is enabled
+
+
+//States
+
+/* (!) Still not implemented */ #define ENABLE_STATES 1 //Functions, groups, and classes will be forced to have a state definition (If disabled, all states will be set to 'public' with no way to change that)
+
+
+//Compiler Process Termination
+
 /* (!) Still not implemented */ #define EMPTY_COMPILER_TMP_DIR 0 //Empty the `/compiler/tmp/` directory at the end of every process

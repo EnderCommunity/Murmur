@@ -231,6 +231,9 @@
                     "include": "#define-statement"
                 },
                 {
+                    "include": "#setsize-statement"
+                },
+                {
                     "include": "#throw-statement"
                 },
                 {
@@ -1531,6 +1534,14 @@
         },
         "define-statement": {
             "match": "(?<!\\.)\\b(?:(define))\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.flow.break.esde"
+                }
+            }
+        },
+        "setsize-statement": {
+            "match": "(?<!\\.)\\b(?:(setsize))\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.flow.break.esde"

@@ -35,14 +35,17 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     char path[255];
     char *pathPtr = path;
 
-    if (argv[1] != NULL)
+    if (argc != 0){
         strcpy(path, argv[1]);
-    else{
+        path[strlen(path)] = '\0'; //Make sure a string-end char is always at the end of this environment variable
+    }else{
         fgets(path, 255, stdin);
-        path[strcspn(path, "\n")] = 0;
+        path[strcspn(path, "\n") - 1] = '\0'; //Make sure to replace the new line char with a string-end char
     }
 
     //Get the path of the folder that contains the current file
+
+    printf("Path: `%s`", path);
 
     //Start a workstation
     setupWrkstn(pathPtr);
