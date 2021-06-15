@@ -54,9 +54,9 @@ body {
 .button {
     background-color: #1139f3;
     color: white;
-    padding: 14px 18px;
+    padding: 12px 18px;
     border-radius: 6px;
-    margin: 21px auto;
+    margin: 22px auto;
     box-shadow: 1px 1px 4px #6b85ff;
     cursor: pointer;
     transition: box-shadow 0.16s;
