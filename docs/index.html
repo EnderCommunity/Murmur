@@ -12,6 +12,33 @@
 
 <body>
 
+    <div class="loading">
+        <svg class="loading-icon" width="80" height="80" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0)">
+            <rect width="512" height="512" fill="transparent"></rect>
+            <rect width="512" height="512" fill="transparent"></rect>
+            <path d="M412.768 85.2005C431.84 71.8775 458.161 84.3922 459.867 107.594L471.946 271.866C473.692 295.606 448.42 311.825 427.565 300.35L289.262 224.253C269.788 213.538 268.322 186.105 286.544 173.376L412.768 85.2005Z" fill="#A5B4FF" class="wing-shadow"></path>
+            <path d="M380.061 108.12C391.504 100.127 407.297 107.635 408.32 121.556L423.568 328.92C424.615 343.163 409.452 352.895 396.939 346.01L222.357 249.952C210.673 243.523 209.793 227.063 220.726 219.426L380.061 108.12Z" fill="#A5B4FF" class="wing-shadow"></path>
+            <path d="M96.4044 45.2166C104.132 23.1639 132.99 18.0212 147.859 36.0472L258.802 170.542C273.744 188.656 263.023 216.139 239.762 219.35L73.6581 242.282C51.4287 245.351 33.8224 223.822 41.2429 202.644L96.4044 45.2166Z" fill="#A5B4FF" class="wing-shadow"></path>
+            <path d="M177 72L301 221H83L177 72Z" fill="#A5B4FF" class="wing-shadow"></path>
+            <path d="M113.097 93.8255C118.763 77.6535 139.926 73.8822 150.83 87.1013L279.921 243.597C290.879 256.881 283.017 277.035 265.959 279.39L72.6826 306.074C56.3811 308.324 43.4697 292.536 48.9115 277.005L113.097 93.8255Z" fill="#0A2BC0" class="wing"></path>
+            <path d="M261.236 90.4566C253.328 76.8164 263.577 59.8166 279.332 60.4417L312.454 61.7561C331.298 62.5039 338.73 86.5263 323.601 97.785L300.994 114.609C291.407 121.744 277.744 118.934 271.751 108.595L261.236 90.4566Z" fill="#A5B4FF" class="head-shadow"></path>
+            <path d="M234.059 76.8645C224.906 65.302 232.778 48.2417 247.516 47.7038L301.913 45.7185C318.425 45.1159 326.956 65.2169 315.052 76.6753L283.287 107.249C275.63 114.619 263.288 113.785 256.692 105.453L234.059 76.8645Z" fill="#0A2BC0" class="head"></path>
+            <path d="M173.51 381.981C189.181 359.503 224.382 374.974 218.42 401.718L214.515 419.231C212.376 428.829 204.809 436.281 195.179 438.273L185.475 440.281C163.339 444.861 146.974 420.046 159.901 401.502L173.51 381.981Z" fill="#A5B4FF" class="tail-shadow-2"></path>
+            <path d="M212.032 359.909C219.152 339.735 248.706 343.321 250.796 364.612L256.616 423.9C257.445 432.348 252.852 440.399 245.158 443.983L213.149 458.896C197.086 466.38 179.945 450.822 185.843 434.111L212.032 359.909Z" fill="#526FFF" class="tail-shadow-1"></path>
+            <path d="M239.312 340.734C241.419 322.439 266.387 318.74 273.709 335.637L306.331 410.918C309.653 418.583 307.264 427.525 300.564 432.514L255.395 466.139C242.745 475.556 224.96 465.308 226.765 449.641L239.312 340.734Z" fill="#0A2BC0" class="tail"></path>
+            <path d="M398.296 135.147C412.282 125.377 431.585 134.554 432.836 151.569L447.027 344.568C448.307 361.977 429.775 373.872 414.481 365.457L251.992 276.053C237.711 268.195 236.636 248.077 249.999 238.742L398.296 135.147Z" fill="#0A2BC0" class="wing"></path>
+            </g>
+            <defs>
+            <clipPath id="clip0">
+            <rect width="512" height="512" fill="white"></rect>
+            </clipPath>
+            </defs>
+        </svg>
+        <div class="loading-icon-overlay"></div>
+        <text>Loading up some files...</text>
+    </div>
+
     <div class="topbar" no-select>
         <svg class="logo" width="80" height="80" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0)">
@@ -51,6 +78,19 @@
     <div class="content"></div>
 
     <footer></footer>
+
+    <script type="text/javascript">
+        document.onreadystatechange = function(e) {
+            if (document.readyState === 'complete')
+                setTimeout(function() {
+                    document.documentElement.dataset.loaded = true;
+                }, 500);
+        };
+        document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + "px");
+        window.addEventListener('resize', () => {
+            document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + "px");
+        });
+    </script>
 
 </body>
 
