@@ -7,7 +7,7 @@
     bottom: 0px;
     right: 0px;
     left: 0px;
-    background-color: #f2f4ff;
+    background-color: #171717;
     transition: opacity 0.2s;
     opacity: 1;
 }
@@ -20,9 +20,9 @@ html[data-loaded] .loading {
 .loading .loading-icon,
 .loading .loading-icon-overlay {
     position: absolute;
-    width: 15vh;
-    height: 15vh;
-    margin: 42.5vh calc(50vw - 7.5vh);
+    width: 28vh;
+    height: 28vh;
+    margin: 30vh calc(50vw - 14vh);
 }
 
 .loading text {
@@ -31,7 +31,7 @@ html[data-loaded] .loading {
     margin: 60vh calc(50vw - 40vw);
     text-align: center;
     font-size: 2.5vh;
-    color: #858ec1;
+    color: #34384c;
     opacity: 0;
     -moz-animation: showText 0.2s ease-in 2s forwards;
     /* Firefox */
@@ -76,7 +76,7 @@ html[data-loaded] .loading {
 }
 
 .loading .loading-icon-overlay {
-    background: linear-gradient(90deg, transparent 0%, #f2f4ff40 12%, #f2f4ff40 19%, transparent 25%);
+    background: linear-gradient(90deg, transparent 0%, #171717b0 12%, #171717ad 19%, transparent 25%);
     background-size: 600%;
     background-position: 100% 0%;
     animation: skeletonAnimation 2s;
@@ -99,69 +99,36 @@ html[data-loaded] .loading {
     }
 }
 
-@keyframes loading-anim-first {
-    0% {
-        fill: #879cf7;
-    }
-    90% {
-        fill: #0A2BC0;
-    }
-    100% {
-        fill: #879cf7;
-    }
-}
-
-@keyframes loading-anim-second {
-    0% {
-        fill: #abbbff;
-    }
-    90% {
-        fill: #526FFF;
-    }
-    100% {
-        fill: #abbbff;
-    }
-}
-
-@keyframes loading-anim-third {
-    0% {
-        fill: #cbd5ff;
-    }
-    90% {
-        fill: #A5B4FF;
-    }
-    100% {
-        fill: #cbd5ff;
-    }
-}
-
 
 /* [END] Loading */
 
 :root {
     --page-content-padding: 120px;
+    --topbar-side-margin: 100px;
 }
 
 @media screen and (max-width: 800px) {
      :root {
         --page-content-padding: 0px;
+        --topbar-side-margin: 0px;
     }
 }
 
 html,
 body {
-    background-color: #f3f3f3;
+    background-color: #0a0a0a;
+    color: white;
 }
 
 .topbar {
-    background-color: white;
+    background-color: #171717;
     position: fixed;
     top: 0px;
     right: 0px;
     left: 0px;
     height: 100px;
     overflow: hidden;
-    box-shadow: 0px -4px 8px black;
+    box-shadow: 0px -2px 8px black;
 }
 
 .topbar * {
@@ -169,14 +136,14 @@ body {
 }
 
 .topbar .logo {
-    width: 70px;
-    height: 70px;
-    margin: 15px;
+    width: 80px;
+    height: 80px;
+    margin: 10px;
     position: absolute;
 }
 
 .topbar .options {
-    margin-left: 100px;
+    margin-left: var(--topbar-side-margin);
     font-size: 20px;
     padding: 38px 10px;
     width: calc(100% - 100px - 20px - 280px);
@@ -221,28 +188,29 @@ footer {
     height: 400px;
     overflow: hidden;
     margin-top: 64px;
-    background-color: #dedfe6;
+    background-color: #101010;
+    box-shadow: inset 0 7px 4px -5px #000000;
 }
 
 .button {
-    background-color: #1139f3;
+    background-color: #1f1f1f;
     color: white;
     padding: 10px 16px;
     border-radius: 6px;
     margin: 26px auto;
-    box-shadow: 1px 1px 4px #6b85ff;
+    box-shadow: 1px 1px 4px #0e0e0e;
     cursor: pointer;
     font-size: 18px;
-    transition: box-shadow 0.16s;
+    transition: all 0.1s;
 }
 
 .button:hover {
-    box-shadow: 1px 2px 8px #1841ff;
+    background-color: #292929;
 }
 
 .button:active {
-    box-shadow: 1px 2px 8px #1841ff;
-    background-color: #0024ce;
+    box-shadow: 1px 1px 6px #13005f;
+    background-color: #2700c5;
 }
 
 [no-select],
