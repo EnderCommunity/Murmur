@@ -71,9 +71,11 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
                 keepLoop = 0;
 
             if(!keepLoop && wait){
+
                 keepLoop = 1;
                 wait = 0;
                 writeLogLine("Preprocessor", 0, "Last line detected!", 0, 0, 0);
+
             }
 
             //keepLoop = !feof(fileInf->filePtr);

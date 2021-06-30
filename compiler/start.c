@@ -14,6 +14,7 @@ void Deb(){ //Minimal debug
 #include "libraries/types/String.h"
 //#include "libraries/types/FileContent.h"
 #include "libraries/files/general.h"
+#include "extrtyp.h"
 #include "libraries/files/gen.c"
 #include "libraries/paths/paths.h"
 
@@ -22,7 +23,7 @@ void Deb(){ //Minimal debug
 #include "debug.c"
 #include "log.c"
 
-void preprocess(FILE *filePtr, char *path, int isFull, FILE *desFilePtr);
+void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj);
 
 int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
@@ -65,15 +66,17 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
     FILE *mainFilePtr = OpnStrm(path);
 
-    FILE *tmpFilePtr = genFilStr(apdStr(wrkstn.Path, wrkstn.Name)); //Create a temporary file for the compiling process
+    char *tmpFilePath = apdStr(wrkstn.Path, wrkstn.Name);
+
+    TmpFileStruc tmpFileObj = genFilStr(tmpFilePath); //Create a temporary file for the compiling process
     //There should be only one file per process
     //Note: the generated files will get deleted automatically in the future, unless the 'OUTPUT_TEMP_FILE' environment variable is set to 'true'/'1'
 
     writeLogLine("Compiler Manager", 0, "Starting the preprocessor.", 0, 0, 0);
-    preprocess(mainFilePtr, path, 1, tmpFilePtr); //Initiate the compiling process
+    preprocess(mainFilePtr, path, 1, tmpFileObj); //Initiate the compiling process
 
     fclose(mainFilePtr);
-    fclose(tmpFilePtr);
+    fclose(tmpFileObj.ptr);
 
     writeLogLine("Compiler Manager", 0, "Closed all files sessions.", 0, 0, 0);
 
@@ -91,13 +94,17 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
 #include "preprocessor/checker.h"
 #include "preprocessor/reader.h"
+#include "skip.h"
 
+#include "c/compile.c"
 
-void preprocess(FILE *filePtr, char *path, int isFull, FILE *desFilePtr){ //Compile a file and it's content
+void CProcess(FileInfo *fileInf, TmpFileStruc desFileObj);
+
+void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){ //Compile a file and it's content
 
     writeLogLine("Preprocessor", 0, "Preprocessor started!", 0, 0, 0);
 
-    FILE *desFileStrPtr = desFilePtr; //Save the start pointer!
+    FILE *desFileStrPtr = desFileObj.ptr; //Save the start pointer!
 
     //desFilePtr; //This file should be used to store all the code that will be compiled in the process
 
@@ -112,13 +119,50 @@ void preprocess(FILE *filePtr, char *path, int isFull, FILE *desFilePtr){ //Comp
     //fileInf->fileStrPtr;
 
     if(fileInf->mode == 'S'){
-        writeLogLine("Preprocessor", 0, "The skip flag has been detected! (Skipping to the final stage)", 0, 0, 0);
+
+        writeLogLine("Preprocessor", 0, "The skip flag has been detected!", 0, 0, 0);
+
+        FILE *svPtr = desFileObj.ptr;
+
+        movCnt(fileInf, desFileObj.ptr);
+
+        desFileObj.ptr = svPtr;
+
+        CProcess(fileInf, desFileObj);
+
     }else{
-        ppcRead(fileInf, desFilePtr); //Let the preprocessor do it's thing!
+
+        ppcRead(fileInf, desFileObj.ptr); //Let the preprocessor do it's thing!
+
+        //parse the code to C first!
+
+        //CProcess();
+
     }
 
     //desFileStrPtr; //This file should have all the needed code, preprocessed, with no comments!
 
     //You can start to parse this file!
+
+}
+
+void CProcess(FileInfo *fileInf, TmpFileStruc tmpFileObj){
+
+    if(OUTPUT_EXECUTABLE){
+
+        char *cFilPth = apdStr(tmpFileObj.pth, ".c");
+        FILE *cFilPtr = fopen(cFilPth, "w");
+
+        fclose(tmpFileObj.ptr);
+
+        tmpFileObj.ptr = fopen(apdStr(tmpFileObj.pth, ".tmp"), "r");
+
+        cpyFileCon(cFilPtr, tmpFileObj.ptr);
+
+        fclose(cFilPtr);
+
+        cmplCCode(cFilPth); //Generate the binary!
+
+    }
 
 }
