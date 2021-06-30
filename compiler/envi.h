@@ -31,7 +31,7 @@
 //ensure that the user will get the logs even when the compiler crashes.)
 #define OUTPUT_TEMP_FILE 1 //Output a `.tmp` file (stage one code)
 /* (!) Still not implemented */ #define OUTPUT_C_CODE_FILE 0 //Output a `.c` file (stage two code)
-/* (!) Still not implemented */ #define OUTPUT_EXECUTABLE 0 //Output an executable file (stage three code)
+#define OUTPUT_EXECUTABLE 1 //Output an executable file (stage three code)
 
 
 
@@ -57,3 +57,4 @@
 //Compiler Process Termination
 
 /* (!) Still not implemented */ #define EMPTY_COMPILER_TMP_DIR 0 //Empty the `/compiler/tmp/` directory at the end of every process
+#define C_COMPILER_EXECUTABLE_DIR "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe" //The directory of your C compiler of choice

@@ -24,3 +24,17 @@ static FILE* OpnStrm(char path[]){ //Open a file stream
     return fptr;
 
 }
+
+FILE* cpyFileCon(FILE *destPtr, FILE *srcPtr){
+
+    char *str;
+  
+    do{
+
+        fgets(str, MAX_LINE_LENGTH, srcPtr);
+
+        fprintf(destPtr, str);
+
+    }while(!feof(srcPtr));
+  
+}

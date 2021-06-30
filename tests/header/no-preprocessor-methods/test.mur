@@ -1,0 +1,4 @@
+#header <no-preprocessor-methods>
+import "./../no-comments/test.mur";
+//This is not supposed to be imported because of the "no-preprocessor-methods" flag!
+//(Need to get the import function to work first so I can test this, LUL)
