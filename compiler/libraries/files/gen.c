@@ -4,12 +4,10 @@
 
 static TmpFileStruc genFilStr(char *pth){ //Create a new file in the `/tmp` directory
 
-    //char *str = malloc(MAX_PATH_LENGTH*sizeof(char));
     char *str, *oth;
 
     if(OUTPUT_TEMP_FILE){
 
-        //strcpy(oth, pth);
         oth = pth;
  
         str = apdStr(pth, ".tmp");
@@ -29,8 +27,6 @@ static TmpFileStruc genFilStr(char *pth){ //Create a new file in the `/tmp` dire
     printf("%s\n", str);
 
     TmpFileStruc tmp = {fopen(str, "w"), oth};
-
-    //free(str);
 
     return tmp;
 

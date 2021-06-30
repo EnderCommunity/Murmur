@@ -99,72 +99,17 @@ char* genFillStr(int len){
 
 int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appearance of a string inside a string
 
-    /*int indx = -1, fIndx = indx;
+    int indx = -1;
 
-    do{
+    for(int tmp = getStrIndx(str, strForChk); tmp != -1; tmp = getStrIndx(str, strForChk)){
 
-        indx = getStrIndx(str, strForChk);
-
-        str = apdStr(genFillStr(strlen(strForChk)), remStrPrt(str, strForChk)); //Could overflow!
-
-        if(indx != -1)
-            fIndx = indx;
-
-    }while(indx != -1);
-
-    return fIndx;*/
-
-    //int indx = -1, lIndx;
-
-    //do {
-
-        //lIndx = indx; //Keep track of the current result-index
-
-        //int tmp = getStrIndx(str, strForChk);
-
-        //indx += getStrIndx(str, strForChk); //Get the first occurrence indx
-
-        //strstr("0", "1");
-
-    //}while(indx != -1);
-
-        //"Hehehe, hi!", "h", -1
-        //"ehe, hi!", "h", -1 + 2 + L
-        //"e, hi!", "h", -1 + 2 + L + 1 + L
-        //"i!", "h", -1 + 2 + L + 1 + L + 3 + L
-        //"i!", "h", 5 + 3*L - (L - 1)
-
-        //"Hehehe, hi!", "he", -1
-        //"he, hi!", "he", -1 + 2 + L
-        //", hi!", "he", -1 + 2 + L + 0 + L
-        //", hi!", "he", 1 + 2*L - (L - 1)
-
-
-        //"...hehehehehe, hi!", "he", -1
-        //"hehehehe, hi!", "he", -1 + 3 + L
-        //"hehehe, hi!", "he", -1 + 3 + L + 0 + L
-        //"hehe, hi!", "he", -1 + 3 + L + 0 + L + 0 + L
-        //"he, hi!", "he", -1 + 3 + L + 0 + L + 0 + L + 0 + L
-        //", hi!", "he", -1 + 3 + L + 0 + L + 0 + L + 0 + L + 0 + L
-        //", hi!", "he", 2 + 5*L - (L - 1)
-
-
-    //V = -1;
-    //V += I + L (Loop)
-    //v -= (L - 1)
-
-
-    int indx = -1; //V = -1
-
-    for(int tmp = getStrIndx(str, strForChk); tmp != -1; tmp = getStrIndx(str, strForChk)){ // (Loop)
-
-        indx += tmp + strlen(strForChk); //V += I + L
+        indx += tmp + strlen(strForChk);
 
         str = getStrPrt(str, tmp + strlen(strForChk), strlen(str), 0);
 
     }
 
-    indx -= strlen(strForChk) - 1; // V -= (L - 1)
+    indx -= strlen(strForChk) - 1;
 
     return indx;
 
@@ -181,8 +126,6 @@ char* newStr(int size) { //Create a new string
     char * tmp = malloc(sizeof(char)*size);
 
     memset(tmp, 0x00, sizeof(char)*size); //Clear the new memory
-
-    //tmp[0] = '\0';
 
     return tmp;
 

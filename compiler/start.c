@@ -12,7 +12,6 @@ void Deb(){ //Minimal debug
 }
 
 #include "libraries/types/String.h"
-//#include "libraries/types/FileContent.h"
 #include "libraries/files/general.h"
 #include "extrtyp.h"
 #include "libraries/files/gen.c"
@@ -115,8 +114,6 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
     printf("[Debug] Current Line Content: %s\n", fileInf->currLineCon);
     printf("[Debug] Current Line Original Content: %s\n", fileInf->currOLineCon);
     printf("[Debug] Path: %s\n", fileInf->path);
-    //fileInf->filePtr;
-    //fileInf->fileStrPtr;
 
     if(fileInf->mode == 'S'){
 

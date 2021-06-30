@@ -1,4 +1,4 @@
-void movCnt(FileInfo *fileInf, FILE *desFilePtr){
+void movCnt(FileInfo *fileInf, FILE *desFilePtr){ //Copy the content of the tmp process file to another file
 
     writeLogLine("Preprocessor", 0, "Copying file content...", 0, 0, 0);
 
