@@ -28,16 +28,16 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
     fileInf->currCol;
     fileInf->nextCol;
 
-    int keepLoop = 1;
+    int keepLoop = 1, wait = 1;
 
     while(keepLoop){
 
         writeLogLine("Preprocessor", 0, "New processing loop started.", 1, fileInf->currLine, fileInf->currCol);
 
-        if(ENABLE_COMMENTS && !isStrEmpty(fileInf->currLineCon))
+        if(ENABLE_COMMENTS && ENVI_ENABLE_COMMENTS && !isStrEmpty(fileInf->currLineCon))
             fileInf = chkForCom(fileInf); //Remove the comments
 
-        if(ENABLE_PREPROCESSOR_METHODS && !isStrEmpty(fileInf->currLineCon) && !waitForComm){
+        if(ENABLE_PREPROCESSOR_METHODS && ENVI_ENABLE_COMMENTS && !isStrEmpty(fileInf->currLineCon) && !waitForComm){
 
             writeLogLine("Preprocessor", 0, "Checking for preprocessor methods...", 1, fileInf->currLine, fileInf->currCol);
             fileInf = chkForPprFunc(fileInf); //Check for the preprocessor functions
@@ -64,7 +64,19 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
             fgets(fileInf->currOLineCon, MAX_LINE_LENGTH, fileInf->filePtr); //Move to the next line!
 
-            keepLoop = !feof(fileInf->filePtr);
+            if(wait)
+                keepLoop = !feof(fileInf->filePtr);
+
+            if(!wait)
+                keepLoop = 0;
+
+            if(!keepLoop && wait){
+                keepLoop = 1;
+                wait = 0;
+                writeLogLine("Preprocessor", 0, "Last line detected!", 0, 0, 0);
+            }
+
+            //keepLoop = !feof(fileInf->filePtr);
 
             if(keepLoop){
 

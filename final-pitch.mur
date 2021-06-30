@@ -1,13 +1,15 @@
-#header --nothing-to-see-here
+#header <nothing-to-see-here>
 //^ The header is used to give the compiler nessessary information before it
 //starts compiling the code. Flags start with the operators "--". If you do not
 //wish to pass any information to the compiler, you can just remove it.
 
 //The available flags are:
-//"--no-comments": can be used to tell the compiler to not look for comments in this
+//"no-comments": can be used to tell the compiler to not look for comments in this
 //file
-//"--no-states": can be used to tell the compiler that this file does not contain any
-//state definitions
+//"no-preprocessor-methods": can be used to tell the compiler that this file does
+//not contain any preprocessor methods
+//"skip-processor": can be used to tell the compiler to not compile the code after
+//the header, and jump to the C compiler compiling stage.
 
 /*
 
@@ -27,7 +29,7 @@ of Murmur, and all the functions that it can use.
 using system.io; //Tell the compiler that the program is going to use the "system"
                  //input/output library
 
-import "path/to/my/file.esf"; //Import another Murmur file!
+import "path/to/my/file.mur"; //Import another Murmur file!
 
 define ZERO 0; //You can use the `define` function to define a variable that
                //will be replaced by the provided value before the execution
@@ -35,30 +37,31 @@ define ZERO 0; //You can use the `define` function to define a variable that
 
 setsize int 2; //Set a custom size of memory (in bytes) to allocate for any type
 
+import "path/to/my/file2.mur"; //You need to pay attention to the importing order
+//of your files! For example, "file.mur" will not be able to use the custom set
+//amount of memory for the 'int' variable, whereas "file2.mur" will be able to
+//use it with no problem whatsoever.
+
 // (!) Modules may not be necessary anymore with this new arrangement
 
-group Start { //Groups can help you keep a whole block of code within one
+public group Start { //Groups can help you keep a whole block of code within one
               //structure to better organise your code
-
-    @public //You should specify the group state here!
 
     //Groups can only contain classes, any normal code here will cause the
     //program to crash.
 
-    class Program { //Classes can be used to completely seperate functions from one
+    public class Program { //Classes can be used to completely seperate functions from one
                     //another, in case you wanted to prevent other classes from
                     //accessing some variables or functions
 
-        @public //You should specify the class state here!
-
-        function::Int Main(string[] envi, int length){ //This is the main
+        public function::int Main(string[] envi, int length){ //This is the main
                                                        //function in the program!
                                                        //All Murmur programs
                                                        //should include a main
                                                        //function.
 
-            @public //This is a public function! (It can be accessed from anywhere
-                    //outside this class)
+            //This is a public function! (It can be accessed from anywhere
+            //outside this class)
 
             Func(); //You can access any function inside this class
 
@@ -74,19 +77,17 @@ group Start { //Groups can help you keep a whole block of code within one
 
         }
 
-        function::Void Func(){
-                //^ This is the return type of the function!
+        private function::void Func(){
+                        //^ This is the return type of the function!
 
-            @private //This is a private function! (It can be accessed only by
-                     //other functions inside this class)
+            //This is a private function! (It can be accessed only by
+            //other functions inside this class)
 
             //Your code goes here!
 
         }
 
-        function::^int Test(^int a, int b){
-
-            @public
+        public function::^int Test(^int a, int b){
 
             a = (^int) b;
 
@@ -96,18 +97,22 @@ group Start { //Groups can help you keep a whole block of code within one
 
     }
 
-    class CustomType { //???
+    public class AnotherClass {
 
-        @type
+        public int a = 0;
+        private int b = 0;
 
-        int a = 0;
+        function::constructor(int a, int b){ //You can use constructors in your classes!
 
-        function::CustomType Constructor(){
-
-            //
+            this.a = a;
+            this.b = b;
 
         }
 
+    }
+
+    class Smth { //Any object with no state indicator will be set to 'public' by default
+        //
     }
 
 }

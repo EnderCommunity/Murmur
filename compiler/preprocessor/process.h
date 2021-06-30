@@ -42,8 +42,22 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
 
     if(ENABLE_PREPROCESSOR_HEADER && getStrIndx(tmp->currOLineCon, "#head") == 0) { //The head function is present!
 
-        if(ENABLE_PREPROCESSOR_SKIP_FLAG & inStrRng(tmp->currOLineCon, "--skip")) //This file will be skipped!
+        writeLogLine("Preprocessor", 0, "The header has been detected!", 0, 0, 0);
+
+        if(ENABLE_PREPROCESSOR_SKIP_FLAG & inStrRng(tmp->currOLineCon, "<skip>")) //This file will be skipped!
             tmp->mode = 'S';
+
+        if(ENABLE_PREPROCESSOR_SKIP_FLAG & inStrRng(tmp->currOLineCon, "<no-comments>")) //No comments will get filtered!
+            ENVI_ENABLE_COMMENTS = 0;
+
+        writeLogLine("Preprocessor", 0, "The header flags have been processed successfully!", 0, 0, 0);
+
+        strcpy(tmp->currOLineCon, "");
+        strcpy(tmp->currLineCon, tmp->currOLineCon);
+        tmp->currLine++;
+        tmp->currCol = 1;
+        tmp->nextCol = 1;
+
     }
 
     return tmp;
