@@ -55,9 +55,10 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
 
         writeLogLine("Preprocessor", 0, "The header flags have been processed successfully!", 0, 0, 0);
 
-        strcpy(tmp->currOLineCon, "");
+        fgets(tmp->currOLineCon, MAX_LINE_LENGTH, tmp->filePtr);
         strcpy(tmp->currLineCon, tmp->currOLineCon);
-        tmp->currLine++;
+
+        tmp->currLine = 2;
         tmp->currCol = 1;
         tmp->nextCol = 1;
 
