@@ -101,7 +101,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, FILE *desFilePtr){ //Comp
 
     //desFilePtr; //This file should be used to store all the code that will be compiled in the process
 
-    FileInfo *fileInf = checkFlags(filePtr, path, isFull); //A object that contains the file info!
+    FileInfo *fileInf = checkFlags(filePtr, path, isFull); //An object that contains the file info!
 
     printf("\n[Debug] Mode: %c\n", fileInf->mode);
     printf("[Debug] Is Full: %d\n", fileInf->isFull);
