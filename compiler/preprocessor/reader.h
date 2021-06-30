@@ -37,7 +37,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
         if(ENABLE_COMMENTS && ENVI_ENABLE_COMMENTS && !isStrEmpty(fileInf->currLineCon))
             fileInf = chkForCom(fileInf); //Remove the comments
 
-        if(ENABLE_PREPROCESSOR_METHODS && ENVI_ENABLE_COMMENTS && !isStrEmpty(fileInf->currLineCon) && !waitForComm){
+        if(ENABLE_PREPROCESSOR_METHODS && ENVI_CHECK_FOR_PREPROCESSOR_METHODS && !isStrEmpty(fileInf->currLineCon) && !waitForComm){
 
             writeLogLine("Preprocessor", 0, "Checking for preprocessor methods...", 1, fileInf->currLine, fileInf->currCol);
             fileInf = chkForPprFunc(fileInf); //Check for the preprocessor functions
