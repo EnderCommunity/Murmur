@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h> // for clock_t, clock(), CLOCKS_PER_SEC
+#include <time.h>
 
 //Leave me a alone...
 
