@@ -564,7 +564,7 @@
         },
         "storage-modifier": {
             "name": "storage.modifier.esde",
-            "match": "(?<!\\.)\\b(new|function|const|delete)\\b"
+            "match": "(?<!\\.)\\b(new|function|public|private|constructor|const|delete)\\b"
         },
         "class-declaration": {
             "begin": "(?=\\bclass\\b)",
