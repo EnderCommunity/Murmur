@@ -97,6 +97,8 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
 #include "c/compile.c"
 
+#include "lexical/lex.h"
+
 void CProcess(FileInfo *fileInf, TmpFileStruc desFileObj);
 
 void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){ //Compile a file and it's content
@@ -115,31 +117,31 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
     printf("[Debug] Current Line Original Content: %s\n", fileInf->currOLineCon);
     printf("[Debug] Path: %s\n", fileInf->path);
 
-    if(fileInf->mode == 'S'){
+    if(fileInf->mode != 'S'){ //The preprocessor should be skipped!
 
-        writeLogLine("Preprocessor", 0, "The skip flag has been detected!", 0, 0, 0);
+        ppcRead(fileInf, desFileObj.ptr); //Let the preprocessor do its thing!
 
-        FILE *svPtr = desFileObj.ptr;
-
-        movCnt(fileInf, desFileObj.ptr);
-
-        desFileObj.ptr = svPtr;
-
-        CProcess(fileInf, desFileObj);
+        FILE* lexFil = lexProc(fileInf, desFileObj); //Start the lexical-processing process!
 
     }else{
 
-        ppcRead(fileInf, desFileObj.ptr); //Let the preprocessor do it's thing!
-
-        //parse the code to C first!
-
-        //CProcess();
+        writeLogLine("Preprocessor", 0, "The skip flag has been detected!", 0, 0, 0);
 
     }
 
-    //desFileStrPtr; //This file should have all the needed code, preprocessed, with no comments!
+    //(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj)
 
-    //You can start to parse this file!
+    /* //[START] Start the C processor
+
+    FILE *svPtr = desFileObj.ptr;
+
+    movCnt(fileInf, desFileObj.ptr);
+
+    desFileObj.ptr = svPtr;
+
+    CProcess(fileInf, desFileObj);
+
+    //[END] Start the C processor */
 
 }
 

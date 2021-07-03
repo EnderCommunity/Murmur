@@ -17,7 +17,7 @@ int waitForComm = 0;
 
 void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
-    fileInf->mode;
+    /*fileInf->mode;
     fileInf->isFull;
     fileInf->currLineCon;
     fileInf->currOLineCon;
@@ -26,7 +26,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
     fileInf->fileStrPtr;
     fileInf->currLine;
     fileInf->currCol;
-    fileInf->nextCol;
+    fileInf->nextCol;*/
 
     int keepLoop = 1, wait = 1;
 
@@ -34,6 +34,11 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
         writeLogLine("Preprocessor", 0, "New processing loop started.", 1, fileInf->currLine, fileInf->currCol);
 
+        /*char *tmpStr;
+        tmpStr = apdStr("The current loop line content is -> \"", apdStr(fileInf->currLineCon, "\""));
+        writeLogLine("Preprocessor", 1, tmpStr, 0, 0, 0);*/
+        writeLogLine("Preprocessor", 1, fileInf->currLineCon, 0, 0, 0);
+ 
         if(ENABLE_COMMENTS && ENVI_ENABLE_COMMENTS && !isStrEmpty(fileInf->currLineCon))
             fileInf = chkForCom(fileInf); //Remove the comments
 
@@ -46,7 +51,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
         if(!isStrEmpty(fileInf->currLineCon) && !waitForComm){
 
-            fprintf(desFilePtr, "@[%d,%d]%s", fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
+            fprintf(desFilePtr, "@[%d,%d]%s\n", fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
 
             writeLogLine("Preprocessor", 0, "Inserted the filtered code into the temporary output file.", 0, 0, 0);
 
@@ -54,11 +59,15 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
         printf("\n[Debug]nextCol: %d, currCol: %d, OLen: %d, Line: %d\n", fileInf->nextCol, fileInf->currCol, strlen(fileInf->currOLineCon), fileInf->currLine);
 
-        if(keepLoop && (fileInf->nextCol == fileInf->currCol || fileInf->nextCol >= strlen(fileInf->currOLineCon) + 1)){ //Get next line only if the column is still set to 1 or if it's set to the last column in the current line
+        if(keepLoop && (fileInf->nextCol == fileInf->currCol || fileInf->nextCol >= strlen(fileInf->currOLineCon) + 0)){ //Get next line only if the column is still set to 1 or if it's set to the last column in the current line
+                                                                                                                  //^ this value has been changed from "1" to "0"
 
             writeLogLine("Preprocessor", 0, "Getting the content of the next line...", 0, 0, 0);
 
             fgets(fileInf->currOLineCon, MAX_LINE_LENGTH, fileInf->filePtr); //Move to the next line!
+
+            if(fileInf->currOLineCon[strlen(fileInf->currOLineCon) - 1] == '\n')
+                fileInf->currOLineCon[strlen(fileInf->currOLineCon) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
 
             if(wait)
                 keepLoop = !feof(fileInf->filePtr);
@@ -85,6 +94,8 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
                 fileInf->currCol = 1;
                 fileInf->nextCol = 1;
 
+                writeLogLine("Preprocessor", 0, "The line variable content changed successfully!", 0, 0, 0);
+
             }
 
         }else{
@@ -92,7 +103,18 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
             writeLogLine("Preprocessor", 0, "Getting the current line content starting from the specified column...", 0, 0, 0);
 
             //Move the column content!
-            fileInf->currLineCon = getStrPrt(fileInf->currOLineCon, fileInf->nextCol - 1, strlen(fileInf->currOLineCon) - 1, 0);
+            /*char *tmp1 = malloc(sizeof(char)*10); itoa(fileInf->nextCol - 1, tmp1, 10);
+            char *tmp2 = malloc(sizeof(char)*10); itoa(strlen(fileInf->currOLineCon) - 0, tmp2, 10);
+            writeLogLine("DEBUG", 1, fileInf->currOLineCon, 0, 0, 0);
+            writeLogLine("DEBUG", 1, fileInf->currLineCon, 0, 0, 0);
+            writeLogLine("DEBUG", 1, tmp1, 0, 0, 0);
+            writeLogLine("DEBUG", 1, tmp2, 0, 0, 0);*/
+
+            fileInf->currLineCon = getStrPrt(fileInf->currOLineCon, fileInf->nextCol - 1, strlen(fileInf->currOLineCon) - 0, 0);
+            strcpy(fileInf->currOLineCon, fileInf->currLineCon);
+
+            /*writeLogLine("DEBUG2", 1, fileInf->currOLineCon, 0, 0, 0);
+            writeLogLine("DEBUG2", 1, fileInf->currLineCon, 0, 0, 0);*/
 
             fileInf->currCol = fileInf->nextCol;
 

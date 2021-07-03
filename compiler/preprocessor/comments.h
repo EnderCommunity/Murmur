@@ -7,7 +7,7 @@ FileInfo* chkForCom(FileInfo *curFile){
 
     int indx;
 
-    if(SUPPORT_LINEAR_COMMENTS && !waitForComm && inStrRng(curFile->currLineCon, "//")){ //COULD BREAK, multi-linear comments should be processed first!
+    if(SUPPORT_LINEAR_COMMENTS && !waitForComm && inStrRng(curFile->currLineCon, "//")){ //Working (DO NOT TOUCH!)
 
         indx = getStrIndx(curFile->currLineCon, "//");
 
@@ -16,7 +16,7 @@ FileInfo* chkForCom(FileInfo *curFile){
         if(indx == 0)
             strcpy(curFile->currLineCon, FILLER_STRING_CHAR_TYP_STR);
         else
-            curFile->currLineCon = getStrPrt(curFile->currLineCon, 0, indx - 1, 1);
+            curFile->currLineCon = getStrPrt(curFile->currLineCon, 0, indx, 1);
 
         //There is no need to set a next column value since everything after the linear comment operator will be ignored anyway!
 
@@ -34,7 +34,7 @@ FileInfo* chkForCom(FileInfo *curFile){
             if(indx != -1){
 
                 curFile->nextCol += indx + 2;
-                strcpy(curFile->currLineCon, ""); //Do not insert the current line content into the .tesf file
+                strcpy(curFile->currLineCon, FILLER_STRING_CHAR_TYP_STR); //Do not insert the current line content into the .tesf file
 
             }else{
 
@@ -45,7 +45,12 @@ FileInfo* chkForCom(FileInfo *curFile){
         }else{
 
             curFile->nextCol += indx; //Ignore the comment for now, and check the code before the comment!
+
+            //writeLogLine("DEBUG", 1, curFile->currLineCon, 0, 0, 0);
+
             curFile->currLineCon = getStrPrt(curFile->currLineCon, 0, indx, 1);
+
+            //writeLogLine("DEBUG", 1, curFile->currLineCon, 0, 0, 0);
 
         }
 
