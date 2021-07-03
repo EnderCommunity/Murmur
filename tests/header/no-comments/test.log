@@ -6,15 +6,21 @@
 [?][Preprocessor] => The header has been detected!
 [?][Preprocessor] => The header flags have been processed successfully!
 [?][Preprocessor][2, 1] => New processing loop started.
+[!][Preprocessor] => /*Hmm
+
 [?][Preprocessor][2, 1] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][3, 1] => New processing loop started.
+[!][Preprocessor] => Hi*/
 [?][Preprocessor][3, 1] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => Last line detected!
+[?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][4, 1] => New processing loop started.
+[!][Preprocessor] => 0;
 [?][Preprocessor][4, 1] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...

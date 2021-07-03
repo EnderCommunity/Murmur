@@ -6,15 +6,21 @@
 [?][Preprocessor] => The header has been detected!
 [?][Preprocessor] => The header flags have been processed successfully!
 [?][Preprocessor][2, 1] => New processing loop started.
+[!][Preprocessor] => import "./../no-comments/test.mur";
+
 [?][Preprocessor][2, 1] => Checking for comments...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][3, 1] => New processing loop started.
+[!][Preprocessor] => //This is not supposed to be imported because of the "no-preprocessor-methods" flag!
 [?][Preprocessor][3, 1] => Checking for comments...
 [?][Preprocessor][3, 1] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => Last line detected!
+[?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][4, 1] => New processing loop started.
+[!][Preprocessor] => //(Need to get the import function to work first so I can test this, LUL)
 [?][Preprocessor][4, 1] => Checking for comments...
 [?][Preprocessor][4, 1] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...

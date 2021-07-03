@@ -41,6 +41,9 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
     if(tmp->currOLineCon[strlen(tmp->currOLineCon) - 1] == '\n')
         tmp->currOLineCon[strlen(tmp->currOLineCon) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
 
+    if(tmp->currOLineCon[strlen(tmp->currOLineCon)] == '\n')
+        tmp->currOLineCon[strlen(tmp->currOLineCon)] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
+
     strcpy(tmp->currLineCon, tmp->currOLineCon);
 
     if(getLstStrIndx(tmp->path, ".mur") == strlen(tmp->path) - 4) //A normal file!

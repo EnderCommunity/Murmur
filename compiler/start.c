@@ -105,7 +105,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
 
     writeLogLine("Preprocessor", 0, "Preprocessor started!", 0, 0, 0);
 
-    FILE *desFileStrPtr = desFileObj.ptr; //Save the start pointer!
+    //FILE *desFileStrPtr = desFileObj.ptr; //Save the start pointer!
 
     //desFilePtr; //This file should be used to store all the code that will be compiled in the process
 
@@ -121,7 +121,10 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
 
         ppcRead(fileInf, desFileObj.ptr); //Let the preprocessor do its thing!
 
-        FILE* lexFil = lexProc(fileInf, desFileObj); //Start the lexical-processing process!
+        fclose(desFileObj.ptr);
+        desFileObj.ptr = fopen(apdStr(desFileObj.pth, ".tmp"), "r"); //Switch the file mode to "read mode"
+
+        FILE* lexFil = lexProc(desFileObj); //Start the lexical-processing process!
 
     }else{
 
