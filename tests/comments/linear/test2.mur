@@ -1,0 +1,4 @@
+@
+int link = "https://google.com";
+                //^ this is picked up as a comment by the compiler, fix this!
+@

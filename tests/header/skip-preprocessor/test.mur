@@ -1,4 +1,4 @@
-#header <skip-processor>
+#header <skip-preprocessor>
 #include <stdio.h>
 
 int main(){ //This is some C code!

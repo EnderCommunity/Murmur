@@ -37,6 +37,10 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
     tmp->nextCol = 1;
 
     fgets(tmp->currOLineCon, MAX_LINE_LENGTH, tmp->filePtr);
+
+    if(tmp->currOLineCon[strlen(tmp->currOLineCon) - 1] == '\n')
+        tmp->currOLineCon[strlen(tmp->currOLineCon) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
+
     strcpy(tmp->currLineCon, tmp->currOLineCon);
 
     if(getLstStrIndx(tmp->path, ".mur") == strlen(tmp->path) - 4) //A normal file!
@@ -48,7 +52,7 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
 
         writeLogLine("Preprocessor", 0, "The header has been detected!", 0, 0, 0);
 
-        if(ENABLE_PREPROCESSOR_SKIP_FLAG & inStrRng(tmp->currOLineCon, "<skip-processor>")) //This file will be skipped!
+        if(ENABLE_PREPROCESSOR_SKIP_FLAG & inStrRng(tmp->currOLineCon, "<skip-preprocessor>")) //This file will be skipped!
             tmp->mode = 'S';
 
         if(ENABLE_PREPROCESSOR_SKIP_FLAG & inStrRng(tmp->currOLineCon, "<no-comments>")) //No comments will get filtered!

@@ -1,0 +1,14 @@
+@[3,1]group MyTest {
+@[5,1]    class Program {
+@[7,1]        int a = 0;
+@[9,1]        function::int Main(){
+@[11,1]            int b = 0;
+@[13,1]        }
+@[15,1]    }
+@[17,1]    class Smth {
+@[19,1]        int c = 0;
+@[21,1]        function::constructor(){
+@[23,1]            this.c = 2;
+@[25,1]        }
+@[27,1]    }
+@[29,1]}
