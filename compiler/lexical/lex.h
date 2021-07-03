@@ -10,7 +10,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
     FILE *lexFil = fopen(apdStr(cFileObj.pth, ".lxic"), "w"); //Create a new lexer file in "write mode"
 
-    char *tmpStr = malloc(sizeof(char)*MAX_LINE_LENGTH), *curFil = malloc(sizeof(char)*MAX_LINE_LENGTH);
+    char *tmpStr = malloc(sizeof(char)*MAX_LINE_LENGTH), *curLin = malloc(sizeof(char)*MAX_LINE_LENGTH);
 
     fgets(tmpStr, MAX_LINE_LENGTH, cFileObj.ptr); //Get the first line
     if(tmpStr[strlen(tmpStr) - 1] == '\n')
@@ -18,10 +18,18 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
     while(getStrIndx(tmpStr, "[FileEnd]") != 0){
 
-        curFil = getStrPrt(tmpStr, getStrIndx(tmpStr, "]->") + 3, strlen(tmpStr), 0); //Get the current line source file
+        curLin = getStrPrt(tmpStr, getStrIndx(tmpStr, "]->") + 3, strlen(tmpStr), 0); //Get the current line content
+
+        char *curFil;
         int col, lin;
 
-        fprintf(lexFil, "%s\n", curFil); //Debug
+        fprintf(lexFil, "%s\n", curLin); //Debug
+
+        for(int i = 0; i < strlen(curLin); i++){ //Use this loop to scan every character one by one!
+
+            printf("%c, ", curLin[i]);//Debug
+
+        }
 
         //Get the next line!
         fgets(tmpStr, MAX_LINE_LENGTH, cFileObj.ptr);
