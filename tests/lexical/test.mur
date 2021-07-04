@@ -23,7 +23,7 @@ group MyTest {
             char test3 = '"', test4 = '\'';
             int test5 = 0;
             float test6 = .00005;
-            double test6 = .0, test7 = 0.; //"." alone will not be considered as a number!
+            double test6 = .0, test7 = 0.; "\".\" alone will not be considered as a number!";
 
             bool _test = false, test_ = false, _test_ = true;
 

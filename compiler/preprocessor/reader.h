@@ -57,7 +57,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
         }
 
-        printf("\n[Debug]nextCol: %d, currCol: %d, OLen: %d, Line: %d\n", fileInf->nextCol, fileInf->currCol, strlen(fileInf->currOLineCon), fileInf->currLine);
+        //printf("\n[Debug]nextCol: %d, currCol: %d, OLen: %d, Line: %d\n", fileInf->nextCol, fileInf->currCol, strlen(fileInf->currOLineCon), fileInf->currLine);
 
         if(keepLoop && (fileInf->nextCol == fileInf->currCol || fileInf->nextCol >= strlen(fileInf->currOLineCon) + 0)){ //Get next line only if the column is still set to 1 or if it's set to the last column in the current line
                                                                                                                   //^ this value has been changed from "1" to "0"
