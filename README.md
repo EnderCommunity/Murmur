@@ -17,6 +17,7 @@ Execute the folllowing commands in your *MSYS2* console:
 
 ```cmd
 pacman -Syu
+pacman -S mingw-w64-x86_64-toolchain
 pacman -S mingw-w64-x86_64-pcre
 pacman -S mingw-w64-x86_64-pcre2
 ```
