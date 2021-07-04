@@ -51,7 +51,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
         if(!isStrEmpty(fileInf->currLineCon) && !waitForComm){
 
-            fprintf(desFilePtr, "[{'main'},%d,%d]]->%s\n", fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
+            fprintf(desFilePtr, "[{main},%d;%d]->%s\n", fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
 
             writeLogLine("Preprocessor", 0, "Inserted the filtered code into the temporary output file.", 0, 0, 0);
 

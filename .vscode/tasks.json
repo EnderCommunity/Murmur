@@ -8,13 +8,8 @@
 			"args": [
 				"-g",
 				"${workspaceFolder}\\compiler\\start.c",
-				"-o", //Output indicator
-				"${workspaceFolder}\\compiler\\Mur.exe", //Output folder
-				//"-lpcre2-8"
-				//"-I",
-				//"${workspaceFolder}\\outer\\regex-2.7-bin\\include\\",
-				//"-L",
-				//"${workspaceFolder}\\outer\\regex-2.7-bin\\bin",
+				"-o",
+				"${workspaceFolder}\\compiler\\Mur.exe",
 				"-lregex"
 			],
 			"options": {
@@ -27,7 +22,7 @@
 				"isDefault": true,
 				"kind": "build"
 			},
-			"detail": "compiler: \"C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe\""
+			"detail": "compiler: \"C:\\msys64\\mingw64\\bin\\gcc.exe\""
 		}
 	]
 }

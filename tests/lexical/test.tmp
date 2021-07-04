@@ -1,15 +1,27 @@
-[{'main'},3,1]]->group MyTest {
-[{'main'},5,5]]->class Program {
-[{'main'},7,9]]->int a = 0;
-[{'main'},9,9]]->function::int Main(){
-[{'main'},11,13]]->int b = 0;
-[{'main'},13,9]]->}
-[{'main'},15,5]]->}
-[{'main'},17,5]]->class Smth {
-[{'main'},19,9]]->int c = 0;
-[{'main'},21,9]]->function::constructor(){
-[{'main'},23,13]]->this.c = 2;
-[{'main'},25,9]]->}
-[{'main'},27,5]]->}
-[{'main'},29,1]]->}
+[{main},3;1]->group MyTest {
+[{main},5;5]->class Program {
+[{main},7;9]->int a = 0;
+[{main},9;9]->function::int Main(){
+[{main},11;13]->int b = 0;
+[{main},12;13]->double c = .4, d = 5., e = 0.0;
+[{main},13;13]->string test1 = "Hey, this is a test!";
+[{main},14;13]->char test2 = 'H', test3 = '\'';
+[{main},16;13]->return 0;
+[{main},18;9]->}
+[{main},20;9]->function::void Cmplx(){
+[{main},22;13]->string test1 = "Hey, you can \"do whatever you want\" with 'this'!", test2 = "\"";
+[{main},23;13]->char test3 = '"', test4 = '\'';
+[{main},24;13]->int test5 = 0;
+[{main},25;13]->float test6 = .00005;
+[{main},26;13]->double test6 = .0, test7 = 0.; //"." alone will not be considered as a number!
+[{main},28;13]->bool _test = false, test_ = false, _test_ = true;
+[{main},30;9]->}
+[{main},32;5]->}
+[{main},34;5]->class Smth {
+[{main},36;9]->int c = 0;
+[{main},38;9]->function::constructor(){
+[{main},40;13]->this.c = 2;
+[{main},42;9]->}
+[{main},44;5]->}
+[{main},46;1]->}
 [FileEnd]

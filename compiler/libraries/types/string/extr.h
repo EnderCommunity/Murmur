@@ -218,3 +218,11 @@ char* shfStr(char *str, int n){ //Shif a string to the left by 'n' chars!
     return str;
 
 }
+
+int isCharSpcl(char chr){
+
+    return (!isalpha(chr) && chr != '0' && chr != '1' && chr != '2' && chr != '3' && chr != '4' && chr != '5' && chr != '6' && chr != '7' && chr != '8' && chr != '9');
+
+    //return (chr == '%' || chr == '?' || chr == '/' || chr == '>' || chr == '<' || chr == '.' || chr == ',' || chr == '|' || chr == '\\' || chr == '"' || chr == '\'' || chr == ':' || chr == ';' || chr == '}' || chr == '{' || chr == ']' || chr == '[' || chr == '=' || chr == '-' || chr == '+' || chr == '_' || chr == '(' || chr == ')' || chr == '*' || chr == '&' || chr == '^' || chr == '%' || chr == '$' || chr == '#' || chr == '@' || chr == '!' || chr == '`' || chr == '~');
+
+}
