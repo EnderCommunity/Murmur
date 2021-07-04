@@ -38,12 +38,6 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
 
     fgets(tmp->currOLineCon, MAX_LINE_LENGTH, tmp->filePtr);
 
-    if(tmp->currOLineCon[strlen(tmp->currOLineCon) - 1] == '\n')
-        tmp->currOLineCon[strlen(tmp->currOLineCon) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
-
-    if(tmp->currOLineCon[strlen(tmp->currOLineCon)] == '\n')
-        tmp->currOLineCon[strlen(tmp->currOLineCon)] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
-
     strcpy(tmp->currLineCon, tmp->currOLineCon);
 
     if(getLstStrIndx(tmp->path, ".mur") == strlen(tmp->path) - 4) //A normal file!
@@ -67,11 +61,26 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
         writeLogLine("Preprocessor", 0, "The header flags have been processed successfully!", 0, 0, 0);
 
         fgets(tmp->currOLineCon, MAX_LINE_LENGTH, tmp->filePtr);
-        strcpy(tmp->currLineCon, tmp->currOLineCon);
 
         tmp->currLine = 2;
         tmp->currCol = 1;
         tmp->nextCol = 1;
+
+        if(tmp->currOLineCon[strlen(tmp->currOLineCon) - 1] == '\n')
+            tmp->currOLineCon[strlen(tmp->currOLineCon) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
+
+        while(isspace(tmp->currOLineCon[0])){ //Remove the extra whitespace without losing track of the column number
+
+            //Shif by one char
+            tmp->currOLineCon = shfStr(tmp->currOLineCon, 1);
+
+            tmp->currCol++;
+
+        }
+
+        tmp->nextCol = tmp->currCol;
+
+        strcpy(tmp->currLineCon, tmp->currOLineCon);
 
     }
 

@@ -66,9 +66,6 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
             fgets(fileInf->currOLineCon, MAX_LINE_LENGTH, fileInf->filePtr); //Move to the next line!
 
-            if(fileInf->currOLineCon[strlen(fileInf->currOLineCon) - 1] == '\n')
-                fileInf->currOLineCon[strlen(fileInf->currOLineCon) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
-
             if(wait)
                 keepLoop = !feof(fileInf->filePtr);
 
@@ -87,12 +84,27 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
             if(keepLoop){
 
-                strcpy(fileInf->currLineCon, fileInf->currOLineCon);
-
                 fileInf->currLine++;
 
                 fileInf->currCol = 1;
                 fileInf->nextCol = 1;
+
+                if(fileInf->currOLineCon[strlen(fileInf->currOLineCon) - 1] == '\n')
+                    fileInf->currOLineCon[strlen(fileInf->currOLineCon) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
+
+                while(isspace(fileInf->currOLineCon[0])){ //Remove the extra whitespace without losing track of the column number
+
+                    //Shif by one char
+                    fileInf->currOLineCon = shfStr(fileInf->currOLineCon, 1);
+
+                    fileInf->currCol++;
+
+                }
+
+                fileInf->nextCol = fileInf->currCol;
+
+
+                strcpy(fileInf->currLineCon, fileInf->currOLineCon);
 
                 writeLogLine("Preprocessor", 0, "The line variable content changed successfully!", 0, 0, 0);
 

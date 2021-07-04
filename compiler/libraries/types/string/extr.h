@@ -205,3 +205,16 @@ int isStrEmpty(char *str){
     return whiSpc == strlen(str);
 
 }
+
+char* shfStr(char *str, int n){ //Shif a string to the left by 'n' chars!
+
+    int i, l = strlen(str);
+
+    for(i = n; i < l; i++)
+        str[i - n] = str[i];
+
+    str[l - 1] = '\0';
+
+    return str;
+
+}

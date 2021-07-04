@@ -27,9 +27,10 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
         for(int i = 0; i < strlen(curLin); i++){ //Use this loop to scan every character one by one!
 
-            printf("%c, ", curLin[i]);//Debug
+            printf("%c, ", curLin[i]); //Debug
 
         }
+        printf(".\n");
 
         //Get the next line!
         fgets(tmpStr, MAX_LINE_LENGTH, cFileObj.ptr);

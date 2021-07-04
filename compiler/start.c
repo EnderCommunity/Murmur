@@ -99,6 +99,8 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
 #include "lexical/lex.h"
 
+//#include "libraries/regex/reg.h" (Not working)
+
 void CProcess(FileInfo *fileInf, TmpFileStruc desFileObj);
 
 void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){ //Compile a file and it's content
