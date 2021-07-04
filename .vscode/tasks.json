@@ -10,12 +10,12 @@
 				"${file}",
 				"-o", //Output indicator
 				"${fileDirname}\\${fileBasenameNoExtension}.exe", //Output folder
-				"-lpcre2-8"
+				//"-lpcre2-8"
 				//"-I",
 				//"${workspaceFolder}\\outer\\regex-2.7-bin\\include\\",
 				//"-L",
 				//"${workspaceFolder}\\outer\\regex-2.7-bin\\bin",
-				//"-lregex2"
+				"-lregex"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"

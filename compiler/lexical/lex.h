@@ -1,3 +1,5 @@
+#include "../libraries/regex/reg.h"
+
 typedef struct {
     char *type; //symbol, string, character, number & operator!
     char *value;
@@ -25,7 +27,43 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
         fprintf(lexFil, "%s\n", curLin); //Debug
 
+        int lokForStr = 0;
+
         for(int i = 0; i < strlen(curLin); i++){ //Use this loop to scan every character one by one!
+
+            if(isspace(curLin[i]) && !lokForStr) { //Whitespace!
+
+                //Stop any non-string-related look ups!
+
+            } else if(regChk("[.0-9]", &curLin[i]) && !lokForStr) { //Number
+
+                //
+
+            } else if(regChk("[_a-zA-Z]", &curLin[i]) && !lokForStr) { //Symbol
+
+                //
+
+            } else if(curLin[i] == '"' && !lokForStr) { //String!
+
+                //
+
+            } else if(curLin[i] == '"' && lokForStr) { //End the search for the string
+
+                //
+
+            } else if(curLin[i] == '\'' && !lokForStr) { //Character!
+
+                //
+
+            } else if (lokForStr) { //Keep storing the string content!
+
+                //
+
+            } else { //Operator!
+
+                //
+
+            }
 
             printf("%c, ", curLin[i]); //Debug
 
