@@ -1,3 +1,6 @@
+
+<img alt="Murmur's Logo" src="./brand/logo.png" width="128">
+
 # Murmur
 
 Murmur - *you may also refer to it by "Mur" or "ECMSL-2021" (EnderCommunity Maintained Scripting Language - 2021)* - is an experimental programming language. ***It's still not even functional, this is all just a pitch of the language itself.*** *Mur* code compiles down to C code, which is then compiled to machine code.
