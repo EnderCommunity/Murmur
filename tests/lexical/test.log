@@ -7,7 +7,6 @@
 [?][Preprocessor] => The header flags have been processed successfully!
 [?][Preprocessor][2, 1] => New processing loop started.
 [!][Preprocessor] => 
-
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][3, 1] => New processing loop started.
@@ -20,9 +19,9 @@
 [!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][5, 1] => New processing loop started.
-[!][Preprocessor] =>     class Program {
-[?][Preprocessor][5, 1] => Checking for preprocessor methods...
+[?][Preprocessor][5, 5] => New processing loop started.
+[!][Preprocessor] => class Program {
+[?][Preprocessor][5, 5] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -30,9 +29,9 @@
 [!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][7, 1] => New processing loop started.
-[!][Preprocessor] =>         int a = 0;
-[?][Preprocessor][7, 1] => Checking for preprocessor methods...
+[?][Preprocessor][7, 9] => New processing loop started.
+[!][Preprocessor] => int a = 0;
+[?][Preprocessor][7, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -40,9 +39,9 @@
 [!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][9, 1] => New processing loop started.
-[!][Preprocessor] =>         function::int Main(){
-[?][Preprocessor][9, 1] => Checking for preprocessor methods...
+[?][Preprocessor][9, 9] => New processing loop started.
+[!][Preprocessor] => function::int Main(){
+[?][Preprocessor][9, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -50,9 +49,9 @@
 [!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][11, 1] => New processing loop started.
-[!][Preprocessor] =>             int b = 0;
-[?][Preprocessor][11, 1] => Checking for preprocessor methods...
+[?][Preprocessor][11, 13] => New processing loop started.
+[!][Preprocessor] => int b = 0;
+[?][Preprocessor][11, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -60,9 +59,9 @@
 [!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][13, 1] => New processing loop started.
-[!][Preprocessor] =>         }
-[?][Preprocessor][13, 1] => Checking for preprocessor methods...
+[?][Preprocessor][13, 9] => New processing loop started.
+[!][Preprocessor] => }
+[?][Preprocessor][13, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -70,19 +69,19 @@
 [!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][15, 1] => New processing loop started.
-[!][Preprocessor] =>     }
-[?][Preprocessor][15, 1] => Checking for preprocessor methods...
+[?][Preprocessor][15, 5] => New processing loop started.
+[!][Preprocessor] => }
+[?][Preprocessor][15, 5] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][16, 1] => New processing loop started.
-[!][Preprocessor] =>     
+[?][Preprocessor][16, 5] => New processing loop started.
+[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][17, 1] => New processing loop started.
-[!][Preprocessor] =>     class Smth {
-[?][Preprocessor][17, 1] => Checking for preprocessor methods...
+[?][Preprocessor][17, 5] => New processing loop started.
+[!][Preprocessor] => class Smth {
+[?][Preprocessor][17, 5] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -90,9 +89,9 @@
 [!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][19, 1] => New processing loop started.
-[!][Preprocessor] =>         int c = 0;
-[?][Preprocessor][19, 1] => Checking for preprocessor methods...
+[?][Preprocessor][19, 9] => New processing loop started.
+[!][Preprocessor] => int c = 0;
+[?][Preprocessor][19, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -100,9 +99,9 @@
 [!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][21, 1] => New processing loop started.
-[!][Preprocessor] =>         function::constructor(){
-[?][Preprocessor][21, 1] => Checking for preprocessor methods...
+[?][Preprocessor][21, 9] => New processing loop started.
+[!][Preprocessor] => function::constructor(){
+[?][Preprocessor][21, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -110,9 +109,9 @@
 [!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][23, 1] => New processing loop started.
-[!][Preprocessor] =>             this.c = 2;
-[?][Preprocessor][23, 1] => Checking for preprocessor methods...
+[?][Preprocessor][23, 13] => New processing loop started.
+[!][Preprocessor] => this.c = 2;
+[?][Preprocessor][23, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -120,9 +119,9 @@
 [!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][25, 1] => New processing loop started.
-[!][Preprocessor] =>         }
-[?][Preprocessor][25, 1] => Checking for preprocessor methods...
+[?][Preprocessor][25, 9] => New processing loop started.
+[!][Preprocessor] => }
+[?][Preprocessor][25, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -130,9 +129,9 @@
 [!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][27, 1] => New processing loop started.
-[!][Preprocessor] =>     }
-[?][Preprocessor][27, 1] => Checking for preprocessor methods...
+[?][Preprocessor][27, 5] => New processing loop started.
+[!][Preprocessor] => }
+[?][Preprocessor][27, 5] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
