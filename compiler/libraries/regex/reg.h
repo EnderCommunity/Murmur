@@ -1,4 +1,6 @@
-#include <regex.h>
+//#include <regex.h>
+#include "../../../outer/regex-2.7-bin/include/regex.h"
+//#include "C:/Users/adels/Desktop/EnderCommunity/Projects/Murmur/outer/regex-2.7-bin/include/regex.h"
 
 int regChk(char *exp, char *str){ //Do a regex check
 
