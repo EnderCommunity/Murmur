@@ -2,10 +2,12 @@
     "files.associations": {
         "*html": "html",
         "*.html": "html",
+        "*.css": "css",
         "*.h": "c",
         "*.c": "c",
-        "*.esf": "enderscript",
-        "*.esmf": "enderscript",
-        "*.tesf": "tmp-enderscript"
+        "*.mur": "murmur",
+        "*.murm": "murmur",
+        "*.tmp": "tmpmur",
+        "*.lxic": "lexmur"
     }
 }

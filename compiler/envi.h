@@ -49,6 +49,20 @@
 #define SUPPORT_MULTI_LINEAR_COMMENTS 1 //The compiler will identify and remove multi-linear comments from your code when this option is enabled
 
 
+//Lexer
+
+#define LEXER_SYMBOL 1001
+#define LEXER_SYMBOL_STR "1001"
+#define LEXER_STRING 1002
+#define LEXER_STRING_STR "1002"
+#define LEXER_CHAR 1003
+#define LEXER_CHAR_STR "1003"
+#define LEXER_NUMBER 1004
+#define LEXER_NUMBER_STR "1004"
+#define LEXER_OPERATOR 1005
+#define LEXER_OPERATOR_STR "1005"
+
+
 //States
 
 /* (!) Still not implemented */ #define ENABLE_STATES 1 //Functions, groups, and classes will be forced to have a state definition (If disabled, all states will be set to 'public' with no way to change that)

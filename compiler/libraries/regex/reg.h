@@ -48,6 +48,10 @@ int regChk(char *exp, char *str){ //Do a regex check
 
     //Source: https://stackoverflow.com/questions/1085083/regular-expressions-in-c-examples
 
+    //char *strBakUp = malloc(sizeof(char)*strlen(str));
+
+    //strcpy(strBakUp, str);
+
     regex_t regex;
 
     int reti;
@@ -61,23 +65,36 @@ int regChk(char *exp, char *str){ //Do a regex check
     }
 
     reti = regexec(&regex, str, 0, NULL, 0);
+
+    //strcpy(str, strBakUp);
+
     if (!reti) {
+
+        regfree(&regex);
 
         return 1;
 
     } else if (reti == REG_NOMATCH) {
 
+        regfree(&regex);
+
         return 0;
 
     } else {
 
+
         regerror(reti, &regex, msgbuf, sizeof(msgbuf));
         fprintf(stderr, "Regex match failed: %s\n", msgbuf);
-        return -1;
+        regfree(&regex);
         exit(1);
+        return -1;
 
     }
 
-    regfree(&regex);
-
 }
+
+/*int oRegChk(char *exp, char *str){
+    
+    if(regChk(exp, str))
+
+}*/
