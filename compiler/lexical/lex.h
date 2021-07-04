@@ -66,7 +66,9 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                     i += delt;
 
-                   fprintf(lexFil, "` <%s> 0x%09X 1x%09X\n", "0", lin, col);
+                    fprintf(lexFil, "` <%s> 0x%09X 1x%09X\n", "0", lin, col);
+
+                    col += delt;
 
                 }
 
@@ -90,6 +92,8 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                 fprintf(lexFil, "` <%s> 0x%09X 1x%09X\n", "0", lin, col);
 
+                col += delt - 1;
+
             } else if(curLin[i] == '\'') { //Character!
 
                 int delt = 1;
@@ -109,6 +113,8 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                 fprintf(lexFil, "` <%s> 0x%09X 1x%09X\n", "0", lin, col);
 
+                col += delt - 1;
+
             } else if(regChk("[_a-zA-Z]", &currChar) && (!isCharSpcl(currChar) || currChar == '_')) { //Symbol
 
                 fprintf(lexFil, "%d `%c", LEXER_SYMBOL, curLin[i]);
@@ -126,9 +132,10 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 delt--;
 
                 i += delt;
-                col += delt;
 
                 fprintf(lexFil, "` <%s> 0x%09X 1x%09X\n", "0", lin, col);
+
+                col += delt;
 
             } else { //Operator!
 
