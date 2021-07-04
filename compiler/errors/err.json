@@ -1,0 +1,6 @@
+{
+    "2001": {
+        "stage": "lexer",
+        "error": "An unknown character has been detected!"
+    }
+}

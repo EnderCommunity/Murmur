@@ -137,9 +137,14 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                 col += delt;
 
-            } else { //Operator!
+            } else if(isKnwnSpclChr(currChar)) { //Operator!
 
                 fprintf(lexFil, "%d `%c` <%s> 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], "0", lin, col);
+
+            } else {
+
+                writeLogLine("Lexer", 2, "An unknown character has been detected!", 1, lin, col);
+                exit(2001);
 
             }
 
