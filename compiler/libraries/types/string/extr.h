@@ -223,6 +223,10 @@ int isCharSpcl(char chr){
 
     return (!isalpha(chr) && chr != '0' && chr != '1' && chr != '2' && chr != '3' && chr != '4' && chr != '5' && chr != '6' && chr != '7' && chr != '8' && chr != '9');
 
-    //return (chr == '%' || chr == '?' || chr == '/' || chr == '>' || chr == '<' || chr == '.' || chr == ',' || chr == '|' || chr == '\\' || chr == '"' || chr == '\'' || chr == ':' || chr == ';' || chr == '}' || chr == '{' || chr == ']' || chr == '[' || chr == '=' || chr == '-' || chr == '+' || chr == '_' || chr == '(' || chr == ')' || chr == '*' || chr == '&' || chr == '^' || chr == '%' || chr == '$' || chr == '#' || chr == '@' || chr == '!' || chr == '`' || chr == '~');
+}
+
+int isKnwnSpclChr(char chr){
+
+    return (chr == '%' || chr == '?' || chr == '/' || chr == '>' || chr == '<' || chr == '.' || chr == ',' || chr == '|' || chr == '\\' || chr == '"' || chr == '\'' || chr == ':' || chr == ';' || chr == '}' || chr == '{' || chr == ']' || chr == '[' || chr == '=' || chr == '-' || chr == '+' || chr == '_' || chr == '(' || chr == ')' || chr == '*' || chr == '&' || chr == '^' || chr == '$' || chr == '#' || chr == '@' || chr == '!' || chr == '`' || chr == '~');
 
 }
