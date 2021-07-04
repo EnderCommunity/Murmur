@@ -13,7 +13,7 @@
 [{main},23;13]->char test3 = '"', test4 = '\'';
 [{main},24;13]->int test5 = 0;
 [{main},25;13]->float test6 = .00005;
-[{main},26;13]->double test6 = .0, test7 = 0.; //"." alone will not be considered as a number!
+[{main},26;13]->double test6 = .0, test7 = 0.; "\".\" alone will not be considered as a number!";
 [{main},28;13]->bool _test = false, test_ = false, _test_ = true;
 [{main},30;9]->}
 [{main},32;5]->}
