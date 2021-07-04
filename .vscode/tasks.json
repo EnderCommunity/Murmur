@@ -7,9 +7,9 @@
 			"command": "C:\\msys64\\mingw64\\bin\\gcc.exe",
 			"args": [
 				"-g",
-				"${file}",
+				"${workspaceFolder}\\compiler\\start.c",
 				"-o", //Output indicator
-				"${fileDirname}\\${fileBasenameNoExtension}.exe", //Output folder
+				"${workspaceFolder}\\compiler\\Mur.exe", //Output folder
 				//"-lpcre2-8"
 				//"-I",
 				//"${workspaceFolder}\\outer\\regex-2.7-bin\\include\\",
