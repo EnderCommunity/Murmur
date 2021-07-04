@@ -57,5 +57,4 @@
 //Compiler Process Termination
 
 /* (!) Still not implemented */ #define EMPTY_COMPILER_TMP_DIR 0 //Empty the `/compiler/tmp/` directory at the end of every process
-#define C_COMPILER_EXECUTABLE_DIR "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe" //The directory of your C compiler of choice
-#define C_COMPILER_REGEX_HEADER_DIR "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\opt\\include\\regex.h" //The directory of your C compiler of choice
+#define C_COMPILER_EXECUTABLE_DIR "C:\\msys64\\mingw64\\bin\\gcc.exe" //The directory of your C compiler of choice
