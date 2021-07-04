@@ -6,11 +6,27 @@ The file extension of *Mur* files is *`.mur`*.
 
 The file extension of *Mur* module files is *`.murm`*. (Which stands for *`"Murmur Module"`*)
 
+## The Development Environment
+
+To start working with *Mur* on Windows, you need to [download MSYS2](https://www.msys2.org/#installation). And it's also recommended that you use [Visual Studio Code](https://code.visualstudio.com/). You need to install all the available features in *MSYS2*. And, in case you decided to use *Visual Studio Code*, make sure to [install the C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools).Also, make sure to [add the gcc compiler to your PATH](https://www.youtube.com/watch?v=mQra00mT3Dg)!
+
+Execute the folllowing commands in your *MSYS2* console:
+
+```cmd
+pacman -Syu
+pacman -S mingw-w64-x86_64-pcre
+pacman -S mingw-w64-x86_64-pcre2
+```
+
+When you're done with the set up process, make sure that the `C_COMPILER_EXECUTABLE_DIR` enviroment variable is set to your `gcc.exe` executable! You might also want to make sure that the `.vscode` compiler path is correct.
+
 ## Contributing
 
 Everyone is welcomed to contribute to this project in any way they want. (e.g. help code the compiler, or help with the pitching process)
 
-## The Compiling Process
+If you want to contribute, make sure that you've properly set up the development environment. And, when you push your changes to the compiler, make sure to change back the `.vscode` compiler values, and don't change the environment variables in `./compiler/envi.h`.
+
+## The Compiling Process (outdated)
 
 This is a diagram of the current plan for the compiling process:
 
