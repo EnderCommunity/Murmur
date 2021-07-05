@@ -9,6 +9,12 @@ void setupWrkstn(char *filPth){ //Setup the workstation
 
     //Get the index of the the last slash
     int indx = getLstStrIndx(filPth, PATH_SLASH);
+    printf("\nLast Index in '%s' is `%d`\n", filPth, indx);
+
+    /*indx = getLstStrIndx(filPth, "e"); //debug
+    printf("\nLast Index in '%s' is `%d`\n", filPth, indx);
+
+    system("pause");*/
 
     //Get the workstation path
     wrkstn.Path = getStrPrt(filPth, 0, indx + 1, 0);

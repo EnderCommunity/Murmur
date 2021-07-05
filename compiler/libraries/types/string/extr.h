@@ -97,27 +97,74 @@ char* genFillStr(int len){
 
 }
 
-int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appearance of a string inside a string
+char* shfStr(char *str, int n){ //Shif a string to the left by 'n' chars!
 
-    int indx = -1;
+    int i, l = strlen(str);
 
-    for(int tmp = getStrIndx(str, strForChk); tmp != -1; tmp = getStrIndx(str, strForChk)){
+    for(i = n; i < l; i++)
+        str[i - n] = str[i];
 
-        indx += tmp + strlen(strForChk);
+    str[l - n] = '\0';
 
-        str = getStrPrt(str, tmp + strlen(strForChk), strlen(str), 0);
+    return str;
 
-    }
+    /*int l = strlen(str);
 
-    indx -= strlen(strForChk) - 1;
+    char *tmp = malloc(sizeof(char)*(strlen(str) - n + 1)); //This ain't good...
 
-    return indx;
+    for(int i = n; i <= l; i++)
+        tmp[i - n] = str[i];
+
+    return tmp;*/
+
 
 }
 
 int inStrRng(char *str, char *strForChk){ //Check if a string exists inside a string
 
     return strstr(str, strForChk) != NULL;
+
+}
+
+int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appearance of a string inside a string
+
+    /*for(int tmp = getStrIndx(str, strForChk); tmp != -1; tmp = getStrIndx(str, strForChk)){
+
+        indx += tmp + l;
+
+        str = shfStr(str, tmp + l);
+        printf("\n%s", str);
+        //str = getStrPrt(str, tmp + strlen(strForChk), strlen(str), 0);
+
+    }
+
+    indx -= l - 1;*/
+
+    char *tmpStr = malloc(strlen(str)*sizeof(char));
+    strcpy(tmpStr, str);
+
+    int indx = -1,
+        l = strlen(strForChk),
+        tmp = getStrIndx(str, strForChk),
+        kepLop = inStrRng(str, strForChk);
+
+    while(kepLop){
+
+        tmp = getStrIndx(str, strForChk);
+
+        indx += tmp + l;
+
+        str = shfStr(str, tmp + l);
+        //printf("\n%s", str);
+
+        kepLop = inStrRng(str, strForChk);
+
+    }
+
+    strcpy(str, tmpStr);
+    free(tmpStr);
+
+    return indx - (l - 1);
 
 }
 
@@ -203,19 +250,6 @@ int isStrEmpty(char *str){
             whiSpc++;
 
     return whiSpc == strlen(str);
-
-}
-
-char* shfStr(char *str, int n){ //Shif a string to the left by 'n' chars!
-
-    int i, l = strlen(str);
-
-    for(i = n; i < l; i++)
-        str[i - n] = str[i];
-
-    str[l - 1] = '\0';
-
-    return str;
 
 }
 
