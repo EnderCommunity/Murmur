@@ -17,14 +17,6 @@ html[data-loaded] .loading {
     pointer-events: none !important;
 }
 
-.loading .loading-icon,
-.loading .loading-icon-overlay {
-    position: absolute;
-    width: 28vh;
-    height: 28vh;
-    margin: 30vh calc(50vw - 14vh);
-}
-
 .loading text {
     position: absolute;
     width: 80vw;
@@ -105,12 +97,16 @@ html[data-loaded] .loading {
 :root {
     --page-content-padding: 120px;
     --topbar-side-margin: 100px;
+    --topbar-options-width: calc(100% - 100px - 20px - 280px);
+    --topbar-side-display: block;
 }
 
 @media screen and (max-width: 800px) {
      :root {
         --page-content-padding: 0px;
         --topbar-side-margin: 0px;
+        --topbar-options-width: 100%;
+        --topbar-side-display: none;
     }
 }
 
@@ -136,17 +132,19 @@ body {
 }
 
 .topbar .logo {
-    width: 80px;
-    height: 80px;
-    margin: 10px;
+    width: 60px;
+    height: 60px;
+    margin: 20px;
+    margin-left: 40px;
     position: absolute;
+    image-rendering: pixelated;
 }
 
 .topbar .options {
     margin-left: var(--topbar-side-margin);
     font-size: 20px;
     padding: 38px 10px;
-    width: calc(100% - 100px - 20px - 280px);
+    width: var(--topbar-options-width);
     overflow: hidden;
     margin-right: 8px;
     height: 100px;
@@ -166,11 +164,12 @@ body {
     font-size: 20px;
     padding: 0px;
     overflow: hidden;
-    text-align: center;
+    text-align: right;
     height: 100px;
     position: absolute;
-    right: 16px;
+    right: calc(var(--topbar-side-margin) + 24px);
     top: 0px;
+    display: var(--topbar-side-display);
 }
 
 .content {
