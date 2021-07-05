@@ -128,18 +128,6 @@ int inStrRng(char *str, char *strForChk){ //Check if a string exists inside a st
 
 int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appearance of a string inside a string
 
-    /*for(int tmp = getStrIndx(str, strForChk); tmp != -1; tmp = getStrIndx(str, strForChk)){
-
-        indx += tmp + l;
-
-        str = shfStr(str, tmp + l);
-        printf("\n%s", str);
-        //str = getStrPrt(str, tmp + strlen(strForChk), strlen(str), 0);
-
-    }
-
-    indx -= l - 1;*/
-
     char *tmpStr = malloc(strlen(str)*sizeof(char));
     strcpy(tmpStr, str);
 
@@ -155,7 +143,6 @@ int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appea
         indx += tmp + l;
 
         str = shfStr(str, tmp + l);
-        //printf("\n%s", str);
 
         kepLop = inStrRng(str, strForChk);
 
