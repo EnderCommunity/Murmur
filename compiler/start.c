@@ -71,7 +71,7 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
     //There should be only one file per process
     //Note: the generated files will get deleted automatically in the future, unless the 'OUTPUT_TEMP_FILE' environment variable is set to 'true'/'1'
 
-    writeLogLine("Compiler Manager", 0, "Starting the preprocessor.", 0, 0, 0);
+    writeLog0Line("Compiler Manager", 0, "Starting the preprocessor.", 0, 0, 0);
     preprocess(mainFilePtr, path, 1, tmpFileObj); //Initiate the compiling process
 
     fclose(mainFilePtr);
