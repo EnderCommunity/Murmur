@@ -3,4 +3,5 @@
 *.lnk
 *.log
 *.tmp
+*.lxic
 !*/*.keep
