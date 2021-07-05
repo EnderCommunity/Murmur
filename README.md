@@ -52,7 +52,7 @@ define ZERO 0; //You can use the `define` function to define a variable that
                //will be replaced by the provided value before the execution
                //of this code
 
-setsize int 2, //Set a custom size of memory (in bytes) to allocate for any type
+setsize int 2; //Set a custom size of memory (in bytes) to allocate for any type
 setsize double 10; //You can do the same with all the built-in types
 
 import "path/to/my/file2.mur"; //You need to pay attention to the importing order
