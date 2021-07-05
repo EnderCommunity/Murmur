@@ -43,6 +43,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                     //false alarm
                     fprintf(lexFil, "%d `%c` <%s> 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], "0", lin, col); //This is an operator!
+                    //fprintf(lexFil, "%d `%c` <%s> 0x%d 1x%d\n", LEXER_OPERATOR, curLin[i], "0", lin, col); //This is an operator!
 
                 }else{
 
@@ -64,9 +65,12 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                     }
 
+                    delt--;
+
                     i += delt;
 
                     fprintf(lexFil, "` <%s> 0x%09X 1x%09X\n", "0", lin, col);
+                    //fprintf(lexFil, "` <%s> 0x%d 1x%d\n", "0", lin, col);
 
                     col += delt;
 
@@ -91,6 +95,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 i += delt;
 
                 fprintf(lexFil, "` <%s> 0x%09X 1x%09X\n", "0", lin, col);
+                //fprintf(lexFil, "` <%s> 0x%d 1x%d\n", "0", lin, col);
 
                 col += delt - 1;
 
@@ -112,6 +117,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 i += delt;
 
                 fprintf(lexFil, "` <%s> 0x%09X 1x%09X\n", "0", lin, col);
+                //fprintf(lexFil, "` <%s> 0x%d 1x%d\n", "0", lin, col);
 
                 col += delt - 1;
 
@@ -134,12 +140,14 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 i += delt;
 
                 fprintf(lexFil, "` <%s> 0x%09X 1x%09X\n", "0", lin, col);
+                //fprintf(lexFil, "` <%s> 0x%d 1x%d\n", "0", lin, col);
 
                 col += delt;
 
             } else if(isKnwnSpclChr(currChar)) { //Operator!
 
                 fprintf(lexFil, "%d `%c` <%s> 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], "0", lin, col);
+                //fprintf(lexFil, "%d `%c` <%s> 0x%d 1x%d\n", LEXER_OPERATOR, curLin[i], "0", lin, col);
 
             } else {
 
