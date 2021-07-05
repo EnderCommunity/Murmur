@@ -14,14 +14,13 @@
 <body>
 
     <div class="loading" no-select>
-        <img src="../brand/logo-dark.png" class="loading-icon" width="80" height="80">
-        <div class="loading-icon-overlay"></div>
         <text>Loading up some files...</text>
     </div>
 
     <div class="topbar" no-select>
 
         <!--<img src="./assets/images/logo.webp" width="80" height="80" class="logo">-->
+        <!--<img src="./assets/images/logo-topbar.png" class="logo">-->
 
         <div class="options">
             <a class="selected">Home</a>
@@ -52,7 +51,7 @@
             if (document.readyState === 'complete')
                 setTimeout(function() {
                     document.documentElement.dataset.loaded = true;
-                }, 500);
+                }, 100);
         };
         document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + "px");
         window.addEventListener('resize', () => {
