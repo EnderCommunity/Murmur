@@ -123,6 +123,18 @@ For now, you can send input to the compiler in two ways:
 
 - *By starting the `Mur.exe` executable and typing in the path of the desired file.*
 
+## Compiler output
+
+As of now, the compiler will output 3 files: `.log`, `.tmp`, and `.lxic`.
+
+- The `.log` file contains logs from the compiler.
+- The `.tmp` file contains the output of the preprocessor.
+- The `.lxic` file contains the output of the lexer.
+
+Also, in case of an error, the compiler will exit with an error-specific code.
+
+*We'll work on an error code system soon...*
+
 ## Syntax and Functions
 
 ***Empty, check the provided `.mur` files for now!***
