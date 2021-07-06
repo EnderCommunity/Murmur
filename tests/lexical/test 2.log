@@ -5,7 +5,7 @@
 [?][Preprocessor] => Preprocessor started!
 [?][Preprocessor] => Last line detected!
 [?][Preprocessor][1, 1] => New processing loop started.
-[!][Preprocessor] => console.write("Hello, there!");
+[!][Preprocessor] => console.write("Hello, there!" );
 [?][Preprocessor][1, 1] => Checking for comments...
 [?][Preprocessor][1, 1] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.

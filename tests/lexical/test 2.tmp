@@ -1,2 +1,2 @@
-[{main},1;1]->console.write("Hello, there!");
+[{main},1;1]->console.write("Hello, there!" );
 [FileEnd]

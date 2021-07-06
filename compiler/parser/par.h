@@ -11,6 +11,8 @@ val: all
 none: void
 
 assignment: <syb, "variable"> <op, "="> <val>, output: none
+keyword: <syb, "gup:stms">
+type: <syb, "gup:tps">
 priority: <op, "("> ... <op, ")">, output: priority
 operation: <num> <op, "math-related"> <num>, output: <num>
 levelled_operation: <str>||<chr> + <str>||<chr>, output: <str>
