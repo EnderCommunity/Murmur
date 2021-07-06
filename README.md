@@ -3,7 +3,9 @@
 
 # Murmur
 
-Murmur - *you may also refer to it by "Mur" or "ECMSL-2021" (EnderCommunity Maintained Scripting Language - 2021)* - is an experimental programming language. ***It's still not even functional, this is all just a pitch of the language itself.*** *Mur* code compiles down to C code, which is then compiled to machine code.
+Murmur - *you may also refer to it by "Mur" or "ECMSL-2021" (EnderCommunity Maintained Scripting Language - 2021)* - is an experimental programming language. *Mur* code compiles down to C code, which is then compiled to machine code.
+
+>***"Mur" is still not functional, this is all just some pitches and some not-even-close-to-half-baked code.***
 
 The file extension of *Mur* files is *`.mur`*.
 
@@ -133,7 +135,7 @@ As of now, the compiler will output 3 files: `.log`, `.tmp`, and `.lxic`.
 
 Also, in case of an error, the compiler will exit with an error-specific code.
 
-*We'll work on an error code system soon...*
+> *We'll work on an error code system soon...*
 
 ## Syntax and Functions
 
