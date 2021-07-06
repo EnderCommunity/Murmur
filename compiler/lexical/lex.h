@@ -27,9 +27,12 @@ FILE* lexProc(TmpFileStruc cFileObj){
         //"[{main},%d;%d]->%s
         int col = atoi(getStrPrt(tmpStr, getStrIndx(tmpStr, ";") + 1, getStrIndx(tmpStr, "]"), 0)), lin = atoi(getStrPrt(tmpStr, getStrIndx(tmpStr, ",") + 1, getStrIndx(tmpStr, ";"), 0));
 
+        int newLin = 1;
+
         for(int i = 0; i < strlen(curLin); i++, col++){ //Use this loop to scan every character one by one!
 
             char currChar = curLin[i];
+            int whtSpcBef = isspace(curLin[i - 1]) != 0;
 
             if(isspace(currChar)) { //Whitespace!
 
@@ -42,7 +45,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 if(curLin[i] == '.' && !isdigit(curLin[i + 1])){
 
                     //false alarm
-                    fprintf(lexFil, "%d `%c` 0 0 0 0 0 0 0 0 <%s> 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], "0", lin, col); //This is an operator!
+                    fprintf(lexFil, "%d `%c` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col); //This is an operator!
                     //fprintf(lexFil, "%d `%c` <%s> 0x%d 1x%d\n", LEXER_OPERATOR, curLin[i], "0", lin, col); //This is an operator!
 
                 }else{
@@ -69,7 +72,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                     i += delt;
 
-                    fprintf(lexFil, "` %d 0 0 0 0 0 0 0 <%s> 0x%09X 1x%09X\n", !alowDot, "0", lin, col);
+                    fprintf(lexFil, "` %d %d %d 0 | %d 0 0 0 <%s> 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), !alowDot, "0", lin, col);
                     //                    ^ if this value is set to '0', then this number is an integer
                     //                      if it's set to '1', then this number is of the type double/float
                     //fprintf(lexFil, "` <%s> 0x%d 1x%d\n", "0", lin, col);
@@ -96,7 +99,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 col++;
                 i += delt;
 
-                fprintf(lexFil, "` 0 0 0 0 0 0 0 0 <%s> 0x%09X 1x%09X\n", "0", lin, col);
+                fprintf(lexFil, "` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col);
                 //fprintf(lexFil, "` <%s> 0x%d 1x%d\n", "0", lin, col);
 
                 col += delt - 1;
@@ -118,7 +121,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 col++;
                 i += delt;
 
-                fprintf(lexFil, "` 0 0 0 0 0 0 0 0 <%s> 0x%09X 1x%09X\n", "0", lin, col);
+                fprintf(lexFil, "` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col);
                 //fprintf(lexFil, "` <%s> 0x%d 1x%d\n", "0", lin, col);
 
                 col += delt - 1;
@@ -141,14 +144,14 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                 i += delt;
 
-                fprintf(lexFil, "` 0 0 0 0 0 0 0 0 <%s> 0x%09X 1x%09X\n", "0", lin, col);
+                fprintf(lexFil, "` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col);
                 //fprintf(lexFil, "` <%s> 0x%d 1x%d\n", "0", lin, col);
 
                 col += delt;
 
             } else if(isKnwnSpclChr(currChar)) { //Operator!
 
-                fprintf(lexFil, "%d `%c` 0 0 0 0 0 0 0 0 <%s> 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], "0", lin, col);
+                fprintf(lexFil, "%d `%c` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col);
                 //fprintf(lexFil, "%d `%c` <%s> 0x%d 1x%d\n", LEXER_OPERATOR, curLin[i], "0", lin, col);
 
             } else {
@@ -158,13 +161,16 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
             }
 
-            //fprintf(lexFil, "%d `%s` 0 0 0 0 0 0 0 0 <%s> 0x%09X 1x%09X\n", 1000, "", "0", 0, 0);
+            //fprintf(lexFil, "%d `%s` 0 0 0 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", 1000, "", "0", 0, 0);
             //symbol -> 1001, string -> 1002, char -> 1003, number -> 1004, operator -> 1005
             //LEXER_SYMBOL, LEXER_STRING, LEXER_CHAR, LEXER_NUMBER, LEXER_OPERATOR
-            //1000 `[value]` 0 0 0 0 0 0 0 0 <[file]> 0x000000000 1x000000000
-            //1000 `[value]` 0 0 0 0 0 0 0 0 <[file]> 0x000000000 1x000000000
-            //1000 `[value]` 0 0 0 0 0 0 0 0 <[file]> 0x000000000 1x000000000
+            //1000 `[value]` 0 0 0 0 | 0 0 0 0 <[file]> 0x000000000 1x000000000
+            //1000 `[value]` 0 0 0 0 | 0 0 0 0 <[file]> 0x000000000 1x000000000
+            //1000 `[value]` 0 0 0 0 | 0 0 0 0 <[file]> 0x000000000 1x000000000
             //^typ ^value    ^scrFile ^srcLine(0) ^srcColumn(1)
+
+            if(newLin)
+                newLin = 0;
 
         }
 
