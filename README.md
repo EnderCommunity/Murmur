@@ -68,13 +68,6 @@ Only the `import` method is gonna actually be processed before the lexer!
 [{main>'path/to/my/file.mur'},2;1]...
 ```
 
-//"no-comments": can be used to tell the compiler to not look for comments in this
-//file
-//"no-preprocessor-methods": can be used to tell the compiler that this file does
-//not contain any preprocessor methods
-//"skip-processor": can be used to tell the compiler to not compile the code after
-//the header, and jump to the C compiler compiling stage.
-
 The available header flags are:
 
 - ***no-comments*** - Tells the compiler to not look for comments in your code
