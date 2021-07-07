@@ -1,13 +1,7 @@
 #include "../libraries/regex/reg.h"
 //#include "../libraries/hex/hex.h"
 
-typedef struct {
-    char *type; //symbol, string, character, number & operator!
-    char *value;
-    int srcColumn;
-    int srcLine;
-    char *srcFile;
-} M_Token;
+//1000 `value` 0 0 0 0 | 0 0 0 0 <0.'file1'.'file2'> 0x000000000 1x000000000
 
 FILE* lexProc(TmpFileStruc cFileObj){
 
