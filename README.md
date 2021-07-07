@@ -68,6 +68,25 @@ Only the `import` method is gonna actually be processed before the lexer!
 [{main>'path/to/my/file.mur'},2;1]...
 ```
 
+//"no-comments": can be used to tell the compiler to not look for comments in this
+//file
+//"no-preprocessor-methods": can be used to tell the compiler that this file does
+//not contain any preprocessor methods
+//"skip-processor": can be used to tell the compiler to not compile the code after
+//the header, and jump to the C compiler compiling stage.
+
+The available header flags are:
+
+- ***no-comments*** - Tells the compiler to not look for comments in your code
+
+- ***no-preprocessor-methods*** - Tells the compiler to not look for preprocessor methods in your code
+
+- ***skip-processor*** - Tells the compiler to not analyse your code, and to jump to the c-compiling stage
+
+- ***allow-separate*** - Tells the compiler that you're gonna use the `separate` super-method. (The separate super-method allows you to inject C code in your Mur file)
+
+> It's important to note that some of these flags are only for debugging, and they may get removed in the future.
+
 ### The Lexer
 
 The lexer is supposed to label all the code passed by the preprocessor.
