@@ -99,6 +99,8 @@ int main(int argc, char *argv[]){ //You can also use `char *envp[]`
 
 #include "lexical/lex.h"
 
+#include "parser/par.h"
+
 void CProcess(FileInfo *fileInf, TmpFileStruc desFileObj);
 
 void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){ //Compile a file and it's content
@@ -125,6 +127,8 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
         desFileObj.ptr = fopen(apdStr(desFileObj.pth, ".tmp"), "r"); //Switch the file mode to "read mode"
 
         FILE* lexFil = lexProc(desFileObj); //Start the lexical-processing process!
+
+        PrsProc(desFileObj, lexFil); //Start parsing the generated tokens!
 
     }else{
 

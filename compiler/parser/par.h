@@ -27,3 +27,22 @@ class_definition: <syb, "val:class"> <syb> <op, "{"> ... <op, "}">, output: none
 constructor_definition: <syb, "val:function"> <op, ":"> <op, ":"> <syb, "val:constructor"> <syb> <op, "("> ... <op, ")"> <op, "{"> ... <op, "}">, output: <constructor_object>
 
 */
+#include "gettkn.h"
+
+void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
+
+    setTknFilPtr(lexFilPtr); //Setup the tokens queue
+
+    M_Token tkn = getTkn();
+
+    while(kepLop){
+
+        printf("%s\n", tkn.value); //Debug
+
+        remTkn(tkn); //Remove the token
+
+        tkn = getTkn(); //get a new token
+
+    }
+
+}
