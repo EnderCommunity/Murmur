@@ -1,4 +1,4 @@
-#header <nothing-to-see-here>
+#header <nothing-to-see-here> <allow-separate>
 //^ The header is used to give the compiler nessessary information before it
 //starts compiling the code. Flags start with the operators "--". If you do not
 //wish to pass any information to the compiler, you can just remove it.
@@ -25,6 +25,10 @@ of Murmur, and all the functions that it can use.
 // (!) All the functions used outside of groups are seen by the compiler as
 //preprocessor fucntions! So any normal code outside of groups that is not a
 //preprocessor-related feature will cause the compiler to exit with an error.
+
+#separate start //You can ask the compiler to allow you to use C code in your Mur code
+/* Do some weird C-wizardry */
+#separate end
 
 using system.io; //Tell the compiler that the program is going to use the "system"
                  //input/output library
