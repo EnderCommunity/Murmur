@@ -1,15 +1,12 @@
-
-<img alt="Murmur's Logo" src="./brand/logo.png" width="128">
+![logo](./github/photos/logo.png)
 
 # Murmur
 
-Murmur - *you may also refer to it by "Mur" or "ECMSL-2021" (EnderCommunity Maintained Scripting Language - 2021)* - is an experimental programming language. *Mur* code compiles down to C code, which is then compiled to machine code.
+Murmur - *you may also refer to it by "Mur" or "ECMPL-2021" (EnderCommunity-Maintained Programming Language -- 2021)* - is an experimental programming language. *Mur* code compiles down to C code, which is then compiled to machine code.
 
 >***"Mur" is still not functional, this is all just some pitches and some not-even-close-to-half-baked code.***
 
 The file extension of *Mur* files is *`.mur`*, and the file extension of *Mur* module files is *`.murm`*. (Which stands for *`"Murmur Module"`*)
-
-<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /><br />Murmur is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
 ## The Development Environment
 
@@ -172,3 +169,11 @@ There are instructions for the building process of the compiler and libraries of
 
 - [ ] *Research the best algorithms for an efficient memory-managment*
 - [ ] *Write a compiler using C that compiles Murmur to C code*
+
+# License
+
+>We want you to understand that we chose this license because we believe that no one should profit from selling compilers for programming languages. We also chose this license because we want anyone who has a better vision for this programming language or compiler to not be denied the right to do whatever they want, without denying others the same opportunity for the potential future project/vision.
+
+![License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
+
+Murmur is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
