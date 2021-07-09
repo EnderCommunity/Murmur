@@ -1,4 +1,5 @@
 #include "../libraries/regex/reg.h"
+#include "chk.h"
 //#include "../libraries/hex/hex.h"
 
 //1000 `value` 0 0 0 0 | 0 0 0 0 <0.'file1'.'file2'> 0x000000000 1x000000000
@@ -120,13 +121,31 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                 col += delt - 1;
 
-            } else if(regChk("[_a-zA-Z]", &currChar) && (!isCharSpcl(currChar) || currChar == '_')) { //Symbol
+            } else if((curLin[i] == 'f' && curLin[i + 1] == 'a' && curLin[i + 2] == 'l' && curLin[i + 3] == 's' && curLin[i + 4] == 'e' && !isThrMor(curLin[i + 5])) || (curLin[i] == 't' && curLin[i + 1] == 'r' && curLin[i + 2] == 'u' && curLin[i + 3] == 'e' && !isThrMor(curLin[i + 4]))){ //Boolean
+
+                fprintf(lexFil, "%d `%s` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", LEXER_BOOLEAN, (curLin[i] == 'f') ? "false" : "true", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col); //This is an operator!
+
+                if(curLin[i] == 'f'){
+
+                    i += 4;
+
+                    col += 4;
+
+                }else{
+
+                    i += 3;
+
+                    col += 3;
+
+                }
+
+            } else if(isSyb(currChar)) { //Symbol
 
                 fprintf(lexFil, "%d `%c", LEXER_SYMBOL, curLin[i]);
 
                 int delt = 1;
 
-                while(i + delt < strlen(curLin) && !isspace(curLin[i + delt]) && (!isCharSpcl(curLin[i + delt]) || curLin[i + delt] == '_') && regChk("[a-zA-Z0-9]", &(curLin[i + delt]))){
+                while(i + delt < strlen(curLin) && isSybE(curLin[i + delt])){
 
                     fprintf(lexFil, "%c", curLin[i + delt]);
 
