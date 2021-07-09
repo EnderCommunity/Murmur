@@ -6,35 +6,39 @@ import Translate, {translate} from '@docusaurus/Translate';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'Easy to Learn',
     description: (
       translate({
-        message: "Docusaurus was designed from the ground up to be easily installed and used to get your website up and running quickly."
+        message: "Mur is an object-oriented programming language. Its structure is really easy to learn, and it's consistent with its rules!"
       })
     ),
+    icon: '../../static/img/bookt.svg',
   },
   {
-    title: 'Focus on What Matters',
-    description: (
-      translate({
-        message: "Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go ahead and move your docs into the <code>docs</code> directory."
-      })
-    ),
-  },
-  {
-    title: 'Powered by React',
+    title: 'Open Source',
     description: (
         translate({
-          message: "Extend or customize your website layout by reusing React. Docusaurus can be extended while reusing the same header and footer."
+          message: "Mur's compiler is completely open-source, and everyone can contribute, modify, and play around with it! You're free to do whatever you want."
         })
     ),
+    icon: '../../static/img/cloud.svg',
+  },
+  {
+    title: 'It Just Works',
+    description: (
+      translate({
+        message: "Your users won't need to install any additional software to run your programs. Your Mur code is all compiled and prepared on your machine."
+      })
+    ),
+    icon: '../../static/img/cursor.svg',
   },
 ];
 
-function Feature({title, description}) {
+function Feature({title, description, icon}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center padding-horiz--md">
+        <img src={icon} width="32" height="32"/>
         <h3><>{title}</></h3>
         <p><>{description}</></p>
       </div>
