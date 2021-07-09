@@ -6,7 +6,7 @@ module.exports = {
     title: 'Murmur',
     tagline: 'An experimental programming language for everyone.',
     url: 'https://your-docusaurus-test-site.com',
-    baseUrl: '/',
+    baseUrl: '/murmur/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
