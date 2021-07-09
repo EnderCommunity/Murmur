@@ -189,5 +189,14 @@
   },
   "Your users won't need to install any additional software to run your programs. Your Mur code is all compiled and prepared on your machine.": {
     "message": "Your users won't need to install any additional software to run your programs. Your Mur code is all compiled and prepared on your machine."
+  },
+  "Easy to Learn": {
+    "message": "Easy to Learn"
+  },
+  "Open Source": {
+    "message": "Open Source"
+  },
+  "It Just Works": {
+    "message": "It Just Works"
   }
 }

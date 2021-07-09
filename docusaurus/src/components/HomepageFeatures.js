@@ -6,7 +6,11 @@ import Translate, {translate} from '@docusaurus/Translate';
 
 const FeatureList = [
   {
-    title: 'Easy to Learn',
+    title: (
+      translate({
+        message: "Easy to Learn",
+      })
+    ),
     description: (
       translate({
         message: "Mur is an object-oriented programming language. Its structure is really easy to learn, and it's consistent with its rules!"
@@ -15,7 +19,11 @@ const FeatureList = [
     icon: styles.homeIcons1,
   },
   {
-    title: 'Open Source',
+    title: (
+      translate({
+        message: "Open Source",
+      })
+    ),
     description: (
         translate({
           message: "Mur's compiler is completely open-source, and everyone can contribute, modify, and play around with it! You're free to do whatever you want."
@@ -24,7 +32,11 @@ const FeatureList = [
     icon: styles.homeIcons2, //../../static/img/cloud.svg
   },
   {
-    title: 'It Just Works',
+    title: (
+      translate({
+        message: "It Just Works",
+      })
+    ),
     description: (
       translate({
         message: "Your users won't need to install any additional software to run your programs. Your Mur code is all compiled and prepared on your machine."
