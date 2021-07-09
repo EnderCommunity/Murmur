@@ -6,7 +6,7 @@ module.exports = {
     title: 'Murmur',
     tagline: 'An experimental programming language for everyone.',
     url: 'https://your-docusaurus-test-site.com',
-    baseUrl: '/',
+    baseUrl: '/murmur/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
@@ -29,6 +29,10 @@ module.exports = {
                 {
                     href: 'https://github.com/EnderCommunity/Murmur',
                     label: 'GitHub',
+                    position: 'right',
+                },
+                {
+                    type: 'localeDropdown',
                     position: 'right',
                 },
             ],
@@ -98,4 +102,8 @@ module.exports = {
             },
         ],
     ],
+    i18n: {
+        defaultLocale: 'en-GB',
+        locales: ['en-GB', 'en-US', 'ar'],
+    },
 };
