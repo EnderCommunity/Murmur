@@ -180,5 +180,14 @@
   },
   "An experimental programming language for everyone.": {
     "message": "An experimental programming language for everyone."
+  },
+  "Mur is an object-oriented programming language. Its structure is really easy to learn, and it's consistent with its rules!": {
+    "message": "Mur is an object-oriented programming language. Its structure is really easy to learn, and it's consistent with its rules!"
+  },
+  "Mur's compiler is completely open-source, and everyone can contribute, modify, and play around with it! You're free to do whatever you want.": {
+    "message": "Mur's compiler is completely open-source, and everyone can contribute, modify, and play around with it! You're free to do whatever you want."
+  },
+  "Your users won't need to install any additional software to run your programs. Your Mur code is all compiled and prepared on your machine.": {
+    "message": "Your users won't need to install any additional software to run your programs. Your Mur code is all compiled and prepared on your machine."
   }
 }

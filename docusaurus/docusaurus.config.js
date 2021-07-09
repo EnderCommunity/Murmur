@@ -81,6 +81,11 @@ module.exports = {
             theme: lightCodeTheme,
             darkTheme: darkCodeTheme,
         },
+        announcementBar: {
+            id: 'announcementBar',
+            content: 'Please note that Mur is still in the pre-alpha development stages!',
+            isCloseable: false, // Defaults to `true`.
+        },
     },
     presets: [
         [
@@ -89,12 +94,12 @@ module.exports = {
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
                     // Please change this to your repo.
-                    editUrl: 'https://github.com/EnderCommunity/Murmur/edit/master/docusaurus/',
+                    editUrl: 'https://github.com/EnderCommunity/Murmur/edit/main/docusaurus/',
                 },
                 blog: {
                     showReadingTime: true,
                     // Please change this to your repo.
-                    editUrl: 'https://github.com/EnderCommunity/Murmur/edit/master/docusaurus/blog/',
+                    editUrl: 'https://github.com/EnderCommunity/Murmur/edit/main/docusaurus/blog/',
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
