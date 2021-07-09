@@ -93,12 +93,12 @@ body {
     background-color: #FFFFFF;
 }
 
-div[class="announcementBar_node_modules-@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module"] {
+div[role="banner"] {
     background-color: #fafbfc;
     color: #091E42;
 }
 
-[data-theme='dark'] div[class="announcementBar_node_modules-@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module"] {
+[data-theme='dark'] div[role="banner"] {
     background-color: #2c2c2c;
     color: #e0e0e0;
 }
