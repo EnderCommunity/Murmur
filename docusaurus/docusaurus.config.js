@@ -13,6 +13,11 @@ module.exports = {
     organizationName: 'EnderCommunity', // Usually your GitHub org/user name.
     projectName: 'Murmur', // Usually your repo name.
     themeConfig: {
+        colorMode: {
+            defaultMode: 'dark',
+            disableSwitch: true,
+            respectPrefersColorScheme: true,
+        },
         navbar: {
             title: 'Murmur',
             logo: {

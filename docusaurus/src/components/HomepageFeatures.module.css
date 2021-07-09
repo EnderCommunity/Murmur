@@ -6,3 +6,23 @@
     padding: 2rem 0;
     width: 100%;
 }
+
+.homeIcons1, .homeIcons2, .homeIcons3 {
+    width: 32px;
+    height: 32px;
+    background-size: 32px 32px;
+    border: 0px solid;
+    display: inline-block;
+}
+
+.homeIcons1 {
+    background-image: url(../../static/img/bookt.svg);
+}
+
+.homeIcons2 {
+    background-image: url(../../static/img/cloud.svg);
+}
+
+.homeIcons3 {
+    background-image: url(../../static/img/cursor.svg);
+}
