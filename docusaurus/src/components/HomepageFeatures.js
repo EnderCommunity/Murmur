@@ -27,7 +27,6 @@ const FeatureList = [
     style: styles.homePageShowcase1,
     image: img1,
     anim: styles.fadeIn1,
-    anim2: styles.fadeOut1,
   },
   {
     title: (
@@ -45,7 +44,6 @@ const FeatureList = [
     style: styles.homePageShowcase2,
     image: img2,
     anim: styles.fadeIn2,
-    anim2: styles.fadeOut2,
   },
   {
     title: (
@@ -63,7 +61,6 @@ const FeatureList = [
     style: styles.homePageShowcase3,
     image: img3,
     anim: styles.fadeIn3,
-    anim2: styles.fadeOut3,
   },
 ];
 
@@ -97,15 +94,15 @@ export default function HomepageFeatures() {
   return (
     <>
       {FeatureList.map((props, idx) => (
-      <section className={(props.right) ? styles.features2 : styles.features}>
+        <section name="featuresection" className={(props.right) ? styles.features2 : styles.features}>
           <div className="container">
-            <ScrollAnimation duration="0.4" animateIn={props.anim} animateOut={props.anim2} className={styles.anim}>
+            <ScrollAnimation duration={0.4} animateIn={props.anim} animateOnce={true} animatePreScroll={true} className={styles.anim}>
               <div className="row">
                 {OrderElms(props, idx)}
               </div>
-              </ScrollAnimation>
+            </ScrollAnimation>
           </div>
-      </section>
+        </section>
       ))}
     </>
   );

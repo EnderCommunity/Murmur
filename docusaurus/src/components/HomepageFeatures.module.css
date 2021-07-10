@@ -2,7 +2,6 @@
 
 .features,
 .features2 {
-    display: flex;
     align-items: center;
     padding: 2rem 0;
     width: 100%;
@@ -87,18 +86,6 @@
     animation: fadeIn3 0.4s ease both;
 }
 
-.fadeOut1 {
-    animation: fadeOut1 0.4s ease both;
-}
-
-.fadeOut2 {
-    animation: fadeOut2 0.4s ease both;
-}
-
-.fadeOut3 {
-    animation: fadeOut3 0.4s ease both;
-}
-
 @keyframes fadeIn1 {
     from {
         opacity: 0;
@@ -129,39 +116,6 @@
     to {
         opacity: 1;
         transform: translate3d(0, 0, 0);
-    }
-}
-
-@keyframes fadeOut1 {
-    from {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-    to {
-        opacity: 0;
-        transform: translate3d(0, 10px, 0);
-    }
-}
-
-@keyframes fadeOut2 {
-    from {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-    to {
-        opacity: 0;
-        transform: translate3d(-10px, 0, 0);
-    }
-}
-
-@keyframes fadeOut3 {
-    from {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-    to {
-        opacity: 0;
-        transform: translate3d(0, -10px, 0);
     }
 }
 
@@ -218,4 +172,14 @@
     .features {
         margin: 100px 0;
     }
+}
+
+.features [class='container'],
+.features2 [class='container'] {
+    display: none;
+}
+
+[data-loaded='true'] .features [class='container'],
+[data-loaded='true'] .features2 [class='container'] {
+    display: flex;
 }
