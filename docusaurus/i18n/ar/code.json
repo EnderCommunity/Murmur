@@ -166,28 +166,28 @@
     "message": "انتقل إلى المحتوى الرئيسي",
     "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
   },
-  "Docusaurus was designed from the ground up to be easily installed and used to get your website up and running quickly.": {
-    "message": "Docusaurus was designed from the ground up to be easily installed and used to get your website up and running quickly."
-  },
-  "Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go ahead and move your docs into the <code>docs</code> directory.": {
-    "message": "Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go ahead and move your docs into the <code>docs</code> directory."
-  },
-  "Extend or customize your website layout by reusing React. Docusaurus can be extended while reusing the same header and footer.": {
-    "message": "Extend or customize your website layout by reusing React. Docusaurus can be extended while reusing the same header and footer."
-  },
   "Murmur": {
     "message": "Murmur"
   },
   "An experimental programming language for everyone.": {
-    "message": "لغة تجريبية للجميع."
+    "message": "لغة برمجة تجريبية مناسبة للجميع."
   },
   "Mur is an object-oriented programming language. Its structure is really easy to learn, and it's consistent with its rules!": {
-    "message": "Mur is an object-oriented programming language. Its structure is really easy to learn, and it's consistent with its rules!"
+    "message": "Mur هي لغة موجة باسلوب الكائنات. مبنى هذا اللغة سهل للغاية, ولديها قواعد ثابتة عبر اللغة."
   },
   "Mur's compiler is completely open-source, and everyone can contribute, modify, and play around with it! You're free to do whatever you want.": {
-    "message": "Mur's compiler is completely open-source, and everyone can contribute, modify, and play around with it! You're free to do whatever you want."
+    "message": "المترجم الخاص ب-Mur هو مفتوح المصدر, الجميع يستطيع المساهمة, التعديل, والتلاعب به! انت حر في ما يخص المترجم."
   },
   "Your users won't need to install any additional software to run your programs. Your Mur code is all compiled and prepared on your machine.": {
-    "message": "Your users won't need to install any additional software to run your programs. Your Mur code is all compiled and prepared on your machine."
+    "message": "مستخدمونك لن يحتاجوا الى تنزيل اي برامج اضافية لكي يقوموا بتشغيل برامجك. كود Mur الخاص بك يتم معالجته وترجمته على جهازك الخاص."
+  },
+  "Easy to Learn": {
+    "message": "سهل التعلم"
+  },
+  "Open Source": {
+    "message": "مفتوح المصدر"
+  },
+  "It Just Works": {
+    "message": "كل شيء يعمل فحسب"
   }
 }
