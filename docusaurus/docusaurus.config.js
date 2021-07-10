@@ -5,8 +5,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
     title: 'Murmur',
     tagline: 'An experimental programming language for everyone.',
-    url: 'https://your-docusaurus-test-site.com',
-    baseUrl: '/murmur/',
+    url: 'https://murmur.org',
+    baseUrl: '/murmur-test/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
@@ -30,7 +30,24 @@ module.exports = {
                     position: 'left',
                     label: 'Docs',
                 },
-                { to: '/blog', label: 'Blog', position: 'left' },
+                {
+                    label: 'Tools & Downloads',
+                    position: 'left'
+                },
+                //Search Bar
+                {
+                    label: 'Playground',
+                    position: 'left'
+                },
+                {
+                    to: '/blog',
+                    label: 'Blog',
+                    position: 'left'
+                },
+                {
+                    label: 'Help',
+                    position: 'left'
+                },
                 {
                     href: 'https://github.com/EnderCommunity/Murmur',
                     label: 'GitHub',
@@ -84,7 +101,7 @@ module.exports = {
                     ],
                 },
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} EnderCommunity. Built with Docusaurus.`,
+            copyright: `<br>Made with 💜 in Palestine | Copyright © ${new Date().getFullYear()} EnderCommunity`,
         },
         prism: {
             theme: lightCodeTheme,

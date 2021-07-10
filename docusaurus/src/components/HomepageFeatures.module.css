@@ -1,13 +1,22 @@
 /* stylelint-disable docusaurus/copyright-header */
 
-.features {
+.features,
+.features2 {
     display: flex;
     align-items: center;
     padding: 2rem 0;
     width: 100%;
 }
 
-.homeIcons1, .homeIcons2, .homeIcons3 {
+.features [class="container"] [class="row"],
+.features2 [class="container"] [class="row"] {
+    justify-content: center;
+    align-items: center;
+}
+
+.homeIcons1,
+.homeIcons2,
+.homeIcons3 {
     width: 32px;
     height: 32px;
     background-size: 32px 32px;
@@ -25,4 +34,188 @@
 
 .homeIcons3 {
     background-image: url(../../static/img/cursor.svg);
+}
+
+[data-theme="light"]:root {
+    --homepage-section-backgroundcolor: #efedff;
+    --homepage-showcase-border: #d4d4d4;
+    --homepage-showcase-shadow: rgb(145, 145, 145);
+}
+
+[data-theme="dark"]:root {
+    --homepage-section-backgroundcolor: #29273a;
+    --homepage-showcase-border: #3c3d3e;
+    --homepage-showcase-shadow: black;
+}
+
+.homePageShowcase1,
+.homePageShowcase2,
+.homePageShowcase3 {
+    position: flex;
+    border: 1px solid var(--homepage-showcase-border);
+    /**/
+    --ifm-col-width: 90%;
+    flex: 1 0;
+    margin-left: 0;
+    max-width: 90%;
+    padding: 0;
+    margin: 0px var(--ifm-spacing-horizontal);
+    width: 90%;
+    --ifm-col-width: calc(7 / 12 * 90%);
+    flex: 0 0 var(--ifm-col-width);
+    max-width: var(--ifm-col-width);
+    background-size: fill;
+    background-repeat: no-repeat;
+    box-shadow: 0px 1px 4px var(--homepage-showcase-shadow);
+    border-radius: 12px;
+    transition: box-shadow 0.2s;
+}
+
+.anim {
+    opacity: 0;
+}
+
+.fadeIn1 {
+    animation: fadeIn1 0.4s ease both;
+}
+
+.fadeIn2 {
+    animation: fadeIn2 0.4s ease both;
+}
+
+.fadeIn3 {
+    animation: fadeIn3 0.4s ease both;
+}
+
+.fadeOut1 {
+    animation: fadeOut1 0.4s ease both;
+}
+
+.fadeOut2 {
+    animation: fadeOut2 0.4s ease both;
+}
+
+.fadeOut3 {
+    animation: fadeOut3 0.4s ease both;
+}
+
+@keyframes fadeIn1 {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 50px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeIn2 {
+    from {
+        opacity: 0;
+        transform: translate3d(-50px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeIn3 {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -50px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeOut1 {
+    from {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(0, 10px, 0);
+    }
+}
+
+@keyframes fadeOut2 {
+    from {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(-10px, 0, 0);
+    }
+}
+
+@keyframes fadeOut3 {
+    from {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(0, -10px, 0);
+    }
+}
+
+[data-theme="light"] .features2 {
+    background-color: var(--homepage-section-backgroundcolor);
+}
+
+[data-theme="dark"] .features2 {
+    background-color: var(--homepage-section-backgroundcolor);
+}
+
+.features2,
+.features {
+    position: relative;
+    margin: 16px 0px;
+    margin-top: 0px;
+}
+
+.features {
+    position: relative;
+    margin: -30px 0px;
+}
+
+.features2:after {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: 0px;
+    left: 0px;
+    width: 0;
+    height: 0;
+    border-right: 100vw solid transparent;
+    border-bottom: 100px solid var(--homepage-section-backgroundcolor);
+}
+
+.features2:before {
+    content: "";
+    position: absolute;
+    bottom: -100px;
+    right: 0px;
+    left: 0px;
+    width: 0;
+    height: 0;
+    border-right: 100vw solid transparent;
+    border-top: 100px solid var(--homepage-section-backgroundcolor);
+}
+
+@media (max-width: 996px) {
+    .homePageShowcase1,
+    .homePageShowcase2,
+    .homePageShowcase3 {
+        display: none;
+    }
+    .features {
+        margin: 100px 0;
+    }
 }

@@ -1,0 +1,14 @@
+{
+  "version.label": {
+    "message": "0.0-test.2",
+    "description": "The label for version 0.0-test.2"
+  },
+  "sidebar.tutorialSidebar.category.Compiler Documentation": {
+    "message": "Compiler Documentation",
+    "description": "The label for category Compiler Documentation in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Mur Documentation": {
+    "message": "Mur Documentation",
+    "description": "The label for category Mur Documentation in sidebar tutorialSidebar"
+  }
+}

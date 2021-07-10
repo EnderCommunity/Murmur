@@ -10,5 +10,13 @@
   "sidebar.tutorialSidebar.category.Tutorial - Extras": {
     "message": "Tutorial - Extras",
     "description": "The label for category Tutorial - Extras in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Compiler Documentation": {
+    "message": "Compiler Documentation",
+    "description": "The label for category Compiler Documentation in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Mur Documentation": {
+    "message": "Mur Documentation",
+    "description": "The label for category Mur Documentation in sidebar tutorialSidebar"
   }
 }

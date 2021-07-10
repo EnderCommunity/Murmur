@@ -3,6 +3,12 @@ import clsx from 'clsx';
 import styles from './HomepageFeatures.module.css';
 import Translate, {translate} from '@docusaurus/Translate';
 
+import ScrollAnimation from 'react-animate-on-scroll';
+
+import img1 from '../../static/img/code1.png';
+import img2 from '../../static/img/githubdark.png';
+import img3 from '../../static/img/exp.png';
+
 
 const FeatureList = [
   {
@@ -17,6 +23,11 @@ const FeatureList = [
       })
     ),
     icon: styles.homeIcons1,
+    right: false,
+    style: styles.homePageShowcase1,
+    image: img1,
+    anim: styles.fadeIn1,
+    anim2: styles.fadeOut1,
   },
   {
     title: (
@@ -30,6 +41,11 @@ const FeatureList = [
         })
     ),
     icon: styles.homeIcons2, //../../static/img/cloud.svg
+    right: true,
+    style: styles.homePageShowcase2,
+    image: img2,
+    anim: styles.fadeIn2,
+    anim2: styles.fadeOut2,
   },
   {
     title: (
@@ -43,12 +59,17 @@ const FeatureList = [
       })
     ),
     icon: styles.homeIcons3, //../../static/img/cursor.svg
+    right: false,
+    style: styles.homePageShowcase3,
+    image: img3,
+    anim: styles.fadeIn3,
+    anim2: styles.fadeOut3,
   },
 ];
 
 function Feature({title, description, icon}) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx('col col--5')}>
       <div className="text--center padding-horiz--md">
         <div className={icon}></div>
         <h3><>{title}</></h3>
@@ -58,16 +79,34 @@ function Feature({title, description, icon}) {
   );
 }
 
+export function OrderElms(props, idx){
+  return (props.right) ? (
+    <>
+      <img src={props.image} className={props.style}/>
+      <Feature key={idx} {...props} />
+    </>
+  ) : (
+    <>
+      <Feature key={idx} {...props} />
+      <img src={props.image} className={props.style}/>
+    </>
+  )
+}
+
 export default function HomepageFeatures() {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <>
+      {FeatureList.map((props, idx) => (
+      <section className={(props.right) ? styles.features2 : styles.features}>
+          <div className="container">
+            <ScrollAnimation duration="0.4" animateIn={props.anim} animateOut={props.anim2} className={styles.anim}>
+              <div className="row">
+                {OrderElms(props, idx)}
+              </div>
+              </ScrollAnimation>
+          </div>
+      </section>
+      ))}
+    </>
   );
 }
