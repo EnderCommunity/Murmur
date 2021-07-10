@@ -6,6 +6,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import Translate, {translate} from '@docusaurus/Translate';
 import HomepageFeatures from '../components/HomepageFeatures';
+
 //import Translate, {translate} from '@docusaurus/Translate';
 
 function HomepageHeader() {
@@ -52,3 +53,7 @@ export default function Home() {
     </Layout>
   );
 }
+
+setTimeout(function(){
+  document.documentElement.dataset.loaded = true;
+}, 100);
