@@ -173,13 +173,3 @@
         margin: 100px 0;
     }
 }
-
-.features [class='container'],
-.features2 [class='container'] {
-    display: none;
-}
-
-[data-loaded='true'] .features [class='container'],
-[data-loaded='true'] .features2 [class='container'] {
-    display: flex;
-}

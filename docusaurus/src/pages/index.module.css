@@ -113,23 +113,3 @@ div[role="banner"] {
     opacity: 1;
     pointer-events: auto;
 }
-
-body:after {
-    content: "";
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    right: 0px;
-    left: 0px;
-    pointer-events: none;
-    background-color: #FFFFFF;
-}
-
-[data-theme='dark'] body:after {
-    background-color: #18191A;
-
-}
-
-[data-loaded='true'] body:after {
-    display: none;
-}
