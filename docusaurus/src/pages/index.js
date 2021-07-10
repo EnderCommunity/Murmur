@@ -53,7 +53,3 @@ export default function Home() {
     </Layout>
   );
 }
-
-setTimeout(function(){
-  document.documentElement.dataset.loaded = true;
-}, 100);
