@@ -109,7 +109,7 @@ module.exports = {
         },
         announcementBar: {
             id: 'announcementBar',
-            content: 'Please note that Mur is still in the pre-alpha development stages!',
+            content: 'Please note that Mur is still in the pre-alpha development stages! (It\'s not functional yet)',
             isCloseable: false, // Defaults to `true`.
         },
     },
