@@ -4,8 +4,6 @@ sidebar_position: 1
 
 # Introduction
 
-![Downloads](https://img.shields.io/github/downloads/EnderCommunity/Murmur/total?color=blue) ![EnderFramework Repository Size](https://img.shields.io/github/repo-size/EnderCommunity/Murmur?label=Repository%20Size&color=blue) ![EnderFramework Top Language](https://img.shields.io/github/languages/top/EnderCommunity/Murmur?color=blue) [![Issues](https://img.shields.io/github/issues/EnderCommunity/Murmur?color=blue)](https://github.com/EnderCommunity/Murmur/issues) [![Bugs](https://img.shields.io/github/issues/EnderCommunity/Murmur/bug?label=Bugs)](https://github.com/EnderCommunity/Murmur/issues?q=label%3A%22bug%22) [![Help wanted!](https://img.shields.io/github/issues/EnderCommunity/Murmur/help%20wanted?label=Help%20Wanted&color=red)](https://github.com/EnderCommunity/Murmur/issues?q=label%3A%22help+wanted%22) [![EnderFramework Discord Invite](https://img.shields.io/discord/756472096099663954?color=blue&label=Discord%20Server&logo=discord&logoColor=white)](https://discord.com/invite/rWbtez6) [![Twitter](https://img.shields.io/twitter/follow/_EnderCommunity?style=social)](https://twitter.com/intent/follow?screen_name=EnderAdel) [![EnderAdel](https://img.shields.io/github/followers/adel-sbeh?label=The%20Original%20Creator&style=social)](https://github.com/adel-sbeh/)
-
 Murmur - *you may also refer to it by "Mur" or "ECMPL-2021" (EnderCommunity-Maintained Programming Language -- 2021)* - is an experimental programming language.
 
 The whole goal of Mur is to offer everyone an easy language to learn and write in with no performance costs.
@@ -60,7 +58,9 @@ If you want to contribute, make sure that you've properly set up the development
 
 ## License
 
->We want you to understand that we chose this license because we believe that no one should profit from selling compilers for programming languages. We also chose this license because we want anyone who has a better vision for this programming language or compiler to not be denied the right to do whatever they want, without denying others the same opportunity for the potential future project/vision.
+:::note Note
+We want you to understand that we chose this license because we believe that no one should profit from selling compilers for programming languages. We also chose this license because we want anyone who has a better vision for this programming language or compiler to not be denied the right to do whatever they want, without denying others the same opportunity for the potential future project/vision.
+:::
 
 ![License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
 
