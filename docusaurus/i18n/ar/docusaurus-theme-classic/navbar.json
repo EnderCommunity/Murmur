@@ -16,15 +16,15 @@
     "description": "Navbar item with label GitHub"
   },
   "item.label.Tools & Downloads": {
-    "message": "Tools & Downloads",
+    "message": "الأدوات & التنزيلات",
     "description": "Navbar item with label Tools & Downloads"
   },
   "item.label.Playground": {
-    "message": "Playground",
+    "message": "الملعب",
     "description": "Navbar item with label Playground"
   },
   "item.label.Help": {
-    "message": "Help",
+    "message": "المساعدة",
     "description": "Navbar item with label Help"
   }
 }

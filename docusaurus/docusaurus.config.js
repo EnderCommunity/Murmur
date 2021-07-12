@@ -125,7 +125,7 @@ module.exports = {
                 blog: {
                     showReadingTime: true,
                     // Please change this to your repo.
-                    editUrl: 'https://github.com/EnderCommunity/Murmur/edit/main/docusaurus/blog/',
+                    editUrl: 'https://github.com/EnderCommunity/Murmur/edit/main/docusaurus/',
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),

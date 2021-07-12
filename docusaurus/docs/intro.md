@@ -9,7 +9,9 @@ Murmur - *you may also refer to it by "Mur" or "ECMPL-2021" (EnderCommunity-Main
 The whole goal of Mur is to offer everyone an easy language to learn and write in with no performance costs.
 Mur code compiles down to C code, which is then compiled to machine code.
 
->***"Mur" is still not functional, this is all just some pitches and some not-even-close-to-half-baked code.***
+:::note Note
+**"Mur" is still not functional, this is all just some pitches and some not-even-close-to-half-baked code.**
+:::
 
 The file extension of Mur files is `.mur`, and the file extension of Mur module files is `.murm`.
 
@@ -19,7 +21,7 @@ You can learn how to write any application using the Mur programming language, a
 Do NOT use Mur for any important stuff, it's an experimental programming language.
 :::
 
-:::info Note
+:::info Info
 This documentation is not complete, as Mur is not really complete either right now.
 :::
 
