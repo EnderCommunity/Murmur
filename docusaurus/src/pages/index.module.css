@@ -38,24 +38,6 @@
     border-bottom: 100px solid #FFFFFF;
 }
 
-footer[class="footer footer--dark"] {
-    margin-top: 120px;
-    position: relative;
-    padding-top: 80px;
-}
-
-footer[class="footer footer--dark"]:after {
-    content: "";
-    position: absolute;
-    top: -100px;
-    right: 0px;
-    left: 0px;
-    width: 0;
-    height: 0;
-    border-left: 100vw solid transparent;
-    border-bottom: 100px solid black;
-}
-
 body {
     overflow-x: hidden !important;
 }
@@ -63,6 +45,7 @@ body {
 @media (max-width: 500px) {
     .heroBanner {
         height: 560px;
+        background-image: none !important;
     }
     [data-theme='dark'] .heroBanner:after {
         border-bottom: 100px solid #18191A;
