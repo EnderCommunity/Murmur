@@ -4,13 +4,12 @@ sidebar_position: 1
 
 # Introduction
 
-Murmur - *you may also refer to it by "Mur" or "ECMPL-2021" (EnderCommunity-Maintained Programming Language -- 2021)* - is an experimental programming language.
+Mur is, like many other languages, an object-oriented and type-strict programming language. Mur depends on its own compiler to analyse and translate its code into C code. After that, it's all left for your C compiler to take care of the output code.
 
-The whole goal of Mur is to offer everyone an easy language to learn and write in with no performance costs.
-Mur code compiles down to C code, which is then compiled to machine code.
+Mur is all about making it easier for developers to write code without compromising any runtime features with little-to-notice performance costs.
 
-:::note Note
-**"Mur" is still not functional, this is all just some pitches and some not-even-close-to-half-baked code.**
+:::caution Caution
+Mur is still NOT functional yet!
 :::
 
 The file extension of Mur files is `.mur`, and the file extension of Mur module files is `.murm`.

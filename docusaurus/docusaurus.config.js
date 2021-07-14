@@ -135,6 +135,6 @@ module.exports = {
     ],
     i18n: {
         defaultLocale: 'en-GB',
-        locales: ['en-GB', 'en-US', 'ar'],
+        locales: ['en-GB', 'ar'],
     },
 };

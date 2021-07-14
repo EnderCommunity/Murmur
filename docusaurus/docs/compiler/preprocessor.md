@@ -12,3 +12,9 @@ The preprocessor receives the `.mur` file you passed to the compiler, it then st
 ## Preprocessor Output
 
 The output of the preprocessor is a `.tmp` file.
+
+The format of each output line is:
+
+```murtmp
+[{<path>},<line>;<column>]-><filtered_content>
+```

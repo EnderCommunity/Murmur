@@ -8,6 +8,22 @@ Low-level methods are methods that are called outside of groups. They are always
 
 ## Outer-Methods
 
+#### Define
+
+```mur
+define <name> <value>;
+```
+
+The `define` outer-method is used to define a constant.
+
+#### SetSize
+
+```mur
+setsize <type> <size>;
+```
+
+The `setsize` outer-method is used to set a custom memory allocation size for the built-in types.
+
 ## Preprocessor Methods & Super-Methods
 
 Preprocessor Methods are methods that are processed in the preprocessor stage. They are separated into two types:
