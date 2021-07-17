@@ -8,16 +8,18 @@ Your program consists of mutiple structures and scopes. Each Structure and scope
 
 ## Structure
 
-Your program structure should be similar to this:
+It's important to note that every Mur program main file should contain, by default, one group named after the main file name, one class named `Program`, and one function named `Main`. So, for example, the start file `MyProject.mur` should contain the following code:
 
 ```mur
-group MainFileName {
+group MyProject {
 
     class Program {
 
         function::int Main(){
 
             //Your code goes here...
+
+            return 0;
 
         }
 
@@ -81,7 +83,3 @@ This scope can only contain variables and functions.
 ### Function-Level-Scope
 
 This scope can only contain variables, functions, and super-methods.
-
-## Program Structure
-
-It's important to note that every Mur program should contain, by default, one group

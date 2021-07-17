@@ -85,7 +85,8 @@ div[role="banner"] {
     color: #e0e0e0;
 }
 
-[class='navbar__item navbar__link'],
+
+/*[class='navbar__item navbar__link'],
 [class='menu__link'] {
     opacity: 0.25;
     pointer-events: none;
@@ -95,4 +96,4 @@ div[role="banner"] {
 [class='menu__link'][href] {
     opacity: 1;
     pointer-events: auto;
-}
+}*/

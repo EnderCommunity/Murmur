@@ -1,1 +1,1 @@
-npm run docusaurus docs:version 0.0-test
+npm run docusaurus docs:version 0.0-test.0

@@ -13,10 +13,12 @@ function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
 
   siteConfig.title = translate({
+    id: 'homepage.header.title',
     message: 'Murmur',
   });
   siteConfig.tagline = translate({
-    message: 'An experimental programming language for everyone.',
+    id: 'homepage.header.desc',
+    message: 'Made by the community, for the community.',
   });
 
   return (
@@ -28,7 +30,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-              <Translate>Read The Docs</Translate>
+              <Translate id="homepage.header.mainbutton">Read The Docs</Translate>
           </Link>
         </div>
       </div>

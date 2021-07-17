@@ -21,7 +21,7 @@ module.exports = {
         navbar: {
             title: 'Murmur',
             logo: {
-                alt: 'Murmur\'s Logo',
+                alt: 'Mur\'s Logo',
                 src: 'img/logo.svg',
             },
             items: [{
@@ -32,59 +32,80 @@ module.exports = {
                 },
                 {
                     label: 'Tools & Downloads',
-                    position: 'left'
+                    position: 'left',
+                    to: '/soon/',
                 },
                 //Search Bar
                 {
                     label: 'Playground',
-                    position: 'left'
+                    position: 'left',
+                    to: '/soon/',
                 },
                 {
                     to: '/blog',
                     label: 'Blog',
-                    position: 'left'
+                    position: 'left',
                 },
                 {
                     label: 'Help',
-                    position: 'left'
-                },
-                {
-                    href: 'https://github.com/EnderCommunity/Murmur',
-                    label: 'GitHub',
-                    position: 'right',
+                    position: 'left',
+                    to: '/soon/',
                 },
                 {
                     type: 'localeDropdown',
                     position: 'right',
+                    dropdownItemsAfter: [{
+                        href: '/soon/',
+                        label: 'Help Us Translate',
+                    }, ],
                 },
                 {
                     type: 'docsVersionDropdown',
                     position: 'right',
+                    dropdownItemsAfter: [{
+                        href: '/soon/',
+                        label: 'All Versions',
+                    }, ],
+                },
+                {
+                    href: 'https://github.com/EnderCommunity/Murmur',
+                    'aria-label': 'GitHub Repository',
+                    position: 'right',
+                    className: 'header-github-link',
                 },
             ],
         },
         footer: {
             style: 'dark',
             links: [{
-                    title: 'Docs',
+                    title: 'Get Started',
                     items: [{
-                        label: 'Docs',
-                        to: '/docs/intro',
-                    }, ],
+                            label: 'Docs',
+                            to: '/docs/intro',
+                        },
+                        {
+                            label: 'Tools & Downloads',
+                            href: '/soon/',
+                        },
+                        {
+                            label: 'Playground',
+                            href: '/soon/',
+                        },
+                    ],
                 },
                 {
                     title: 'Community',
                     items: [{
-                            label: 'Stack Overflow',
-                            href: 'https://stackoverflow.com/questions/tagged/mur',
+                            label: 'Twitter',
+                            href: 'https://twitter.com/_EnderCommunity',
                         },
                         {
                             label: 'Discord',
-                            href: 'https://afwa.fawf.awfa',
+                            href: 'https://discord.gg/aWBnkJpgzt',
                         },
                         {
-                            label: 'Twitter',
-                            href: 'https://twitter.com/EnderCommunity',
+                            label: 'Stack Overflow',
+                            href: 'https://stackoverflow.com/questions/tagged/mur',
                         },
                     ],
                 },
@@ -97,6 +118,31 @@ module.exports = {
                         {
                             label: 'GitHub',
                             href: 'https://github.com/EnderCommunity/Murmur',
+                        },
+                        {
+                            label: 'EnderCommunity',
+                            href: 'https://endercomm.net',
+                        },
+                    ],
+                },
+                {
+                    title: 'Legal',
+                    // Please do not remove the privacy and terms, it's a legal requirement.
+                    items: [{
+                            label: 'Privacy',
+                            href: '/soon/',
+                        },
+                        {
+                            label: 'Terms',
+                            href: '/soon/',
+                        },
+                        {
+                            label: 'Data Policy',
+                            href: '/soon/',
+                        },
+                        {
+                            label: 'Cookie Policy',
+                            href: '/soon/',
                         },
                     ],
                 },
@@ -121,6 +167,15 @@ module.exports = {
                     sidebarPath: require.resolve('./sidebars.js'),
                     // Please change this to your repo.
                     editUrl: 'https://github.com/EnderCommunity/Murmur/edit/main/docusaurus/',
+                },
+                docs: {
+                    showLastUpdateAuthor: true,
+                    showLastUpdateTime: true,
+                    versions: {
+                        current: {
+                            label: `0.0-test.5 🚧`,
+                        },
+                    },
                 },
                 blog: {
                     showReadingTime: true,
