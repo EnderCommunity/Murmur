@@ -1,1 +1,1 @@
-npx docusaurus build
+npm run build
