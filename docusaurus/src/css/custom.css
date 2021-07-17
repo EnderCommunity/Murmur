@@ -51,8 +51,13 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
     border-bottom: 100px solid black;
 }
 
+.header-github-link {
+    width: 32px;
+    position: relative;
+}
+
 .header-github-link:hover {
-    opacity: .6
+    opacity: .6;
 }
 
 .header-github-link:before {
@@ -60,7 +65,10 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
     content: "";
     display: flex;
     height: 24px;
-    width: 24px
+    width: 24px;
+    margin: 0px;
+    position: relative;
+    left: -8px;
 }
 
 html[data-theme=dark] .header-github-link:before {
