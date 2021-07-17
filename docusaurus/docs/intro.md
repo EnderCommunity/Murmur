@@ -55,14 +55,12 @@ Copy the extension folder *`/murmur-vsc`* to the extension directory.
 
 Everyone is welcomed to contribute to this project in any way they want. (e.g. help code the compiler, or help with the pitching process)
 
-If you want to contribute, make sure that you've properly set up the development environment. And, when you push your changes to the compiler, make sure to change back the `.vscode` compiler values, and don't change the environment variables in `./compiler/envi.h`.
+If you want to contribute, make sure that you've properly set up the development environment. And, before you push your changes to [our repository](https://github.com/EnderCommunity/Murmur), make sure not to change the files inside of the `/.vscode` folder & the environment variables (in `./compiler/envi.h`).
 
 ## License
+
+Murmur is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 :::note Note
 We want you to understand that we chose this license because we believe that no one should profit from selling compilers for programming languages. We also chose this license because we want anyone who has a better vision for this programming language or compiler to not be denied the right to do whatever they want, without denying others the same opportunity for the potential future project/vision.
 :::
-
-![License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
-
-Murmur is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).

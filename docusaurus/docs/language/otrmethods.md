@@ -8,7 +8,7 @@ Low-level methods are methods that are called outside of groups. They are always
 
 ## Outer-Methods
 
-#### Define
+### Define
 
 ```mur
 define <name> <value>;
@@ -16,7 +16,7 @@ define <name> <value>;
 
 The `define` outer-method is used to define a constant.
 
-#### SetSize
+### SetSize
 
 ```mur
 setsize <type> <size>;

@@ -14,11 +14,13 @@ const FeatureList = [
   {
     title: (
       translate({
+        id: 'homepage.features.first.title',
         message: "Easy to Learn",
       })
     ),
     description: (
       translate({
+        id: 'homepage.features.first.desc',
         message: "Mur is an object-oriented programming language. Its structure is really easy to learn, and it's consistent with its rules!"
       })
     ),
@@ -31,11 +33,13 @@ const FeatureList = [
   {
     title: (
       translate({
+        id: 'homepage.features.second.title',
         message: "Open Source",
       })
     ),
     description: (
         translate({
+          id: 'homepage.features.second.desc',
           message: "Mur's compiler is completely open-source, and everyone can contribute, modify, and play around with it! You're free to do whatever you want."
         })
     ),
@@ -48,11 +52,13 @@ const FeatureList = [
   {
     title: (
       translate({
+        id: 'homepage.features.third.title',
         message: "It Just Works",
       })
     ),
     description: (
       translate({
+        id: 'homepage.features.third.desc',
         message: "Your users won't need to install any additional software to run your programs. Your Mur code is all compiled and prepared on your machine."
       })
     ),
