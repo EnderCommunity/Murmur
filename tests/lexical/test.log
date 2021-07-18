@@ -1,5 +1,5 @@
 [?][LOG SYSTEM] => Created a log file successfully!
-[!][Compiler Manager] => The workstation directory has been set to "C:\Users\adels\Desktop\EnderCommunity\Projects\Murmur\tests\lexical\"
+[!][Compiler Manager] => The workstation directory has been set to "E:\files\EnderCommunity\Projects\Murmur\tests\lexical\"
 [?][Compiler Manager] => Testing the `writeLogLine` function
 [?][Compiler Manager] => Starting the preprocessor.
 [?][Preprocessor] => Preprocessor started!
@@ -132,7 +132,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][26, 13] => New processing loop started.
-[!][Preprocessor] => double test6 = .0, test7 = 0.; "\".\" alone will not be considered as a number!";
+[!][Preprocessor] => double test6 = .0, test7 = 0.; "\".\" alone will not be seen as a number!";
 [?][Preprocessor][26, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
