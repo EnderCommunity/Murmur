@@ -13,6 +13,7 @@ module.exports = {
     organizationName: 'EnderCommunity', // Usually your GitHub org/user name.
     projectName: 'Murmur', // Usually your repo name.
     themeConfig: {
+        hideableSidebar: true,
         colorMode: {
             defaultMode: 'dark',
             disableSwitch: true,
