@@ -7,7 +7,7 @@ The lexer is supposed to label all the your code.
 
 ## Lexer Input
 
-The lexer receives the `.tmp` file passed to the preprocessor, it then start processing the whole file content.
+The lexer receives the `.tmp` file passed by the preprocessor, it then start processing the whole file content.
 
 ## Lexer Output
 
