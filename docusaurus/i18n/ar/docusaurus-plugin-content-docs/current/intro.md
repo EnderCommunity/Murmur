@@ -2,15 +2,14 @@
 sidebar_position: 1
 ---
 
-# Introduction
+# المقدمة
 
-Murmur - *you may also refer to it by "Mur" or "ECMPL-2021" (EnderCommunity-Maintained Programming Language -- 2021)* - is an experimental programming language.
+Mur is, like many other languages, an object-oriented and type-strict programming language. Mur depends on its own compiler to analyse and translate its code into C code. After that, it's all left for your C compiler to take care of the output code.
 
-The whole goal of Mur is to offer everyone an easy language to learn and write in with no performance costs.
-Mur code compiles down to C code, which is then compiled to machine code.
+Mur is all about making it easier for developers to write code without compromising any runtime features with little-to-notice performance costs.
 
-:::note Note
-**"Mur" is still not functional, this is all just some pitches and some not-even-close-to-half-baked code.**
+:::caution Caution
+Mur is still NOT functional yet!
 :::
 
 The file extension of Mur files is `.mur`, and the file extension of Mur module files is `.murm`.
@@ -56,14 +55,12 @@ Copy the extension folder *`/murmur-vsc`* to the extension directory.
 
 Everyone is welcomed to contribute to this project in any way they want. (e.g. help code the compiler, or help with the pitching process)
 
-If you want to contribute, make sure that you've properly set up the development environment. And, when you push your changes to the compiler, make sure to change back the `.vscode` compiler values, and don't change the environment variables in `./compiler/envi.h`.
+If you want to contribute, make sure that you've properly set up the development environment. And, before you push your changes to [our repository](https://github.com/EnderCommunity/Murmur), make sure not to change the files inside of the `/.vscode` folder & the environment variables (in `./compiler/envi.h`).
 
 ## License
+
+Murmur is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 :::note Note
 We want you to understand that we chose this license because we believe that no one should profit from selling compilers for programming languages. We also chose this license because we want anyone who has a better vision for this programming language or compiler to not be denied the right to do whatever they want, without denying others the same opportunity for the potential future project/vision.
 :::
-
-![License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
-
-Murmur is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).

@@ -1,0 +1,78 @@
+{
+  "link.title.Get Started": {
+    "message": "ابدأ",
+    "description": "The title of the footer links column with title=Get Started in the footer"
+  },
+  "link.title.Community": {
+    "message": "المجتمع",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "المزيد",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.title.Legal": {
+    "message": "قانوني",
+    "description": "The title of the footer links column with title=Legal in the footer"
+  },
+  "link.item.label.Docs": {
+    "message": "المستندات",
+    "description": "The label of footer link with label=Docs linking to /docs/intro"
+  },
+  "link.item.label.Tools & Downloads": {
+    "message": "الأدوات & التنزيلات",
+    "description": "The label of footer link with label=Tools & Downloads linking to /soon/"
+  },
+  "link.item.label.Playground": {
+    "message": "الملعب",
+    "description": "The label of footer link with label=Playground linking to /soon/"
+  },
+  "link.item.label.Help": {
+    "message": "المساعدة",
+    "description": "The label of footer link with label=Help linking to /soon/"
+  },
+  "link.item.label.Twitter": {
+    "message": "Twitter",
+    "description": "The label of footer link with label=Twitter linking to https://twitter.com/_EnderCommunity"
+  },
+  "link.item.label.Discord": {
+    "message": "Discord",
+    "description": "The label of footer link with label=Discord linking to https://discord.gg/aWBnkJpgzt"
+  },
+  "link.item.label.Stack Overflow": {
+    "message": "Stack Overflow",
+    "description": "The label of footer link with label=Stack Overflow linking to https://stackoverflow.com/questions/tagged/mur"
+  },
+  "link.item.label.Blog": {
+    "message": "المدونة",
+    "description": "The label of footer link with label=Blog linking to /blog"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/EnderCommunity/Murmur"
+  },
+  "link.item.label.EnderCommunity": {
+    "message": "EnderCommunity",
+    "description": "The label of footer link with label=EnderCommunity linking to https://endercomm.net"
+  },
+  "link.item.label.Privacy": {
+    "message": "الخصوصية",
+    "description": "The label of footer link with label=Privacy linking to /legal/privacy/"
+  },
+  "link.item.label.Terms": {
+    "message": "الشروط",
+    "description": "The label of footer link with label=Terms linking to /legal/terms/"
+  },
+  "link.item.label.Data Policy": {
+    "message": "سياسة البيانات",
+    "description": "The label of footer link with label=Data Policy linking to /legal/data-policy/"
+  },
+  "link.item.label.Cookie Policy": {
+    "message": "سياسة ال-Cookie",
+    "description": "The label of footer link with label=Cookie Policy linking to /legal/cookie-policy/"
+  },
+  "copyright": {
+    "message": "<br>مصنوع بكل 💜 للجميع | حقوق النشر © 2021 EnderCommunity",
+    "description": "The footer copyright"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "version.label": {
-    "message": "0.0-test.2",
-    "description": "The label for version 0.0-test.2"
+    "message": "0.0-test.4",
+    "description": "The label for version 0.0-test.4"
   },
   "sidebar.tutorialSidebar.category.Compiler Documentation": {
     "message": "Compiler Documentation",
