@@ -1,0 +1,14 @@
+{
+  "version.label": {
+    "message": "0.0-test.5 🚧",
+    "description": "The label for version current"
+  },
+  "sidebar.defaultSidebar.category.Compiler Documentation": {
+    "message": "مستندات المترجم",
+    "description": "The label for category Compiler Documentation in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Mur Documentation": {
+    "message": "مستندات Mur",
+    "description": "The label for category Mur Documentation in sidebar defaultSidebar"
+  }
+}

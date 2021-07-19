@@ -1,5 +1,29 @@
 {
-  "Read The Docs": {
+  "homepage.features.first.title": {
+    "message": "سهل التعلم"
+  },
+  "homepage.features.first.desc": {
+    "message": "Mur هي لغة موجة باسلوب الكائنات. مبنى هذا اللغة سهل للغاية, ولديها قواعد ثابتة عبر اللغة."
+  },
+  "homepage.features.second.title": {
+    "message": "مفتوح المصدر"
+  },
+  "homepage.features.second.desc": {
+    "message": "المترجم الخاص ب-Mur هو مفتوح المصدر, الجميع يستطيع المساهمة, التعديل, والتلاعب به! انت حر في ما يخص المترجم."
+  },
+  "homepage.features.third.title": {
+    "message": "كل شيء يعمل فحسب"
+  },
+  "homepage.features.third.desc": {
+    "message": "مستخدمونك لن يحتاجوا الى تنزيل اي برامج اضافية لكي يقوموا بتشغيل برامجك. كود Mur الخاص بك يتم معالجته وترجمته على جهازك الخاص."
+  },
+  "homepage.header.title": {
+    "message": "Murmur"
+  },
+  "homepage.header.desc": {
+    "message": "مصنوع من قبل المجتمع, للمجتمع."
+  },
+  "homepage.header.mainbutton": {
     "message": "اقرأ المستندات"
   },
   "theme.NotFound.title": {
@@ -18,17 +42,17 @@
     "message": "إغلاق",
     "description": "The ARIA label for close button of announcement bar"
   },
-  "theme.blog.post.paginator.navAriaLabel": {
-    "message": "التنقل في صفحة مقالات المدونة",
-    "description": "The ARIA label for the blog posts pagination"
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "التنقل في صفحة قائمة المدونة",
+    "description": "The ARIA label for the blog pagination"
   },
-  "theme.blog.post.paginator.newerPost": {
-    "message": "مقالات أحدث",
-    "description": "The blog post button label to navigate to the newer/previous post"
+  "theme.blog.paginator.newerEntries": {
+    "message": "إدخالات أحدث",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
   },
-  "theme.blog.post.paginator.olderPost": {
-    "message": "مقالات أقدم",
-    "description": "The blog post button label to navigate to the older/next post"
+  "theme.blog.paginator.olderEntries": {
+    "message": "إدخالات أقدم",
+    "description": "The label used to navigate to the older blog posts page (next page)"
   },
   "theme.blog.post.readingTime.plurals": {
     "message": "{readingTime} دقائق قراءة|{readingTime} دقائق قراءة",
@@ -42,17 +66,17 @@
     "message": "اقرأ المزيد",
     "description": "The label used in blog post item excerpts to link to full blog posts"
   },
-  "theme.blog.paginator.navAriaLabel": {
-    "message": "التنقل في صفحة قائمة المدونة",
-    "description": "The ARIA label for the blog pagination"
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "التنقل في صفحة مقالات المدونة",
+    "description": "The ARIA label for the blog posts pagination"
   },
-  "theme.blog.paginator.newerEntries": {
-    "message": "إدخالات أحدث",
-    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  "theme.blog.post.paginator.newerPost": {
+    "message": "مقالات أحدث",
+    "description": "The blog post button label to navigate to the newer/previous post"
   },
-  "theme.blog.paginator.olderEntries": {
-    "message": "إدخالات أقدم",
-    "description": "The label used to navigate to the older blog posts page (next page)"
+  "theme.blog.post.paginator.olderPost": {
+    "message": "مقالات أقدم",
+    "description": "The blog post button label to navigate to the older/next post"
   },
   "theme.blog.sidebar.navAriaLabel": {
     "message": "المقالات الحديثة",
@@ -123,7 +147,7 @@
     "description": "The ARIA label for open button of mobile doc sidebar"
   },
   "theme.docs.sidebar.navAriaLabel": {
-    "message": "التنقل بالشريط الجانبي",
+    "message": "التنقل في الشريط الجانبي",
     "description": "The ARIA label for documentation menu"
   },
   "theme.docs.versions.unreleasedVersionLabel": {
@@ -165,29 +189,5 @@
   "theme.common.skipToMainContent": {
     "message": "انتقل إلى المحتوى الرئيسي",
     "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
-  },
-  "Murmur": {
-    "message": "Murmur"
-  },
-  "An experimental programming language for everyone.": {
-    "message": "لغة برمجة تجريبية مناسبة للجميع."
-  },
-  "Mur is an object-oriented programming language. Its structure is really easy to learn, and it's consistent with its rules!": {
-    "message": "Mur هي لغة موجة باسلوب الكائنات. مبنى هذا اللغة سهل للغاية, ولديها قواعد ثابتة عبر اللغة."
-  },
-  "Mur's compiler is completely open-source, and everyone can contribute, modify, and play around with it! You're free to do whatever you want.": {
-    "message": "المترجم الخاص ب-Mur هو مفتوح المصدر, الجميع يستطيع المساهمة, التعديل, والتلاعب به! انت حر في ما يخص المترجم."
-  },
-  "Your users won't need to install any additional software to run your programs. Your Mur code is all compiled and prepared on your machine.": {
-    "message": "مستخدمونك لن يحتاجوا الى تنزيل اي برامج اضافية لكي يقوموا بتشغيل برامجك. كود Mur الخاص بك يتم معالجته وترجمته على جهازك الخاص."
-  },
-  "Easy to Learn": {
-    "message": "سهل التعلم"
-  },
-  "Open Source": {
-    "message": "مفتوح المصدر"
-  },
-  "It Just Works": {
-    "message": "كل شيء يعمل فحسب"
   }
 }
