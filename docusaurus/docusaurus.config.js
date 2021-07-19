@@ -56,7 +56,7 @@ module.exports = {
                     type: 'localeDropdown',
                     position: 'right',
                     dropdownItemsAfter: [{
-                        href: '/soon/',
+                        href: '/translate/',
                         label: 'Help Us Translate',
                     }, ],
                 },
@@ -64,7 +64,7 @@ module.exports = {
                     type: 'docsVersionDropdown',
                     position: 'right',
                     dropdownItemsAfter: [{
-                        href: '/soon/',
+                        href: '/versions/',
                         label: 'All Versions',
                     }, ],
                 },
@@ -90,6 +90,10 @@ module.exports = {
                         },
                         {
                             label: 'Playground',
+                            href: '/soon/',
+                        },
+                        {
+                            label: 'Help',
                             href: '/soon/',
                         },
                     ],
@@ -131,24 +135,24 @@ module.exports = {
                     // Please do not remove the privacy and terms, it's a legal requirement.
                     items: [{
                             label: 'Privacy',
-                            href: '/soon/',
+                            href: '/legal/privacy/',
                         },
                         {
                             label: 'Terms',
-                            href: '/soon/',
+                            href: '/legal/terms/',
                         },
                         {
                             label: 'Data Policy',
-                            href: '/soon/',
+                            href: '/legal/data-policy/',
                         },
                         {
                             label: 'Cookie Policy',
-                            href: '/soon/',
+                            href: '/legal/cookie-policy/',
                         },
                     ],
                 },
             ],
-            copyright: `<br>Made with 💜 in Palestine | Copyright © ${new Date().getFullYear()} EnderCommunity`,
+            copyright: `<br>Made with 💜 for everyone | Copyright © ${new Date().getFullYear()} EnderCommunity`,
         },
         prism: {
             theme: lightCodeTheme,
