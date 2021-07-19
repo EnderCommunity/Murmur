@@ -32,6 +32,14 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
+html[data-theme='light'] * {
+    scrollbar-color: light;
+}
+
+html[data-theme='dark'] * {
+    scrollbar-color: dark;
+}
+
 .footer {
     background-color: black;
     margin-top: 120px;
