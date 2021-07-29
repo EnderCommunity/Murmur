@@ -6,7 +6,7 @@ module.exports = {
     title: 'Murmur',
     tagline: 'An experimental programming language for everyone.',
     url: 'https://murmur.org',
-    baseUrl: '/murmur-test/',
+    baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
@@ -20,6 +20,7 @@ module.exports = {
             respectPrefersColorScheme: true,
         },
         navbar: {
+            hideOnScroll: false,
             title: 'Murmur',
             logo: {
                 alt: 'Mur\'s Logo',

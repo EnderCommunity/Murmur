@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+
 void Deb(){ //Minimal debug
 
     printf("[Debug] ");
@@ -24,7 +25,7 @@ void Deb(){ //Minimal debug
 
 void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj);
 
-int main(int argc, char *argv[]){ //You can also use `char *envp[]`
+int main(int argc, char *argv[]){
 
     RegDebStr(); //Start the debugging timer
 
