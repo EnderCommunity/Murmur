@@ -171,12 +171,11 @@ module.exports = {
             {
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
-                    // Please change this to your repo.
                     editUrl: 'https://github.com/EnderCommunity/Murmur/edit/main/docusaurus/',
-                },
-                docs: {
                     showLastUpdateAuthor: true,
                     showLastUpdateTime: true,
+                    sidebarCollapsible: true,
+                    sidebarCollapsed: true,
                     versions: {
                         current: {
                             label: `0.0-test.5 🚧`,
