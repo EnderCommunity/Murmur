@@ -4,7 +4,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-
 void Deb(){ //Minimal debug
 
     printf("[Debug] ");

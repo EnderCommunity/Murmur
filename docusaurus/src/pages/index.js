@@ -12,10 +12,16 @@ import HomepageFeatures from '../components/HomepageFeatures';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
 
+  siteConfig.themeConfig.announcementBar.content = translate({
+    id: 'website.announcement',
+    message: "Please note that Mur is still in the pre-alpha development stages! (It's not functional yet)",
+  })
+
   siteConfig.title = translate({
     id: 'homepage.header.title',
     message: 'Murmur',
   });
+
   siteConfig.tagline = translate({
     id: 'homepage.header.desc',
     message: 'Made by the community, for the community.',
@@ -40,13 +46,19 @@ function HomepageHeader() {
 
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
+
+  siteConfig.description = translate({
+    id: 'website.description',
+    message: 'A completely open-source, object-oriented, and type-strict programming language.',
+  });
+
   return (
     <Layout
       title={
-          siteConfig.title
+          siteConfig.tagline
       }
       description={
-          siteConfig.tagline
+          siteConfig.description
       }>
       <HomepageHeader />
       <main>
