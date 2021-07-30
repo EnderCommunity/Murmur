@@ -162,7 +162,7 @@ module.exports = {
                     ],
                 },
             ],
-            copyright: `<br>Made with 💜 for everyone | Copyright © ${new Date().getFullYear()} EnderCommunity`,
+            copyright: `<br>Made with 💜 for everyone | Copyright © ${new Date().getFullYear()} EnderCommunity<br>This project is possible thanks to <a href="https://fosshost.org/" target="_blank">Fosshost</a>, <a href="https://infinityfree.net/" target="_blank">InfinityFree</a>, <a href="https://www.cloudflare.com/" target="_blank">Cloudflare</a>, <a href="https://github.com/" target="_blank">GitHub</a>, and you!`,
         },
         prism: {
             theme: lightCodeTheme,
