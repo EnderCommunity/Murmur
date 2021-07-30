@@ -10,5 +10,13 @@
   "sidebar.defaultSidebar.category.Mur Documentation": {
     "message": "مستندات Mur",
     "description": "The label for category Mur Documentation in sidebar defaultSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Compiler Documentation": {
+    "message": "مستندات المترجم",
+    "description": "The label for category Compiler Documentation in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Mur Documentation": {
+    "message": "مستندات Mur",
+    "description": "The label for category Mur Documentation in sidebar tutorialSidebar"
   }
 }

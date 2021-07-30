@@ -35,11 +35,16 @@ module.exports = {
                 {
                     label: 'Tools & Downloads',
                     position: 'left',
-                    to: '/soon/',
+                    to: '/downloads/',
                 },
                 //Search Bar
                 {
                     label: 'Playground',
+                    position: 'left',
+                    to: '/soon/',
+                },
+                {
+                    label: 'Feedback & Suggestions',
                     position: 'left',
                     to: '/soon/',
                 },
@@ -87,7 +92,7 @@ module.exports = {
                         },
                         {
                             label: 'Tools & Downloads',
-                            href: '/soon/',
+                            href: '/downloads/',
                         },
                         {
                             label: 'Playground',
@@ -112,6 +117,10 @@ module.exports = {
                         {
                             label: 'Stack Overflow',
                             href: 'https://stackoverflow.com/questions/tagged/mur',
+                        },
+                        {
+                            label: 'Feedback & Suggestions',
+                            to: '/soon/',
                         },
                     ],
                 },

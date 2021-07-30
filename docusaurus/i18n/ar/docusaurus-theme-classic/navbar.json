@@ -22,5 +22,9 @@
   "item.label.Help": {
     "message": "المساعدة",
     "description": "Navbar item with label Help"
+  },
+  "item.label.Feedback & Suggestions": {
+    "message": "ردود الفعل & الاقتراحات",
+    "description": "Navbar item with label Feedback & Suggestions"
   }
 }

@@ -21,7 +21,7 @@
   },
   "link.item.label.Tools & Downloads": {
     "message": "الأدوات & التنزيلات",
-    "description": "The label of footer link with label=Tools & Downloads linking to /soon/"
+    "description": "The label of footer link with label=Tools & Downloads linking to /downloads/"
   },
   "link.item.label.Playground": {
     "message": "الملعب",
@@ -74,5 +74,9 @@
   "copyright": {
     "message": "<br>مصنوع بكل 💜 للجميع | حقوق النشر © 2021 EnderCommunity",
     "description": "The footer copyright"
+  },
+  "link.item.label.Feedback & Suggestions": {
+    "message": "ردود الفعل & الاقتراحات",
+    "description": "The label of footer link with label=Feedback & Suggestions linking to /soon/"
   }
 }

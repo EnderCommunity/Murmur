@@ -21,7 +21,7 @@
     "message": "Murmur"
   },
   "homepage.header.desc": {
-    "message": "مصنوع من قبل المجتمع, للمجتمع."
+    "message": "مصنوعة من قبل المجتمع, للمجتمع."
   },
   "homepage.header.mainbutton": {
     "message": "اقرأ المستندات"
@@ -160,7 +160,7 @@
   },
   "theme.docs.versions.latestVersionSuggestionLabel": {
     "message": "للحصول على أحدث الوثائق، راجع {latestVersionLink} ({versionLabel}).",
-    "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
+    "description": "The label used to tell the user to check the latest version"
   },
   "theme.docs.versions.latestVersionLinkLabel": {
     "message": "احدث اصدار",
@@ -189,5 +189,19 @@
   "theme.common.skipToMainContent": {
     "message": "انتقل إلى المحتوى الرئيسي",
     "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "website.announcement": {
+    "message": "يرجى ملاحظة ان Mur ما زالت في مرحلة التطوير pre-alpha! (اللغة ليست صالحة للأستخدام بعد)"
+  },
+  "website.description": {
+    "message": "لغة برمجة مفتوحت المصدر, موجة بالكائنات وصارمة النوع."
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← الرجوع الى القائمة الرئيسية",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "في هذه الصفحة",
+    "description": "The label used by the button on the collapsible TOC component"
   }
 }

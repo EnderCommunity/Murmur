@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# المقدمة
+# Introduction
 
 Mur is, like many other languages, an object-oriented and type-strict programming language. Mur depends on its own compiler to analyse and translate its code into C code. After that, it's all left for your C compiler to take care of the output code.
 
