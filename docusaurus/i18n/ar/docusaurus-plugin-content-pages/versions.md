@@ -1,3 +1,3 @@
-# All Versions
+# كل الاصدارات
 
-*There are currently no released versions of Mur!*
+*لا يوجد حاليًا اي اصدارات منشورة ل-Mur*
