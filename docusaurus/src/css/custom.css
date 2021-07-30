@@ -86,5 +86,5 @@ html[data-theme=dark] .header-github-link:before {
 a[href="/soon/"],
 a[href="/ar/soon/"] {
     opacity: 0.25;
-    pointer-events: none;
+    pointer-events: none !important;
 }
