@@ -1,6 +1,5 @@
 #include "../libraries/regex/reg.h"
 #include "chk.h"
-//#include "../libraries/hex/hex.h"
 
 //1000 `value` 0 0 0 0 | 0 0 0 0 <0.'file1'.'file2'> 0x000000000 1x000000000
 
@@ -41,7 +40,6 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                     //false alarm
                     fprintf(lexFil, "%d `%c` %d %d %d 0 | %d 0 0 0 <%s> 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), !alowDot, "0", lin, col); //This is an operator!
-                    //fprintf(lexFil, "%d `%c` <%s> 0x%d 1x%d\n", LEXER_OPERATOR, curLin[i], "0", lin, col); //This is an operator!
 
                 }else{
 
@@ -70,7 +68,6 @@ FILE* lexProc(TmpFileStruc cFileObj){
                     fprintf(lexFil, "` %d %d %d 0 | %d 0 0 0 <%s> 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), !alowDot, "0", lin, col);
                     //                    ^ if this value is set to '0', then this number is an integer
                     //                      if it's set to '1', then this number is of the type double/float
-                    //fprintf(lexFil, "` <%s> 0x%d 1x%d\n", "0", lin, col);
 
                     col += delt;
 
@@ -95,7 +92,6 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 i += delt;
 
                 fprintf(lexFil, "` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col);
-                //fprintf(lexFil, "` <%s> 0x%d 1x%d\n", "0", lin, col);
 
                 col += delt - 1;
 
@@ -117,7 +113,6 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 i += delt;
 
                 fprintf(lexFil, "` %d %d %d 0 | %d 0 0 0 <%s> 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), (delt == 1) ? 0 : ((delt == 2) ? 1 : ((delt == 3 && curLin[i - 2] == '\\') ? 2 : 3)), "0", lin, col);
-                //fprintf(lexFil, "` <%s> 0x%d 1x%d\n", "0", lin, col);
 
                 col += delt - 1;
 
@@ -158,14 +153,12 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 i += delt;
 
                 fprintf(lexFil, "` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col);
-                //fprintf(lexFil, "` <%s> 0x%d 1x%d\n", "0", lin, col);
 
                 col += delt;
 
             } else if(isKnwnSpclChr(currChar)) { //Operator!
 
                 fprintf(lexFil, "%d `%c` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col);
-                //fprintf(lexFil, "%d `%c` <%s> 0x%d 1x%d\n", LEXER_OPERATOR, curLin[i], "0", lin, col);
 
             } else {
 
