@@ -8,6 +8,7 @@
         "*.mur": "murmur",
         "*.murm": "murmur",
         "*.tmp": "tmpmur",
-        "*.lxic": "lexmur"
+        "*.lxic": "lexmur",
+        "type_traits": "c"
     }
 }
