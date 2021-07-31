@@ -47,3 +47,76 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
     }
 
 }
+
+/*
+
+The grammar of Mur:
+
+[format: <sent>         (type1 | type2 | ...)                ::=                           <comp1> <comp2> <comp3> | aa <comp2> | ac aaw  ==>                  <output>(type1 | type2 | ...)]
+//       ^ Event/Action ^possible types for the component    ^ definition statement quals  ^ a component           ^ "or"         ^string ^output statement    ^output ^possible output types
+
+Available types:
+
+LEXER_SYMBOL, LEXER_STRING, LEXER_CHAR, LEXER_NUMBER, LEXER_OPERATOR, LEXER_BOOLEAN
+
+
+Core components:
+
+<type_statement>(LEXER_SYMBOL) ::= int | float | double | char | string | bool | file
+<scope_statement>(LEXER_SYMBOL) ::= group | class | function
+<symbol>(LEXER_SYMBOL)
+
+<value> ::= <>(<type_statement>)
+
+Events/Actions:
+
+<variable_definition_statement> ::= <type_statement> <symbol> ==> <variable>(<type_statement>)
+<value_assignment>              ::= <variable> = <value>
+
+
+group MyTest {
+
+    class Program {
+
+        int a = 0;
+
+        function::int Main(){
+
+            int b = 0;
+            double c = .4, d = 5., e = 0.0;
+            string test1 = "Hey, this is a test!";
+            char test2 = 'H', test3 = '\'';
+
+            return 0;
+
+        }
+
+        function::void Cmplx(){
+
+            string test1 = "Hey, you can \"do whatever you want\" with 'this'!", test2 = "\"";
+            char test3 = '"', test4 = '\'';
+            int test5 = 0;
+            float test6 = .00005;
+            double test6 = .0, test7 = 0.; "\".\" alone will not be seen as a number!";
+
+            bool _test = false, test_ = false, _test_ = true;
+
+        }
+
+    }
+    
+    class Smth {
+
+        int c = 0;
+
+        function::constructor(){
+
+            this.c = 2;
+
+        }
+
+    }
+
+}
+
+*/
