@@ -62,17 +62,21 @@ LEXER_SYMBOL, LEXER_STRING, LEXER_CHAR, LEXER_NUMBER, LEXER_OPERATOR, LEXER_BOOL
 
 Core components:
 
-<type_statement>(LEXER_SYMBOL) ::= int | float | double | char | string | bool | file
-<scope_statement>(LEXER_SYMBOL) ::= group | class | function
-<symbol>(LEXER_SYMBOL)
+<type_statement>(LEXER_SYMBOL)     ::=  int | float | double | char | string | bool | file
+<scope_statement>(LEXER_SYMBOL)    ::=  group | class | function
+<value>                            ::=  <>(<type_statement>)
 
-<value> ::= <>(<type_statement>)
+<symbol>(LEXER_SYMBOL)             !!=  <type_statement> | <scope_statement>
 
 Events/Actions:
 
-<variable_definition_statement> ::= <type_statement> <symbol> ==> <variable>(<type_statement>)
-<value_assignment>              ::= <variable> = <value>
-
+<variable_definition_statement>    ::=  <type_statement> <symbol> ==> <variable>(<type_statement>)
+<variable>                         ==>  <value>
+<value_assignment>                 ::=  <variable> = <value>
+<group_definition_statement>       ::=  <scope_statement, "group"> <symbol> { [...] }
+<class_definition_statement>       ::=  <scope_statement, "class"> <symbol> { [...] }
+<function_definition_statement>    ::=  <scope_statement, "function"> <symbol> { [...] }
+<return_statement>                 ::=  return <value>
 
 group MyTest {
 
