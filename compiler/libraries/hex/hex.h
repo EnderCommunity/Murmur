@@ -32,25 +32,10 @@ int hexToInt(char *hex){
 
 char *intToHex(int dec){
 
-    int dec, quotient;
-	int i=1,j,temp;
-	char *hex;
-	quotient = dec;
+    char *hex;
 
-	while(quotient!=0) {
-
-		temp = quotient % 16;
-
-		if( temp < 10)
-		           temp =temp + 48; else
-		         temp = temp + 55;
-
-		hex[i++]= temp;
-		quotient = quotient / 16;
-
-	}
-
-    hex[i + 1] = '\0';
+    strcpy(hex, "000000000");
+    sprintf(hex, "%09X", dec);
 
 	return hex;
 

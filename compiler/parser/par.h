@@ -37,7 +37,8 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
     while(kepLop){
 
-        printf("%s\n", tkn.value); //Debug
+        printf("%s", tkn.o); //Debug
+        printf("%d `%s` %d %d %d %d | %d %d %d %d <%s> 0x%09X 1x%09X\n\n", tkn.type, tkn.value, tkn.defVal1, tkn.defVal2, tkn.defVal3, tkn.defVal4, tkn.adtVal1, tkn.adtVal2, tkn.adtVal3, tkn.adtVal4, tkn.srcFile, tkn.srcLine, tkn.srcColumn); //Debug
 
         remTkn(tkn); //Remove the token
 
