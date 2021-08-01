@@ -100,6 +100,15 @@ public group Start { //Groups can help you keep a whole block of code within one
 
         }
 
+        public function::void PlusOne(ref int a){ //with the keyword "ref", you can make changes to the originally passed variable within this function
+                                    //^ "reference"
+                                    //int og = 0;
+                                    //PlusOne(og);
+
+            a++; //the value of 'og' will change to '1'!
+
+        }
+
     }
 
     public class AnotherClass {
