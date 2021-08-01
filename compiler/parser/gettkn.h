@@ -30,6 +30,15 @@ char* getStrSec(char *str, char *frtStr, char *lstStr){ //Get the substring betw
 
 }
 
+int getNxtLinUniVal(char *lin, int *tmp){ //Get a the next one digit value from the current line
+
+    int frt = ++*tmp + 1;
+    int snd = *tmp++ + 2;
+
+    return atoi(getStrPrt(lin, frt, snd, 0)); //+2
+
+}
+
 M_Token getTkn(){ //Get a token
 
     M_Token tmp;
@@ -53,41 +62,17 @@ M_Token getTkn(){ //Get a token
 
         int tmpRefIndx = getLstStrIndx(tmp.value, "`");
 
-        int frst, scnd;
-
-        frst = ++tmpRefIndx + 1;
-        scnd = tmpRefIndx++ + 2;
-        tmp.defVal1 = atoi(getStrPrt(tmp.value, frst, scnd, 0)); //+2
-
-        frst = ++tmpRefIndx + 1;
-        scnd = tmpRefIndx++ + 2;
-        tmp.defVal2 = atoi(getStrPrt(tmp.value, frst, scnd, 0)); //+2
-
-        frst = ++tmpRefIndx + 1;
-        scnd = tmpRefIndx++ + 2;
-        tmp.defVal3 = atoi(getStrPrt(tmp.value, frst, scnd, 0)); //+2
-
-        frst = ++tmpRefIndx + 1;
-        scnd = tmpRefIndx++ + 2;
-        tmp.defVal4 = atoi(getStrPrt(tmp.value, frst, scnd, 0)); //+2
+        tmp.defVal1 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
+        tmp.defVal2 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
+        tmp.defVal3 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
+        tmp.defVal4 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
 
         tmpRefIndx += 2; //Skip the " |" part!
 
-        frst = ++tmpRefIndx + 1;
-        scnd = tmpRefIndx++ + 2;
-        tmp.adtVal1 = atoi(getStrPrt(tmp.value, frst, scnd, 0)); //+2
-
-        frst = ++tmpRefIndx + 1;
-        scnd = tmpRefIndx++ + 2;
-        tmp.adtVal2 = atoi(getStrPrt(tmp.value, frst, scnd, 0)); //+2
-
-        frst = ++tmpRefIndx + 1;
-        scnd = tmpRefIndx++ + 2;
-        tmp.adtVal3 = atoi(getStrPrt(tmp.value, frst, scnd, 0)); //+2
-
-        frst = ++tmpRefIndx + 1;
-        scnd = tmpRefIndx++ + 2;
-        tmp.adtVal4 = atoi(getStrPrt(tmp.value, frst, scnd, 0)); //+2
+        tmp.adtVal1 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
+        tmp.adtVal2 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
+        tmp.adtVal3 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
+        tmp.adtVal4 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
 
         tmp.srcFile = getStrSec(tmp.value, "<", ">");
 
