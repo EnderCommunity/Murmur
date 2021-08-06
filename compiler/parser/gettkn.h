@@ -13,14 +13,13 @@ void setTknFilPtr(FILE *tmp){
 void remTkn(M_Token tmp){ //Free allocated memory
 
     free(tmp.value);
-    free(tmp.o); //Debug
     free(tmp.srcFile);
 
 }
 
 char* getStrSec(char *str, char *frtStr, char *lstStr){ //Get the substring between the first occurrences of `frtStr` and the last occurrence of `lstStr`
 
-    char *tmp = malloc(strlen(str)*sizeof(char));
+    char *tmp = malloc((strlen(str) + 1)*sizeof(char));
 
     strcpy(tmp, str);
 
@@ -43,17 +42,16 @@ M_Token getTkn(){ //Get a token
 
     M_Token tmp;
 
-    tmp.value = malloc(sizeof(char)*MAX_LINE_LENGTH);
-    tmp.o = malloc(sizeof(char)*MAX_LINE_LENGTH); //Debug
-    tmp.srcFile = malloc(sizeof(char)*MAX_PATH_LENGTH);
+    tmp.value = malloc(sizeof(char)*(MAX_LINE_LENGTH + 1));
+    tmp.srcFile = malloc(sizeof(char)*(MAX_PATH_LENGTH + 1));
 
     fgets(tmp.value, MAX_LINE_LENGTH, lexFilPtr);
-
-    strcpy(tmp.o, tmp.value); //Debug
 
     kepLop = !feof(lexFilPtr);
 
     if(kepLop){
+
+        printf("%s", tmp.value); //Debug
 
         if(tmp.value[strlen(tmp.value) - 1] == '\n')
             tmp.value[strlen(tmp.value) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!

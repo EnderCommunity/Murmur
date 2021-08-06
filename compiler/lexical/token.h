@@ -1,7 +1,6 @@
 typedef struct {
     int type;
     char *value;
-    char *o; //Debug
     int defVal1;
     int defVal2;
     int defVal3;

@@ -74,8 +74,11 @@ int main(int argc, char *argv[]){
     writeLogLine("Compiler Manager", 0, "Starting the preprocessor.", 0, 0, 0);
     preprocess(mainFilePtr, path, 1, tmpFileObj); //Initiate the compiling process
 
-    fclose(mainFilePtr);
-    fclose(tmpFileObj.ptr);
+    /*if(mainFilePtr != NULL)
+        fclose(mainFilePtr);*/
+
+    /*if(tmpFileObj.ptr != NULL)
+        fclose(tmpFileObj.ptr);*/
 
     writeLogLine("Compiler Manager", 0, "Closed all files sessions.", 0, 0, 0);
 
@@ -123,6 +126,8 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
 
         ppcRead(fileInf, desFileObj.ptr); //Let the preprocessor do its thing!
 
+        fclose(filePtr); //Close the main input file stream
+
         fclose(desFileObj.ptr);
         desFileObj.ptr = fopen(apdStr(desFileObj.pth, ".tmp"), "r"); //Switch the file mode to "read mode"
 
@@ -131,6 +136,8 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
         PrsProc(desFileObj, lexFil); //Start parsing the generated tokens!
 
     }else{
+
+        fclose(filePtr); //Close the main input file stream
 
         writeLogLine("Preprocessor", 0, "The skip flag has been detected!", 0, 0, 0);
 
