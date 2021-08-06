@@ -11,7 +11,10 @@
 				"-o",
 				"${workspaceFolder}\\compiler\\Mur.exe",
 				"-lregex"
-				//sudo gcc -g start.c -o Mur.out
+				//gcc -g start.c -o Mur.out
+				//sudo valgrind --leak-check=yes ./Mur.out
+				//"/mnt/e/files/EnderCommunity/Projects/Murmur/tests/lexical/boolean.mur"
+				//"E:\files\EnderCommunity\Projects\Murmur\tests\lexical\boolean.mur"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
