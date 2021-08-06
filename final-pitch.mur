@@ -85,7 +85,11 @@ public group Start { //Groups can help you keep a whole block of code within one
             int b = 1; //This variable will allocate the default amount of
                        //memory set by the compiler
 
-            Test(a, 1); //You can pass all types of variables to other functions
+            ^int c = Test(a, 1); //You can pass all types of variables to other functions
+
+            a, c = 5; //Change the value of both variables to '5'
+
+            PlusOne(ref b)(ref b); //the value of 'b' is '3' now!
 
             return 0; //This is the final program output code
 
