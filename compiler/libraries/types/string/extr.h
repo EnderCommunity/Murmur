@@ -20,10 +20,12 @@ int getStrIndx(char *str, char *strForChk){ //Get the index of a string in a str
 
 char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part from a string
 
-    int s = (((endIndx - strIndx != 0) ? endIndx - strIndx : 1) + 2 + (endLine ? 1 : 0))*sizeof(char);
-    char *nStr = malloc(s);
+    int s = (((endIndx - strIndx != 0) ? (endIndx - strIndx) : 1) + 2 + endLine);
 
-    memset(nStr, 0x00, s); //Clear the new memory
+    char *nStr = malloc(s*sizeof(char));
+    //char *nStr = malloc(s*sizeof(char));
+
+    memset(nStr, 0x00, s*sizeof(char)); //Clear the new memory
 
     if((endIndx > strlen(str) || endIndx < strIndx) || (strIndx < 0 || strIndx > strlen(str))){
 
@@ -33,9 +35,9 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
 
     }else{
 
-        int i;
+        int i = 0;
 
-        for(i = 0; strIndx < endIndx; strIndx++, i++)
+        for(; strIndx < endIndx; strIndx++, i++)
             nStr[i] = str[strIndx];
 
         if(endLine)
@@ -128,7 +130,7 @@ int inStrRng(char *str, char *strForChk){ //Check if a string exists inside a st
 
 int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appearance of a string inside a string
 
-    char *tmpStr = malloc(strlen(str)*sizeof(char));
+    char *tmpStr = malloc((strlen(str) + 1)*sizeof(char));
     strcpy(tmpStr, str);
 
     int indx = -1,

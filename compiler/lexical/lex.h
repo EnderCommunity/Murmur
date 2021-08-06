@@ -7,7 +7,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
     FILE *lexFil = fopen(apdStr(cFileObj.pth, ".lxic"), "w"); //Create a new lexer file in "write mode"
 
-    char *tmpStr = malloc(sizeof(char)*MAX_LINE_LENGTH), *curLin = malloc(sizeof(char)*MAX_LINE_LENGTH);
+    char *tmpStr = malloc(sizeof(char)*MAX_LINE_LENGTH), *curLin = NULL;
 
     fgets(tmpStr, MAX_LINE_LENGTH, cFileObj.ptr); //Get the first line
     if(tmpStr[strlen(tmpStr) - 1] == '\n')
@@ -15,18 +15,26 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
     while(getStrIndx(tmpStr, "[FileEnd]") != 0){
 
+        if(curLin != NULL){
+
+            free(curLin);
+
+            curLin = NULL;
+
+        }
+
         curLin = getStrPrt(tmpStr, getStrIndx(tmpStr, "]->") + 3, strlen(tmpStr), 0); //Get the current line content
 
         char *curFil = getStrPrt(tmpStr, 2, getStrIndx(tmpStr, "}"), 0);
         //"[{main},%d;%d]->%s
         int col = atoi(getStrPrt(tmpStr, getStrIndx(tmpStr, ";") + 1, getStrIndx(tmpStr, "]"), 0)), lin = atoi(getStrPrt(tmpStr, getStrIndx(tmpStr, ",") + 1, getStrIndx(tmpStr, ";"), 0));
 
-        int newLin = 1;
+        int newLin = 1, lopLen = strlen(curLin);
 
-        for(int i = 0; i < strlen(curLin); i++, col++){ //Use this loop to scan every character one by one!
+        for(int i = 0; i < lopLen; i++, col++){ //Use this loop to scan every character one by one!
 
             char currChar = curLin[i];
-            int whtSpcBef = isspace(curLin[i - 1]) != 0;
+            int whtSpcBef = (i != 0) ? (isspace(curLin[i - 1]) != 0) : 0;
 
             if(isspace(currChar)) { //Whitespace!
 
