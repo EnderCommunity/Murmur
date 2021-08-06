@@ -72,7 +72,7 @@
     "description": "The label of footer link with label=Cookie Policy linking to /legal/cookie-policy/"
   },
   "copyright": {
-    "message": "<br>مصنوع بكل 💜 للجميع | حقوق النشر © 2021 EnderCommunity<br>هذا المشروع ممكن بفضل <a href=\"https://fosshost.org/\" target=\"_blank\">Fosshost</a>, <a href=\"https://infinityfree.net/\" target=\"_blank\">InfinityFree</a>, <a href=\"https://www.cloudflare.com/\" target=\"_blank\">Cloudflare</a>, <a href=\"https://github.com/\" target=\"_blank\">GitHub</a> وانت!",
+    "message": "<br>مصنوع بكل 💜 للجميع | حقوق النشر © 2021 EnderCommunity<br>هذا المشروع ممكن بفضل <a href=\"https://github.com/\" target=\"_blank\">GitHub</a>, <a href=\"https://infinityfree.net/\" target=\"_blank\">InfinityFree</a>, <a href=\"https://www.cloudflare.com/\" target=\"_blank\">Cloudflare</a>, <a href=\"https://fosshost.org/\" target=\"_blank\">Fosshost</a> وانت!",
     "description": "The footer copyright"
   },
   "link.item.label.Feedback & Suggestions": {
