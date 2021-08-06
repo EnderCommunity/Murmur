@@ -1,4 +1,4 @@
-#header <nothing-to-see-here> <allow-separate>
+#header <nothing-to-see-here> <allow-separate> <no-comments>
 //^ The header is used to give the compiler nessessary information before it
 //starts compiling the code. Flags start with the operators "--". If you do not
 //wish to pass any information to the compiler, you can just remove it.
@@ -58,6 +58,15 @@ public group Start { //Groups can help you keep a whole block of code within one
     public class Program { //Classes can be used to completely seperate functions from one
                     //another, in case you wanted to prevent other classes from
                     //accessing some variables or functions
+
+        int globA = 0;
+        double globB = 0.0;
+        float globC = 0.0;
+        char globD = 'D';
+        string globE = "Global E";
+        bool globF = true;
+        file globG = new FileStream("path/to/my/file.txt");
+        hex globH = 0x000000; //Are hex variables really necessary? (tmp)
 
         public function::int Main(string[] envi, int length){ //This is the main
                                                        //function in the program!

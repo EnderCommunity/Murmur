@@ -11,6 +11,7 @@
 				"-o",
 				"${workspaceFolder}\\compiler\\Mur.exe",
 				"-lregex"
+				//sudo gcc -g start.c -o Mur.out
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
