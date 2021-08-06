@@ -27,8 +27,8 @@ char* getStrSec(char *str, char *frtStr, char *lstStr){ //Get the substring betw
 
 int getNxtLinUniVal(char *lin, int *tmp){ //Get a the next one digit value from the current line
 
-    int frt = ++*tmp + 1;
-    int snd = *tmp++ + 2;
+    int frt = ++(*tmp) + 1;
+    int snd = (*tmp)++ + 2;
 
     char *tmpStr = getStrPrt(lin, frt, snd, 0);
     int rslt = atoi(tmpStr);
