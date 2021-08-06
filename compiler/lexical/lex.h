@@ -17,14 +17,6 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
     while(getStrIndx(tmpStr, "[FileEnd]") != 0){
 
-        if(curLin != NULL){
-
-            free(curLin);
-
-            curLin = NULL;
-
-        }
-
         curLin = getStrPrt(tmpStr, getStrIndx(tmpStr, "]->") + 3, strlen(tmpStr), 0); //Get the current line content
 
         char *curFil = getStrPrt(tmpStr, 2, getStrIndx(tmpStr, "}"), 0);
