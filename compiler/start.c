@@ -32,10 +32,10 @@ int main(int argc, char *argv[]){
 
     Debug("Starting the compiler", 0);
 
-    char path[255];
+    char path[256];
     char *pathPtr = path;
 
-    if (argc != 0){
+    if (argc > 1){
 
         strcpy(path, argv[1]);
 
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]){
 
         fgets(path, 255, stdin);
 
-        path[strcspn(path, "\n") - 1] = '\0'; //Make sure to replace the new line char with a string-end char
+        path[strcspn(path, "\n")] = '\0'; //Make sure to replace the new line char with a string-end char
 
     }
 

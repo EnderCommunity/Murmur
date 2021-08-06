@@ -20,8 +20,17 @@
 
 //Paths
 
-#define PATH_SLASH "\\"
-#define PATH_SLASH_TYP_CHAR '\\'
+#if _WIN64 || _WIN32
+
+    #define PATH_SLASH "\\"
+    #define PATH_SLASH_TYP_CHAR '\\'
+
+#else
+
+    #define PATH_SLASH "/"
+    #define PATH_SLASH_TYP_CHAR '/'
+
+#endif
 
 
 //Output (NOTE: some of these files might still get generated in the `/tmp` directory)
