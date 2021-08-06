@@ -59,7 +59,11 @@ int main(int argc, char *argv[]){
     printf("\n Workstation Path: \"%s\"\nWorkstation Name: \"%s\"\n", wrkstn.Path, wrkstn.Name);
 
     //Start logging the session
-    newLogFile(apdStr(wrkstn.Path, apdStr(wrkstn.Name, ".log")));
+    char *tmpStrPrt1 = apdStr(wrkstn.Name, ".log"), *tmpStrPrt2 = apdStr(wrkstn.Path, tmpStrPrt1);
+    newLogFile(tmpStrPrt2);
+
+    free(tmpStrPrt2);
+    free(tmpStrPrt1);
 
     writeLogLine("Compiler Manager", 0, "Testing the `writeLogLine` function", 0, 0, 0);
 
@@ -82,6 +86,10 @@ int main(int argc, char *argv[]){
 
     writeLogLine("Compiler Manager", 0, "Closed all files sessions.", 0, 0, 0);
 
+    endWrkstn();
+
+    writeLogLine("Compiler Manager", 0, "Closed the current workstation.", 0, 0, 0);
+
     RegDebEnd(); //End the debugging timer
 
     Deb();
@@ -89,6 +97,8 @@ int main(int argc, char *argv[]){
     //exit(EXIT_SUCCESS);
 
     writeLogLine("Compiler Manager", 0, "Task finished successfully! (Ending process)", 0, 0, 0);
+
+    clsLogSec();
 
     return 0;
 
@@ -129,11 +139,18 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
         fclose(filePtr); //Close the main input file stream
 
         fclose(desFileObj.ptr);
-        desFileObj.ptr = fopen(apdStr(desFileObj.pth, ".tmp"), "r"); //Switch the file mode to "read mode"
+
+        char *tmpPthStr = apdStr(desFileObj.pth, ".tmp");
+        desFileObj.ptr = fopen(tmpPthStr, "r"); //Switch the file mode to "read mode"
+
+        free(tmpPthStr);
 
         FILE* lexFil = lexProc(desFileObj); //Start the lexical-processing process!
 
         PrsProc(desFileObj, lexFil); //Start parsing the generated tokens!
+
+        free(desFileObj.pth);
+        fclose(desFileObj.ptr);
 
     }else{
 

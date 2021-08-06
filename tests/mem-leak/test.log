@@ -12,4 +12,5 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Compiler Manager] => Closed all files sessions.
+[?][Compiler Manager] => Closed the current workstation.
 [?][Compiler Manager] => Task finished successfully! (Ending process)

@@ -27,6 +27,8 @@ int hexToInt(char *hex){
 
     }
 
+    free(hex);
+
     return dec;
 }
 

@@ -12,20 +12,16 @@ void setTknFilPtr(FILE *tmp){
 
 void remTkn(M_Token tmp){ //Free allocated memory
 
-    free(tmp.value);
-    free(tmp.srcFile);
+    free(tmp.val);
+    free(tmp.srcFil);
 
 }
 
 char* getStrSec(char *str, char *frtStr, char *lstStr){ //Get the substring between the first occurrences of `frtStr` and the last occurrence of `lstStr`
 
-    char *tmp = malloc((strlen(str) + 1)*sizeof(char));
+    char *tmpStr = getStrPrt(str, getStrIndx(str, frtStr) + strlen(frtStr), getLstStrIndx(str, lstStr) + 1 - strlen(lstStr), 0);
 
-    strcpy(tmp, str);
-
-    tmp = getStrPrt(tmp, getStrIndx(tmp, frtStr) + strlen(frtStr), getLstStrIndx(tmp, lstStr) + 1 - strlen(lstStr), 0);
-
-    return tmp;
+    return tmpStr;
 
 }
 
@@ -34,7 +30,12 @@ int getNxtLinUniVal(char *lin, int *tmp){ //Get a the next one digit value from 
     int frt = ++*tmp + 1;
     int snd = *tmp++ + 2;
 
-    return atoi(getStrPrt(lin, frt, snd, 0)); //+2
+    char *tmpStr = getStrPrt(lin, frt, snd, 0);
+    int rslt = atoi(tmpStr);
+
+    free(tmpStr);
+
+    return rslt; //+2
 
 }
 
@@ -42,44 +43,54 @@ M_Token getTkn(){ //Get a token
 
     M_Token tmp;
 
-    tmp.value = malloc(sizeof(char)*(MAX_LINE_LENGTH + 1));
-    tmp.srcFile = malloc(sizeof(char)*(MAX_PATH_LENGTH + 1));
+    tmp.val = malloc(sizeof(char)*(MAX_LINE_LENGTH + 1));
+    //tmp.srcFile = malloc(sizeof(char)*(MAX_PATH_LENGTH + 1));
 
-    fgets(tmp.value, MAX_LINE_LENGTH, lexFilPtr);
+    fgets(tmp.val, MAX_LINE_LENGTH, lexFilPtr);
 
     kepLop = !feof(lexFilPtr);
 
     if(kepLop){
 
-        printf("%s", tmp.value); //Debug
+        printf("%s", tmp.val); //Debug
 
-        if(tmp.value[strlen(tmp.value) - 1] == '\n')
-            tmp.value[strlen(tmp.value) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
+        if(tmp.val[strlen(tmp.val) - 1] == '\n')
+            tmp.val[strlen(tmp.val) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
+
+        char *tmpTypStr = getStrPrt(tmp.val, 0, 4, 0);
     
-        tmp.type = atoi(getStrPrt(tmp.value, 0, 4, 0));
+        tmp.typ = atoi(tmpTypStr);
 
-        int tmpRefIndx = getLstStrIndx(tmp.value, "`");
+        free(tmpTypStr);
 
-        tmp.defVal1 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
-        tmp.defVal2 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
-        tmp.defVal3 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
-        tmp.defVal4 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
+        int tmpRefIndx = getLstStrIndx(tmp.val, "`");
+
+        tmp.defVal1 = getNxtLinUniVal(tmp.val, &tmpRefIndx);
+        tmp.defVal2 = getNxtLinUniVal(tmp.val, &tmpRefIndx);
+        tmp.defVal3 = getNxtLinUniVal(tmp.val, &tmpRefIndx);
+        tmp.defVal4 = getNxtLinUniVal(tmp.val, &tmpRefIndx);
 
         tmpRefIndx += 2; //Skip the " |" part!
 
-        tmp.adtVal1 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
-        tmp.adtVal2 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
-        tmp.adtVal3 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
-        tmp.adtVal4 = getNxtLinUniVal(tmp.value, &tmpRefIndx);
+        tmp.adtVal1 = getNxtLinUniVal(tmp.val, &tmpRefIndx);
+        tmp.adtVal2 = getNxtLinUniVal(tmp.val, &tmpRefIndx);
+        tmp.adtVal3 = getNxtLinUniVal(tmp.val, &tmpRefIndx);
+        tmp.adtVal4 = getNxtLinUniVal(tmp.val, &tmpRefIndx);
 
-        tmp.srcFile = getStrSec(tmp.value, "<", ">");
+        tmp.srcFil = getStrSec(tmp.val, "<", ">");
 
-        tmp.srcLine = hexToInt(getStrPrt(tmp.value, getLstStrIndx(tmp.value, "0x") + 2, getLstStrIndx(tmp.value, "0x") + 2 + 9, 0));
-        tmp.srcColumn = hexToInt(getStrPrt(tmp.value, getLstStrIndx(tmp.value, "1x") + 2, getLstStrIndx(tmp.value, "1x") + 2 + 9, 0));
+        tmp.srcLin = hexToInt(getStrPrt(tmp.val, getLstStrIndx(tmp.val, "0x") + 2, getLstStrIndx(tmp.val, "0x") + 2 + 9, 0));
+        tmp.srcCol = hexToInt(getStrPrt(tmp.val, getLstStrIndx(tmp.val, "1x") + 2, getLstStrIndx(tmp.val, "1x") + 2 + 9, 0));
 
-        tmp.value = getStrSec(tmp.value, "`", "`");
 
-    }
+        char *tmpValStr = getStrSec(tmp.val, "`", "`");
+
+        free(tmp.val);
+
+        tmp.val = tmpValStr;
+
+    }else
+        free(tmp.val);
 
     return tmp;
 

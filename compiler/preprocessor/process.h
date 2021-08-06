@@ -22,7 +22,7 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
 
     //memset(tmp, 0x00, sizeof(FileInfo) + sizeof(char)*(MAX_PATH_LENGTH + 2*MAX_LINE_LENGTH - 2)); //Clear the new memory
 
-    tmp->path = malloc(sizeof(char)*MAX_PATH_LENGTH); //The max path length is 255 characters
+    //tmp->path = malloc(sizeof(char)*MAX_PATH_LENGTH); //The max path length is 255 characters
     tmp->path = path;
     tmp->currLineCon = malloc(sizeof(char)*MAX_LINE_LENGTH);
     memset(tmp->currLineCon, 0x00, sizeof(char)*MAX_LINE_LENGTH);
@@ -91,11 +91,19 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
 
 }
 
-FileInfo* reallocCurrLin(FileInfo *tmp){
+void freeFileDatObj(FileInfo *tmp){
+
+    free(tmp->currLineCon);
+    free(tmp->currOLineCon);
+    free(tmp);
+
+}
+
+/*FileInfo* reallocCurrLin(FileInfo *tmp){
 
     free(tmp->currLineCon);
     tmp->currLineCon = malloc(sizeof(char)*509);
 
     return tmp;
 
-}
+}*/

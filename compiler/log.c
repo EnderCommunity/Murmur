@@ -8,7 +8,10 @@ LogFile globalLogFile;
 void newLogFile(char *path){
 
     if(OUTPUT_LOG_FILE){
-        globalLogFile.path = path;
+
+        //globalLogFile.path = path;
+        globalLogFile.path = malloc((strlen(path) + 1)*sizeof(char));
+        strcpy(globalLogFile.path, path);
         globalLogFile.filePtr = fopen(globalLogFile.path, "w");
 
         fprintf(globalLogFile.filePtr, "[?][LOG SYSTEM] => Created a log file successfully!\n[!][Compiler Manager] => The workstation directory has been set to \"%s\"\n", wrkstn.Path);
@@ -16,6 +19,12 @@ void newLogFile(char *path){
         fclose(globalLogFile.filePtr);
 
     }
+
+}
+
+void clsLogSec(){ //Free all of the variables
+
+    free(globalLogFile.path);
 
 }
 

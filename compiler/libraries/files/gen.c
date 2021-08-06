@@ -28,6 +28,8 @@ static TmpFileStruc genFilStr(char *pth){ //Create a new file in the `/tmp` dire
 
     TmpFileStruc tmp = {fopen(str, "w"), oth};
 
+    free(str);
+
     return tmp;
 
 }
