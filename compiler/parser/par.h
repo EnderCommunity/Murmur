@@ -65,6 +65,7 @@ Core components:
 <type_statement>(LEXER_SYMBOL)     ::=  int | float | double | char | string | bool | file
 <scope_statement>(LEXER_SYMBOL)    ::=  group | class | function
 <value>                            ::=  <>(<type_statement>)
+<scope>                            ::=  { [...] }
 
 <symbol>(LEXER_SYMBOL)             !!=  <type_statement> | <scope_statement>
 
@@ -73,9 +74,9 @@ Events/Actions:
 <variable_definition_statement>    ::=  <type_statement> <symbol> ==> <variable>(<type_statement>)
 <variable>                         ==>  <value>
 <value_assignment>                 ::=  <variable> = <value>
-<group_definition_statement>       ::=  <scope_statement, "group"> <symbol> { [...] }
-<class_definition_statement>       ::=  <scope_statement, "class"> <symbol> { [...] }
-<function_definition_statement>    ::=  <scope_statement, "function"> <symbol> { [...] }
+<group_definition_statement>       ::=  <scope_statement, "group"> <symbol> <scope>
+<class_definition_statement>       ::=  <scope_statement, "class"> <symbol> <scope>
+<function_definition_statement>    ::=  <scope_statement, "function"> <symbol> <scope>
 <return_statement>                 ::=  return <value>
 
 group MyTest {

@@ -54,7 +54,7 @@ int main(int argc, char *argv[]){
     DebugWithPath("Received the path: ", path, 0);
 
     //Start a workstation
-    setupWrkstn(pathPtr); //CRASH!
+    setupWrkstn(pathPtr);
 
     printf("\n Workstation Path: \"%s\"\nWorkstation Name: \"%s\"\n", wrkstn.Path, wrkstn.Name);
 
