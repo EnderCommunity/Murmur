@@ -5,7 +5,9 @@
 
 FILE* lexProc(TmpFileStruc cFileObj){
 
-    FILE *lexFil = fopen(apdStr(cFileObj.pth, ".lxic"), "w"); //Create a new lexer file in "write mode"
+    char *tmpLexPthStr = apdStr(cFileObj.pth, ".lxic");
+
+    FILE *lexFil = fopen(tmpLexPthStr, "w"); //Create a new lexer file in "write mode"
 
     char *tmpStr = malloc(sizeof(char)*MAX_LINE_LENGTH), *curLin = NULL;
 
@@ -27,7 +29,13 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
         char *curFil = getStrPrt(tmpStr, 2, getStrIndx(tmpStr, "}"), 0);
         //"[{main},%d;%d]->%s
-        int col = atoi(getStrPrt(tmpStr, getStrIndx(tmpStr, ";") + 1, getStrIndx(tmpStr, "]"), 0)), lin = atoi(getStrPrt(tmpStr, getStrIndx(tmpStr, ",") + 1, getStrIndx(tmpStr, ";"), 0));
+
+        char *tmpColStr = getStrPrt(tmpStr, getStrIndx(tmpStr, ";") + 1, getStrIndx(tmpStr, "]"), 0), *tmpLinStr = getStrPrt(tmpStr, getStrIndx(tmpStr, ",") + 1, getStrIndx(tmpStr, ";"), 0);
+
+        int col = atoi(tmpColStr), lin = atoi(tmpLinStr);
+
+        free(tmpColStr);
+        free(tmpLinStr);
 
         int newLin = 1, lopLen = strlen(curLin);
 
@@ -190,13 +198,21 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
         //Get the next line!
         fgets(tmpStr, MAX_LINE_LENGTH, cFileObj.ptr);
+
         if(tmpStr[strlen(tmpStr) - 1] == '\n')
             tmpStr[strlen(tmpStr) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
+
+        free(curFil);
+        free(curLin);
 
     }
 
     fclose(lexFil); //Close the lexer file stream
-    lexFil = fopen(apdStr(cFileObj.pth, ".lxic"), "r"); //Open a new lexer stream in "read mode"
+
+    lexFil = fopen(tmpLexPthStr, "r"); //Open a new lexer stream in "read mode"
+
+    free(tmpStr);
+    free(tmpLexPthStr);
 
     return lexFil;
 

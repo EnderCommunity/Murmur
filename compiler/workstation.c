@@ -15,13 +15,16 @@ void setupWrkstn(char *filPth){ //Setup the workstation
     wrkstn.Path = getStrPrt(filPth, 0, indx + 1, 0);
 
     //The workstation name should follow the file name
-    wrkstn.Name = getStrPrt(filPth, indx + 1, strlen(filPth), 0);
-    wrkstn.Name = getStrPrt(wrkstn.Name, 0, getLstStrIndx(wrkstn.Name, "."), 0);
+    char *tmpStr = getStrPrt(filPth, indx + 1, strlen(filPth), 0);
+    wrkstn.Name = getStrPrt(tmpStr, 0, getLstStrIndx(tmpStr, "."), 0);
+
+    free(tmpStr);
 
 }
 
 void endWrkstn(){ //End the workstation
 
-    //
+    free(wrkstn.Name);
+    free(wrkstn.Path);
 
 }
