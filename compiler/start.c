@@ -45,9 +45,14 @@ int main(int argc, char *argv[]){
 
         fgets(path, 255, stdin);
 
-        path[strcspn(path, "\n")] = '\0'; //Make sure to replace the new line char with a string-end char
+        if(path[0] != '\0' && strlen(path) > 1)
+            path[strcspn(path, "\n")] = '\0'; //Make sure to replace the new line char with a string-end char
+        else
+            exit(-1); //Change the exit code
 
     }
+
+    //NOTE: you need to check the path format!
 
     //Get the path of the folder that contains the current file
 
