@@ -200,7 +200,7 @@ module.exports = {
                     sidebarCollapsed: true,
                     versions: {
                         current: {
-                            label: `0.0-test.5 🚧`,
+                            label: `0.0-test.6 🚧`,
                         },
                     },
                 },
