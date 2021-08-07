@@ -17,13 +17,12 @@ module.exports = {
             '@docusaurus/plugin-google-gtag',
             {
                 id: 'plugin-google-gtag-mur-1',
-                // other options
             },
         ],
     ],
     themeConfig: {
         gtag: {
-            trackingID: 'G-6PV3DL11XQ',
+            trackingID: 'G-HKBW0GRXQ1',
             anonymizeIP: true,
         },
         hideableSidebar: true,
