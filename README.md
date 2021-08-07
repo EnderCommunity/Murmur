@@ -6,7 +6,7 @@ Murmur - *you may also refer to it by "Mur" or "ECMPL-2021" (EnderCommunity-Main
 
 >***"Mur" is still not functional, this is all just some pitches and some not-even-close-to-half-baked code.***
 
-You can read more about Murmur in [the docs](./docusaurus).
+You can read more about Murmur in [the docs](https://mur-lang.org/docs/intro/).
 
 ![License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
 
