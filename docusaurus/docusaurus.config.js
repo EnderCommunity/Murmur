@@ -5,7 +5,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
     title: 'Murmur',
     tagline: 'An experimental programming language for everyone.',
-    url: 'https://murmur.org',
+    url: 'https://mur-lang.org',
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
