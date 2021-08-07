@@ -63,10 +63,6 @@
     "message": "الشروط",
     "description": "The label of footer link with label=Terms linking to /legal/terms/"
   },
-  "link.item.label.Data Policy": {
-    "message": "سياسة البيانات",
-    "description": "The label of footer link with label=Data Policy linking to /legal/data-policy/"
-  },
   "link.item.label.Cookie Policy": {
     "message": "سياسة ال-Cookie",
     "description": "The label of footer link with label=Cookie Policy linking to /legal/cookie-policy/"
@@ -78,5 +74,9 @@
   "link.item.label.Feedback & Suggestions": {
     "message": "ردود الفعل & الاقتراحات",
     "description": "The label of footer link with label=Feedback & Suggestions linking to /soon/"
+  },
+  "link.item.label.Mur's License": {
+    "message": "رخصة Mur",
+    "description": "The label of footer link with label=Mur's License linking to /legal/mur/license"
   }
 }

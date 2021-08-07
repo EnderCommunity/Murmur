@@ -12,7 +12,20 @@ module.exports = {
     favicon: 'img/favicon.ico',
     organizationName: 'EnderCommunity', // Usually your GitHub org/user name.
     projectName: 'Murmur', // Usually your repo name.
+    plugins: [
+        [
+            '@docusaurus/plugin-google-gtag',
+            {
+                id: 'plugin-google-gtag-mur-1',
+                // other options
+            },
+        ],
+    ],
     themeConfig: {
+        gtag: {
+            trackingID: 'G-6PV3DL11XQ',
+            anonymizeIP: true,
+        },
         hideableSidebar: true,
         colorMode: {
             defaultMode: 'dark',
@@ -152,12 +165,12 @@ module.exports = {
                             href: '/legal/terms/',
                         },
                         {
-                            label: 'Data Policy',
-                            href: '/legal/data-policy/',
-                        },
-                        {
                             label: 'Cookie Policy',
                             href: '/legal/cookie-policy/',
+                        },
+                        {
+                            label: "Mur's License",
+                            href: '/legal/mur/license',
                         },
                     ],
                 },
