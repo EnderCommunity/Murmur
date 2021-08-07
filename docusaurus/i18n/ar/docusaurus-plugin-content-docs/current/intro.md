@@ -59,8 +59,4 @@ If you want to contribute, make sure that you've properly set up the development
 
 ## License
 
-Murmur is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
-
-:::note Note
-We want you to understand that we chose this license because we believe that no one should profit from selling compilers for programming languages. We also chose this license because we want anyone who has a better vision for this programming language or compiler to not be denied the right to do whatever they want, without denying others the same opportunity for the potential future project/vision.
-:::
+Murmur is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://mur-lang.org/legal/mur/license).
