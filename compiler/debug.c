@@ -29,7 +29,7 @@ void Debug(char msg[], int pause){ //A simple debug message
     printf("[Debug] %s\n", msg);
 
     if(pause)
-        system("pause");
+        SYSTEM_COMMANDS_PAUSE;
 
 }
 
@@ -38,6 +38,6 @@ void DebugWithPath(char msg[], char path[], int pause){ //A debug message with a
     printf("[Debug] %s%s\n", msg, path);
 
     if(pause)
-        system("pause");
+        SYSTEM_COMMANDS_PAUSE;
 
 }

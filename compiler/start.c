@@ -7,7 +7,7 @@
 void Deb(){ //Minimal debug
 
     printf("[Debug] ");
-    system("pause");
+    SYSTEM_COMMANDS_PAUSE;
 
 }
 

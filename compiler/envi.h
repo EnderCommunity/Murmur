@@ -84,3 +84,16 @@
 
 /* (!) Still not implemented */ #define EMPTY_COMPILER_TMP_DIR 0 //Empty the `/compiler/tmp/` directory at the end of every process
 #define C_COMPILER_EXECUTABLE_DIR "C:\\msys64\\mingw64\\bin\\gcc.exe" //The directory of your C compiler of choice
+
+
+//Commands
+
+#if _WIN64 || _WIN32
+
+    #define SYSTEM_COMMANDS_PAUSE system("pause") //The pause command
+
+#else
+
+    #define SYSTEM_COMMANDS_PAUSE system("read -r -p \"Press enter to continue...\" key") //The pause command (NOTE: '-n1' is not working for some reason)
+
+#endif
