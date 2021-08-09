@@ -1,4 +1,5 @@
 #if _WIN64 || _WIN32
+
     #include <windows.h>
     #include <ShellApi.h>
 

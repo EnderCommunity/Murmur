@@ -10,11 +10,12 @@ int getChrIndx(char *str, char chr){ //Get the index of a char in a string
 
 int getStrIndx(char *str, char *strForChk){ //Get the index of a string in a string (weird behaviour has been noticed)
 
-    int indx = strstr(str, strForChk) - str;
-    //int indx = strlen(str) - strlen(strstr(str, strForChk)) + 1;
-    //int indx = strlen(str) - strlen(strstr(str, strForChk));
+    char *subStr = strstr(str, strForChk);
 
-    return indx >= 0 ? indx : -1;
+    if(subStr == NULL)
+        return -1;
+    else
+        return subStr - str;
 
 }
 
@@ -251,5 +252,15 @@ int isCharSpcl(char chr){
 int isKnwnSpclChr(char chr){
 
     return (chr == '%' || chr == '?' || chr == '/' || chr == '>' || chr == '<' || chr == '.' || chr == ',' || chr == '|' || chr == '\\' || chr == '"' || chr == '\'' || chr == ':' || chr == ';' || chr == '}' || chr == '{' || chr == ']' || chr == '[' || chr == '=' || chr == '-' || chr == '+' || chr == '_' || chr == '(' || chr == ')' || chr == '*' || chr == '&' || chr == '^' || chr == '$' || chr == '#' || chr == '@' || chr == '!' || chr == '`' || chr == '~');
+
+}
+
+int isStrSpc(char *str) { //Does a string only consist of whitespace?
+
+    for(int i = 0; str[i] != '\0'; i++)
+        if (!isspace(str[i]))
+            return 0;
+
+    return 1;
 
 }

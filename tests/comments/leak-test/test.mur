@@ -1,12 +1,17 @@
 using system.io;
 
+/* A comment! */
+// This is a comment too!
+
 group test { //Hello there!
 
-    class Program {
+    class Program { /* Hey, another comment! */
 
-        function::int main(){
+        function::int main(){/* Wow,
 
-            Console.WriteLine("Hello there!");
+            a looooooooong comment*/Console.WriteLine("Hello there!");
+
+            /* What's that, a 4th comment! */return 0; /* And there's a 5th comment! */
 
         }
 

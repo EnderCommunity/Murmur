@@ -30,6 +30,11 @@ of Murmur, and all the functions that it can use.
 /* Do some weird C-wizardry */
 #separate end
 
+<< //You can ask the compiler to allow you to use C code in your Mur code
+/* Do some weird C-wizardry */
+>>
+//^ This could be better than using "#separate start" and "#separate end"
+
 using system.io; //Tell the compiler that the program is going to use the "system"
                  //input/output library
 
@@ -55,7 +60,7 @@ public group Start { //Groups can help you keep a whole block of code within one
     //Groups can only contain classes, any normal code here will cause the
     //program to crash.
 
-    public class Program { //Classes can be used to completely seperate functions from one
+    public class Program { //Classes can be used to completely separate functions from one
                     //another, in case you wanted to prevent other classes from
                     //accessing some variables or functions
 
