@@ -1,6 +1,6 @@
 using system.io;
 
-group test {
+group test { //Hello there!
 
     class Program {
 
