@@ -1,3 +1,2 @@
-@['main', 2,1]import "./../no-comments/test.mur";
-
-@[FileEnd]
+[{main},2;1]->import "./../no-comments/test.mur";
+[FileEnd]

@@ -1,5 +1,5 @@
 [?][LOG SYSTEM] => Created a log file successfully!
-[!][Compiler Manager] => The workstation directory has been set to "C:\Users\adels\Desktop\EnderCommunity\Projects\Murmur\tests\header\no-comments\"
+[!][Compiler Manager] => The workstation directory has been set to "E:\files\EnderCommunity\Projects\Murmur\tests\header\no-comments\"
 [?][Compiler Manager] => Testing the `writeLogLine` function
 [?][Compiler Manager] => Starting the preprocessor.
 [?][Preprocessor] => Preprocessor started!
@@ -7,7 +7,6 @@
 [?][Preprocessor] => The header flags have been processed successfully!
 [?][Preprocessor][2, 1] => New processing loop started.
 [!][Preprocessor] => /*Hmm
-
 [?][Preprocessor][2, 1] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -25,4 +24,5 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Compiler Manager] => Closed all files sessions.
+[?][Compiler Manager] => Closed the current workstation.
 [?][Compiler Manager] => Task finished successfully! (Ending process)

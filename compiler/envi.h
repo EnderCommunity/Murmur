@@ -16,6 +16,15 @@
 /* (!) Still not implemented */ #define MAX_SHORT_STRING_LENGTH 256 //The maximum short string length
 #define FILLER_STRING_CHAR '\t' //The character used to generate a filler string
 #define FILLER_STRING_CHAR_TYP_STR "\t" //The character used to generate a filler string (in a string type)
+#if _WIN64 || _WIN32
+
+    #define END_OF_LINE_COUNT 0 //Does the end-of-line character effect the `strlen()` function?
+
+#else
+
+    #define END_OF_LINE_COUNT 1 //Does the end-of-line character effect the `strlen()` function?
+
+#endif
 
 
 //Paths

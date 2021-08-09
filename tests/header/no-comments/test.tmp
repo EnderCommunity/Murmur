@@ -1,5 +1,4 @@
-@['main', 2,1]/*Hmm
-
-@['main', 3,1]Hi*/
-@['main', 4,1]0;
-@[FileEnd]
+[{main},2;1]->/*Hmm
+[{main},3;1]->Hi*/
+[{main},4;1]->0;
+[FileEnd]
