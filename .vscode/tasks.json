@@ -14,6 +14,7 @@
 				//gcc -g start.c -o Mur.out
 				//sudo valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./Mur.out
 				//"/mnt/e/files/EnderCommunity/Projects/Murmur/tests/mem-leak/test.mur"
+				//"/mnt/e/files/EnderCommunity/Projects/Murmur/tests/comments/leak-test/test.mur"
 				//"E:\files\EnderCommunity\Projects\Murmur\tests\mem-leak\test.mur"
 			],
 			"options": {

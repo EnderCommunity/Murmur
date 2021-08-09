@@ -1,0 +1,15 @@
+using system.io;
+
+group test {
+
+    class Program {
+
+        function::int main(){
+
+            Console.WriteLine("Hello there!");
+
+        }
+
+    }
+
+}
