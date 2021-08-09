@@ -91,6 +91,10 @@ public group Start { //Groups can help you keep a whole block of code within one
 
             PlusOne(ref b)(ref b); //the value of 'b' is '3' now!
 
+            bool myTest = false;
+
+            //myTest!!; //myTest is now set to true! (EXP)
+
             return 0; //This is the final program output code
 
         }

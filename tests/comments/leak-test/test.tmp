@@ -1,5 +1,5 @@
 [{main},1;1]->using system.io;
-[{main},3;1]->group test {
+[{main},3;1]->group test { 
 [{main},5;5]->class Program {
 [{main},7;9]->function::int main(){
 [{main},9;13]->Console.WriteLine("Hello there!");
