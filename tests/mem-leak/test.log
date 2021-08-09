@@ -1,5 +1,5 @@
 [?][LOG SYSTEM] => Created a log file successfully!
-[!][Compiler Manager] => The workstation directory has been set to "/mnt/e/files/EnderCommunity/Projects/Murmur/tests/mem-leak/"
+[!][Compiler Manager] => The workstation directory has been set to "E:\files\EnderCommunity\Projects\Murmur\tests\mem-leak\"
 [?][Compiler Manager] => Testing the `writeLogLine` function
 [?][Compiler Manager] => Starting the preprocessor.
 [?][Preprocessor] => Preprocessor started!

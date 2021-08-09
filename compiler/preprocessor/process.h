@@ -85,6 +85,13 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
 
         strcpy(tmp->currLineCon, tmp->currOLineCon);
 
+    }else{
+
+        if(tmp->currOLineCon[strlen(tmp->currOLineCon) - 1] == '\n')
+            tmp->currOLineCon[strlen(tmp->currOLineCon) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
+
+        strcpy(tmp->currLineCon, tmp->currOLineCon);
+
     }
 
     return tmp;

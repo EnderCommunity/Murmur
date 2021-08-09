@@ -1,4 +1,4 @@
-#header <nothing-to-see-here> <allow-separate> <no-comments>
+#header <nothing-to-see-here> <allow-separate>
 //^ The header is used to give the compiler nessessary information before it
 //starts compiling the code. Flags start with the operators "--". If you do not
 //wish to pass any information to the compiler, you can just remove it.
