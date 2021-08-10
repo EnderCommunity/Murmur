@@ -31,7 +31,7 @@ Like any compiler, Mur's compiler has multiple stages of compiling:
 - The preprocessor
 - The lexer
 - The parser
-- The optimisor
+- The optimiser
 - The evaluator
 
 :::note Note
