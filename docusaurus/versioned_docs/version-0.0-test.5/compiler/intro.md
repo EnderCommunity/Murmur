@@ -31,7 +31,7 @@ Like any compiler, Mur's compiler has multiple stages of compiling:
 - The preprocessor
 - The lexer
 - The parser
-- The optimisor
+- The optimiser
 - The evaluator
 
 :::note Note
@@ -53,7 +53,7 @@ As of now, the compiler will output 3 files: `.log`, `.tmp`, and `.lxic`.
 - The `.tmp` file contains the output of the preprocessor.
 - The `.lxic` file contains the output of the lexer.
 - *The `.prs` file contains the output of the parser.*
-- *The `.opt` file contains the output of the optimisor.*
+- *The `.opt` file contains the output of the optimiser.*
 - *The `.val` file contains the output of the evaluator.*
 - *The `.c` file contains the final C output.*
 - The `.log` file contains logs from the compiler.
