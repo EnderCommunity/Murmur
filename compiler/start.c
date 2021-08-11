@@ -145,7 +145,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
 
     }else{
 
-        ppcRead(fileInf, desFileObj.ptr); //Let the preprocessor do its thing!
+        ppcRead(fileInf, desFileObj.ptr, "<main>"); //Let the preprocessor do its thing!
 
         fclose(filePtr); //Close the main input file stream
 

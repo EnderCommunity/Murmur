@@ -15,7 +15,7 @@ int waitForComm = 0;
 
 #include "comments.h"
 
-void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
+void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
     /*fileInf->mode;
     fileInf->isFull;
@@ -54,7 +54,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
         if(ENABLE_PREPROCESSOR_METHODS && ENVI_CHECK_FOR_PREPROCESSOR_METHODS && !waitForComm && !isStrEmpty(fileInf->currLineCon)){
 
             writeLogLine("Preprocessor", 0, "Checking for preprocessor methods...", 1, fileInf->currLine, fileInf->currCol);
-            fileInf = chkForPprFunc(fileInf); //Check for the preprocessor functions
+            fileInf = chkForPprFunc(fileInf, desFilPtr, filPth); //Check for the preprocessor functions
 
         }
 
@@ -71,7 +71,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
         if(!waitForComm && !isStrEmpty(fileInf->currLineCon)){
 
-            fprintf(desFilePtr, "[{main},%d;%d]->%s\n", fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
+            fprintf(desFilPtr, "[{%s},%d;%d]->%s\n", filPth, fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
 
             writeLogLine("Preprocessor", 0, "Inserted the filtered code into the temporary output file.", 0, 0, 0);
 
@@ -164,6 +164,6 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
     freeFileDatObj(fileInf);
 
-    fprintf(desFilePtr, "[FileEnd]\0");
+    fprintf(desFilPtr, "[FileEnd]\0");
 
 }

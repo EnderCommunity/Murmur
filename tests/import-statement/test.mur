@@ -1,0 +1,22 @@
+#header <allow-separate>
+
+import "file.mur"; //Import my other file!
+//      ^ or "./file.mur",
+//      ^ or "../import-statement/file.mur",
+//      ^ or "./../import-statement/file.mur",
+
+group test {
+
+    class Program {
+
+        function::int Main(){
+
+            int a = MyExtras.ExitCodes.GetSuccessCode();
+
+            return a;
+
+        }
+
+    }
+
+}
