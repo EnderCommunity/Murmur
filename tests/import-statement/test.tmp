@@ -1,0 +1,10 @@
+[{<main>},3;1]->import "file.mur";
+[{<main>},8;1]->group test {
+[{<main>},10;5]->class Program {
+[{<main>},12;9]->function::int Main(){
+[{<main>},14;13]->int a = MyExtras.ExitCodes.GetSuccessCode();
+[{<main>},16;13]->return a;
+[{<main>},18;9]->}
+[{<main>},20;5]->}
+[{<main>},22;1]->}
+[FileEnd]

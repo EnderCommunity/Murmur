@@ -13,6 +13,7 @@ typedef struct{
     int nextCol;
     char *currLineCon;
     char *currOLineCon;
+    int curZon; //The current file local zone (root-level, group-level, class-level, etc)
 
 } FileInfo;
 
@@ -35,6 +36,7 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
     tmp->currLine = 1;
     tmp->currCol = 1;
     tmp->nextCol = 1;
+    tmp->curZon = 0; //Is the file current in the root zone of the code
 
     fgets(tmp->currOLineCon, MAX_LINE_LENGTH, tmp->filePtr);
 

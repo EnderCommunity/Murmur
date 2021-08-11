@@ -1,0 +1,19 @@
+group MyExtras {
+
+    class ExitCodes {
+
+        function::int GetSuccessCode(){
+
+            return 0;
+
+        }
+
+        function::int GetFailureCode(){
+
+            return -1;
+
+        }
+
+    }
+
+}
