@@ -12,6 +12,7 @@
 [?][Preprocessor][3, 1] => New processing loop started.
 [!][Preprocessor] => using system.io;
 [?][Preprocessor][3, 1] => Checking for preprocessor methods...
+[?][Preprocessor][3, 1] => A 'using' statement has been detected!
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -19,6 +20,7 @@
 [!][Preprocessor] => import "file.mur"; //Import my other file!
 [?][Preprocessor][4, 20] => A single line comment has been detected!
 [?][Preprocessor][4, 1] => Checking for preprocessor methods...
+[?][Preprocessor][4, 1] => An 'import' statement has been detected!
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -40,12 +42,14 @@
 [?][Preprocessor][8, 1] => New processing loop started.
 [!][Preprocessor] => setsize int 0;
 [?][Preprocessor][8, 1] => Checking for preprocessor methods...
+[?][Preprocessor][8, 1] => A 'setsize' statement has been detected!
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][9, 1] => New processing loop started.
 [!][Preprocessor] => define MY_VAR 1;
 [?][Preprocessor][9, 1] => Checking for preprocessor methods...
+[?][Preprocessor][9, 1] => A 'define' statement has been detected!
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
