@@ -54,7 +54,7 @@ import "path/to/my/file2.mur"; //You need to pay attention to the importing orde
 
 // (!) Modules may not be necessary anymore with this new arrangement
 
-public group Start { //Groups can help you keep a whole block of code within one
+public group FinalPitch { //Groups can help you keep a whole block of code within one
               //structure to better organise your code
 
     //Groups can only contain classes, any normal code here will cause the

@@ -1,10 +1,13 @@
-[{<main>},3;1]->import "file.mur";
-[{<main>},8;1]->group test {
-[{<main>},10;5]->class Program {
-[{<main>},12;9]->function::int Main(){
-[{<main>},14;13]->int a = MyExtras.ExitCodes.GetSuccessCode();
-[{<main>},16;13]->return a;
-[{<main>},18;9]->}
-[{<main>},20;5]->}
-[{<main>},22;1]->}
+[{<main>},3;1]->using system.io;
+[{<main>},4;1]->import "file.mur";
+[{<main>},8;1]->setsize int 0;
+[{<main>},9;1]->define MY_VAR 1;
+[{<main>},11;1]->group test {
+[{<main>},13;5]->class Program {
+[{<main>},15;9]->function::int Main(){
+[{<main>},17;13]->int a = MyExtras.ExitCodes.GetSuccessCode();
+[{<main>},19;13]->return a;
+[{<main>},21;9]->}
+[{<main>},23;5]->}
+[{<main>},25;1]->}
 [FileEnd]

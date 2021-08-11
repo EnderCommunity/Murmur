@@ -1,14 +1,8 @@
 #include "import.h"
 
-
-//Error [preprocessor.linker.invalid_function]
-
 FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
     int len = strlen(curFile->currLineCon) - END_OF_LINE_COUNT, inStr = 0, inChr = 0;
-
-    printf("\n[New Line, state: ");
-    int didPass = 0;
 
     for(int i = 0; i < len; i++){
 
@@ -34,34 +28,41 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
             curFile->curZon--;
 
-        }else{
+        }else if(shdChk && curFile->curZon == 0){
 
-            shdChk = shdChk && curFile->curZon == 0; //Only look in the zone 0 (the root-level zone)
+            //You can start looking now!
 
-            if(shdChk){
+            if(i + 4 < len && (curFile->currLineCon)[i] == 'u' && (curFile->currLineCon)[i + 1] == 's' && (curFile->currLineCon)[i + 2] == 'i' && (curFile->currLineCon)[i + 3] == 'n' && (curFile->currLineCon)[i + 4] == 'g'){
 
-                //You can start looking now!
-                if(!didPass){
-    
-                    printf("<passed>]");
-                    didPass = 1;
-    
-                }
+                //The "use" statement has been detected!
+                printf("\n'using' statement detected!");
+
+            }
+
+            if(i + 5 < len && (curFile->currLineCon)[i] == 'i' && (curFile->currLineCon)[i + 1] == 'm' && (curFile->currLineCon)[i + 2] == 'p' && (curFile->currLineCon)[i + 3] == 'o' && (curFile->currLineCon)[i + 4] == 'r' && (curFile->currLineCon)[i + 5] == 't'){
+
+                //The "import" statement has been detected!
+                printf("\n'import' statement detected!");
+
+            }
+
+            if(i + 5 < len && (curFile->currLineCon)[i] == 'd' && (curFile->currLineCon)[i + 1] == 'e' && (curFile->currLineCon)[i + 2] == 'f' && (curFile->currLineCon)[i + 3] == 'i' && (curFile->currLineCon)[i + 4] == 'n' && (curFile->currLineCon)[i + 5] == 'e'){
+
+                //The "define" statement has been detected!
+                printf("\n'define' statement detected!");
+
+            }
+
+            if(i + 6 < len && (curFile->currLineCon)[i] == 's' && (curFile->currLineCon)[i + 1] == 'e' && (curFile->currLineCon)[i + 2] == 't' && (curFile->currLineCon)[i + 3] == 's' && (curFile->currLineCon)[i + 4] == 'i' && (curFile->currLineCon)[i + 5] == 'z' && (curFile->currLineCon)[i + 6] == 'e'){
+
+                //The "setsize" statement has been detected!
+                printf("\n'setsize' statement detected!");
 
             }
 
         }
 
     }
-
-    if(!didPass){
-    
-        printf("<failed>]");
-    
-    }
-
-
-    //look for "use", "import", "define", and "setsize"
 
     /*FileInfo *subFilInf = checkFlags(filePtr, full_path, 0); //An object that contains the sub-file info!
 
