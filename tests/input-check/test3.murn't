@@ -1,0 +1,15 @@
+#header <allow-separate>
+
+group test{
+
+    class Program {
+
+        function::int Main(){
+
+            return 0;
+
+        }
+
+    }
+
+}
