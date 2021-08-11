@@ -60,7 +60,7 @@
 #define ENABLE_PREPROCESSOR_METHODS 1 //Enable preprocessor methods (will not effect the header method)
 #define ENABLE_PREPROCESSOR_HEADER 1 //Enable the `#header` super-method
 #define ENABLE_ALLOW_SEPARATE_FLAG 1 //Enable the header `allow-separate` flag
-#define ENABLE_USING_STATEMENT 1 //Enable the `using` statement
+#define ENABLE_USING_STATEMENT 0 //Enable the `using` statement
 #define ENABLE_IMPORT_STATEMENT 1 //Enable the `import` statement
 #define ENABLE_SETSIZE_STATEMENT 1 //Enable the `setsize` statement
 #define ENABLE_DEFINE_STATEMENT 1 //Enable the `define` statement
