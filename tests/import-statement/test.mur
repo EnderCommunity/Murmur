@@ -1,9 +1,12 @@
 #header <allow-separate>
 
+using system.io;
 import "file.mur"; //Import my other file!
 //      ^ or "./file.mur",
 //      ^ or "../import-statement/file.mur",
 //      ^ or "./../import-statement/file.mur",
+setsize int 0;
+define MY_VAR 1;
 
 group test {
 

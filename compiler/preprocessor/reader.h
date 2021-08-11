@@ -51,13 +51,6 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
         if(ENABLE_COMMENTS && ENVI_ENABLE_COMMENTS && !isStrEmpty(fileInf->currLineCon))
             fileInf = chkForCom(fileInf); //Remove the comments
 
-        if(ENABLE_PREPROCESSOR_METHODS && ENVI_CHECK_FOR_PREPROCESSOR_METHODS && !waitForComm && !isStrEmpty(fileInf->currLineCon)){
-
-            writeLogLine("Preprocessor", 0, "Checking for preprocessor methods...", 1, fileInf->currLine, fileInf->currCol);
-            fileInf = chkForPprFunc(fileInf, desFilPtr, filPth); //Check for the preprocessor functions
-
-        }
-
         if(REMOVE_WHITESPACE_AT_LINE_END && !waitForComm && !isStrEmpty(fileInf->currLineCon)){
 
             while(isspace(fileInf->currLineCon[strlen(fileInf->currLineCon) - 1])){ //Remove the extra whitespace
@@ -66,6 +59,13 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
                 fileInf->currLineCon[strlen(fileInf->currLineCon) - 1] = '\0';
 
             }
+
+        }
+
+        if(ENABLE_PREPROCESSOR_METHODS && ENVI_CHECK_FOR_PREPROCESSOR_METHODS && !waitForComm && !isStrEmpty(fileInf->currLineCon)){
+
+            writeLogLine("Preprocessor", 0, "Checking for preprocessor methods...", 1, fileInf->currLine, fileInf->currCol);
+            fileInf = chkForPprFunc(fileInf, desFilPtr, filPth); //Check for the preprocessor functions
 
         }
 
