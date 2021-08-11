@@ -1,0 +1,21 @@
+#header <allow-separate>
+
+group test {
+
+    class Program {
+
+        function::int Main(){                // HI!
+
+            int i = -1;                      // Hey, that's an error code...
+
+            <<
+            test__Program_Main_i = 0;        // Let's fix this!
+            >>
+
+            return i;                        // And here ya go!
+
+        }
+
+    }
+
+}

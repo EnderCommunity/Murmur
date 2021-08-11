@@ -44,6 +44,8 @@
 
 //Output (NOTE: some of these files might still get generated in the `/tmp` directory)
 
+#define REMOVE_WHITESPACE_AT_LINE_START 1 //Remove the extra whitespace at the start of each line
+#define REMOVE_WHITESPACE_AT_LINE_END 1 //Remove the extra whitespace at the end of each line
 #define OUTPUT_LOG_FILE 1 //Output a `.log` file (Logs files may affect the speed of
 //the compiler severely. The log file stream is constantly closed and re-opened to
 //ensure that the user will get the logs even when the compiler crashes.)

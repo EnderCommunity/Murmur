@@ -1,0 +1,12 @@
+[{main},3;1]->group test {
+[{main},5;5]->class Program {
+[{main},7;9]->function::int Main(){
+[{main},9;13]->int i = -1;
+[{main},11;13]-><<
+[{main},12;13]->test__Program_Main_i = 0;
+[{main},13;13]->>>
+[{main},15;13]->return i;
+[{main},17;9]->}
+[{main},19;5]->}
+[{main},21;1]->}
+[FileEnd]

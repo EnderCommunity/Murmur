@@ -51,14 +51,25 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
         if(ENABLE_COMMENTS && ENVI_ENABLE_COMMENTS && !isStrEmpty(fileInf->currLineCon))
             fileInf = chkForCom(fileInf); //Remove the comments
 
-        if(ENABLE_PREPROCESSOR_METHODS && ENVI_CHECK_FOR_PREPROCESSOR_METHODS && !isStrEmpty(fileInf->currLineCon) && !waitForComm){
+        if(ENABLE_PREPROCESSOR_METHODS && ENVI_CHECK_FOR_PREPROCESSOR_METHODS && !waitForComm && !isStrEmpty(fileInf->currLineCon)){
 
             writeLogLine("Preprocessor", 0, "Checking for preprocessor methods...", 1, fileInf->currLine, fileInf->currCol);
             fileInf = chkForPprFunc(fileInf); //Check for the preprocessor functions
 
         }
 
-        if(!isStrEmpty(fileInf->currLineCon) && !waitForComm){
+        if(REMOVE_WHITESPACE_AT_LINE_END && !waitForComm && !isStrEmpty(fileInf->currLineCon)){
+
+            while(isspace(fileInf->currLineCon[strlen(fileInf->currLineCon) - 1])){ //Remove the extra whitespace
+
+                //Shif by one char
+                fileInf->currLineCon[strlen(fileInf->currLineCon) - 1] = '\0';
+
+            }
+
+        }
+
+        if(!waitForComm && !isStrEmpty(fileInf->currLineCon)){
 
             fprintf(desFilePtr, "[{main},%d;%d]->%s\n", fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
 
@@ -104,14 +115,15 @@ void ppcRead(FileInfo *fileInf, FILE *desFilePtr){
 
                 linOrgLen = strlen(fileInf->currOLineCon);
 
-                while(isspace(fileInf->currOLineCon[0])){ //Remove the extra whitespace without losing track of the column number
+                if(REMOVE_WHITESPACE_AT_LINE_START)
+                    while(isspace(fileInf->currOLineCon[0])){ //Remove the extra whitespace without losing track of the column number
 
-                    //Shif by one char
-                    fileInf->currOLineCon = shfStr(fileInf->currOLineCon, 1);
+                        //Shif by one char
+                        fileInf->currOLineCon = shfStr(fileInf->currOLineCon, 1);
 
-                    fileInf->currCol++;
+                        fileInf->currCol++;
 
-                }
+                    }
 
                 fileInf->nextCol = fileInf->currCol;
 
