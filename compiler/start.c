@@ -137,7 +137,13 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
     printf("[Debug] Current Line Original Content: %s\n", fileInf->currOLineCon);
     printf("[Debug] Path: %s\n", fileInf->path);
 
-    if(fileInf->mode != 'S'){ //The preprocessor should be skipped!
+    if(fileInf->mode == 'U'){ //This is neither a `.mur` file nor a `.murm` file
+
+        writeLogLine("Compiler Manager", 2, "Unknown input file extension!", 0, 0, 0);
+
+        exit(-1); //Exit! Don't worry about the allocated memory, the system is gonna clean it up.
+
+    }else{
 
         ppcRead(fileInf, desFileObj.ptr); //Let the preprocessor do its thing!
 
@@ -157,27 +163,21 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
         free(desFileObj.pth);
         fclose(desFileObj.ptr);
 
-    }else{
+        //(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj)
 
-        fclose(filePtr); //Close the main input file stream
+        /* //[START] Start the C processor
 
-        writeLogLine("Preprocessor", 0, "The skip flag has been detected!", 0, 0, 0);
+        FILE *svPtr = desFileObj.ptr;
+
+        movCnt(fileInf, desFileObj.ptr);
+
+        desFileObj.ptr = svPtr;
+
+        CProcess(fileInf, desFileObj);
+
+        //[END] Start the C processor */
 
     }
-
-    //(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj)
-
-    /* //[START] Start the C processor
-
-    FILE *svPtr = desFileObj.ptr;
-
-    movCnt(fileInf, desFileObj.ptr);
-
-    desFileObj.ptr = svPtr;
-
-    CProcess(fileInf, desFileObj);
-
-    //[END] Start the C processor */
 
 }
 

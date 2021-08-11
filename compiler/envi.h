@@ -57,7 +57,6 @@
 
 #define ENABLE_PREPROCESSOR_METHODS 1 //Enable preprocessor methods (will not effect the header method)
 #define ENABLE_PREPROCESSOR_HEADER 1 //Enable the `#header` super-method
-#define ENABLE_PREPROCESSOR_SKIP_FLAG 1 //Enable the head `skip-processor` flag
 #define ENABLE_ALLOW_SEPARATE_FLAG 1 //Enable the header `allow-separate` flag
 
 

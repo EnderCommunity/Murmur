@@ -3,7 +3,7 @@
 
 typedef struct{
 
-    char mode; //A file's mode can be set to 'N' (Normal), 'M' (Module), 'U' (Unknown), or 'S' (Skip)
+    char mode; //A file's mode can be set to 'N' (Normal), 'M' (Module), or 'U' (Unknown)
     int isFull; //Is this the main file, or what?
     char *path; //The path of the file
     FILE *filePtr; //The file pointer, it should always point to the current line that is being processed
@@ -49,13 +49,10 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
 
         writeLogLine("Preprocessor", 0, "The header has been detected!", 0, 0, 0);
 
-        if(ENABLE_PREPROCESSOR_SKIP_FLAG && inStrRng(tmp->currOLineCon, "<skip-preprocessor>")) //This file will be skipped!
-            tmp->mode = 'S';
-
-        if(ENABLE_PREPROCESSOR_SKIP_FLAG && inStrRng(tmp->currOLineCon, "<no-comments>")) //No comments will get filtered!
+        if(inStrRng(tmp->currOLineCon, "<no-comments>")) //No comments will get filtered!
             ENVI_ENABLE_COMMENTS = 0;
 
-        if(ENABLE_PREPROCESSOR_SKIP_FLAG && inStrRng(tmp->currOLineCon, "<no-preprocessor-methods>")) //The compiler will not check for preprocessor methods
+        if(inStrRng(tmp->currOLineCon, "<no-preprocessor-methods>")) //The compiler will not check for preprocessor methods
             ENVI_CHECK_FOR_PREPROCESSOR_METHODS = 0;
         
         if(ENABLE_ALLOW_SEPARATE_FLAG && inStrRng(tmp->currOLineCon, "<allow-separate>"))
