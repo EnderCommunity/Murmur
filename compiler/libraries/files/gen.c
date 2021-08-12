@@ -18,6 +18,8 @@ static TmpFileStruc genFilStr(char *pth){ //Create a new file in the `/tmp` dire
 
         str = apdStr("tmp/", rnd);
 
+        free(rnd);
+
         strcpy(oth, str);
 
         str = apdStr(str, ".tmp");

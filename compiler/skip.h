@@ -2,7 +2,7 @@ void movCnt(FileInfo *fileInf, FILE *desFilePtr){ //Copy the content of the tmp 
 
     writeLogLine("Preprocessor", 0, "Copying file content...", 0, 0, 0);
 
-    fileInf->mode;
+    /*fileInf->mode;
     fileInf->isFull;
     fileInf->currLineCon;
     fileInf->currOLineCon;
@@ -11,7 +11,7 @@ void movCnt(FileInfo *fileInf, FILE *desFilePtr){ //Copy the content of the tmp 
     fileInf->fileStrPtr;
     fileInf->currLine;
     fileInf->currCol;
-    fileInf->nextCol;
+    fileInf->nextCol;*/
 
     int keepLoop = 1, wait = 1;
 

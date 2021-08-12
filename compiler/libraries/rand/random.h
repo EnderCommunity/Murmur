@@ -40,5 +40,7 @@ char* randStr(int size, char *mode) { //Generate a random string
 
     }
 
+    free(chrSet);
+
     return str;
 }
