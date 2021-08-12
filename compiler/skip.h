@@ -18,7 +18,7 @@ void movCnt(FileInfo *fileInf, FILE *desFilePtr){ //Copy the content of the tmp 
     while(keepLoop){
 
         if(!isStrEmpty(fileInf->currLineCon))
-            fprintf(desFilePtr, fileInf->currLineCon);
+            fprintf(desFilePtr, "%s", fileInf->currLineCon);
 
         if(keepLoop){
 
