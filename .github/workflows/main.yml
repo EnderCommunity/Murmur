@@ -61,6 +61,8 @@ jobs:
           pacman -S mingw-w64-x86_64-toolchain
           pacman -S mingw-w64-x86_64-pcre
           pacman -S mingw-w64-x86_64-pcre2
+        with:
+            first-selection: all
       - name: Validating the GCC compiler
         run: C:\\msys64\\mingw64\\bin\\gcc.exe --version
       # [END] Set up the environment for Windows
