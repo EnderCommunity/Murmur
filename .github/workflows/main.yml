@@ -76,5 +76,5 @@ jobs:
       - name: Building the compiler
         run: |
           cd compiler
-          C:\\msys64\\mingw64\\bin\\gcc.exe -g start.c GitHubBuild_Mur_Windows.exe -lregex
+          gcc -g start.c GitHubBuild_Mur_Windows.exe -lregex
       - run: echo "This job's status is ${{ job.status }}."
