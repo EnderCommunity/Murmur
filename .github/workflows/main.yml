@@ -1,5 +1,5 @@
 name: Builds (Windows, Linux, and macOS)
-on: [pull_request]
+on: [push, pull_request]
 jobs:
   build-on-linux:
     runs-on: ubuntu-latest
