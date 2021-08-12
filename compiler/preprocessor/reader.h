@@ -1,5 +1,6 @@
+void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth);
+
 #include "linker.h"
-#include "import.h"
 
 FileInfo* chngFileCol(FileInfo *tmp, int col){
 
@@ -14,8 +15,18 @@ FileInfo* chngFileCol(FileInfo *tmp, int col){
 int waitForComm = 0;
 
 #include "comments.h"
+#include "data.h"
 
 void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
+
+    if(tmpDatCtr.ptr != NULL){
+
+        int pthDatId = savDat(DATA_PATH, filPth);
+        freeDatFil();
+        fclose(tmpDatCtr.ptr);
+        tmpDatCtr.ptr = NULL;
+
+    }
 
     /*fileInf->mode;
     fileInf->isFull;
@@ -162,8 +173,9 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
     }
 
-    freeFileDatObj(fileInf);
+    if(fileInf->isFull)
+        fprintf(desFilPtr, "[FileEnd]");
 
-    fprintf(desFilPtr, "[FileEnd]");
+    freeFileDatObj(fileInf);
 
 }

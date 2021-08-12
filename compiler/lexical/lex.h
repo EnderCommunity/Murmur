@@ -19,7 +19,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
         curLin = getStrPrt(tmpStr, getStrIndx(tmpStr, "]") + 3, strlen(tmpStr), 0); //Get the current line content
 
-        char *curFil = getStrPrt(tmpStr, 2, getStrIndx(tmpStr, "}"), 0);
+        char *curSrcPth = getStrPrt(tmpStr, 2, getStrIndx(tmpStr, "}"), 0);
         //"[{main},%d;%d]->%s
 
         char *tmpColStr = getStrPrt(tmpStr, getStrIndx(tmpStr, ";") + 1, getStrIndx(tmpStr, "]"), 0), *tmpLinStr = getStrPrt(tmpStr, getStrIndx(tmpStr, ",") + 1, getStrIndx(tmpStr, ";"), 0);
@@ -47,7 +47,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 if(curLin[i] == '.' && !isdigit(curLin[i + 1])){
 
                     //false alarm
-                    fprintf(lexFil, "%d `%c` %d %d %d 0 | %d 0 0 0 <%s> 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), !alowDot, "0", lin, col); //This is an operator!
+                    fprintf(lexFil, "%d `%c` %d %d %d 0 | %d 0 0 0 [%s] 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), !alowDot, curSrcPth, lin, col); //This is an operator!
 
                 }else{
 
@@ -73,7 +73,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                     i += delt;
 
-                    fprintf(lexFil, "` %d %d %d 0 | %d 0 0 0 <%s> 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), !alowDot, "0", lin, col);
+                    fprintf(lexFil, "` %d %d %d 0 | %d 0 0 0 [%s] 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), !alowDot, curSrcPth, lin, col);
                     //                    ^ if this value is set to '0', then this number is an integer
                     //                      if it's set to '1', then this number is of the type double/float
 
@@ -99,7 +99,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 col++;
                 i += delt;
 
-                fprintf(lexFil, "` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col);
+                fprintf(lexFil, "` %d %d %d 0 | 0 0 0 0 [%s] 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), curSrcPth, lin, col);
 
                 col += delt - 1;
 
@@ -120,13 +120,13 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 col++;
                 i += delt;
 
-                fprintf(lexFil, "` %d %d %d 0 | %d 0 0 0 <%s> 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), (delt == 1) ? 0 : ((delt == 2) ? 1 : ((delt == 3 && curLin[i - 2] == '\\') ? 2 : 3)), "0", lin, col);
+                fprintf(lexFil, "` %d %d %d 0 | %d 0 0 0 [%s] 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), (delt == 1) ? 0 : ((delt == 2) ? 1 : ((delt == 3 && curLin[i - 2] == '\\') ? 2 : 3)), curSrcPth, lin, col);
 
                 col += delt - 1;
 
             } else if((curLin[i] == 'f' && curLin[i + 1] == 'a' && curLin[i + 2] == 'l' && curLin[i + 3] == 's' && curLin[i + 4] == 'e' && !isThrMor(curLin[i + 5])) || (curLin[i] == 't' && curLin[i + 1] == 'r' && curLin[i + 2] == 'u' && curLin[i + 3] == 'e' && !isThrMor(curLin[i + 4]))){ //Boolean
 
-                fprintf(lexFil, "%d `%s` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", LEXER_BOOLEAN, (curLin[i] == 'f') ? "false" : "true", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col); //This is an operator!
+                fprintf(lexFil, "%d `%s` %d %d %d 0 | 0 0 0 0 [%s] 0x%09X 1x%09X\n", LEXER_BOOLEAN, (curLin[i] == 'f') ? "false" : "true", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), curSrcPth, lin, col); //This is an operator!
 
                 if(curLin[i] == 'f'){
 
@@ -160,13 +160,13 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                 i += delt;
 
-                fprintf(lexFil, "` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col);
+                fprintf(lexFil, "` %d %d %d 0 | 0 0 0 0 [%s] 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), curSrcPth, lin, col);
 
                 col += delt;
 
             } else if(isKnwnSpclChr(currChar)) { //Operator!
 
-                fprintf(lexFil, "%d `%c` %d %d %d 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), "0", lin, col);
+                fprintf(lexFil, "%d `%c` %d %d %d 0 | 0 0 0 0 [%s] 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), curSrcPth, lin, col);
 
             } else {
 
@@ -175,12 +175,13 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
             }
 
-            //fprintf(lexFil, "%d `%s` 0 0 0 0 | 0 0 0 0 <%s> 0x%09X 1x%09X\n", 1000, "", "0", 0, 0);
+            //fprintf(lexFil, "%d `%s` 0 0 0 0 | 0 0 0 0 [%s] 0x%09X 1x%09X\n", 1000, "", "<0>", 0, 0);
             //symbol -> 1001, string -> 1002, char -> 1003, number -> 1004, operator -> 1005
             //LEXER_SYMBOL, LEXER_STRING, LEXER_CHAR, LEXER_NUMBER, LEXER_OPERATOR
-            //1000 `[value]` 0 0 0 0 | 0 0 0 0 <[file]> 0x000000000 1x000000000
-            //1000 `[value]` 0 0 0 0 | 0 0 0 0 <[file]> 0x000000000 1x000000000
-            //1000 `[value]` 0 0 0 0 | 0 0 0 0 <[file]> 0x000000000 1x000000000
+            //1000 `[value]` 0 0 0 0 | 0 0 0 0 [<file2>@<file1>] 0x000000000 1x000000000
+            //1000 `[value]` 0 0 0 0 | 0 0 0 0 [<file2>@<file1>] 0x000000000 1x000000000
+            //1000 `[value]` 0 0 0 0 | 0 0 0 0 [<file2>@<file1>] 0x000000000 1x000000000
+            //1000 `[value]` 0 0 0 0 | 0 0 0 0 [<file2>@<file1>] 0x000000000 1x000000000
             //^typ ^value    ^scrFile ^srcLine(0) ^srcColumn(1)
 
             if(newLin)
@@ -194,7 +195,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
         if(tmpStr[strlen(tmpStr) - 1] == '\n')
             tmpStr[strlen(tmpStr) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
 
-        free(curFil);
+        free(curSrcPth);
         free(curLin);
 
     }

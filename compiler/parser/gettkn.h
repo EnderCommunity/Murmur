@@ -77,7 +77,7 @@ M_Token getTkn(){ //Get a token
         tmp.adtVal3 = getNxtLinUniVal(tmp.val, &tmpRefIndx);
         tmp.adtVal4 = getNxtLinUniVal(tmp.val, &tmpRefIndx);
 
-        tmp.srcFil = getStrSec(tmp.val, "<", ">");
+        tmp.srcFil = getStrSec(tmp.val, "[", "]");
 
         tmp.srcLin = hexToInt(getStrPrt(tmp.val, getLstStrIndx(tmp.val, "0x") + 2, getLstStrIndx(tmp.val, "0x") + 2 + 9, 0));
         tmp.srcCol = hexToInt(getStrPrt(tmp.val, getLstStrIndx(tmp.val, "1x") + 2, getLstStrIndx(tmp.val, "1x") + 2 + 9, 0));
