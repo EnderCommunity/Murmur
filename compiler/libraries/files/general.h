@@ -36,5 +36,7 @@ FILE* cpyFileCon(FILE *destPtr, FILE *srcPtr){
         fprintf(destPtr, "%s", str);
 
     }while(!feof(srcPtr));
+
+    return destPtr;
   
 }
