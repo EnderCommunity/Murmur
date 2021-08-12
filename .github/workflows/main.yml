@@ -1,10 +1,9 @@
-name: Build (Windows, Linux, and macOS)
+name: TEST - Build (Windows, Linux, and macOS)
 on: [push]
 jobs:
   build-on-linux:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "THIS IS A TEST!"
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
@@ -15,4 +14,12 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: Updating the packages list
+        run: sudo apt update
+      - name: Installing the build-essential package
+        run: sudo apt install build-essential
+      - name: Installing the build-essential package
+        run: sudo apt install build-essential
+      - name: Validating the GCC compiler
+        run: gcc --version
       - run: echo "This job's status is ${{ job.status }}."
