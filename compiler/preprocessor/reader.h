@@ -164,6 +164,6 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
     freeFileDatObj(fileInf);
 
-    fprintf(desFilPtr, "[FileEnd]\0");
+    fprintf(desFilPtr, "[FileEnd]");
 
 }

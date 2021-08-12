@@ -33,7 +33,7 @@ FILE* cpyFileCon(FILE *destPtr, FILE *srcPtr){
 
         fgets(str, MAX_LINE_LENGTH, srcPtr);
 
-        fprintf(destPtr, str);
+        fprintf(destPtr, "%s", str);
 
     }while(!feof(srcPtr));
   
