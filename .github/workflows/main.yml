@@ -22,10 +22,12 @@ jobs:
         run: sudo apt install build-essential
       - name: Validating the GCC compiler
         run: gcc --version
-      - run: cd compiler
       - name: List files in the compiler dir
         run: |
+          cd compiler
           ls ${{ github.workspace }}
       - name: Building the compiler
-        run: gcc -g start.c -o GitHubBuild_Mur_Linux.out
+        run: |
+          cd compiler
+          gcc -g start.c -o GitHubBuild_Mur_Linux.out
       - run: echo "This job's status is ${{ job.status }}."
