@@ -1,4 +1,4 @@
-name: TEST - Build (Windows, Linux, and macOS)
+name: Builds (Windows, Linux, and macOS)
 on: [push, pull_request]
 jobs:
   build-on-linux:
