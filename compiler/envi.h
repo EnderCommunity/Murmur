@@ -73,6 +73,12 @@
 #define SUPPORT_MULTI_LINEAR_COMMENTS 1 //The compiler will identify and remove multi-linear comments from your code when this option is enabled
 
 
+//Data
+
+#define DATA_PATH 101
+#define DATA_PATH_STR "101"
+
+
 //Lexer
 
 #define LEXER_SYMBOL 1001

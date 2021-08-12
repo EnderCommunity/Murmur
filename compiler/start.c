@@ -145,7 +145,11 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
 
     }else{
 
-        ppcRead(fileInf, desFileObj.ptr, "<main>"); //Let the preprocessor do its thing!
+        crtDatFil(); //Create a ".dat" file
+
+        ppcRead(fileInf, desFileObj.ptr, "main"); //Let the preprocessor do its thing!
+                                        //^ change this value to the
+                                        //full path of the main file
 
         fclose(filePtr); //Close the main input file stream
 
