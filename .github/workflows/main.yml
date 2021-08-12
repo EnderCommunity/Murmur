@@ -36,9 +36,6 @@ jobs:
   build-on-windows:
     runs-on: windows-latest
     # [START] Set up the environment for Windows
-    defaults:
-      run:
-        shell: msys2 {0}
     # [END] Set up the environment for Windows
     steps:
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
