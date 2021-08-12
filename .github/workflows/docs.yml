@@ -16,7 +16,13 @@ jobs:
           ls ${{ github.workspace }}
 
       # [START] Set up the environment
-      - name: Installing the npm packages
+      - name: Updating the packages list
+        run: sudo apt update
+      - name: Installing NodeJS
+        run: sudo apt install nodejs
+      - name: Installing NPM
+        run: sudo apt install npm
+      - name: Installing some npm packages
         run: |
         cd docusaurus
         npm install
