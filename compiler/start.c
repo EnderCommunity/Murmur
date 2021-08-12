@@ -137,7 +137,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
     printf("[Debug] Current Line Original Content: %s\n", fileInf->currOLineCon);
     printf("[Debug] Path: %s\n", fileInf->path);
 
-    if(fileInf->mode == 'U'){ //This is neither a `.mur` file nor a `.murm` file
+    if(fileInf->mode == 'U'){ //This is neither a `.mur` file nor a `.lib.mur` file
 
         writeLogLine("Compiler Manager", 2, "Unknown input file extension!", 0, 0, 0);
 

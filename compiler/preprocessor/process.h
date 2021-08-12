@@ -3,7 +3,7 @@
 
 typedef struct{
 
-    char mode; //A file's mode can be set to 'N' (Normal), 'M' (Module), or 'U' (Unknown)
+    char mode; //A file's mode can be set to 'N' (Normal), 'L' (Library), or 'U' (Unknown)
     int isFull; //Is this the main file, or what?
     char *path; //The path of the file
     FILE *filePtr; //The file pointer, it should always point to the current line that is being processed
@@ -44,8 +44,8 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
 
     if(getLstStrIndx(tmp->path, ".mur") == strlen(tmp->path) - 4) //A normal file!
         tmp->mode = 'N';
-    else if(getLstStrIndx(tmp->path, ".murm") == strlen(tmp->path) - 5) //A module file!
-        tmp->mode = 'M';
+    else if(getLstStrIndx(tmp->path, ".lib.mur") == strlen(tmp->path) - 8) //A mur library file!
+        tmp->mode = 'L';
 
     if(ENABLE_PREPROCESSOR_HEADER && getStrIndx(tmp->currOLineCon, "#head") == 0) { //The head function is present!
 
@@ -57,7 +57,7 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
         if(inStrRng(tmp->currOLineCon, "<no-preprocessor-methods>")) //The compiler will not check for preprocessor methods
             ENVI_CHECK_FOR_PREPROCESSOR_METHODS = 0;
         
-        if(ENABLE_ALLOW_SEPARATE_FLAG && inStrRng(tmp->currOLineCon, "<allow-separate>"))
+        if((ENABLE_ALLOW_SEPARATE_FLAG && inStrRng(tmp->currOLineCon, "<allow-separate>")) || tmp->mode == 'L')
             ENVI_ENABLE_SEPARATE_METHOD = 1;
 
         writeLogLine("Preprocessor", 0, "The header flags have been processed successfully!", 0, 0, 0);

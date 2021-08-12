@@ -36,8 +36,6 @@ jobs:
       #copy src\pages\**.mdx i18n\ar\docusaurus-plugin-content-pages\
       # [END] Set up the environment
 
-      - name: List files in the build dir
-        run: ls ${{ github.workspace }}/docusaurus/build/
       - name: Building the docs website
         run: |
           cd docusaurus
