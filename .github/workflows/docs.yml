@@ -24,8 +24,8 @@ jobs:
         run: sudo apt install npm
       - name: Installing some npm packages
         run: |
-        cd docusaurus
-        npm install
+          cd docusaurus
+          npm install
       #yarn run write-translations -- --locale ar
       #mkdir i18n\ar\docusaurus-plugin-content-docs\current\
       #copy docs\** i18n\ar\docusaurus-plugin-content-docs\current\
