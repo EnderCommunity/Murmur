@@ -55,6 +55,7 @@ jobs:
                   base-devel
                   git
       - name: Setting up mingw
+        shell: msys2 {0}
         run: |
           pacman -Syu
           pacman -S mingw-w64-x86_64-toolchain
