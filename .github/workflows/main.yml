@@ -18,8 +18,6 @@ jobs:
         run: sudo apt update
       - name: Installing the build-essential package
         run: sudo apt install build-essential
-      - name: Installing the build-essential package
-        run: sudo apt install build-essential
       - name: Validating the GCC compiler
         run: gcc --version
       - name: List files in the compiler dir
