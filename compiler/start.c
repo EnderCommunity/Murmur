@@ -26,6 +26,8 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj);
 
 int main(int argc, char *argv[]){
 
+    (55) //This is a test
+
     RegDebStr(); //Start the debugging timer
 
     srand(time(NULL)); //Randomise the number generator output

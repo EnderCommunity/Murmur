@@ -27,17 +27,13 @@ jobs:
       # [END] Set up the environment for Linux
 
       - name: List files in the compiler dir
-        run: |
-          cd compiler
-          ls ${{ github.workspace }}
+        run: ls ${{ github.workspace }}/compiler/
       - name: Building the compiler
         run: |
           cd compiler
           gcc -g start.c -o GitHubBuild_Mur_Linux.out
       - name: List files in the compiler dir
-        run: |
-          cd compiler
-          ls ${{ github.workspace }}
+        run: ls ${{ github.workspace }}/compiler/
       - run: echo "This job's status is ${{ job.status }}."
   build-on-windows:
     runs-on: windows-latest
@@ -72,17 +68,13 @@ jobs:
       # [END] Set up the environment for Windows
 
       - name: List files in the compiler dir
-        run: |
-          cd compiler
-          ls ${{ github.workspace }}
+        run: ls ${{ github.workspace }}\compiler\
       - name: Building the compiler
         run: |
           cd compiler
           C:\\msys64\\mingw64\\bin\\gcc.exe -g start.c -o GitHubBuild_Mur_Windows.exe -lregex
       - name: List files in the compiler dir
-        run: |
-          cd compiler
-          ls ${{ github.workspace }}
+        run: ls ${{ github.workspace }}\compiler\
       - run: echo "This job's status is ${{ job.status }}."
   build-on-macos:
     runs-on: macos-latest
@@ -113,15 +105,11 @@ jobs:
       # [END] Set up the environment for macOS
 
       - name: List files in the compiler dir
-        run: |
-          cd compiler
-          ls ${{ github.workspace }}
+        run: ls ${{ github.workspace }}/compiler/
       - name: Building the compiler
         run: |
           cd compiler
           gcc -g start.c -o GitHubBuild_Mur_Linux.out
       - name: List files in the compiler dir
-        run: |
-          cd compiler
-          ls ${{ github.workspace }}
+        run: ls ${{ github.workspace }}/compiler/
       - run: echo "This job's status is ${{ job.status }}."
