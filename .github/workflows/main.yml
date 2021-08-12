@@ -35,21 +35,7 @@ jobs:
       - run: echo "This job's status is ${{ job.status }}."
   build-on-windows:
     runs-on: windows-latest
-    # [START] Set up the environment for Windows
-    defaults:
-      run:
-        shell: msys2 {0}
-    # [END] Set up the environment for Windows
     steps:
-      # [START] Set up the environment for Windows
-      - uses: msys2/setup-msys2@v2
-        with:
-          update: true
-          install: |
-                  base-devel
-                  git
-      # [END] Set up the environment for Windows
-
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
@@ -62,6 +48,12 @@ jobs:
           ls ${{ github.workspace }}
 
       # [START] Set up the environment for Windows
+      - uses: msys2/setup-msys2@v2
+        with:
+          update: true
+          install: |
+                  base-devel
+                  git
       - name: Setting up mingw
         run: |
           pacman -Syu
@@ -69,7 +61,7 @@ jobs:
           pacman -S mingw-w64-x86_64-pcre
           pacman -S mingw-w64-x86_64-pcre2
       - name: Validating the GCC compiler
-        run: gcc --version
+        run: C:\\msys64\\mingw64\\bin\\gcc.exe --version
       # [END] Set up the environment for Windows
 
       - name: List files in the compiler dir
@@ -79,5 +71,5 @@ jobs:
       - name: Building the compiler
         run: |
           cd compiler
-          gcc -g start.c GitHubBuild_Mur_Windows.exe -lregex
+          C:\\msys64\\mingw64\\bin\\gcc.exe -g start.c GitHubBuild_Mur_Windows.exe -lregex
       - run: echo "This job's status is ${{ job.status }}."
