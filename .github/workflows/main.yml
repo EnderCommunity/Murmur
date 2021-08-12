@@ -18,6 +18,8 @@ jobs:
       # [START] Set up the environment for Linux
       - name: Updating the packages list
         run: sudo apt update
+      - name: Upgrading the packages
+        run: sudo apt upgrade
       - name: Installing the build-essential package
         run: sudo apt install build-essential
       - name: Validating the GCC compiler
@@ -77,6 +79,47 @@ jobs:
         run: |
           cd compiler
           C:\\msys64\\mingw64\\bin\\gcc.exe -g start.c -o GitHubBuild_Mur_Windows.exe -lregex
+      - name: List files in the compiler dir
+        run: |
+          cd compiler
+          ls ${{ github.workspace }}
+      - run: echo "This job's status is ${{ job.status }}."
+  build-on-macos:
+    runs-on: macos-latest
+    steps:
+      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
+      # [START] Set up the environment for macOS
+      - run: export HOMEBREW_NO_ANALYTICS=1
+      - name: Updating the packages list
+        run: brew update
+      - name: Upgrading the packages
+        run: brew upgrade
+      - name: Installing GCC
+        run: brew install gcc
+      - name: Validating the GCC compiler
+        run: gcc --version
+      - name: Cleaning up
+        run: brew cleanup
+      # [END] Set up the environment for macOS
+
+      - name: List files in the compiler dir
+        run: |
+          cd compiler
+          ls ${{ github.workspace }}
+      - name: Building the compiler
+        run: |
+          cd compiler
+          gcc -g start.c -o GitHubBuild_Mur_Linux.out
       - name: List files in the compiler dir
         run: |
           cd compiler
