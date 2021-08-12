@@ -109,7 +109,7 @@ jobs:
       - name: Building the compiler
         run: |
           cd compiler
-          gcc -g start.c -o GitHubBuild_Mur_Linux.out
+          gcc -g start.c -o GitHubBuild_Mur_macOS
       - name: List files in the compiler dir
         run: ls ${{ github.workspace }}/compiler/
       - run: echo "This job's status is ${{ job.status }}."
