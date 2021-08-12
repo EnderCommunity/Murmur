@@ -18,8 +18,8 @@ jobs:
       # [START] Set up the environment for Linux
       - name: Updating the packages list
         run: sudo apt update
-      - name: Upgrading the packages
-        run: sudo apt upgrade
+#      - name: Upgrading the packages
+#        run: sudo apt upgrade
       - name: Installing the build-essential package
         run: sudo apt install build-essential
       - name: Validating the GCC compiler
@@ -94,8 +94,8 @@ jobs:
       - run: export HOMEBREW_NO_ANALYTICS=1
       - name: Updating the packages list
         run: brew update
-      - name: Upgrading the packages
-        run: brew upgrade
+#      - name: Upgrading the packages
+#        run: brew upgrade
       - name: Installing GCC
         run: brew install gcc
       - name: Validating the GCC compiler
