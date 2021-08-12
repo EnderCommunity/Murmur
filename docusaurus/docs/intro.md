@@ -24,7 +24,7 @@ Do NOT use Mur for any important stuff, it's an experimental programming languag
 This documentation is not complete, as Mur is not really complete either right now.
 :::
 
-## The Development Environment
+## The Development Environment (outdated)
 
 To start working with *Mur* on Windows, you need to [download MSYS2](https://www.msys2.org/#installation). And it's also recommended that you use [Visual Studio Code](https://code.visualstudio.com/). You need to install all the available features in *MSYS2*. And, in case you decided to use *Visual Studio Code*, make sure to [install the C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools). Also, make sure to [add the gcc compiler to your PATH](https://www.youtube.com/watch?v=mQra00mT3Dg)!
 
@@ -32,9 +32,10 @@ Execute the folllowing commands in your *MSYS2* console:
 
 ```cmd
 pacman -Syu
-pacman -S mingw-w64-x86_64-toolchain
-pacman -S mingw-w64-x86_64-pcre
-pacman -S mingw-w64-x86_64-pcre2
+:: Run these commands only if the compiler fails
+::pacman -S mingw-w64-x86_64-toolchain
+::pacman -S mingw-w64-x86_64-pcre
+::pacman -S mingw-w64-x86_64-pcre2
 ```
 
 When you're done with the set up process, make sure that the `C_COMPILER_EXECUTABLE_DIR` enviroment variable is set to your `gcc.exe` executable! You might also want to make sure that the `.vscode` compiler path is correct.
