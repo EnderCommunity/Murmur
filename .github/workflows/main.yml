@@ -2,7 +2,7 @@ name: Build (Windows, Linux, and macOS)
 on: [push]
 jobs:
   build-on-linux:
-    runs-on: kali-latest
+    runs-on: ubuntu-latest
     steps:
       - run: echo "THIS IS A TEST!"
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
