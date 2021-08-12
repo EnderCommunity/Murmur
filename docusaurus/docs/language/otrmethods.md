@@ -86,9 +86,9 @@ The `header` super-method only works if it's used in the first line of your Mur 
 #### Separate
 
 ```mur
-#separate start
+<<<
 /* Do some weird C-wizardry */
-#separate end
+>>>
 ```
 
 The `separate` super-method is used to inject C code into your Mur files. It has been introduced for a special need in libraries.
@@ -97,6 +97,6 @@ The `separate` super-method is used to inject C code into your Mur files. It has
 You should never use the `separate` super-method, as it's only intended for libraries.
 :::
 
-:::note Note
-The `separate` super-method may get restricted in the future!
+:::danger Fatal
+The `separate` super-method is not stable, and it's not monitored by the compiler!
 :::
