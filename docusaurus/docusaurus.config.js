@@ -199,7 +199,7 @@ module.exports = {
                     sidebarCollapsed: true,
                     versions: {
                         current: {
-                            label: `0.0-test.6 🚧`,
+                            label: `0.0-test.7 🚧`,
                         },
                     },
                 },
@@ -216,6 +216,6 @@ module.exports = {
     ],
     i18n: {
         defaultLocale: 'en-GB',
-        locales: ['en-GB', 'ar'],
+        locales: ['en-GB'],
     },
 };
