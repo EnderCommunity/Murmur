@@ -38,7 +38,7 @@ pacman -Syu
 ::pacman -S mingw-w64-x86_64-pcre2
 ```
 
-When you're done with the set up process, make sure that the `C_COMPILER_EXECUTABLE_DIR` enviroment variable is set to your `gcc.exe` executable! You might also want to make sure that the `.vscode` compiler path is correct.
+When you're done with the setup process, make sure that the `C_COMPILER_EXECUTABLE_DIR` enviroment variable is set to your `gcc.exe` executable! You might also want to make sure that the `.vscode` compiler path is correct.
 
 ### Extensions
 
