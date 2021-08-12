@@ -26,13 +26,9 @@ of Murmur, and all the functions that it can use.
 //preprocessor fucntions! So any normal code outside of groups that is not a
 //preprocessor-related feature will cause the compiler to exit with an error.
 
-#separate start //You can ask the compiler to allow you to use C code in your Mur code
+<<< //You can ask the compiler to allow you to use C code in your Mur code
 /* Do some weird C-wizardry */
-#separate end
-
-<< //You can ask the compiler to allow you to use C code in your Mur code
-/* Do some weird C-wizardry */
->>
+>>>
 //^ This could be better than using "#separate start" and "#separate end"
 
 using system.io; //Tell the compiler that the program is going to use the "system"

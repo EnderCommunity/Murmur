@@ -86,7 +86,7 @@ group MyTest {
 
         int a = 0;
 
-        function::int Main(){
+        function::int Main(string[] envi, int length){
 
             int b = 0;
             double c = .4, d = 5., e = 0.0;

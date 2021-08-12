@@ -13,7 +13,7 @@ group MyProject {
 
     class Program {
 
-        function::int Main(){
+        function::int Main(string[] envi, int length){
 
             Console.WriteLine("Hello World!");
 

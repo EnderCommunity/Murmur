@@ -69,8 +69,11 @@ The `header` super-method is used to pass flags to the compiler! The currently-a
 
 - ***no-comments*** - Tells the compiler to not look for comments in your code
 - ***no-preprocessor-methods*** - Tells the compiler to not look for preprocessor methods in your code
-- ***skip-processor*** - Tells the compiler to not analyse your code, and to jump to the c-compiling stage
-- ***allow-separate*** - Tells the compiler that you're gonna use the `separate` super-method. (The separate super-method allows you to inject C code in your Mur file)
+- ***allow-separate*** - Tells the compiler that you're gonna use a `separation-zone`. (The separation-zone allows you to inject C code in your Mur files)
+
+:::caution Caution
+The ***allow-separate*** flag is disabled by default. You need to change the value of the environment variable `ENABLE_ALLOW_SEPARATE_FLAG` to enable this functionality!
+:::
 
 :::note Note
 Some of these flags are only for debugging, and they may get removed in the future.

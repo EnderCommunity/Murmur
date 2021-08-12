@@ -6,7 +6,7 @@
         "*.h": "c",
         "*.c": "c",
         "*.mur": "murmur",
-        "*.murm": "murmur",
+        "*.lib.mur": "murmur",
         "*.tmp": "tmpmur",
         "*.lxic": "lexmur",
         "type_traits": "c"

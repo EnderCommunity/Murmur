@@ -15,7 +15,7 @@ group MyProject {
 
     class Program {
 
-        function::int Main(){
+        function::int Main(string[] envi, int length){
 
             //Your code goes here...
 
@@ -83,3 +83,11 @@ This scope can only contain variables and functions.
 ### Function-Level-Scope
 
 This scope can only contain variables, functions, and super-methods.
+
+## The seperation zone
+
+The seperation zone is a zone that is contained between the opening quote `<<<` and the closing quote `>>>`. This zone is not touched or processed by Mur's compiler. Only C's Compiler can access this zone. This zone is used by libraries to build Mur native functions.
+
+:::caution Caution
+Only libraries have the ability to access the seperation zone **by default**.
+:::

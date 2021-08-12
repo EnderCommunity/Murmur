@@ -12,7 +12,7 @@ Mur is all about making it easier for developers to write code without compromis
 Mur is still NOT functional yet!
 :::
 
-The file extension of Mur files is `.mur`, and the file extension of Mur module files is `.murm`.
+The file extension of Mur files is `.mur`, and the file extension of Mur library files is `.lib.mur`.
 
 You can learn how to write any application using the Mur programming language, and how Mur's compiler works! All the necessary documentation for both the language and the compiler is available here.
 

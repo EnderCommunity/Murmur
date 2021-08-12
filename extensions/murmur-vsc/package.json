@@ -16,7 +16,7 @@
             "id": "murmur",
             "extensions": [
                 ".mur",
-                ".murm"
+                ".lib.mur"
             ],
             "aliases": [
                 "Murmur",
