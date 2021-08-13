@@ -7,7 +7,6 @@
 [{000001@main},16;13]->return output;
 [{000001@main},18;9]->}
 [{000001@main},20;5]->}
-[{000001@main},22;1]->}
 [{main},32;1]->import "final-pitch-lib.lib.mur";
 [{main},34;1]->define ZERO 0;
 [{main},38;1]->setsize int 2;
@@ -52,5 +51,4 @@
 [{main},139;5]->}
 [{main},141;5]->class Smth {
 [{main},143;5]->}
-[{main},145;1]->}
 [FileEnd]
