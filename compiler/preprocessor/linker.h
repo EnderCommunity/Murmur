@@ -27,6 +27,16 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
                 //Start a seperate zone
                 curFile->isSptZon = 1;
 
+                char *tmpStr = malloc(sizeof(char)*(20));
+
+                sprintf(tmpStr, "%09X %09X", curFile->currLine, i + curFile->currCol);
+
+                int tmpId = savDat(DATA_ZONE, tmpStr);
+
+                sprintf(curFile->curZonId, "<%cx%06X>@", DATA_ZONE, tmpId);
+
+                free(tmpStr);
+
                 //fprintf(dstFilPtr, "[zone,%d;%d]->\n", curFile->currLine, curFile->currCol + i);
 
                 strcpy(curFile->currLineCon, FILLER_STRING_CHAR_TYP_STR);
@@ -130,7 +140,7 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                             lokForStr = 0;
 
-                        }else if((curFile->currLineCon)[i] != '"'){
+                        }else if((curFile->currLineCon)[i] != '"'){ //Could crash when there's no closing quote
 
                             tmpStr[pthLen] = (curFile->currLineCon)[i];
                             tmpStr = realloc(tmpStr, (++pthLen + 1)*sizeof(char));
@@ -148,7 +158,7 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                             sprintf(tmpMsgStr, "Importing the content of the file <%s> into the temporary output file.", fnlPth);
 
-                            writeLogLine("Preprocessor", 0, tmpMsgStr, 1, curFile->currLine, stmIndx + 1);
+                            writeLogLine("Preprocessor", 0, tmpMsgStr, 1, curFile->currLine, stmIndx + curFile->currCol);
 
                             //
 
@@ -193,9 +203,15 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                                 char *tmpSrcStr = malloc(sizeof(char)*(strlen(srcPth) + strlen(fnlPth) + 4));
 
-                                int pthDatId = savDat(DATA_PATH, fnlPth);
+                                char *tmpDatStr = malloc(sizeof(char)*(strlen(fnlPth) + 18 + 3));
 
-                                sprintf(tmpSrcStr, "%06X@%s", pthDatId, srcPth);
+                                sprintf(tmpDatStr, "%s %09X %09X", fnlPth, curFile->currLine, curFile->currCol + stmIndx);
+
+                                int pthDatId = savDat(DATA_PATH, tmpDatStr);
+
+                                free(tmpDatStr);
+
+                                sprintf(tmpSrcStr, "<%cx%06X>@%s", DATA_PATH, pthDatId, srcPth);
 
                                 ppcRead(subFilInf, dstFilPtr, tmpSrcStr); //Let the preprocessor do its thing, again!
 
@@ -208,7 +224,7 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                             sprintf(tmpMsgStr, "Finished importing the content of the file <%s> into the temporary output file.", fnlPth);
 
-                            writeLogLine("Preprocessor", 0, tmpMsgStr, 1, curFile->currLine, stmIndx + 1);
+                            writeLogLine("Preprocessor", 0, tmpMsgStr, 1, curFile->currLine, stmIndx + curFile->currCol);
 
                             free(tmpMsgStr);
                             free(fnlPth);
@@ -229,6 +245,18 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                 free(tmpStr); //Free the path
 
+                int tmp = ++i - stmIndx;
+
+                shfStr(curFile->currLineCon, tmp);
+
+                i = 0;
+                len = strlen(curFile->currLineCon);
+
+                if(strlen(curFile->currLineCon) == 1)
+                    strcpy(curFile->currLineCon, FILLER_STRING_CHAR_TYP_STR);
+
+                curFile->currCol += tmp;
+                curFile->nextCol = curFile->currCol;
 
             }
 

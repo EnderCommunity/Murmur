@@ -77,7 +77,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
             if(!waitForComm && !isStrEmpty(fileInf->currLineCon)){
 
-                fprintf(desFilPtr, "[{%s%s},%d;%d]->%s\n", ((fileInf->isSptZon) ? "zone@" : ""), filPth, fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
+                fprintf(desFilPtr, "[{%s%s},%d;%d]->%s\n", ((fileInf->isSptZon) ? fileInf->curZonId : ""), filPth, fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
 
                 writeLogLine("Preprocessor", 0, "Inserted the filtered code into the temporary output file.", 0, 0, 0);
 

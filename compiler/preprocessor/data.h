@@ -24,11 +24,11 @@ void freeDatFil(){
 
 }
 
-int savDat(int typ, char *dat){
+int savDat(char typ, char *dat){
 
     (tmpDatCtr.maxId)++;
 
-    fprintf(tmpDatCtr.ptr, "%06X %d %s\n", tmpDatCtr.maxId, typ, dat);
+    fprintf(tmpDatCtr.ptr, "%cx%06X %s\n", typ, tmpDatCtr.maxId, dat);
 
     return tmpDatCtr.maxId;
 
