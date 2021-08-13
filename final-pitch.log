@@ -20,8 +20,6 @@
 [?][Preprocessor][4, 1] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][5, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][6, 1] => New processing loop started.
@@ -59,8 +57,6 @@
 [?][Preprocessor][12, 1] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][13, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][14, 1] => New processing loop started.
@@ -68,8 +64,6 @@
 [?][Preprocessor][14, 1] => A multi-linear comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][15, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][16, 1] => New processing loop started.
@@ -88,16 +82,12 @@
 [!][Preprocessor] => of Murmur, and all the functions that it can use.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][20, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][21, 1] => New processing loop started.
 [!][Preprocessor] => (!) This is nowhere near being final, this is all just a pitch.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][22, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][23, 1] => New processing loop started.
@@ -105,8 +95,6 @@
 [?][Preprocessor][23, 2] => The end of the multi-linear comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][24, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][25, 1] => New processing loop started.
@@ -124,8 +112,6 @@
 [?][Preprocessor][27, 1] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][28, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][29, 1] => New processing loop started.
@@ -140,8 +126,6 @@
 [?][Preprocessor][30, 18] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][31, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][32, 1] => New processing loop started.
@@ -149,11 +133,9 @@
 [?][Preprocessor][32, 35] => A single line comment has been detected!
 [?][Preprocessor][32, 1] => Checking for preprocessor methods...
 [?][Preprocessor][32, 1] => An 'import' statement has been detected!
-[?][Preprocessor][32, 0] => Importing the content of the file </mnt/e/files/EnderCommunity/Projects/Murmur/final-pitch-lib.lib.mur> into the temporary output file.
+[?][Preprocessor][32, 1] => Importing the content of the file </mnt/e/files/EnderCommunity/Projects/Murmur/final-pitch-lib.lib.mur> into the temporary output file.
 [?][Preprocessor] => The header has been detected!
 [?][Preprocessor] => The header flags have been processed successfully!
-[?][Preprocessor][2, 2] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][3, 1] => New processing loop started.
@@ -162,8 +144,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][4, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][5, 5] => New processing loop started.
@@ -172,8 +152,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][6, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][7, 9] => New processing loop started.
@@ -182,8 +160,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][8, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][9, 13] => New processing loop started.
@@ -192,8 +168,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][10, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][11, 13] => New processing loop started.
@@ -218,8 +192,6 @@
 [?][Preprocessor][14, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][15, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][16, 13] => New processing loop started.
@@ -228,8 +200,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][17, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][18, 9] => New processing loop started.
@@ -238,8 +208,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][19, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][20, 5] => New processing loop started.
@@ -248,8 +216,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][21, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => Last line detected!
 [?][Preprocessor] => The line variable content changed successfully!
@@ -258,12 +224,10 @@
 [?][Preprocessor][22, 1] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor][32, 0] => Finished importing the content of the file </mnt/e/files/EnderCommunity/Projects/Murmur/final-pitch-lib.lib.mur> into the temporary output file.
+[?][Preprocessor][32, 1] => Finished importing the content of the file </mnt/e/files/EnderCommunity/Projects/Murmur/final-pitch-lib.lib.mur> into the temporary output file.
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][33, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][34, 1] => New processing loop started.
@@ -284,8 +248,6 @@
 [?][Preprocessor][36, 16] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][37, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][38, 1] => New processing loop started.
@@ -304,8 +266,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][40, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][41, 1] => New processing loop started.
@@ -328,8 +288,6 @@
 [?][Preprocessor][44, 1] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][45, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][46, 1] => New processing loop started.
@@ -337,8 +295,6 @@
 [?][Preprocessor][46, 1] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][47, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][48, 1] => New processing loop started.
@@ -353,8 +309,6 @@
 [?][Preprocessor][49, 15] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][50, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][51, 5] => New processing loop started.
@@ -367,8 +321,6 @@
 [?][Preprocessor][52, 5] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][53, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][54, 5] => New processing loop started.
@@ -388,8 +340,6 @@
 [?][Preprocessor][56, 21] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][57, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][58, 9] => New processing loop started.
@@ -441,8 +391,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][66, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][67, 9] => New processing loop started.
@@ -472,8 +420,6 @@
 [?][Preprocessor][71, 56] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][72, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][73, 13] => New processing loop started.
@@ -486,8 +432,6 @@
 [?][Preprocessor][74, 13] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][75, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][76, 13] => New processing loop started.
@@ -497,8 +441,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][77, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][78, 13] => New processing loop started.
@@ -513,8 +455,6 @@
 [?][Preprocessor][79, 25] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][80, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][81, 13] => New processing loop started.
@@ -529,8 +469,6 @@
 [?][Preprocessor][82, 24] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][83, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][84, 13] => New processing loop started.
@@ -540,8 +478,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][85, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][86, 13] => New processing loop started.
@@ -551,8 +487,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][87, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][88, 13] => New processing loop started.
@@ -562,8 +496,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][89, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][90, 13] => New processing loop started.
@@ -572,8 +504,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][91, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][92, 13] => New processing loop started.
@@ -581,8 +511,6 @@
 [?][Preprocessor][92, 13] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][93, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][94, 13] => New processing loop started.
@@ -592,8 +520,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][95, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][96, 9] => New processing loop started.
@@ -602,8 +528,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][97, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][98, 9] => New processing loop started.
@@ -617,8 +541,6 @@
 [?][Preprocessor][99, 25] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][100, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][101, 13] => New processing loop started.
@@ -631,8 +553,6 @@
 [?][Preprocessor][102, 13] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][103, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][104, 13] => New processing loop started.
@@ -640,8 +560,6 @@
 [?][Preprocessor][104, 13] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][105, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][106, 9] => New processing loop started.
@@ -650,8 +568,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][107, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][108, 9] => New processing loop started.
@@ -660,8 +576,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][109, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][110, 13] => New processing loop started.
@@ -670,8 +584,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][111, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][112, 13] => New processing loop started.
@@ -680,8 +592,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][113, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][114, 9] => New processing loop started.
@@ -690,8 +600,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][115, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][116, 9] => New processing loop started.
@@ -716,8 +624,6 @@
 [?][Preprocessor][119, 37] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][120, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][121, 13] => New processing loop started.
@@ -727,8 +633,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][122, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][123, 9] => New processing loop started.
@@ -737,8 +641,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][124, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][125, 5] => New processing loop started.
@@ -747,8 +649,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][126, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][127, 5] => New processing loop started.
@@ -757,8 +657,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][128, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][129, 9] => New processing loop started.
@@ -773,8 +671,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][131, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][132, 9] => New processing loop started.
@@ -784,8 +680,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][133, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][134, 13] => New processing loop started.
@@ -800,8 +694,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][136, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][137, 9] => New processing loop started.
@@ -810,8 +702,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][138, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][139, 5] => New processing loop started.
@@ -820,8 +710,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][140, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][141, 5] => New processing loop started.
@@ -842,8 +730,6 @@
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][144, 1] => New processing loop started.
-[!][Preprocessor] => 
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => Last line detected!
 [?][Preprocessor] => The line variable content changed successfully!

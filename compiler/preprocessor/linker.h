@@ -148,7 +148,7 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                             sprintf(tmpMsgStr, "Importing the content of the file <%s> into the temporary output file.", fnlPth);
 
-                            writeLogLine("Preprocessor", 0, tmpMsgStr, 1, curFile->currLine, stmIndx);
+                            writeLogLine("Preprocessor", 0, tmpMsgStr, 1, curFile->currLine, stmIndx + 1);
 
                             //
 
@@ -208,7 +208,7 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                             sprintf(tmpMsgStr, "Finished importing the content of the file <%s> into the temporary output file.", fnlPth);
 
-                            writeLogLine("Preprocessor", 0, tmpMsgStr, 1, curFile->currLine, stmIndx);
+                            writeLogLine("Preprocessor", 0, tmpMsgStr, 1, curFile->currLine, stmIndx + 1);
 
                             free(tmpMsgStr);
                             free(fnlPth);
