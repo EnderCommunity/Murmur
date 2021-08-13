@@ -151,6 +151,8 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
                                         //^ change this value to the
                                         //full path of the main file
 
+        //fclose(tmpDatCtr.ptr);
+        clsDatFil(); //Save & close the data file (so you can use its data later)
         fclose(filePtr); //Close the main input file stream
 
         fclose(desFileObj.ptr);
@@ -166,6 +168,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
 
         free(desFileObj.pth);
         fclose(desFileObj.ptr);
+        freeDatFil(); //Free the data file pointer!
 
         //(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj)
 
