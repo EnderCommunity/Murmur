@@ -20,6 +20,36 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
         int shdChk = !inStr && !inChr;
 
+        if(shdChk && curFile->mode == 'L'){ //The separate zone is not restricted to the root zone!
+
+            if(i + 2 < len && (curFile->currLineCon)[i] == '<' && (curFile->currLineCon)[i + 1] == '<' && (curFile->currLineCon)[i + 2] == '<'){
+
+                //Start a seperate zone
+                curFile->isSptZon = 1;
+
+                //fprintf(dstFilPtr, "[zone,%d;%d]->\n", curFile->currLine, curFile->currCol + i);
+
+                strcpy(curFile->currLineCon, FILLER_STRING_CHAR_TYP_STR);
+
+                i = len;
+
+            }
+
+            if(i + 2 < len && (curFile->currLineCon)[i] == '>' && (curFile->currLineCon)[i + 1] == '>' && (curFile->currLineCon)[i + 2] == '>'){
+
+                //End a seperate zone
+                curFile->isSptZon = 0;
+
+                //fprintf(dstFilPtr, "[zone]\n");
+
+                strcpy(curFile->currLineCon, FILLER_STRING_CHAR_TYP_STR);
+
+                i = len;
+
+            }
+
+        }
+
         if(shdChk && (curFile->currLineCon)[i] == '{'){ //Beaware, a new zone opening has been detected!
 
             curFile->curZon++;
@@ -31,12 +61,6 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
         }else if(shdChk && curFile->curZon == 0 && (i == 0 || isspace((curFile->currLineCon)[i - 1]) || (curFile->currLineCon)[i - 1] == ';')){
 
             //You can start looking now!
-
-            if(ENVI_ENABLE_SEPARATE_METHOD){
-
-                //
-
-            }
 
             if(ENABLE_USING_STATEMENT && i + 5 < len && (curFile->currLineCon)[i] == 'u' && (curFile->currLineCon)[i + 1] == 's' && (curFile->currLineCon)[i + 2] == 'i' && (curFile->currLineCon)[i + 3] == 'n' && (curFile->currLineCon)[i + 4] == 'g' && (curFile->currLineCon)[i + 5] == ' '){
 

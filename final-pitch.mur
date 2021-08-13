@@ -1,4 +1,4 @@
-#header <nothing-to-see-here> <allow-separate>
+#header <nothing-to-see-here>
 //^ The header is used to give the compiler nessessary information before it
 //starts compiling the code. Flags start with the operators "--". If you do not
 //wish to pass any information to the compiler, you can just remove it.
@@ -26,15 +26,10 @@ of Murmur, and all the functions that it can use.
 //preprocessor fucntions! So any normal code outside of groups that is not a
 //preprocessor-related feature will cause the compiler to exit with an error.
 
-<<< //You can ask the compiler to allow you to use C code in your Mur code
-/* Do some weird C-wizardry */
->>>
-//^ This could be better than using "#separate start" and "#separate end"
-
 using system.io; //Tell the compiler that the program is going to use the "system"
                  //input/output library
 
-import "path/to/my/file.mur"; //Import another Murmur file!
+import "final-pitch-lib.lib.mur"; //Import another Murmur file!
 
 define ZERO 0; //You can use the `define` function to define a variable that
                //will be replaced by the provided value before the execution
@@ -43,7 +38,7 @@ define ZERO 0; //You can use the `define` function to define a variable that
 setsize int 2; //Set a custom size of memory (in bytes) to allocate for any type
 setsize double 10; //You can do the same with all the built-in types
 
-import "path/to/my/file2.mur"; //You need to pay attention to the importing order
+//import "path/to/my/file2.mur"; //You need to pay attention to the importing order
 //of your files! For example, "file.mur" will not be able to use the custom set
 //amount of memory for the 'int' variable, whereas "file2.mur" will be able to
 //use it with no problem whatsoever.

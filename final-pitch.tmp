@@ -1,0 +1,56 @@
+[{main},29;1]->using system.io;
+[{000001@main},3;1]->public group LibFilNam {
+[{000001@main},5;5]->public class section {
+[{000001@main},7;9]->function::string myFunction(int input) {
+[{000001@main},9;13]->string output;
+[{zone@000001@main},13;13]->0;
+[{000001@main},16;13]->return output;
+[{000001@main},18;9]->}
+[{000001@main},20;5]->}
+[{000001@main},22;1]->}
+[{main},32;1]->import "final-pitch-lib.lib.mur";
+[{main},34;1]->define ZERO 0;
+[{main},38;1]->setsize int 2;
+[{main},39;1]->setsize double 10;
+[{main},48;1]->public group FinalPitch {
+[{main},54;5]->public class Program {
+[{main},58;9]->int globA = 0;
+[{main},59;9]->double globB = 0.0;
+[{main},60;9]->float globC = 0.0;
+[{main},61;9]->char globD = 'D';
+[{main},62;9]->string globE = "Global E";
+[{main},63;9]->bool globF = true;
+[{main},64;9]->file globG = new FileStream("path/to/my/file.txt");
+[{main},65;9]->hex globH = 0x000000;
+[{main},67;9]->public function::int Main(string[] envi, int length){
+[{main},76;13]->Func();
+[{main},78;13]->^int a = 0;
+[{main},81;13]->int b = 1;
+[{main},84;13]->^int c = Test(a, 1);
+[{main},86;13]->a, c = 5;
+[{main},88;13]->PlusOne(ref b)(ref b);
+[{main},90;13]->bool myTest = false;
+[{main},94;13]->return 0;
+[{main},96;9]->}
+[{main},98;9]->private function::void Func(){
+[{main},106;9]->}
+[{main},108;9]->public function::^int Test(^int a, int b){
+[{main},110;13]->a = (^int) b;
+[{main},112;13]->return a;
+[{main},114;9]->}
+[{main},116;9]->public function::void PlusOne(ref int a){
+[{main},121;13]->a++;
+[{main},123;9]->}
+[{main},125;5]->}
+[{main},127;5]->public class AnotherClass {
+[{main},129;9]->public int a = 0;
+[{main},130;9]->private int b = 0;
+[{main},132;9]->function::constructor(int a, int b){
+[{main},134;13]->this.a = a;
+[{main},135;13]->this.b = b;
+[{main},137;9]->}
+[{main},139;5]->}
+[{main},141;5]->class Smth {
+[{main},143;5]->}
+[{main},145;1]->}
+[FileEnd]

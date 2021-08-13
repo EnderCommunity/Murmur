@@ -14,6 +14,7 @@ typedef struct{
     char *currLineCon;
     char *currOLineCon;
     int curZon; //The current file local zone (root-level, group-level, class-level, etc)
+    int isSptZon; //Is the current line in a separate zone?
 
 } FileInfo;
 
@@ -37,15 +38,16 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
     tmp->currCol = 1;
     tmp->nextCol = 1;
     tmp->curZon = 0; //Is the file current in the root zone of the code
+    tmp->isSptZon = 0; //Is the file is not in a separate zone!
 
     fgets(tmp->currOLineCon, MAX_LINE_LENGTH, tmp->filePtr);
 
     strcpy(tmp->currLineCon, tmp->currOLineCon);
 
-    if(getLstStrIndx(tmp->path, ".mur") == strlen(tmp->path) - 4) //A normal file!
-        tmp->mode = 'N';
-    else if(getLstStrIndx(tmp->path, ".lib.mur") == strlen(tmp->path) - 8) //A mur library file!
+    if(getLstStrIndx(tmp->path, ".lib.mur") == strlen(tmp->path) - 8) //A mur library file!
         tmp->mode = 'L';
+    else if(getLstStrIndx(tmp->path, ".mur") == strlen(tmp->path) - 4) //A normal file!
+        tmp->mode = 'N';
 
     if(ENABLE_PREPROCESSOR_HEADER && getStrIndx(tmp->currOLineCon, "#head") == 0) { //The head function is present!
 
@@ -57,8 +59,8 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
         if(inStrRng(tmp->currOLineCon, "<no-preprocessor-methods>")) //The compiler will not check for preprocessor methods
             ENVI_CHECK_FOR_PREPROCESSOR_METHODS = 0;
         
-        if((ENABLE_ALLOW_SEPARATE_FLAG && inStrRng(tmp->currOLineCon, "<allow-separate>")) || tmp->mode == 'L')
-            ENVI_ENABLE_SEPARATE_METHOD = 1;
+        //if((ENABLE_ALLOW_SEPARATE_FLAG && inStrRng(tmp->currOLineCon, "<allow-separate>")) || tmp->mode == 'L')
+        //    ENVI_ENABLE_SEPARATE_METHOD = 1;
 
         writeLogLine("Preprocessor", 0, "The header flags have been processed successfully!", 0, 0, 0);
 
