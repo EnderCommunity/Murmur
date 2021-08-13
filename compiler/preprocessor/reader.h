@@ -119,7 +119,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
                 linOrgLen = strlen(fileInf->currOLineCon);
 
-                if(REMOVE_WHITESPACE_AT_LINE_START)
+                if(REMOVE_WHITESPACE_AT_LINE_START && strlen(fileInf->currOLineCon) != 1)
                     while(isspace(fileInf->currOLineCon[0])){ //Remove the extra whitespace without losing track of the column number
 
                         //Shif by one char
