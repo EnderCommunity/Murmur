@@ -45,7 +45,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
     while(keepLoop){
 
-        if((linOrgLen - END_OF_LINE_COUNT) != 0){
+        if(linOrgLen != 0 && fileInf->currOLineCon[0] != '\r'){
 
             writeLogLine("Preprocessor", 0, "New processing loop started.", 1, fileInf->currLine, fileInf->currCol);
 
@@ -120,6 +120,8 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
                 if(fileInf->currOLineCon[strlen(fileInf->currOLineCon) - 1] == '\n')
                     fileInf->currOLineCon[strlen(fileInf->currOLineCon) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
+
+                //(fileInf->currOLineCon)[0] != '\r'
 
 
                 linOrgLen = strlen(fileInf->currOLineCon);
