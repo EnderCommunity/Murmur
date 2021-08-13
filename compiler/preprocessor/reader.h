@@ -75,7 +75,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
         if(!waitForComm && !isStrEmpty(fileInf->currLineCon)){
 
-            fprintf(desFilPtr, "[{%s},%d;%d]->%s\n", filPth, fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
+            fprintf(desFilPtr, "[{%s%s},%d;%d]->%s\n", ((fileInf->isSptZon) ? "zone@" : ""), filPth, fileInf->currLine, fileInf->currCol, fileInf->currLineCon);
 
             writeLogLine("Preprocessor", 0, "Inserted the filtered code into the temporary output file.", 0, 0, 0);
 
@@ -135,6 +135,24 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
                 strcpy(fileInf->currLineCon, fileInf->currOLineCon);
 
                 writeLogLine("Preprocessor", 0, "The line variable content changed successfully!", 0, 0, 0);
+
+            }else{ //Maybe do this later...
+
+                if(waitForComm){
+
+                    writeLogLine("Preprocessor", 0, "The end of the file has been reached, and the comment wasn't closed!", 0, 0, 0);
+
+                    exit(-1); //Oops, the comment wasn't closed!
+
+                }
+
+                if(fileInf->isSptZon){
+
+                    writeLogLine("Preprocessor", 0, "The end of the file has been reached, and the separate zone wasn't closed!", 0, 0, 0);
+
+                    exit(-1); //Oops, the separate zone wasn't closed!
+
+                }
 
             }
 

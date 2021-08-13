@@ -1,7 +1,4 @@
 /TMP
 /compiler/tmp/*
 *.lnk
-*.log
-*.tmp
-*.lxic
 !*/*.keep

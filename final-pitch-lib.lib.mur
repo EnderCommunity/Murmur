@@ -10,17 +10,8 @@ public group LibFilNam {
 
             <<<
             /*Do some stuff in C*/
+            0;
             >>>
-
-            /*
-            #c_env,17;15<myCustomZone> //This could be a bad idea...
-            zone::c_env myCustomZone {
-                //
-            }
-
-            zone::shell_env myCustomZone {
-                //
-            }*/
 
             return output;
 
