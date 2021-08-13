@@ -1,14 +1,14 @@
 [{main},3;1]->using system.io;
-[{<E:\files\EnderCommunity\Projects\Murmur\tests\import-statement\file.mur>@main},1;1]->group MyExtras {
-[{<E:\files\EnderCommunity\Projects\Murmur\tests\import-statement\file.mur>@main},3;5]->class ExitCodes {
-[{<E:\files\EnderCommunity\Projects\Murmur\tests\import-statement\file.mur>@main},5;9]->function::int GetSuccessCode(){
-[{<E:\files\EnderCommunity\Projects\Murmur\tests\import-statement\file.mur>@main},7;13]->return 0;
-[{<E:\files\EnderCommunity\Projects\Murmur\tests\import-statement\file.mur>@main},9;9]->}
-[{<E:\files\EnderCommunity\Projects\Murmur\tests\import-statement\file.mur>@main},11;9]->function::int GetFailureCode(){
-[{<E:\files\EnderCommunity\Projects\Murmur\tests\import-statement\file.mur>@main},13;13]->return -1;
-[{<E:\files\EnderCommunity\Projects\Murmur\tests\import-statement\file.mur>@main},15;9]->}
-[{<E:\files\EnderCommunity\Projects\Murmur\tests\import-statement\file.mur>@main},17;5]->}
-[{<E:\files\EnderCommunity\Projects\Murmur\tests\import-statement\file.mur>@main},19;1]->}
+[{000001@main},1;1]->group MyExtras {
+[{000001@main},3;5]->class ExitCodes {
+[{000001@main},5;9]->function::int GetSuccessCode(){
+[{000001@main},7;13]->return 0;
+[{000001@main},9;9]->}
+[{000001@main},11;9]->function::int GetFailureCode(){
+[{000001@main},13;13]->return -1;
+[{000001@main},15;9]->}
+[{000001@main},17;5]->}
+[{000001@main},19;1]->}
 [{main},4;1]->import "file.mur";
 [{main},8;1]->setsize int 0;
 [{main},9;1]->define MY_VAR 1;

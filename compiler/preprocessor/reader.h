@@ -1,5 +1,6 @@
 void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth);
 
+#include "data.h"
 #include "linker.h"
 
 FileInfo* chngFileCol(FileInfo *tmp, int col){
@@ -15,18 +16,10 @@ FileInfo* chngFileCol(FileInfo *tmp, int col){
 int waitForComm = 0;
 
 #include "comments.h"
-#include "data.h"
 
 void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
-    if(tmpDatCtr.ptr != NULL){
-
-        int pthDatId = savDat(DATA_PATH, filPth);
-        freeDatFil();
-        fclose(tmpDatCtr.ptr);
-        tmpDatCtr.ptr = NULL;
-
-    }
+    //int pthDatId = savDat(DATA_PATH, filPth);
 
     /*fileInf->mode;
     fileInf->isFull;

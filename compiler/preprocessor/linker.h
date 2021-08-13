@@ -169,7 +169,9 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                                 char *tmpSrcStr = malloc(sizeof(char)*(strlen(srcPth) + strlen(fnlPth) + 4));
 
-                                sprintf(tmpSrcStr, "<%s>@%s", fnlPth, srcPth);
+                                int pthDatId = savDat(DATA_PATH, fnlPth);
+
+                                sprintf(tmpSrcStr, "%06X@%s", pthDatId, srcPth);
 
                                 ppcRead(subFilInf, dstFilPtr, tmpSrcStr); //Let the preprocessor do its thing, again!
 

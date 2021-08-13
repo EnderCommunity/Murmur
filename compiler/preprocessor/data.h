@@ -34,6 +34,13 @@ int savDat(int typ, char *dat){
 
 }
 
+void clsDatFil(){
+
+    fprintf(tmpDatCtr.ptr, "#");
+    fclose(tmpDatCtr.ptr);
+
+}
+
 /*
 000000      100          
 ^ Data ID   ^ Data type  ^ The data
