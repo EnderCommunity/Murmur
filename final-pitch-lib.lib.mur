@@ -1,0 +1,31 @@
+#header <nothing-to-see-here>
+
+public group LibFilNam {
+
+    public class section {
+
+        function::string myFunction(int input) {
+
+            string output;
+
+            <<<
+            /*Do some stuff in C*/
+            >>>
+
+            /*
+            #c_env,17;15<myCustomZone> //This could be a bad idea...
+            zone::c_env myCustomZone {
+                //
+            }
+
+            zone::shell_env myCustomZone {
+                //
+            }*/
+
+            return output;
+
+        }
+
+    }
+
+}

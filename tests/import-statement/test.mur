@@ -1,6 +1,7 @@
 #header <allow-separate>
 
 using system.io;
+//%libdir%/system/io.lib.mur
 import "file.mur"; //Import my other file!
 //      ^ or "./file.mur",
 //      ^ or "../import-statement/file.mur",
