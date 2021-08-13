@@ -52,7 +52,7 @@ M_Token getTkn(){ //Get a token
 
     if(kepLop){
 
-        //printf("%s", tmp.val); //Debug
+        printf("%s", tmp.val); //Debug
 
         if(tmp.val[strlen(tmp.val) - 1] == '\n')
             tmp.val[strlen(tmp.val) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!

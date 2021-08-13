@@ -15,12 +15,13 @@ typedef struct{
     char *currOLineCon;
     int curZon; //The current file local zone (root-level, group-level, class-level, etc)
     int isSptZon; //Is the current line in a separate zone?
+    char *curZonId;
 
 } FileInfo;
 
 FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object to keep track of each file's mode
 
-    FileInfo *tmp = malloc(sizeof(FileInfo) + sizeof(char)*(MAX_PATH_LENGTH + 2*MAX_LINE_LENGTH));
+    FileInfo *tmp = malloc(sizeof(FileInfo) + sizeof(char)*(MAX_PATH_LENGTH + 2*MAX_LINE_LENGTH + 12));
 
     //memset(tmp, 0x00, sizeof(FileInfo) + sizeof(char)*(MAX_PATH_LENGTH + 2*MAX_LINE_LENGTH - 2)); //Clear the new memory
 
@@ -39,6 +40,7 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
     tmp->nextCol = 1;
     tmp->curZon = 0; //Is the file current in the root zone of the code
     tmp->isSptZon = 0; //Is the file is not in a separate zone!
+    tmp->curZonId = malloc(sizeof(char)*12);
 
     fgets(tmp->currOLineCon, MAX_LINE_LENGTH, tmp->filePtr);
 
@@ -103,6 +105,7 @@ void freeFileDatObj(FileInfo *tmp){
 
     free(tmp->currLineCon);
     free(tmp->currOLineCon);
+    free(tmp->curZonId);
     free(tmp);
 
 }

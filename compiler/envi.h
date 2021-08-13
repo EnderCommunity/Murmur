@@ -75,8 +75,10 @@
 
 //Data
 
-#define DATA_PATH 101
-#define DATA_PATH_STR "101"
+#define DATA_PATH 'A'
+#define DATA_PATH_STR "A"
+#define DATA_ZONE 'B'
+#define DATA_ZONE_STR "B"
 
 
 //Lexer
@@ -93,6 +95,8 @@
 #define LEXER_OPERATOR_STR "1005"
 #define LEXER_BOOLEAN 1006
 #define LEXER_BOOLEAN_STR "1006"
+#define LEXER_ZONE_LINE 1007
+#define LEXER_ZONE_LINE_STR "1007"
 
 
 //States

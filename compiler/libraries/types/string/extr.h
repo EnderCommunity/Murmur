@@ -60,12 +60,18 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
 
 char* apdStr(char *dest, char *str){ //Append two stings
 
-    char* rslt = malloc((strlen(dest) + strlen(str) + 1)*sizeof(char));
+    /*char* rslt = malloc((strlen(dest) + strlen(str) + 1)*sizeof(char));
 
     strcpy(rslt, dest);
     strcat(rslt, str);
 
     rslt[strlen(rslt)] = '\0';
+
+    return rslt;*/
+
+    char* rslt = malloc((strlen(dest) + strlen(str) + 1)*sizeof(char));
+
+    sprintf(rslt, "%s%s", dest, str);
 
     return rslt;
 
