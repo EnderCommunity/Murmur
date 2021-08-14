@@ -1,7 +1,0 @@
-{
-    "preprocessor": {
-        "linker": {
-            "invalid_function": "an invalid preprocessor function has been detected"
-        }
-    }
-}

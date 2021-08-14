@@ -18,6 +18,7 @@ void Deb(){ //Minimal debug
 #include "libraries/paths/paths.h"
 
 #include "workstation.c"
+#include "errors/report.h"
 
 #include "debug.c"
 #include "log.c"
@@ -146,6 +147,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
     }else{
 
         crtDatFil(); //Create a ".dat" file
+        opnRptFil(); //Create a ".opf" file
 
         ppcRead(fileInf, desFileObj.ptr, "<main>"); //Let the preprocessor do its thing!
                                         //^ change this value to the
@@ -169,6 +171,10 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
         free(desFileObj.pth);
         fclose(desFileObj.ptr);
         freeDatFil(); //Free the data file pointer!
+
+        rpt(REPORT_CODE_MESSAGE, REPORT_SECTION_GENERAL, "This process is about to end", "<main>");
+
+        clsRptFil(); //Close the ".opf" file
 
         //(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj)
 

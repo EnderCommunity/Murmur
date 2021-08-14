@@ -121,3 +121,19 @@
     #define SYSTEM_COMMANDS_PAUSE system("read -r -p \"Press enter to continue...\" key") //The pause command (NOTE: '-n1' is not working for some reason)
 
 #endif
+
+
+//Errors and Warnings
+
+#define REPORT_CODE_ERROR 2
+#define REPORT_CODE_WARNING 1
+#define REPORT_CODE_MESSAGE 0
+#define REPORT_SECTION_GENERAL 1
+#define REPORT_SECTION_PREPROCESSOR 2
+#define REPORT_SECTION_LEXER 3
+#define REPORT_SECTION_PARSER 4
+#define REPORT_SECTION_OPTIMISER 5
+#define REPORT_SECTION_EVALUATOR 6
+#define REPORT_SECTION_BUNDLER 7
+#define REPORT_SECTION_C 8
+#define REPORT_SECTION_RUNTIME 9
