@@ -12,7 +12,7 @@
 				"${workspaceFolder}\\compiler\\Mur.exe",
 				"-lregex"
 				//C:\\msys64\\mingw64\\bin\\gcc.exe -g start.c -o Mur.exe -lregex
-				//gcc -g start.c -o Mur.out
+				//gcc -g start.c -o Mur.out -lm
 				//sudo valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./Mur.out
 				//"/mnt/e/files/EnderCommunity/Projects/Murmur/tests/mem-leak/test.mur"
 				//"/mnt/e/files/EnderCommunity/Projects/Murmur/tests/comments/leak-test/test.mur"

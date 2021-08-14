@@ -115,7 +115,7 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
                 //The "import" statement has been detected!
                 writeLogLine("Preprocessor", 0, "An 'import' statement has been detected!", 1, curFile->currLine, curFile->currCol + i);
 
-                int stmIndx = i, lokForStr = 1, pthLen = 0, isDon = 0, fndEnd = 0;
+                int stmIndx = i, lokForStr = 1, pthLen = 0, isDon = 0, fndCls = 0, fndEnd = 0;
 
                 char *tmpStr = malloc(1*sizeof(char));
 
@@ -203,9 +203,9 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                                 char *tmpSrcStr = malloc(sizeof(char)*(strlen(srcPth) + strlen(fnlPth) + 4));
 
-                                char *tmpDatStr = malloc(sizeof(char)*(strlen(fnlPth) + 18 + 3));
+                                char *tmpDatStr = malloc(sizeof(char)*(strlen(fnlPth) + 22 + 3));
 
-                                sprintf(tmpDatStr, "%s %09X %09X", fnlPth, curFile->currLine, curFile->currCol + stmIndx);
+                                sprintf(tmpDatStr, "%s Zx%09X Zx%09X", fnlPth, curFile->currLine, curFile->currCol + stmIndx);
 
                                 int pthDatId = savDat(DATA_PATH, tmpDatStr);
 
@@ -237,7 +237,14 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                 }
 
-                if(!fndEnd || (!fndEnd && sizeof(tmpStr) == sizeof(char))) {
+                if(!isDon){
+
+                    //exit(-1);
+
+                    rpt(REPORT_CODE_ERROR, REPORT_SECTION_PREPROCESSOR, "The closing quote is missing!", srcPth);
+
+
+                }else if(!fndEnd || (!fndEnd && sizeof(tmpStr) == sizeof(char))) {
 
                     exit(-1); //THis is not supposed to happen!
 

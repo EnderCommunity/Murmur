@@ -38,6 +38,7 @@ void clsDatFil(){
 
     fprintf(tmpDatCtr.ptr, "#");
     fclose(tmpDatCtr.ptr);
+    tmpDatCtr.ptr = NULL;
 
 }
 
