@@ -27,9 +27,9 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
                 //Start a seperate zone
                 curFile->isSptZon = 1;
 
-                char *tmpStr = malloc(sizeof(char)*(20));
+                char *tmpStr = malloc(sizeof(char)*(28));
 
-                sprintf(tmpStr, "%09X %09X", curFile->currLine, i + curFile->currCol);
+                sprintf(tmpStr, "<Zx%09X> <Zx%09X>", curFile->currLine, i + curFile->currCol);
 
                 int tmpId = savDat(DATA_ZONE, tmpStr);
 
@@ -203,9 +203,9 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                                 char *tmpSrcStr = malloc(sizeof(char)*(strlen(srcPth) + strlen(fnlPth) + 4));
 
-                                char *tmpDatStr = malloc(sizeof(char)*(strlen(fnlPth) + 22 + 3));
+                                char *tmpDatStr = malloc(sizeof(char)*(strlen(fnlPth) + 26 + 3));
 
-                                sprintf(tmpDatStr, "%s Zx%09X Zx%09X", fnlPth, curFile->currLine, curFile->currCol + stmIndx);
+                                sprintf(tmpDatStr, "%s <Zx%09X> <Zx%09X>", fnlPth, curFile->currLine, curFile->currCol + stmIndx);
 
                                 int pthDatId = savDat(DATA_PATH, tmpDatStr);
 
@@ -241,7 +241,12 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                     //exit(-1);
 
-                    rpt(REPORT_CODE_ERROR, REPORT_SECTION_PREPROCESSOR, "The closing quote is missing!", srcPth);
+                    char *tmp = malloc(strlen("The closing quote is missing!") + 1);
+                    strcpy(tmp, "The closing quote is missing!");
+
+                    rpt(REPORT_CODE_ERROR, REPORT_SECTION_PREPROCESSOR, tmp, srcPth, curFile->currLine, curFile->currCol + i);
+
+                    free(tmp);
 
 
                 }else if(!fndEnd || (!fndEnd && sizeof(tmpStr) == sizeof(char))) {

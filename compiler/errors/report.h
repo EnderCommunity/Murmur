@@ -16,27 +16,39 @@ void opnRptFil(){
 
 void clsRptFil(){
 
+    /*if(rptFilPtr != NULL){
+
+        fclose(rptFilPtr);
+        rptFilPtr = NULL;
+
+    }*/
+
     fclose(rptFilPtr);
 
 }
 
 //char *crt;
+#include "../libraries/types/number/Number.h"
 
-void srtRptSrc(char **src){
+void srtRptSrc(char **src, int lin, int col){
 
     int tmpIndx = getStrIndx(*src, "@"), siz = 1;
     char *tmp = malloc(sizeof(char)*siz);
+
+    int nxtLin = 0, nxtCol = 0;
 
     tmp[0] = '\0';
 
     if(tmpIndx == -1){
 
-        siz += strlen(*src) + 5;
+        siz += strlen(*src) + 10 + numLen(lin) + numLen(col);
         tmp = realloc(tmp, sizeof(char)*siz);
 
-        sprintf(tmp, "\n    %s", *src);
+        sprintf(tmp, "\n    in %s:%d;%d", *src, lin, col);
 
     }else{
+
+        int isSrt = 1;
 
         do{
 
@@ -44,12 +56,88 @@ void srtRptSrc(char **src){
 
             char *tmpStr = getStrPrt(*src, 0, ((tmpIndx == -1) ? strlen(*src) : tmpIndx), 0);
 
-            siz += strlen(tmpStr) + 6;
+            if(tmpStr[1] != 'm'){
+
+                char *tmpHexIndx = getStrPrt(tmpStr, 3, 9, 0);
+
+                int tmpId = hexToInt(tmpHexIndx);
+
+                if(tmpStr[1] == DATA_PATH){
+
+                    char *tmpDat = getDat(DATA_PATH, tmpId);
+
+                    if(tmpDat != "\0"){
+
+                        //printf("\n--%s--\n", tmpDat);
+
+                        char *tmpSub1Str = getStrPrt(tmpDat, getStrIndx(tmpDat, "<Zx") + 3, getStrIndx(tmpDat, ">"), 0);
+                        char *tmpSub2Str = getStrPrt(tmpDat, getLstStrIndx(tmpDat, "<Zx") + 3, getLstStrIndx(tmpDat, ">"), 0);
+
+                        nxtLin = hexToInt(tmpSub1Str);
+                        nxtCol = hexToInt(tmpSub2Str);
+
+                        char *tmpPth = getStrPrt(tmpDat, 0, getStrIndx(tmpDat, "<Zx") - 1, 0);
+
+                        free(tmpStr);
+                        tmpStr = tmpPth;
+
+                        free(tmpDat);
+
+                    }
+
+                }else if(tmpStr[1] == DATA_ZONE){
+
+                    char *tmpDat = getDat(DATA_ZONE, tmpId);
+
+                    if(tmpDat != "\0"){
+
+                        //printf("\n--%s--\n", tmpDat);
+
+                        char *tmpSub1Str = getStrPrt(tmpDat, getStrIndx(tmpDat, "<Zx") + 3, getStrIndx(tmpDat, ">"), 0);
+                        char *tmpSub2Str = getStrPrt(tmpDat, getLstStrIndx(tmpDat, "<Zx") + 3, getLstStrIndx(tmpDat, ">"), 0);
+
+                        nxtLin = hexToInt(tmpSub1Str);
+                        nxtCol = hexToInt(tmpSub2Str);
+
+                        free(tmpStr);
+
+                        tmpStr = malloc(sizeof(char)*(5));
+                        strcpy(tmpStr, "zone");
+
+                        free(tmpDat);
+
+                    }
+
+                }
+
+            }else{
+
+                strcpy(tmpStr, "main");
+
+            }
+
+            siz += strlen(tmpStr) + 12 + numLen(lin) + numLen(col);
             tmp = realloc(tmp, sizeof(char)*siz);
 
-            sprintf(tmp, "%s\n    %s%c", tmp, tmpStr, (tmpIndx == -1) ? ' ' : '@');
+            char *tmpSav = malloc(sizeof(char)*(strlen(tmp) + 1));
 
-            *src = getStrPrt(*src, tmpIndx + 1, strlen(*src), 0);
+            strcpy(tmpSav, tmp);
+
+            sprintf(tmp, "%s\n    %s <%s>:%d;%d", tmpSav, ((isSrt) ? "in" : "at"), tmpStr, lin, col);
+
+            free(tmpSav);
+
+            if(tmpIndx != -1){
+
+                char *tmpPrt = getStrPrt(*src, tmpIndx + 1, strlen(*src), 0);
+
+                strcpy(*src, tmpPrt);
+
+                free(tmpPrt);
+
+            }
+
+            free(tmpStr);
 
             /*siz += 4;
 
@@ -57,30 +145,42 @@ void srtRptSrc(char **src){
 
             free(tmpStr);*/
 
+            lin = nxtLin;
+            col = nxtCol;
+            nxtLin = 0;
+            nxtCol = 0;
+
+            if(isSrt)
+                isSrt = 0;
+
         }while(tmpIndx != -1);
 
     }
-    
+
     *src = tmp;
 
 }
 
-void rpt(const int typ, int sct, char *msg, char *src){
+void rpt(const int typ, int sct, char *msg, char *src, int lin, int col){
 
-    srtRptSrc(&src);
+    srtRptSrc(&src, lin, col);
 
     fprintf(rptFilPtr, "[%s] %s%s\n", (typ == REPORT_CODE_WARNING) ? "Warning" : ((typ == REPORT_CODE_MESSAGE) ?  "Message" : "Error")
                              , msg
                              , src);
 
-    if(typ == REPORT_CODE_ERROR){
+    free(src);
+
+    if(typ == REPORT_CODE_ERROR && DEBUG_ALLOW_TERMINATION){
 
         clsRptFil();
 
-        //exit(-sct*100);
+        writeLogLine("Compiler Manager", 0, "Terminating the process. (For more info, check the `.opf` file)", 0, 0, 0);
+
+        exit(-sct*100);
 
     }
-
+    
 }
 
 /*

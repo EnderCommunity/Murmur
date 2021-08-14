@@ -1,5 +1,6 @@
 typedef struct {
     FILE *ptr;
+    FILE *strPtr;
     char *pth;
     int maxId;
 } datCtr;
@@ -13,6 +14,8 @@ void crtDatFil(){
     sprintf(tmpDatCtr.pth, "%s%c%s.dat", wrkstn.Path, PATH_SLASH_TYP_CHAR, wrkstn.Name);
 
     tmpDatCtr.ptr = fopen(tmpDatCtr.pth, "w"); //Create a new data file in "write mode"
+    fclose(tmpDatCtr.ptr);
+    tmpDatCtr.ptr = fopen(tmpDatCtr.pth, "a+"); //Create a new data file in "write mode"
 
     tmpDatCtr.maxId = 0;
 
@@ -31,6 +34,65 @@ int savDat(char typ, char *dat){
     fprintf(tmpDatCtr.ptr, "%cx%06X %s\n", typ, tmpDatCtr.maxId, dat);
 
     return tmpDatCtr.maxId;
+
+}
+
+char *getDat(char typ, int id){
+
+    char *lin = malloc(sizeof(char)*(MAX_LINE_LENGTH + 1));
+
+    fseek(tmpDatCtr.ptr, 0, SEEK_SET); //Go to the start of the file!
+
+    fgets(lin, MAX_LINE_LENGTH, tmpDatCtr.ptr);
+
+    if(lin[strlen(lin) - 1] == '\n')
+        lin[strlen(lin) - 1] = '\0';
+
+    char *dat;
+    int fnd = 0, wait = 1, keepLoop = 1;
+
+    do{
+
+        if(lin[0] == typ){
+
+            char *tmp = getStrPrt(lin, 2, 8, 0);
+            int tmpId = hexToInt(tmp);
+
+            if(tmpId == id){
+
+                fnd = 1;
+                dat = getStrPrt(lin, 9, strlen(lin), 0);
+
+            }
+
+        }
+
+        if(keepLoop){
+
+            fgets(lin, MAX_LINE_LENGTH, tmpDatCtr.ptr);
+
+            if(lin[strlen(lin) - 1] == '\n')
+                lin[strlen(lin) - 1] = '\0';
+
+            if(wait)
+                keepLoop = !feof(tmpDatCtr.ptr);
+
+            if(!wait)
+                keepLoop = 0;
+
+            if(!keepLoop && wait){
+                keepLoop = 1;
+                wait = 0;
+            }
+
+        }
+
+    }while(!fnd && keepLoop);
+
+    fseek(tmpDatCtr.ptr, 0, SEEK_END); //Go to the end of the file
+    free(lin);
+
+    return (fnd) ? dat : "\0";
 
 }
 

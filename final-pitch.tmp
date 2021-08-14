@@ -1,13 +1,13 @@
 [{<main>},29;1]->using system.io;
-[{<Ax000001>@<main>},5;1]->public group LibFilNam {
-[{<Ax000001>@<main>},7;5]->public class section {
-[{<Ax000001>@<main>},9;9]->function::string myFunction(int input) {
-[{<Ax000001>@<main>},11;13]->string output;
-[{<Bx000002>@<Ax000001>@<main>},15;13]->0;
-[{<Ax000001>@<main>},18;13]->return output;
-[{<Ax000001>@<main>},20;9]->}
-[{<Ax000001>@<main>},22;5]->}
-[{<Ax000001>@<main>},24;1]->}
+[{<main>},5;1]->public group LibFilNam {
+[{<main>},7;5]->public class section {
+[{<main>},9;9]->function::string myFunction(int input) {
+[{<main>},11;13]->string output;
+[{<Bx000002>@<main>},15;13]->0;
+[{<main>},18;13]->return output;
+[{<main>},20;9]->}
+[{<main>},22;5]->}
+[{<main>},24;1]->}
 [{<main>},34;1]->define ZERO 0;
 [{<main>},38;1]->setsize int 2;
 [{<main>},39;1]->setsize double 10;
