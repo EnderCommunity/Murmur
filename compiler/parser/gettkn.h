@@ -1,5 +1,4 @@
 #include "../lexical/token.h"
-#include "../libraries/hex/hex.h"
 
 FILE *lexFilPtr;
 int kepLop = 1;

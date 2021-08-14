@@ -106,6 +106,7 @@
 
 //Compiler Process Termination
 
+#define DEBUG_ALLOW_TERMINATION 0
 /* (!) Still not implemented */ #define EMPTY_COMPILER_TMP_DIR 0 //Empty the `/compiler/tmp/` directory at the end of every process
 #define C_COMPILER_EXECUTABLE_DIR "C:\\msys64\\mingw64\\bin\\gcc.exe" //The directory of your C compiler of choice
 

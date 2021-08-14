@@ -9,6 +9,7 @@
         "*.lib.mur": "murmur",
         "*.tmp": "tmpmur",
         "*.lxic": "lexmur",
-        "type_traits": "c"
+        "type_traits": "c",
+        "cmath": "c"
     }
 }

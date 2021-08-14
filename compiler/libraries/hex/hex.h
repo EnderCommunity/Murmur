@@ -1,5 +1,3 @@
-#include <math.h>
-
 int hexToInt(char *hex){
 
     int dec = 0, base = 1;

@@ -15,6 +15,9 @@ FILE* lexProc(TmpFileStruc cFileObj){
     if(tmpStr[strlen(tmpStr) - 1] == '\n')
         tmpStr[strlen(tmpStr) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
 
+    if(tmpStr[strlen(tmpStr) - 2] == '\r') //Hmm, maybe don't do that...
+        tmpStr[strlen(tmpStr) - 2] = '\0';
+
     while(getStrIndx(tmpStr, "[FileEnd]") != 0){
 
         curLin = getStrPrt(tmpStr, getStrIndx(tmpStr, "]") + 3, strlen(tmpStr), 0); //Get the current line content

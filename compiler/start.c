@@ -17,6 +17,9 @@ void Deb(){ //Minimal debug
 #include "libraries/files/gen.c"
 #include "libraries/paths/paths.h"
 
+#include <math.h>
+#include "libraries/hex/hex.h"
+
 #include "workstation.c"
 #include "errors/report.h"
 
@@ -172,7 +175,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
         fclose(desFileObj.ptr);
         freeDatFil(); //Free the data file pointer!
 
-        rpt(REPORT_CODE_MESSAGE, REPORT_SECTION_GENERAL, "This process is about to end", "<main>");
+        rpt(REPORT_CODE_MESSAGE, REPORT_SECTION_GENERAL, "This process is about to end", "<main>", 0, 0);
 
         clsRptFil(); //Close the ".opf" file
 

@@ -1,2 +1,5 @@
+[Error] The closing quote is missing!
+    in <E:\files\EnderCommunity\Projects\Murmur\final-pitch-lib.lib.mur>:3;18
+    at <main>:32;1
 [Message] This process is about to end
-    <main>
+    in <main>:0;0
