@@ -1,6 +1,7 @@
 #header <nothing-to-see-here>
 
 import "0.lib.mur;
+//              ^ this should trigger an error
 
 public group LibFilNam {
 
