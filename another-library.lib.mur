@@ -1,0 +1,13 @@
+group AnotherLibrary {
+
+    class MyClass {
+
+        function::int NumOne(){
+
+            return 1;
+
+        }
+
+    }
+
+}

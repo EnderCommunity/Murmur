@@ -66,7 +66,7 @@ void srtRptSrc(char **src, int lin, int col){
 
                     char *tmpDat = getDat(DATA_PATH, tmpId);
 
-                    if(tmpDat != "\0"){
+                    if(strcmp(tmpDat, "\0") != 0){
 
                         //printf("\n--%s--\n", tmpDat);
 
@@ -89,7 +89,7 @@ void srtRptSrc(char **src, int lin, int col){
 
                     char *tmpDat = getDat(DATA_ZONE, tmpId);
 
-                    if(tmpDat != "\0"){
+                    if(strcmp(tmpDat, "\0") != 0){
 
                         //printf("\n--%s--\n", tmpDat);
 
