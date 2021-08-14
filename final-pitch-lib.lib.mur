@@ -1,7 +1,6 @@
 #header <nothing-to-see-here>
 
-import "0.lib.mur;
-//              ^ this should trigger an error
+import "another-library.lib.mur";
 
 public group LibFilNam {
 
