@@ -24,7 +24,19 @@ jobs:
         run: sudo apt install build-essential
       - name: Validating the GCC compiler
         run: gcc --version
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: cpp
       # [END] Set up the environment for Linux
+
+
+      # [START] Deleting the executables
+      - name: Delete "*.out"
+        run: rm ${{ github.workspace }}/compiler/*.out
+      - name: Delete "*.exe"
+        run: rm ${{ github.workspace }}/compiler/*.exe
+      # [END] Deleting the executables
 
       - name: List files in the compiler dir
         run: ls ${{ github.workspace }}/compiler/
@@ -34,6 +46,12 @@ jobs:
           gcc -g start.c -o GitHubBuild_Mur_Linux.out -lm
       - name: List files in the compiler dir
         run: ls ${{ github.workspace }}/compiler/
+
+      # [START] Scan code
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
+      # [END] Scan code
+
       - run: echo "This job's status is ${{ job.status }}."
   build-on-windows:
     runs-on: windows-latest
@@ -65,7 +83,18 @@ jobs:
 #          pacman -S mingw-w64-x86_64-pcre2
       - name: Validating the GCC compiler
         run: C:\\msys64\\mingw64\\bin\\gcc.exe --version
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: cpp
       # [END] Set up the environment for Windows
+
+      # [START] Deleting the executables
+      - name: Delete "*.out"
+        run: rm ${{ github.workspace }}/compiler/*.out
+      - name: Delete "*.exe"
+        run: rm ${{ github.workspace }}/compiler/*.exe
+      # [END] Deleting the executables
 
       - name: List files in the compiler dir
         run: ls ${{ github.workspace }}\compiler\
@@ -75,6 +104,12 @@ jobs:
           C:\\msys64\\mingw64\\bin\\gcc.exe -g start.c -o GitHubBuild_Mur_Windows.exe -lregex
       - name: List files in the compiler dir
         run: ls ${{ github.workspace }}\compiler\
+
+      # [START] Scan code
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
+      # [END] Scan code
+
       - run: echo "This job's status is ${{ job.status }}."
   build-on-macos:
     runs-on: macos-latest
@@ -102,7 +137,18 @@ jobs:
         run: gcc --version
       - name: Cleaning up
         run: brew cleanup
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: cpp
       # [END] Set up the environment for macOS
+
+      # [START] Deleting the executables
+      - name: Delete "*.out"
+        run: rm ${{ github.workspace }}/compiler/*.out
+      - name: Delete "*.exe"
+        run: rm ${{ github.workspace }}/compiler/*.exe
+      # [END] Deleting the executables
 
       - name: List files in the compiler dir
         run: ls ${{ github.workspace }}/compiler/
@@ -112,4 +158,10 @@ jobs:
           gcc -g start.c -o GitHubBuild_Mur_macOS
       - name: List files in the compiler dir
         run: ls ${{ github.workspace }}/compiler/
+
+      # [START] Scan code
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
+      # [END] Scan code
+
       - run: echo "This job's status is ${{ job.status }}."
