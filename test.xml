@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!-- This is just a test pitch -->
+
+<structure> <!-- The native title bar -->
+    <window display="show"> <!-- A window -->
+        <title>MyApp</title> <!-- The title of the window -->
+        <title-bar>
+            <controls></controls>
+        </title-bar> <!-- The native title bar -->
+        <layout>
+            <text>Hi</text>
+            <button call="myCloseFunc">Close</button>
+        </layout>
+    </window>
+</structure>
