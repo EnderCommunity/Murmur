@@ -29,9 +29,9 @@ jobs:
 
       # [START] Deleting the executables
       - name: Delete "*.out"
-        run: rm *.out
+        run: rm ${{ github.workspace }}/compiler/*.out
       - name: Delete "*.exe"
-        run: rm *.exe
+        run: rm ${{ github.workspace }}/compiler/*.exe
       # [END] Deleting the executables
 
       - name: List files in the compiler dir
@@ -87,9 +87,9 @@ jobs:
 
       # [START] Deleting the executables
       - name: Delete "*.out"
-        run: del *.out
+        run: rm ${{ github.workspace }}/compiler/*.out
       - name: Delete "*.exe"
-        run: del *.exe
+        run: rm ${{ github.workspace }}/compiler/*.exe
       # [END] Deleting the executables
 
       - name: List files in the compiler dir
@@ -141,9 +141,9 @@ jobs:
 
       # [START] Deleting the executables
       - name: Delete "*.out"
-        run: rm *.out
+        run: rm ${{ github.workspace }}/compiler/*.out
       - name: Delete "*.exe"
-        run: rm *.exe
+        run: rm ${{ github.workspace }}/compiler/*.exe
       # [END] Deleting the executables
 
       - name: List files in the compiler dir
