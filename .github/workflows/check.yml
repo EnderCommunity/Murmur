@@ -20,10 +20,6 @@ jobs:
         with:
           languages: c, javascript
 
-      - run: |
-        make bootstrap
-        make release
-
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
 
