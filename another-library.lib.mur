@@ -1,3 +1,8 @@
+//import "hi.co";
+//          ^ this isn't a .mur file!
+//            this will cause the
+//            compiler to stop!
+
 group AnotherLibrary {
 
     class MyClass {

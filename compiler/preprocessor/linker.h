@@ -59,7 +59,7 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
             }
 
         }
-
+        
         if(shdChk && (curFile->currLineCon)[i] == '{'){ //Beaware, a new zone opening has been detected!
 
             curFile->curZon++;
@@ -91,7 +91,7 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
                         if(lokForNum && isdigit((curFile->currLineCon)[i])) {
 
                             //Oops, that's not allowed!
-                            exit(-1);
+                            exit(-100);
 
                         }else
                             lokForNum = 0;
@@ -108,14 +108,12 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                 }
 
-            }
-
-            if(ENABLE_IMPORT_STATEMENT && i + 6 < len && (curFile->currLineCon)[i] == 'i' && (curFile->currLineCon)[i + 1] == 'm' && (curFile->currLineCon)[i + 2] == 'p' && (curFile->currLineCon)[i + 3] == 'o' && (curFile->currLineCon)[i + 4] == 'r' && (curFile->currLineCon)[i + 5] == 't' && ((curFile->currLineCon)[i + 6] == ' ' || (curFile->currLineCon)[i + 6] == '"')){
+            }else if(ENABLE_IMPORT_STATEMENT && i + 5 < len && (curFile->currLineCon)[i] == 'i' && (curFile->currLineCon)[i + 1] == 'm' && (curFile->currLineCon)[i + 2] == 'p' && (curFile->currLineCon)[i + 3] == 'o' && (curFile->currLineCon)[i + 4] == 'r' && (curFile->currLineCon)[i + 5] == 't' && ((i + 6 < len) ? ((curFile->currLineCon)[i + 6] == ' ' || (curFile->currLineCon)[i + 6] == '"' || (curFile->currLineCon)[i + 6] == ';') : 1)){
 
                 //The "import" statement has been detected!
                 writeLogLine("Preprocessor", 0, "An 'import' statement has been detected!", 1, curFile->currLine, curFile->currCol + i);
 
-                int stmIndx = i, lokForStr = 1, pthLen = 0, isDon = 0, fndCls = 0, fndEnd = 0;
+                int stmIndx = i, lokForStr = 1, pthLen = 0, isDon = 0, fndCls = 0, fndEnd = 0, isFstNoSpc = 1;
 
                 char *tmpStr = malloc(1*sizeof(char));
 
@@ -130,9 +128,22 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                     if(!isspace((curFile->currLineCon)[i])) {
 
+                        if(isFstNoSpc == 1){
+
+                            isFstNoSpc = 0;
+
+                            if((curFile->currLineCon)[i] != '"'){
+
+                                isFstNoSpc = -1;
+                                break;
+
+                            }
+
+                        }
+
                         if(isDon){
 
-                            exit(-1); //Well, this is not supposed to happen!
+                            exit(-100); //Well, this is not supposed to happen!
 
                         }
 
@@ -151,6 +162,8 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                             //Start importing this file!
                             tmpStr[pthLen] = '\0';
+
+                            int orgImpPthLen = strlen(tmpStr); //Save the string length!
 
                             char *fnlPth = pthAnl(wrkstn.Path, tmpStr);
 
@@ -177,7 +190,12 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                                 free(tmpMsg);
 
-                                exit(-1);
+                                rpt(REPORT_CODE_ERROR, //This is an error
+                                REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                                MSG_PPC_LINKER_IMPORT_INACCESSIBLEFILE, //This is the custom error message (check /compiler/errors/messages.h)
+                                srcPth, //The source of this error
+                                curFile->currLine, //The line of this error
+                                curFile->currCol + i - orgImpPthLen); //The column the error occurs
 
                             }
 
@@ -195,9 +213,16 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                             if(subFilInf->mode == 'U'){ //This is neither a `.mur` file nor a `.lib.mur` file
 
-                                writeLogLine("Compiler Manager", 2, "Unknown input file extension!", 0, 0, 0);
+                                //writeLogLine("Compiler Manager", 2, "Unknown input file extension!", 0, 0, 0);
 
-                                exit(-1); //Exit! Don't worry about the allocated memory, the system is gonna clean it up.
+                                rpt(REPORT_CODE_ERROR, //This is an error
+                                REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                                MSG_PPC_LINKER_IMPORT_INCORRECTFILETYPE, //This is the custom error message (check /compiler/errors/messages.h)
+                                srcPth, //The source of this error
+                                curFile->currLine, //The line of this error
+                                curFile->currCol + i - orgImpPthLen); //The column the error occurs
+
+                                //exit(-1); //Exit! Don't worry about the allocated memory, the system is gonna clean it up.
 
                             }else{
 
@@ -237,21 +262,41 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                 }
 
-                if(!isDon){
+                if(isFstNoSpc == -1){
 
-                    //exit(-1);
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_IMPORT_NOSTRINGINPUT, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + i); //The column the error occurs
 
-                    char *tmp = malloc(strlen("The closing quote is missing!") + 1);
-                    strcpy(tmp, "The closing quote is missing!");
+                }else if(!isDon && lokForStr){
 
-                    rpt(REPORT_CODE_ERROR, REPORT_SECTION_PREPROCESSOR, tmp, srcPth, curFile->currLine, curFile->currCol + i);
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_IMPORT_NOINPUT, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + stmIndx); //The column the error occurs
 
-                    free(tmp);
+                }else if(!isDon){
 
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_IMPORT_CLOSINGQUOTE, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + i); //The column the error occurs
 
                 }else if(!fndEnd || (!fndEnd && sizeof(tmpStr) == sizeof(char))) {
 
-                    exit(-1); //THis is not supposed to happen!
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_IMPORT_SEMICOLON, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + i); //The column the error occurs
 
                 }
 
@@ -259,27 +304,27 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                 int tmp = ++i - stmIndx;
 
-                shfStr(curFile->currLineCon, tmp);
+                if(strlen(curFile->currLineCon) - tmp >= 0){
+
+                    shfStr(curFile->currLineCon, tmp);
+
+                }
 
                 i = 0;
                 len = strlen(curFile->currLineCon);
 
-                if(strlen(curFile->currLineCon) == 1)
+                if(len == 1)
                     strcpy(curFile->currLineCon, FILLER_STRING_CHAR_TYP_STR);
 
                 curFile->currCol += tmp;
                 curFile->nextCol = curFile->currCol;
 
-            }
-
-            if(ENABLE_DEFINE_STATEMENT && i + 6 < len && (curFile->currLineCon)[i] == 'd' && (curFile->currLineCon)[i + 1] == 'e' && (curFile->currLineCon)[i + 2] == 'f' && (curFile->currLineCon)[i + 3] == 'i' && (curFile->currLineCon)[i + 4] == 'n' && (curFile->currLineCon)[i + 5] == 'e' && (curFile->currLineCon)[i + 6] == ' '){
+            }else if(ENABLE_DEFINE_STATEMENT && i + 6 < len && (curFile->currLineCon)[i] == 'd' && (curFile->currLineCon)[i + 1] == 'e' && (curFile->currLineCon)[i + 2] == 'f' && (curFile->currLineCon)[i + 3] == 'i' && (curFile->currLineCon)[i + 4] == 'n' && (curFile->currLineCon)[i + 5] == 'e' && (curFile->currLineCon)[i + 6] == ' '){
 
                 //The "define" statement has been detected!
                 writeLogLine("Preprocessor", 0, "A 'define' statement has been detected!", 1, curFile->currLine, curFile->currCol + i);
 
-            }
-
-            if(ENABLE_SETSIZE_STATEMENT && i + 7 < len && (curFile->currLineCon)[i] == 's' && (curFile->currLineCon)[i + 1] == 'e' && (curFile->currLineCon)[i + 2] == 't' && (curFile->currLineCon)[i + 3] == 's' && (curFile->currLineCon)[i + 4] == 'i' && (curFile->currLineCon)[i + 5] == 'z' && (curFile->currLineCon)[i + 6] == 'e' && (curFile->currLineCon)[i + 7] == ' '){
+            }else if(ENABLE_SETSIZE_STATEMENT && i + 7 < len && (curFile->currLineCon)[i] == 's' && (curFile->currLineCon)[i + 1] == 'e' && (curFile->currLineCon)[i + 2] == 't' && (curFile->currLineCon)[i + 3] == 's' && (curFile->currLineCon)[i + 4] == 'i' && (curFile->currLineCon)[i + 5] == 'z' && (curFile->currLineCon)[i + 6] == 'e' && (curFile->currLineCon)[i + 7] == ' '){
 
                 //The "setsize" statement has been detected!
                 writeLogLine("Preprocessor", 0, "A 'setsize' statement has been detected!", 1, curFile->currLine, curFile->currCol + i);

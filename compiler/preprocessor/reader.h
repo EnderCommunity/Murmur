@@ -147,17 +147,31 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
                 if(waitForComm){
 
-                    writeLogLine("Preprocessor", 0, "The end of the file has been reached, and the comment wasn't closed!", 0, 0, 0);
+                    //writeLogLine("Preprocessor", 0, "The end of the file has been reached, and the comment wasn't closed!", 0, 0, 0);
 
-                    exit(-1); //Oops, the comment wasn't closed!
+                    //exit(-100); //Oops, the comment wasn't closed!
+
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_READER_MLCOMMENTEND, //This is the custom error message (check /compiler/errors/messages.h)
+                    filPth, //The source of this error
+                    fileInf->currLine, //The line of this error
+                    fileInf->currCol); //The column the error occurs
 
                 }
 
                 if(fileInf->isSptZon){
 
-                    writeLogLine("Preprocessor", 0, "The end of the file has been reached, and the separate zone wasn't closed!", 0, 0, 0);
+                    //writeLogLine("Preprocessor", 0, "The end of the file has been reached, and the separate zone wasn't closed!", 0, 0, 0);
 
-                    exit(-1); //Oops, the separate zone wasn't closed!
+                    //exit(-100); //Oops, the separate zone wasn't closed!
+
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_READER_SPRZONEEND, //This is the custom error message (check /compiler/errors/messages.h)
+                    filPth, //The source of this error
+                    fileInf->currLine, //The line of this error
+                    fileInf->currCol); //The column the error occurs
 
                 }
 

@@ -179,7 +179,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
                 } else {
 
                     writeLogLine("Lexer", 2, "An unknown character has been detected!", 1, lin, col);
-                    exit(-1);
+                    exit(-100);
 
                 }
 

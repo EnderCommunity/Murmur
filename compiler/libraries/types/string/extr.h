@@ -32,7 +32,7 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
 
         //Throw an error!
         writeLogLine("Library Component", 2, "ERROR", 0, 0, 0);
-        exit(-1);
+        exit(-100);
 
     }else{
 
@@ -113,7 +113,7 @@ char* shfStr(char *str, int n){ //Shif a string to the left by 'n' chars!
     for(i = n; i < l; i++)
         str[i - n] = str[i];
 
-    str[l - n] = '\0';
+    str[(l - n >= 0) ? l - n : 0] = '\0';
 
     return str;
 
