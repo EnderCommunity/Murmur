@@ -1,11 +1,11 @@
 [{<main>},29;1]->using system.io;
-[{<Ax000002>@<Ax000001>@<main>},1;1]->group AnotherLibrary {
-[{<Ax000002>@<Ax000001>@<main>},3;5]->class MyClass {
-[{<Ax000002>@<Ax000001>@<main>},5;9]->function::int NumOne(){
-[{<Ax000002>@<Ax000001>@<main>},7;13]->return 1;
-[{<Ax000002>@<Ax000001>@<main>},9;9]->}
-[{<Ax000002>@<Ax000001>@<main>},11;5]->}
-[{<Ax000002>@<Ax000001>@<main>},13;1]->}
+[{<Ax000002>@<Ax000001>@<main>},6;1]->group AnotherLibrary {
+[{<Ax000002>@<Ax000001>@<main>},8;5]->class MyClass {
+[{<Ax000002>@<Ax000001>@<main>},10;9]->function::int NumOne(){
+[{<Ax000002>@<Ax000001>@<main>},12;13]->return 1;
+[{<Ax000002>@<Ax000001>@<main>},14;9]->}
+[{<Ax000002>@<Ax000001>@<main>},16;5]->}
+[{<Ax000002>@<Ax000001>@<main>},18;1]->}
 [{<Ax000001>@<main>},5;1]->public group LibFilNam {
 [{<Ax000001>@<main>},7;5]->public class section {
 [{<Ax000001>@<main>},9;9]->function::string myFunction(int input) {
