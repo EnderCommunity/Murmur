@@ -42,6 +42,22 @@
 #endif
 
 
+//Input (needed directoies and files)
+#define MUR_FILEEXT ".mur"
+#define MUR_LIB_FILEEXT ".lib.mur"
+#if _WIN64 || _WIN32
+
+    #define C_COMPILER_EXECUTABLE_DIR "C:\\msys64\\mingw64\\bin\\gcc.exe" //The directory of your C compiler of choice
+    #define MUR_LIBRARIES_DIR "resources\\libraries\\"
+
+#else
+
+    #define C_COMPILER_EXECUTABLE_DIR "gcc" //The directory of your C compiler of choice
+    #define MUR_LIBRARIES_DIR "resources/libraries/"
+
+#endif
+
+
 //Output (NOTE: some of these files might still get generated in the `/tmp` directory)
 
 #define REMOVE_WHITESPACE_AT_LINE_START 1 //Remove the extra whitespace at the start of each line
@@ -60,7 +76,7 @@
 #define ENABLE_PREPROCESSOR_METHODS 1 //Enable preprocessor methods (will not effect the header method)
 #define ENABLE_PREPROCESSOR_HEADER 1 //Enable the `#header` super-method
 #define ENABLE_ALLOW_SEPARATE_FLAG 0 //Enable the header `allow-separate` flag
-#define ENABLE_USING_STATEMENT 0 //Enable the `using` statement
+#define ENABLE_USING_STATEMENT 1 //Enable the `using` statement
 #define ENABLE_IMPORT_STATEMENT 1 //Enable the `import` statement
 #define ENABLE_SETSIZE_STATEMENT 1 //Enable the `setsize` statement
 #define ENABLE_DEFINE_STATEMENT 1 //Enable the `define` statement
@@ -108,7 +124,6 @@
 
 #define DEBUG_ALLOW_TERMINATION 0 //Allow errors to terminate the compiling process (Use this when you need to test errors & warnings)
 /* (!) Still not implemented */ #define EMPTY_COMPILER_TMP_DIR 0 //Empty the `/compiler/tmp/` directory at the end of every process
-#define C_COMPILER_EXECUTABLE_DIR "C:\\msys64\\mingw64\\bin\\gcc.exe" //The directory of your C compiler of choice
 
 
 //Commands
@@ -138,3 +153,5 @@
 #define REPORT_SECTION_BUNDLER 7
 #define REPORT_SECTION_C 8
 #define REPORT_SECTION_RUNTIME 9
+
+#define ERROR_STR_OUTOFBOUNDS "::ERR_OOB::" //an "out of bounds" error string

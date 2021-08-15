@@ -1,4 +1,70 @@
+#include <dirent.h>
+
 #include "path_analyser.h"
+
+void insSubFil(FILE *subTmpPtr, FILE *dstFilPtr, FileInfo *curFile, char *fnlPth, char *srcPth, int rptColSft, int datColSft){
+
+    FileInfo *subFilInf = checkFlags(subTmpPtr, fnlPth, 0); //An object that contains the sub-file info!
+
+    printf("\n[Debug] [Sub] Mode: %c\n", subFilInf->mode);
+    printf("[Debug] [Sub] Is Full: %d\n", subFilInf->isFull);
+    printf("[Debug] [Sub] Current Line Content: %s\n", subFilInf->currLineCon);
+    printf("[Debug] [Sub] Current Line Original Content: %s\n", subFilInf->currOLineCon);
+    printf("[Debug] [Sub] Path: %s\n", subFilInf->path);
+
+    if(subFilInf->mode == 'U'){ //This is neither a `.mur` file nor a `.lib.mur` file
+
+        //writeLogLine("Compiler Manager", 2, "Unknown input file extension!", 0, 0, 0);
+
+        rpt(REPORT_CODE_ERROR, //This is an error
+        REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+        MSG_PPC_LINKER_INCORRECTFILETYPE, //This is the custom error message (check /compiler/errors/messages.h)
+        srcPth, //The source of this error
+        curFile->currLine, //The line of this error
+        curFile->currCol + rptColSft); //The column the error occurs
+
+        //exit(-1); //Exit! Don't worry about the allocated memory, the system is gonna clean it up.
+
+    }else{
+
+        char *tmpSrcStr = malloc(sizeof(char)*(strlen(srcPth) + strlen(fnlPth) + 4));
+
+        char *tmpDatStr = malloc(sizeof(char)*(strlen(fnlPth) + 26 + 3));
+
+        sprintf(tmpDatStr, "%s <Zx%09X> <Zx%09X>", fnlPth, curFile->currLine, curFile->currCol + datColSft);
+
+        int pthDatId = savDat(DATA_PATH, tmpDatStr);
+
+        free(tmpDatStr);
+
+        sprintf(tmpSrcStr, "<%cx%06X>@%s", DATA_PATH, pthDatId, srcPth);
+
+        ppcRead(subFilInf, dstFilPtr, tmpSrcStr); //Let the preprocessor do its thing, again!
+
+        free(tmpSrcStr);
+
+    }
+
+    fclose(subTmpPtr);
+
+}
+
+void rmvPrcSec(FileInfo **curFile, int *len, int *i, int stmIndx){
+
+    int tmp = ++(*i) - stmIndx;
+
+    shfStr((*curFile)->currLineCon, tmp);
+
+    i = 0;
+    *len = strlen((*curFile)->currLineCon);
+
+    if(*len == 1)
+        strcpy((*curFile)->currLineCon, FILLER_STRING_CHAR_TYP_STR);
+
+    (*curFile)->currCol += tmp;
+    (*curFile)->nextCol = (*curFile)->currCol;
+
+}
 
 FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
@@ -77,24 +143,73 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
                 //The "using" statement has been detected!
                 writeLogLine("Preprocessor", 0, "A 'using' statement has been detected!", 1, curFile->currLine, curFile->currCol + i);
 
-                int stmIndx = i, lokForNum = 1;
+                int stmIndx = i, lokForNum = 1, isFsh = 0, pthLen = strlen(MUR_LIBRARIES_DIR) + 1;
+
+                char *libPth = malloc(sizeof(char)*pthLen);
+                strcpy(libPth, MUR_LIBRARIES_DIR);
 
                 //fprintf(dstFilPtr, "[{%s},%d;%d]-%s\n", srcPth, curFile->currLine, curFile->currCol, curFile->currLineCon);
 
                 for(i += 6; i < len; i++){
 
-                    if((curFile->currLineCon)[i] == ';')
+                    if((curFile->currLineCon)[i] == ';'){
+
+                        isFsh = 1;
                         break;
+
+                    }
 
                     if(!isspace((curFile->currLineCon)[i])) {
 
-                        if(lokForNum && isdigit((curFile->currLineCon)[i])) {
+                        if(lokForNum && isdigit((curFile->currLineCon)[i])) { //Only accept names that start with letters
 
-                            //Oops, that's not allowed!
-                            exit(-100);
+                            rpt(REPORT_CODE_ERROR, //This is an error
+                            REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                            MSG_PPC_LINKER_USING_NODIGITSATSTART, //This is the custom error message (check /compiler/errors/messages.h)
+                            srcPth, //The source of this error
+                            curFile->currLine, //The line of this error
+                            curFile->currCol + i); //The column the error occurs
 
-                        }else
-                            lokForNum = 0;
+                        }else if((curFile->currLineCon)[i] != '.' && (!isalpha((curFile->currLineCon)[i]) && !isdigit((curFile->currLineCon)[i]) && (curFile->currLineCon)[i] != '_')){
+
+                            rpt(REPORT_CODE_ERROR, //This is an error
+                            REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                            MSG_PPC_LINKER_USING_RESTRICTEDNAMING, //This is the custom error message (check /compiler/errors/messages.h)
+                            srcPth, //The source of this error
+                            curFile->currLine, //The line of this error
+                            curFile->currCol + i); //The column the error occurs
+
+                        }else if(lokForNum && (curFile->currLineCon)[i] == '.'){
+
+                            rpt(REPORT_CODE_ERROR, //This is an error
+                            REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                            MSG_PPC_LINKER_USING_EMPTYSECTION, //This is the custom error message (check /compiler/errors/messages.h)
+                            srcPth, //The source of this error
+                            curFile->currLine, //The line of this error
+                            curFile->currCol + stmIndx); //The column the error occurs
+
+                        }else{
+
+                            pthLen++;
+
+                            libPth = realloc(libPth, sizeof(char)*pthLen);
+
+                            if((curFile->currLineCon)[i] == '.')
+                                libPth[pthLen - 2] = PATH_SLASH_TYP_CHAR;
+                            else
+                                libPth[pthLen - 2] = (curFile->currLineCon)[i];
+
+                            libPth[pthLen - 1] = '\0';
+
+                            //MUR_LIBRARIES_DIR;
+                            //DIR* dir = opendir("mydir");
+
+                            //Everything seems to be right!
+                            //Start searching for the library
+
+                        }
+
+                        lokForNum = 0;
 
                         if((curFile->currLineCon)[i] == '.'){ //Look inside another folder now!
 
@@ -103,10 +218,96 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
                         }
 
                     }
-                    
+
                     //Use "break" once you reach a ";"
 
                 }
+
+                if(lokForNum){
+
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_USING_EMPTYSECTION, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + stmIndx); //The column the error occurs
+
+                }else if(!isFsh){
+
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_USING_SEMICOLON, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + len); //The column the error occurs
+
+                }else{
+
+                    pthLen += strlen(MUR_LIB_FILEEXT);
+
+                    char *tmpLibPth = apdStr(libPth, MUR_LIB_FILEEXT);
+                    free(libPth);
+                    libPth = pthAnl(COMPILER_START_DIR, tmpLibPth);
+
+                    free(tmpLibPth);
+
+                    FILE *libPtr = fopen(libPth, "r");
+
+                    if(libPtr == NULL){
+
+                        char *tmpMsg = malloc(sizeof(char)*(88 + strlen(libPth) + 1));
+
+                        sprintf(tmpMsg, "There was an attempt to access the file <%s>, which does not exist, or cannot be accessed!", libPth);
+
+                        writeLogLine("Preprocessor", 0, tmpMsg, 0, 0, 0);
+
+                        free(tmpMsg);
+
+                        rpt(REPORT_CODE_ERROR, //This is an error
+                        REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                        MSG_PPC_LINKER_USING_INACCESSIBLEFILE, //This is the custom error message (check /compiler/errors/messages.h)
+                        srcPth, //The source of this error
+                        curFile->currLine, //The line of this error
+                        curFile->currCol + stmIndx); //The column the error occurs
+
+                    }else{
+
+                        //Include this file!
+                        insSubFil(libPtr, //Sub-file pointer
+                                  dstFilPtr, //Tmp file pointer
+                                  curFile, //Original file info
+                                  libPth, //Sub-file path
+                                  srcPth, //Source path
+                                  stmIndx, //an added value to the column for the `rpt` function
+                                  stmIndx); //an added value to the column for the final data
+
+                    }
+
+                }
+
+                free(libPth);
+
+                rmvPrcSec(&curFile,
+                          &len,
+                          &i,
+                          stmIndx);
+
+                /*int tmp = ++i - stmIndx;
+
+                if(strlen(curFile->currLineCon) - tmp >= 0){
+
+                    shfStr(curFile->currLineCon, tmp);
+
+                }
+
+                i = 0;
+                len = strlen(curFile->currLineCon);
+
+                if(len == 1)
+                    strcpy(curFile->currLineCon, FILLER_STRING_CHAR_TYP_STR);
+
+                curFile->currCol += tmp;
+                curFile->nextCol = curFile->currCol;*/
 
             }else if(ENABLE_IMPORT_STATEMENT && i + 5 < len && (curFile->currLineCon)[i] == 'i' && (curFile->currLineCon)[i + 1] == 'm' && (curFile->currLineCon)[i + 2] == 'p' && (curFile->currLineCon)[i + 3] == 'o' && (curFile->currLineCon)[i + 4] == 'r' && (curFile->currLineCon)[i + 5] == 't' && ((i + 6 < len) ? ((curFile->currLineCon)[i + 6] == ' ' || (curFile->currLineCon)[i + 6] == '"' || (curFile->currLineCon)[i + 6] == ';') : 1)){
 
@@ -144,6 +345,7 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
                         if(isDon){
 
                             exit(-100); //Well, this is not supposed to happen!
+                            //This may not be possible, IDK.
 
                         }
 
@@ -197,13 +399,21 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
                                 curFile->currLine, //The line of this error
                                 curFile->currCol + i - orgImpPthLen); //The column the error occurs
 
+                            }else{
+
+                                //
+
                             }
 
-                            //
+                            insSubFil(subTmpPtr, //Sub-file pointer
+                                      dstFilPtr, //Tmp file pointer
+                                      curFile, //Original file info
+                                      fnlPth, //Sub-file path
+                                      srcPth, //Source path
+                                      i - orgImpPthLen, //an added value to the column for the `rpt` function
+                                      stmIndx); //an added value to the column for the final data
 
-                            FileInfo *subFilInf = checkFlags(subTmpPtr, fnlPth, 0); //An object that contains the sub-file info!
-
-                            //fprintf(dstFilPtr, "[{curFil@%s},%d;%d]->%s\n", srcPth, subFilInf->currLine, subFilInf->currCol, subFilInf->currLineCon);
+/*                            FileInfo *subFilInf = checkFlags(subTmpPtr, fnlPth, 0); //An object that contains the sub-file info!
 
                             printf("\n[Debug] [Sub] Mode: %c\n", subFilInf->mode);
                             printf("[Debug] [Sub] Is Full: %d\n", subFilInf->isFull);
@@ -244,8 +454,7 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                             }
 
-                            fclose(subTmpPtr);
-                            //freeFileDatObj(subFilInf);
+                            fclose(subTmpPtr);*/
 
                             sprintf(tmpMsgStr, "Finished importing the content of the file <%s> into the temporary output file.", fnlPth);
 
@@ -302,7 +511,12 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
                 free(tmpStr); //Free the path
 
-                int tmp = ++i - stmIndx;
+                rmvPrcSec(&curFile,
+                          &len,
+                          &i,
+                          stmIndx);
+
+                /*int tmp = ++i - stmIndx;
 
                 if(strlen(curFile->currLineCon) - tmp >= 0){
 
@@ -317,7 +531,7 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
                     strcpy(curFile->currLineCon, FILLER_STRING_CHAR_TYP_STR);
 
                 curFile->currCol += tmp;
-                curFile->nextCol = curFile->currCol;
+                curFile->nextCol = curFile->currCol;*/
 
             }else if(ENABLE_DEFINE_STATEMENT && i + 6 < len && (curFile->currLineCon)[i] == 'd' && (curFile->currLineCon)[i + 1] == 'e' && (curFile->currLineCon)[i + 2] == 'f' && (curFile->currLineCon)[i + 3] == 'i' && (curFile->currLineCon)[i + 4] == 'n' && (curFile->currLineCon)[i + 5] == 'e' && (curFile->currLineCon)[i + 6] == ' '){
 

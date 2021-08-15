@@ -26,8 +26,10 @@ of Murmur, and all the functions that it can use.
 //preprocessor fucntions! So any normal code outside of groups that is not a
 //preprocessor-related feature will cause the compiler to exit with an error.
 
-using system.io; //Tell the compiler that the program is going to use the "system"
-                 //input/output library
+//using system.io; //Tell the compiler that the program is going to use the
+                 //input/output library in the folder "system"
+using test;
+using foldertest.test2;
 
 import "final-pitch-lib.lib.mur"; //Import another Murmur file!
 

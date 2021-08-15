@@ -1,62 +1,63 @@
-[{<main>},29;1]->using system.io;
-[{<Ax000002>@<Ax000001>@<main>},6;1]->group AnotherLibrary {
-[{<Ax000002>@<Ax000001>@<main>},8;5]->class MyClass {
-[{<Ax000002>@<Ax000001>@<main>},10;9]->function::int NumOne(){
-[{<Ax000002>@<Ax000001>@<main>},12;13]->return 1;
-[{<Ax000002>@<Ax000001>@<main>},14;9]->}
-[{<Ax000002>@<Ax000001>@<main>},16;5]->}
-[{<Ax000002>@<Ax000001>@<main>},18;1]->}
-[{<Ax000001>@<main>},5;1]->public group LibFilNam {
-[{<Ax000001>@<main>},7;5]->public class section {
-[{<Ax000001>@<main>},9;9]->function::string myFunction(int input) {
-[{<Ax000001>@<main>},11;13]->string output;
-[{<Bx000003>@<Ax000001>@<main>},15;13]->0;
-[{<Ax000001>@<main>},18;13]->return output;
-[{<Ax000001>@<main>},20;9]->}
-[{<Ax000001>@<main>},22;5]->}
-[{<Ax000001>@<main>},24;1]->}
-[{<main>},34;1]->define ZERO 0;
-[{<main>},38;1]->setsize int 2;
-[{<main>},39;1]->setsize double 10;
-[{<main>},48;1]->public group FinalPitch {
-[{<main>},54;5]->public class Program {
-[{<main>},58;9]->int globA = 0;
-[{<main>},59;9]->double globB = 0.0;
-[{<main>},60;9]->float globC = 0.0;
-[{<main>},61;9]->char globD = 'D';
-[{<main>},62;9]->string globE = "Global E";
-[{<main>},63;9]->bool globF = true;
-[{<main>},64;9]->file globG = new FileStream("path/to/my/file.txt");
-[{<main>},65;9]->hex globH = 0x000000;
-[{<main>},67;9]->public function::int Main(string[] envi, int length){
-[{<main>},76;13]->Func();
-[{<main>},78;13]->^int a = 0;
-[{<main>},81;13]->int b = 1;
-[{<main>},84;13]->^int c = Test(a, 1);
-[{<main>},86;13]->a, c = 5;
-[{<main>},88;13]->PlusOne(ref b)(ref b);
-[{<main>},90;13]->bool myTest = false;
-[{<main>},94;13]->return 0;
-[{<main>},96;9]->}
-[{<main>},98;9]->private function::void Func(){
-[{<main>},106;9]->}
-[{<main>},108;9]->public function::^int Test(^int a, int b){
-[{<main>},110;13]->a = (^int) b;
-[{<main>},112;13]->return a;
-[{<main>},114;9]->}
-[{<main>},116;9]->public function::void PlusOne(ref int a){
-[{<main>},121;13]->a++;
-[{<main>},123;9]->}
-[{<main>},125;5]->}
-[{<main>},127;5]->public class AnotherClass {
-[{<main>},129;9]->public int a = 0;
-[{<main>},130;9]->private int b = 0;
-[{<main>},132;9]->function::constructor(int a, int b){
-[{<main>},134;13]->this.a = a;
-[{<main>},135;13]->this.b = b;
-[{<main>},137;9]->}
-[{<main>},139;5]->}
-[{<main>},141;5]->class Smth {
-[{<main>},143;5]->}
-[{<main>},145;1]->}
+[{<Ax000001>@<main>},1;1]->"Test 1!";
+[{<Ax000002>@<main>},1;1]->"Test 2!";
+[{<Ax000004>@<Ax000003>@<main>},6;1]->group AnotherLibrary {
+[{<Ax000004>@<Ax000003>@<main>},8;5]->class MyClass {
+[{<Ax000004>@<Ax000003>@<main>},10;9]->function::int NumOne(){
+[{<Ax000004>@<Ax000003>@<main>},12;13]->return 1;
+[{<Ax000004>@<Ax000003>@<main>},14;9]->}
+[{<Ax000004>@<Ax000003>@<main>},16;5]->}
+[{<Ax000004>@<Ax000003>@<main>},18;1]->}
+[{<Ax000003>@<main>},5;1]->public group LibFilNam {
+[{<Ax000003>@<main>},7;5]->public class section {
+[{<Ax000003>@<main>},9;9]->function::string myFunction(int input) {
+[{<Ax000003>@<main>},11;13]->string output;
+[{<Bx000005>@<Ax000003>@<main>},15;13]->0;
+[{<Ax000003>@<main>},18;13]->return output;
+[{<Ax000003>@<main>},20;9]->}
+[{<Ax000003>@<main>},22;5]->}
+[{<Ax000003>@<main>},24;1]->}
+[{<main>},36;1]->define ZERO 0;
+[{<main>},40;1]->setsize int 2;
+[{<main>},41;1]->setsize double 10;
+[{<main>},50;1]->public group FinalPitch {
+[{<main>},56;5]->public class Program {
+[{<main>},60;9]->int globA = 0;
+[{<main>},61;9]->double globB = 0.0;
+[{<main>},62;9]->float globC = 0.0;
+[{<main>},63;9]->char globD = 'D';
+[{<main>},64;9]->string globE = "Global E";
+[{<main>},65;9]->bool globF = true;
+[{<main>},66;9]->file globG = new FileStream("path/to/my/file.txt");
+[{<main>},67;9]->hex globH = 0x000000;
+[{<main>},69;9]->public function::int Main(string[] envi, int length){
+[{<main>},78;13]->Func();
+[{<main>},80;13]->^int a = 0;
+[{<main>},83;13]->int b = 1;
+[{<main>},86;13]->^int c = Test(a, 1);
+[{<main>},88;13]->a, c = 5;
+[{<main>},90;13]->PlusOne(ref b)(ref b);
+[{<main>},92;13]->bool myTest = false;
+[{<main>},96;13]->return 0;
+[{<main>},98;9]->}
+[{<main>},100;9]->private function::void Func(){
+[{<main>},108;9]->}
+[{<main>},110;9]->public function::^int Test(^int a, int b){
+[{<main>},112;13]->a = (^int) b;
+[{<main>},114;13]->return a;
+[{<main>},116;9]->}
+[{<main>},118;9]->public function::void PlusOne(ref int a){
+[{<main>},123;13]->a++;
+[{<main>},125;9]->}
+[{<main>},127;5]->}
+[{<main>},129;5]->public class AnotherClass {
+[{<main>},131;9]->public int a = 0;
+[{<main>},132;9]->private int b = 0;
+[{<main>},134;9]->function::constructor(int a, int b){
+[{<main>},136;13]->this.a = a;
+[{<main>},137;13]->this.b = b;
+[{<main>},139;9]->}
+[{<main>},141;5]->}
+[{<main>},143;5]->class Smth {
+[{<main>},145;5]->}
+[{<main>},147;1]->}
 [FileEnd]
