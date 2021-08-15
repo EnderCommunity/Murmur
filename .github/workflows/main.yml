@@ -24,6 +24,10 @@ jobs:
         run: sudo apt install build-essential
       - name: Validating the GCC compiler
         run: gcc --version
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: cpp
       # [END] Set up the environment for Linux
 
 
@@ -44,10 +48,6 @@ jobs:
         run: ls ${{ github.workspace }}/compiler/
 
       # [START] Scan code
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: cpp
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
       # [END] Scan code
