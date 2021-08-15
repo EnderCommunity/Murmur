@@ -1,0 +1,88 @@
+# Types
+
+SYMBOL, STRING, CHAR,
+NUMBER, OPERATOR, BOOLEAN,
+ZONE_LINE
+
+
+# Specifiers
+
+type_specifier
+    : int <SYMBOL>
+    | double <SYMBOL>
+    | char <SYMBOL>
+    | string <SYMBOL>
+    | bool <SYMBOL>
+    | file <SYMBOL>
+    ;
+
+state_specifier
+    : public <SYMBOL>
+    | private <SYMBOL>
+    ;
+
+
+# Declarators
+
+function_declarator
+    : function <SYMBOL>
+    ;
+
+group_declarator
+    : group <SYMBOL>
+    ;
+
+class_declarator
+    : class <SYMBOL>
+    ;
+
+
+# Operators
+
+assignment_operator
+    : = <OPERATOR>
+    ;
+
+
+
+
+# non-terminals
+
+
+
+# Some stuff
+BLOCK
+    : { <OPERATOR>
+    > } <OPERATOR>
+    ;
+
+IDENTIFIER
+    : <SYMBOL>
+
+
+# Function declaration
+
+function
+    : <function_declarator>
+    & <IDENTIFIER>
+    & <BLOCK>
+    ;
+
+
+# Group declaration
+
+group
+    : <group_declarator>
+    & <IDENTIFIER>
+    & <BLOCK>
+    ;
+
+
+# Class declaration
+
+class
+    : <class_declarator>
+    & <IDENTIFIER>
+    & <BLOCK>
+    ;
+
