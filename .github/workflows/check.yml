@@ -43,8 +43,30 @@ jobs:
 
       # Autobuild attempts to build any compiled languages (C/C++, C#, or Java).
       # If this step fails, then you should remove it and run the build manually (see below).
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
+
+      # [START] Set up the environment for Linux
+      - name: Updating the packages list
+        run: sudo apt update
+      - name: Upgrading the packages
+        run: sudo apt upgrade
+      - name: Installing the build-essential package
+        run: sudo apt install build-essential
+      - name: Validating the GCC compiler
+        run: gcc --version
+      # [END] Set up the environment for Linux
+
+      - name: List files in the compiler dir
+        run: ls ${{ github.workspace }}/compiler/
+      - name: Building the compiler
+        run: |
+          cd compiler
+          gcc -g start.c -o GitHubBuild_Mur_Linux.out -lm
+      - name: Delete "Mur.out"
+        run: rm ${{ github.workspace }}/compiler/Mur.out
+      - name: Delete "Mur.exe"
+        run: rm ${{ github.workspace }}/compiler/Mur.exe
+      - name: List files in the compiler dir
+        run: ls ${{ github.workspace }}/compiler/
 
       # ℹ️ Command-line programs to run using the OS shell.
       # 📚 https://git.io/JvXDl
