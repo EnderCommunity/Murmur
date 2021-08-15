@@ -46,9 +46,9 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
 
     strcpy(tmp->currLineCon, tmp->currOLineCon);
 
-    if(getLstStrIndx(tmp->path, ".lib.mur") == strlen(tmp->path) - 8) //A mur library file!
+    if(getLstStrIndx(tmp->path, MUR_LIB_FILEEXT) == strlen(tmp->path) - 8) //A mur library file!
         tmp->mode = 'L';
-    else if(getLstStrIndx(tmp->path, ".mur") == strlen(tmp->path) - 4) //A normal file!
+    else if(getLstStrIndx(tmp->path, MUR_FILEEXT) == strlen(tmp->path) - 4) //A normal file!
         tmp->mode = 'N';
 
     if(ENABLE_PREPROCESSOR_HEADER && getStrIndx(tmp->currOLineCon, "#head") == 0) { //The head function is present!

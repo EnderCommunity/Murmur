@@ -23,18 +23,23 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
 
     int s = (((endIndx - strIndx != 0) ? (endIndx - strIndx) : 1) + 2 + endLine);
 
-    char *nStr = malloc(s*sizeof(char));
-    //char *nStr = malloc(s*sizeof(char));
-
-    memset(nStr, 0x00, s*sizeof(char)); //Clear the new memory
+    char *nStr;
 
     if((endIndx > strlen(str) || endIndx < strIndx) || (strIndx < 0 || strIndx > strlen(str))){
 
         //Throw an error!
-        writeLogLine("Library Component", 2, "ERROR", 0, 0, 0);
-        exit(-100);
+        //writeLogLine("Library Component", 2, "ERROR", 0, 0, 0);
+        s = strlen(ERROR_STR_OUTOFBOUNDS) + 1;
+
+        nStr = malloc(sizeof(char)*s);
+        memset(nStr, 0x00, s*sizeof(char)); //Clear the new memory
+
+        strcpy(nStr, ERROR_STR_OUTOFBOUNDS);
 
     }else{
+
+        nStr = malloc(s*sizeof(char));
+        memset(nStr, 0x00, s*sizeof(char)); //Clear the new memory
 
         int i = 0;
 

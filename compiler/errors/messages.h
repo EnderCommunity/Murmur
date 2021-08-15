@@ -9,12 +9,17 @@
 //#define MSG_PPC_
 
 //"preprocessor/linker.h"
+#define MSG_PPC_LINKER_INCORRECTFILETYPE "File with an unknown extension was imported!"
 #define MSG_PPC_LINKER_IMPORT_CLOSINGQUOTE "The string closing quote is missing!"
 #define MSG_PPC_LINKER_IMPORT_SEMICOLON "Expected a semicolon (;) at the end of the `import` method!"
-#define MSG_PPC_LINKER_IMPORT_INCORRECTFILETYPE "File with an unknown extension was imported!"
 #define MSG_PPC_LINKER_IMPORT_INACCESSIBLEFILE "Inaccessible file was imported! (This file does not exist, or may be in use)"
 #define MSG_PPC_LINKER_IMPORT_NOSTRINGINPUT "Invalid input was passed to the `import` method"
 #define MSG_PPC_LINKER_IMPORT_NOINPUT "No input was passed to the `import` method"
+#define MSG_PPC_LINKER_USING_NODIGITSATSTART "Using numbers at the start of a symbol is not allowed!"
+#define MSG_PPC_LINKER_USING_RESTRICTEDNAMING "You can only use letters, underscores (_), and number to specify a library path!"
+#define MSG_PPC_LINKER_USING_EMPTYSECTION "Sections can't be left empty!"
+#define MSG_PPC_LINKER_USING_SEMICOLON "Expected a semicolon (;) at the end of the `using` method!"
+#define MSG_PPC_LINKER_USING_INACCESSIBLEFILE "Inaccessible library was imported! (This library does not exist)"
 
 //"preprocessor/reader.h"
 #define MSG_PPC_READER_MLCOMMENTEND "End of file has been reached, and the comment wasn't closed!"
@@ -23,6 +28,9 @@
 
 //Lexer (MSG_LXR_...)
 //#define MSG_LXR_
+
+//"lexical/lex.h"
+#define MSG_LXR_LEX_UNKNOWNCHAR "Unknown character has been detected!"
 
 
 //Parser (MSG_PRS_...)

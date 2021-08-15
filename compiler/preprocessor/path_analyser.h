@@ -44,7 +44,7 @@ char *pthAnl(char *rootPth, char *pth){
 
         fnlPth = malloc(sizeof(char)*(len - shdLnk + ((tmpCon) ? tmpLen : tmpLen + 1) + 1));
 
-        sprintf(fnlPth, (tmpCon) ? "%s%s" : "%s/%s", rootPth, pth);
+        sprintf(fnlPth, "%s%s%s", rootPth, (tmpCon) ? "" : PATH_SLASH, pth);
 
     }
 

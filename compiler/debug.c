@@ -20,7 +20,7 @@ void RegDebEnd(){ //Stop the timer
 
     timSpt += (double)(timEnd - timBeg) / CLOCKS_PER_SEC;
  
-    printf("\n\n[Debug] The elapsed time is %f seconds\n", timSpt);
+    printf("\n[Debug] The elapsed time is %f seconds\n", timSpt);
 
 }
 

@@ -28,7 +28,11 @@ void Deb(){ //Minimal debug
 
 void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj);
 
+char *COMPILER_START_DIR = NULL;
+
 int main(int argc, char *argv[]){
+
+    COMPILER_START_DIR = getStrPrt(argv[0], 0, getLstStrIndx(argv[0], PATH_SLASH), 0);;
 
     RegDebStr(); //Start the debugging timer
 
@@ -108,6 +112,8 @@ int main(int argc, char *argv[]){
     writeLogLine("Compiler Manager", 0, "Task finished successfully! (Ending process)", 0, 0, 0);
 
     clsLogSec();
+
+    free(COMPILER_START_DIR);
 
     return 0;
 

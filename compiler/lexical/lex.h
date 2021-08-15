@@ -178,8 +178,14 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                 } else {
 
-                    writeLogLine("Lexer", 2, "An unknown character has been detected!", 1, lin, col);
-                    exit(-100);
+                    //writeLogLine("Lexer", 2, "An unknown character has been detected!", 1, lin, col);
+
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_LXR_LEX_UNKNOWNCHAR, //This is the custom error message (check /compiler/errors/messages.h)
+                    curSrcPth, //The source of this error
+                    lin, //The line of this error
+                    col); //The column the error occurs
 
                 }
 
