@@ -28,6 +28,10 @@ constructor_definition: <syb, "val:function"> <op, ":"> <op, ":"> <syb, "val:con
 
 */
 #include "gettkn.h"
+#include "sav.h"
+
+#include "terminal/specifiers.h"
+#include "terminal/declarators.h"
 
 void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
@@ -35,17 +39,47 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
     M_Token tkn = getTkn();
 
+    crtPrsFil(PARSER_TYPE_ONLY_TERMINAL); //Create a `.trm` file
+
     while(kepLop){
 
         //printf("%d `%s` %d %d %d %d | %d %d %d %d [%s] 0x%09X 1x%09X\n\n", tkn.typ, tkn.val, tkn.defVal1, tkn.defVal2, tkn.defVal3, tkn.defVal4, tkn.adtVal1, tkn.adtVal2, tkn.adtVal3, tkn.adtVal4, tkn.srcFil, tkn.srcLin, tkn.srcCol); //Debug
 
-        remTkn(tkn); //Remove the token
+        if(isTypSpc(tkn.typ, tkn.val)){ //"type_specifier"
 
-        tkn = getTkn(); //get a new token
+            crtTypSpc(tkn.val);
+
+        }else if(isSttSpc(tkn.typ, tkn.val)){ //"state_specifier"
+
+            crtSttSpc(tkn.val);
+
+        }else if(isFncDcl(tkn.typ, tkn.val)){ //"function_declarator"
+
+            crtFncDcl();
+
+        }else if(isGrpDcl(tkn.typ, tkn.val)){ //"group_declarator"
+
+            crtGrpDcl();
+
+        }else if(isClsDcl(tkn.typ, tkn.val)){ //"class_declarator"
+
+            crtClsDcl();
+
+        }else{
+
+            //Unknown type!
+
+        }
+
+        nxtTkn(&tkn); //Get the next token!
 
     }
 
+    clsPrsFil();
     fclose(lexFilPtr); //Close the file stream!
+
+    //PARSER_TYPE_ALL
+    //Now, create a new file for non-terminal data
 
 }
 
