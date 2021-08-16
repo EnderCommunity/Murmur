@@ -1,4 +1,7 @@
 /*
+
+(OUTDATED)
+
 All the expressions in Mur are gonna be:
 
 syb: LEXER_SYMBOL
@@ -32,6 +35,7 @@ constructor_definition: <syb, "val:function"> <op, ":"> <op, ":"> <syb, "val:con
 
 #include "terminal/specifiers.h"
 #include "terminal/declarators.h"
+#include "terminal/operators.h"
 
 void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
@@ -47,23 +51,27 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
         if(isTypSpc(tkn.typ, tkn.val)){ //"type_specifier"
 
-            crtTypSpc(tkn.val);
+            crtTypSpc(tkn.val, tkn.__srcLin);
 
         }else if(isSttSpc(tkn.typ, tkn.val)){ //"state_specifier"
 
-            crtSttSpc(tkn.val);
+            crtSttSpc(tkn.val, tkn.__srcLin);
 
         }else if(isFncDcl(tkn.typ, tkn.val)){ //"function_declarator"
 
-            crtFncDcl();
+            crtFncDcl(tkn.__srcLin);
 
         }else if(isGrpDcl(tkn.typ, tkn.val)){ //"group_declarator"
 
-            crtGrpDcl();
+            crtGrpDcl(tkn.__srcLin);
 
         }else if(isClsDcl(tkn.typ, tkn.val)){ //"class_declarator"
 
-            crtClsDcl();
+            crtClsDcl(tkn.__srcLin);
+
+        }else if(isAsiOpr(tkn)){ //"assignment_operator"
+
+            crtAsiOpr(tkn.__srcLin);
 
         }else{
 
@@ -84,6 +92,8 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 }
 
 /*
+
+(OUTDATED)
 
 The grammar of Mur:
 

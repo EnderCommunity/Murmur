@@ -2,6 +2,7 @@
 
 FILE *lexFilPtr;
 int kepLop = 1;
+int prsTknCurLin = 0; //The current line in the file
 
 void setTknFilPtr(FILE *tmp){
 
@@ -51,7 +52,12 @@ M_Token getTkn(){ //Get a token
 
     if(kepLop){
 
+        prsTknCurLin++;
+
         //printf("%s", tmp.val); //Debug
+
+        tmp.__srcLinLen = strlen(tmp.val);
+        tmp.__ahd_filEnd = 0;
 
         if(tmp.val[strlen(tmp.val) - 1] == '\n')
             tmp.val[strlen(tmp.val) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
@@ -63,6 +69,8 @@ M_Token getTkn(){ //Get a token
         free(tmpTypStr);
 
         int tmpRefIndx = getLstStrIndx(tmp.val, "`");
+
+        tmp.__srcLin = prsTknCurLin;
 
         tmp.defVal1 = getNxtLinUniVal(tmp.val, &tmpRefIndx);
         tmp.defVal2 = getNxtLinUniVal(tmp.val, &tmpRefIndx);
@@ -92,6 +100,28 @@ M_Token getTkn(){ //Get a token
         free(tmp.val);
 
     return tmp;
+
+}
+
+M_Token lokAhd(){ //Look ahead!
+
+    unsigned int curPos = ftell(lexFilPtr); //Save the current [position]
+
+    M_Token tmp = getTkn(); //Get the token next to the current one
+
+    if(!kepLop)
+        tmp.__ahd_filEnd = 1;
+
+    fseek(lexFilPtr, curPos, SEEK_SET); //Go back
+    prsTknCurLin--;
+
+    return tmp;
+
+}
+
+void skpNxt(){ //Skip the next token!
+
+    remTkn(getTkn());//Remove the token
 
 }
 

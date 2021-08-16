@@ -17,9 +17,9 @@ void crtPrsFil(int typ){ //Create a parser file
 
 }
 
-void isrtPrsTrm(char *typ, char *val){ //Insert a terminal value
+void isrtPrsTrm(char *typ, char *val, int linId){ //Insert a terminal value
 
-    fprintf(prsFilPtr, "%s(%s)\n", typ, val);
+    fprintf(prsFilPtr, "%s(%s)<%d>\n", typ, val, linId);
 
 }
 
