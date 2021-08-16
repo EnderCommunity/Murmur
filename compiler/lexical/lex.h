@@ -59,11 +59,17 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                     }else{
 
+                        //int isHex = (i + 2 < lopLen && curLin[i] == '0' && (curLin[i + 1] == 'x' || curLin[i + 1] == 'X'));
+
                         if(curLin[i] == '.')
-                        alowDot = 0;
+                            alowDot = 0;
 
                         fprintf(lexFil, "%d `%c", LEXER_NUMBER, curLin[i]);
 
+                        //if(isHex)
+                        //    fprintf(lexFil, "%d `%c", LEXER_NUMBER, curLin[i + 1]);
+
+                        //int delt = 1 + isHex;
                         int delt = 1;
 
                         while(delt + i < strlen(curLin) && (isdigit(curLin[i + delt]) || ((alowDot) ? curLin[i + delt] == '.' : 0))){

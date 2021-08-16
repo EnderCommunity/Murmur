@@ -94,3 +94,11 @@ M_Token getTkn(){ //Get a token
     return tmp;
 
 }
+
+void nxtTkn(M_Token *tkn){
+
+    remTkn(*tkn); //Remove the token
+
+    *tkn = getTkn(); //get a new token
+
+}

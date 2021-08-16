@@ -115,6 +115,11 @@
 #define LEXER_ZONE_LINE_STR "1007"
 
 
+//Parser
+#define PARSER_TYPE_ONLY_TERMINAL 1
+#define PARSER_TYPE_ALL 0
+
+
 //States
 
 /* (!) Still not implemented */ #define ENABLE_STATES 1 //Functions, groups, and classes will be forced to have a state definition (If disabled, all states will be set to 'public' with no way to change that)
