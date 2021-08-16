@@ -1,8 +1,32 @@
 # Types
 
-SYMBOL, STRING, CHAR,
-NUMBER, OPERATOR, BOOLEAN,
+# SYMBOL, STRING, CHAR,
+# NUMBER, OPERATOR, BOOLEAN,
+# ZONE_LINE
+
 ZONE_LINE
+    : <ZONE_LINE>
+    ;
+
+STRING
+    : <STRING>
+    ;
+
+CHAR
+    : <CHAR>
+    ;
+
+BOOLEAN
+    : <BOOLEAN>
+    ;
+
+NUMBER
+    : <NUMBER>
+    ;
+
+IDENTIFIER
+    : <SYMBOL>
+    ;
 
 
 # Specifiers
@@ -43,6 +67,11 @@ assignment_operator
     : = <OPERATOR>
     ;
 
+comparison_operator
+    : = <OPERATOR>
+    & = <OPERATOR>
+    ;
+
 
 
 
@@ -55,9 +84,6 @@ BLOCK
     : { <OPERATOR>
     > } <OPERATOR>
     ;
-
-IDENTIFIER
-    : <SYMBOL>
 
 
 # Function declaration

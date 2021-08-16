@@ -91,6 +91,12 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
             bool myTest = false;
 
+            if(myTest == true){ //This condition is impossible
+
+                //Anything here will never manage to run
+
+            }
+
             //myTest!!; //myTest is now set to true! (EXP)
 
             return 0; //This is the final program output code
