@@ -69,13 +69,41 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             crtClsDcl(tkn.__srcLin);
 
+        }else if(isCmpOpr(tkn)){ //"comparison_operator"
+
+            crtCmpOpr(tkn.__srcLin);
+
         }else if(isAsiOpr(tkn)){ //"assignment_operator"
 
             crtAsiOpr(tkn.__srcLin);
 
-        }else{
+        }else if(tkn.typ == LEXER_SYMBOL){ //This is an "IDENTIFIER"
 
-            //Unknown type!
+            isrtPrsTrm("IDENTIFIER", tkn.val, tkn.__srcLin);
+
+        }else if(tkn.typ == LEXER_STRING){ //This is a "STRING"
+
+            isrtPrsTrm("STRING", tkn.val, tkn.__srcLin);
+
+        }else if(tkn.typ == LEXER_CHAR){ //This is a "CHAR"
+
+            isrtPrsTrm("CHAR", tkn.val, tkn.__srcLin);
+
+        }else if(tkn.typ == LEXER_BOOLEAN){ //This is a "BOOLEAN"
+
+            isrtPrsTrm("BOOLEAN", tkn.val, tkn.__srcLin);
+
+        }else if(tkn.typ == LEXER_NUMBER){ //This is a "NUMBER"
+
+            isrtPrsTrm("NUMBER", tkn.val, tkn.__srcLin);
+
+        }else if(tkn.typ == LEXER_ZONE_LINE){ //This is a "ZONE_LINE"
+
+            isrtPrsTrm("ZONE_LINE", tkn.val, tkn.__srcLin);
+
+        }else{ //Unknown component!
+
+            isrtPrsTrm("?", tkn.val, tkn.__srcLin);
 
         }
 
