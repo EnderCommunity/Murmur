@@ -12,9 +12,9 @@ int isFncDcl(int typ, char *val){
 
 }
 
-void crtFncDcl(){ //Create a function_declarator
+void crtFncDcl(int linId){ //Create a function_declarator
 
-    isrtPrsTrm("function_declarator", "");
+    isrtPrsTrm("function_declarator", "", linId);
 
 }
 
@@ -32,9 +32,9 @@ int isGrpDcl(int typ, char *val){
 
 }
 
-void crtGrpDcl(){ //Create a group_declarator
+void crtGrpDcl(int linId){ //Create a group_declarator
 
-    isrtPrsTrm("group_declarator", "");
+    isrtPrsTrm("group_declarator", "", linId);
 
 }
 
@@ -52,8 +52,8 @@ int isClsDcl(int typ, char *val){
 
 }
 
-void crtClsDcl(){ //Create a class_declarator
+void crtClsDcl(int linId){ //Create a class_declarator
 
-    isrtPrsTrm("class_declarator", "");
+    isrtPrsTrm("class_declarator", "", linId);
 
 }
