@@ -97,6 +97,24 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
             }
 
+            if(myTest != true){ //This condition is possible
+
+                //...
+
+            }
+
+            if(1 >= 5 || 1 > 5 || 1 > 1 || 1 < 1){ //These conditions are impossible
+
+                //Anything here will never manage to run
+
+            }
+
+            if(1 <= 5 || 1 < 5){ //These conditions are possible
+
+                //...
+
+            }
+
             //myTest!!; //myTest is now set to true! (EXP)
 
             return 0; //This is the final program output code

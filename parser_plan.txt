@@ -72,6 +72,29 @@ comparison_operator
     & = <OPERATOR>
     ;
 
+negative_comparison_operator
+    : ! <OPERATOR>
+    & = <OPERATOR>
+    ;
+
+greater_equal_comparison_operator
+    : > <OPERATOR>
+    & = <OPERATOR>
+    ;
+
+greater_comparison_operator
+    : > <OPERATOR>
+    ;
+
+smaller_equal_comparison_operator
+    : < <OPERATOR>
+    & = <OPERATOR>
+    ;
+
+smaller_comparison_operator
+    : < <OPERATOR>
+    ;
+
 
 
 

@@ -38,27 +38,33 @@
 [{<main>},92;13]->bool myTest = false;
 [{<main>},94;13]->if(myTest == true){
 [{<main>},98;13]->}
-[{<main>},102;13]->return 0;
-[{<main>},104;9]->}
-[{<main>},106;9]->private function::void Func(){
-[{<main>},114;9]->}
-[{<main>},116;9]->public function::^int Test(^int a, int b){
-[{<main>},118;13]->a = (^int) b;
-[{<main>},120;13]->return a;
+[{<main>},100;13]->if(myTest != true){
+[{<main>},104;13]->}
+[{<main>},106;13]->if(1 >= 5 || 1 > 5 || 1 > 1 || 1 < 1){
+[{<main>},110;13]->}
+[{<main>},112;13]->if(1 <= 5 || 1 < 5){
+[{<main>},116;13]->}
+[{<main>},120;13]->return 0;
 [{<main>},122;9]->}
-[{<main>},124;9]->public function::void PlusOne(ref int a){
-[{<main>},129;13]->a++;
-[{<main>},131;9]->}
-[{<main>},133;5]->}
-[{<main>},135;5]->public class AnotherClass {
-[{<main>},137;9]->public int a = 0;
-[{<main>},138;9]->private int b = 0;
-[{<main>},140;9]->function::constructor(int a, int b){
-[{<main>},142;13]->this.a = a;
-[{<main>},143;13]->this.b = b;
-[{<main>},145;9]->}
-[{<main>},147;5]->}
-[{<main>},149;5]->class Smth {
+[{<main>},124;9]->private function::void Func(){
+[{<main>},132;9]->}
+[{<main>},134;9]->public function::^int Test(^int a, int b){
+[{<main>},136;13]->a = (^int) b;
+[{<main>},138;13]->return a;
+[{<main>},140;9]->}
+[{<main>},142;9]->public function::void PlusOne(ref int a){
+[{<main>},147;13]->a++;
+[{<main>},149;9]->}
 [{<main>},151;5]->}
-[{<main>},153;1]->}
+[{<main>},153;5]->public class AnotherClass {
+[{<main>},155;9]->public int a = 0;
+[{<main>},156;9]->private int b = 0;
+[{<main>},158;9]->function::constructor(int a, int b){
+[{<main>},160;13]->this.a = a;
+[{<main>},161;13]->this.b = b;
+[{<main>},163;9]->}
+[{<main>},165;5]->}
+[{<main>},167;5]->class Smth {
+[{<main>},169;5]->}
+[{<main>},171;1]->}
 [FileEnd]

@@ -73,9 +73,29 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             crtCmpOpr(tkn.__srcLin);
 
+        }else if(isNegCmpOpr(tkn)){ //"negative_comparison_operator"
+
+            crtNegCmpOpr(tkn.__srcLin);
+
         }else if(isAsiOpr(tkn)){ //"assignment_operator"
 
             crtAsiOpr(tkn.__srcLin);
+
+        }else if(isGrtEqlCmpOpr(tkn)){ //"greater_equal_comparison_operator"
+
+            crtGrtEqlCmpOpr(tkn.__srcLin);
+
+        }else if(isSmlEqlCmpOpr(tkn)){ //"smaller_equal_comparison_operator"
+
+            crtSmlEqlCmpOpr(tkn.__srcLin);
+
+        }else if(isGrtCmpOpr(tkn)){ //"greater_comparison_operator"
+
+            crtGrtCmpOpr(tkn.__srcLin);
+
+        }else if(isSmlCmpOpr(tkn)){ //"smaller_comparison_operator"
+
+            crtSmlCmpOpr(tkn.__srcLin);
 
         }else if(tkn.typ == LEXER_SYMBOL){ //This is an "IDENTIFIER"
 
