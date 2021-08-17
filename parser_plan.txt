@@ -67,6 +67,31 @@ assignment_operator
     : = <OPERATOR>
     ;
 
+plus_assignment_operator
+    : + <OPERATOR>
+    & = <OPERATOR>
+    ;
+
+subtract_assignment_operator
+    : - <OPERATOR>
+    & = <OPERATOR>
+    ;
+
+divide_assignment_operator
+    : / <OPERATOR>
+    & = <OPERATOR>
+    ;
+
+mod_assignment_operator
+    : % <OPERATOR>
+    & = <OPERATOR>
+    ;
+
+multiply_assignment_operator
+    : * <OPERATOR>
+    & = <OPERATOR>
+    ;
+
 comparison_operator
     : = <OPERATOR>
     & = <OPERATOR>
@@ -93,6 +118,88 @@ smaller_equal_comparison_operator
 
 smaller_comparison_operator
     : < <OPERATOR>
+    ;
+
+end_operator
+    : ; <OPERATOR>
+    ;
+
+addition_operator
+    : + <OPERATOR>
+    ;
+
+subtraction_operator
+    : - <OPERATOR>
+    ;
+
+division_operator
+    : / <OPERATOR>
+    ;
+
+modulo_operator
+    : % <OPERATOR>
+    ;
+
+multiplication_operator
+    : * <OPERATOR>
+    ;
+
+zone_start_operator
+    : { <OPERATOR>
+    ;
+
+zone_end_operator
+    : } <OPERATOR>
+    ;
+
+return_type_operator
+    : : <OPERATOR>
+    & : <OPERATOR>
+    ;
+
+or_operator
+    : | <OPERATOR>
+    & | <OPERATOR>
+    ;
+
+and_operator
+    : & <OPERATOR>
+    & & <OPERATOR>
+    ;
+
+negative_reassign_operator
+    : ! <OPERATOR>
+    & ! <OPERATOR>
+    ;
+
+addition_reassign_operator
+    : + <OPERATOR>
+    & + <OPERATOR>
+    ;
+
+subtraction_reassign_operator
+    : - <OPERATOR>
+    & - <OPERATOR>
+    ;
+
+negative_operator
+    : ! <OPERATOR>
+    ;
+
+opening_parentheses_operator
+    : ( <OPERATOR>
+    ;
+
+closing_parentheses_operator
+    : ) <OPERATOR>
+    ;
+
+separation_operator
+    : , <OPERATOR>
+    ;
+
+elevational_operator
+    : ^ <OPERATOR>
     ;
 
 
