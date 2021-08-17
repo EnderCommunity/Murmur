@@ -49,6 +49,8 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
         //printf("%d `%s` %d %d %d %d | %d %d %d %d [%s] 0x%09X 1x%09X\n\n", tkn.typ, tkn.val, tkn.defVal1, tkn.defVal2, tkn.defVal3, tkn.defVal4, tkn.adtVal1, tkn.adtVal2, tkn.adtVal3, tkn.adtVal4, tkn.srcFil, tkn.srcLin, tkn.srcCol); //Debug
 
+
+        // Specifiers
         if(isTypSpc(tkn.typ, tkn.val)){ //"type_specifier"
 
             crtTypSpc(tkn.val, tkn.__srcLin);
@@ -57,7 +59,10 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             crtSttSpc(tkn.val, tkn.__srcLin);
 
-        }else if(isFncDcl(tkn.typ, tkn.val)){ //"function_declarator"
+        }
+
+        // Declarators
+        else if(isFncDcl(tkn.typ, tkn.val)){ //"function_declarator"
 
             crtFncDcl(tkn.__srcLin);
 
@@ -69,7 +74,10 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             crtClsDcl(tkn.__srcLin);
 
-        }else if(isCmpOpr(tkn)){ //"comparison_operator"
+        }
+        
+        // Operators
+        else if(isCmpOpr(tkn)){ //"comparison_operator"
 
             crtCmpOpr(tkn.__srcLin);
 
@@ -97,7 +105,10 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             crtSmlCmpOpr(tkn.__srcLin);
 
-        }else if(tkn.typ == LEXER_SYMBOL){ //This is an "IDENTIFIER"
+        }
+        
+        // Defaults
+        else if(tkn.typ == LEXER_SYMBOL){ //This is an "IDENTIFIER"
 
             isrtPrsTrm("IDENTIFIER", tkn.val, tkn.__srcLin);
 
