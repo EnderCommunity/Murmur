@@ -1,4 +1,3 @@
-#include <unistd.h>
 
 char *pthAnl(char *rootPth, char *pth){
 

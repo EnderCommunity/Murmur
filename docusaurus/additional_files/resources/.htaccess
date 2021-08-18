@@ -1,0 +1,16 @@
+ErrorDocument 400 /error.xml
+ErrorDocument 402 /error.xml
+ErrorDocument 403 /error_403.xml
+ErrorDocument 404 /error_404.xml
+ErrorDocument 405 /error.xml
+ErrorDocument 406 /error.xml
+ErrorDocument 407 /error.xml
+ErrorDocument 408 /error.xml
+ErrorDocument 409 /error.xml
+ErrorDocument 410 /error.xml
+ErrorDocument 411 /error.xml
+ErrorDocument 412 /error.xml
+ErrorDocument 500 "The server has crashed, you'll need to come back later!"
+
+RewriteEngine On
+DirectoryIndex index.xml

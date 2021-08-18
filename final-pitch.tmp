@@ -78,7 +78,7 @@
 [{<main>},175;5]->public class AnotherClass {
 [{<main>},177;9]->public int a = 0;
 [{<main>},178;9]->private int b = 0;
-[{<main>},180;9]->function::constructor(int a, int b){
+[{<main>},180;9]->function::AnotherClass(int a, int b){
 [{<main>},182;13]->this.a = a;
 [{<main>},183;13]->this.b = b;
 [{<main>},185;9]->}

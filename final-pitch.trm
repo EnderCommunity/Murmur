@@ -15,7 +15,7 @@ IDENTIFIER(NumOne)<15>
 parentheses_operator(()<16>
 parentheses_operator())<17>
 zone_operator({)<18>
-IDENTIFIER(return)<19>
+return_statement()<19>
 NUMBER(1)<20>
 end_operator()<21>
 zone_operator(})<22>
@@ -42,7 +42,7 @@ type_specifier(string)<43>
 IDENTIFIER(output)<44>
 end_operator()<45>
 ZONE_LINE(0;)<46>
-IDENTIFIER(return)<47>
+return_statement()<47>
 IDENTIFIER(output)<48>
 end_operator()<49>
 zone_operator(})<50>
@@ -207,7 +207,7 @@ NUMBER(5)<229>
 parentheses_operator())<230>
 zone_operator({)<231>
 zone_operator(})<232>
-IDENTIFIER(return)<233>
+return_statement()<233>
 NUMBER(0)<234>
 end_operator()<235>
 zone_operator(})<236>
@@ -242,7 +242,7 @@ type_specifier(int)<267>
 parentheses_operator())<268>
 IDENTIFIER(b)<269>
 end_operator()<270>
-IDENTIFIER(return)<271>
+return_statement()<271>
 IDENTIFIER(a)<272>
 end_operator()<273>
 zone_operator(})<274>
@@ -361,7 +361,7 @@ assignment_operator(=)<407>
 end_operator()<409>
 function_declarator()<410>
 return_type_operator()<411>
-IDENTIFIER(constructor)<413>
+IDENTIFIER(AnotherClass)<413>
 parentheses_operator(()<414>
 type_specifier(int)<415>
 IDENTIFIER(a)<416>

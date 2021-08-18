@@ -1000,8 +1000,8 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][180, 9] => New processing loop started.
-[!][Preprocessor] => function::constructor(int a, int b){ //You can use constructors in your classes!
-[?][Preprocessor][180, 46] => A single line comment has been detected!
+[!][Preprocessor] => function::AnotherClass(int a, int b){ //You can use constructors in your classes!
+[?][Preprocessor][180, 47] => A single line comment has been detected!
 [?][Preprocessor][180, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...

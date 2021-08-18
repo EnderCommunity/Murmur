@@ -36,6 +36,7 @@ constructor_definition: <syb, "val:function"> <op, ":"> <op, ":"> <syb, "val:con
 #include "terminal/specifiers.h"
 #include "terminal/declarators.h"
 #include "terminal/operators.h"
+#include "terminal/statements.h"
 
 void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
@@ -137,6 +138,13 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
         }else if(isNgtOpr(tkn)){ //"negative_operator"
 
             crtNgtOpr(tkn.__srcLin);
+
+        }
+
+        // Statements
+        else if(isRtnStt(tkn.typ, tkn.val)){ //"return_statement"
+
+            crtRtnStt(tkn.__srcLin);
 
         }
         

@@ -52,8 +52,6 @@ RewriteEngine On
 DirectoryIndex index.php index.html
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
-RewriteCond %{HTTP_HOST} ^www.enderadel.net [NC]
-RewriteRule ^(.*)$ https://mur-lang.org/$1 [L,R=301]
 RewriteCond %{QUERY_STRING} proc/self/environ [OR]
 RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]
 RewriteCond %{QUERY_STRING} base64_encode.*(.*) [OR]
