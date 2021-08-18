@@ -77,33 +77,66 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
         }
         
         // Operators
-        else if(isCmpOpr(tkn)){ //"comparison_operator"
+        else if(isEndOpr(tkn)){ //"end_operator"
 
-            crtCmpOpr(tkn.__srcLin);
+            crtEndOpr(tkn.__srcLin);
 
-        }else if(isNegCmpOpr(tkn)){ //"negative_comparison_operator"
+        }else if(isZonOpr(tkn)){ //"zone_operator"
 
-            crtNegCmpOpr(tkn.__srcLin);
+            crtZonOpr(tkn.val, tkn.__srcLin);
+
+        }else if(isRtrTypOpr(tkn)){ //"return_type_operator"
+
+            crtRtrTypOpr(tkn.__srcLin);
+
+        }else if(isArrOpr(tkn)){ //"array_operator"
+
+            crtArrOpr(tkn.val, tkn.__srcLin);
+
+        }else if(isCmpOpr(tkn)){ //"comparison_operator"
+
+            char *tmp = malloc(sizeof(char)*3);
+
+            if(tkn.defVal3)
+                sprintf(tmp, "~%s", tkn.val);
+            else
+                strcpy(tmp, tkn.val);
+
+            crtCmpOpr(tmp, tkn.__srcLin);
+
+            free(tmp);
 
         }else if(isAsiOpr(tkn)){ //"assignment_operator"
 
-            crtAsiOpr(tkn.__srcLin);
+            crtAsiOpr(tkn.val, tkn.__srcLin);
 
-        }else if(isGrtEqlCmpOpr(tkn)){ //"greater_equal_comparison_operator"
+        }else if(isAsiShrOpr(tkn)){ //"assignment_short_operator"
 
-            crtGrtEqlCmpOpr(tkn.__srcLin);
+            crtAsiShrOpr(tkn.val, tkn.__srcLin);
 
-        }else if(isSmlEqlCmpOpr(tkn)){ //"smaller_equal_comparison_operator"
+        }else if(isPrnOpr(tkn)){ //"parentheses_operator"
 
-            crtSmlEqlCmpOpr(tkn.__srcLin);
+            crtPrnOpr(tkn.val, tkn.__srcLin);
 
-        }else if(isGrtCmpOpr(tkn)){ //"greater_comparison_operator"
+        }else if(isSprOpr(tkn)){ //"separation_operator"
 
-            crtGrtCmpOpr(tkn.__srcLin);
+            crtSprOpr(tkn.__srcLin);
 
-        }else if(isSmlCmpOpr(tkn)){ //"smaller_comparison_operator"
+        }else if(isDotOpr(tkn)){ //"dot_operator"
 
-            crtSmlCmpOpr(tkn.__srcLin);
+            crtDotOpr(tkn.__srcLin);
+
+        }else if(isMthOpr(tkn)){ //"maths_operator"
+
+            crtMthOpr(tkn.val, tkn.__srcLin);
+
+        }else if(isElvOpr(tkn)){ //"elevational_operator"
+
+            crtElvOpr(tkn.__srcLin);
+
+        }else if(isNgtOpr(tkn)){ //"negative_operator"
+
+            crtNgtOpr(tkn.__srcLin);
 
         }
         

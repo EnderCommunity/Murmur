@@ -103,7 +103,7 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
             }
 
-            if(1 >= 5 || 1 > 5 || 1 > 1 || 1 < 1){ //These conditions are impossible
+            if(1 >= 5 || 1 > 5 || (1 > 1 && 1 < 1)){ //These conditions are impossible
 
                 //Anything here will never manage to run
 
@@ -114,8 +114,6 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
                 //...
 
             }
-
-            //myTest!!; //myTest is now set to true! (EXP)
 
             return 0; //This is the final program output code
 
@@ -145,6 +143,30 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
                                     //PlusOne(ref og);
 
             a++; //the value of 'og' will change to '1'!
+
+        }
+
+        public function::void myTests(){
+
+            bool myTest = false;
+            int a = 0, b = 0;
+            double c = 4, d = 3;
+
+            myTest!!; //This is the same as myTest = !myTest;
+            myTest = !myTest;
+            a++; //This is the same as a += 1;
+            a += 1;
+            a = a + 1;
+            b--; //This is the same as b -= 1;
+            b -= 1;
+            b = b - 1;
+
+            c %= d; //This is the same as  c = c % d;
+            c % d; //The result is 1!
+            c /= 0.5; //This is the same as  c = c / 0.5;
+            c / d; //The result is 0.66666666!
+            c *= d; //This is the same as  c = c * d;
+            c = c * d;
 
         }
 

@@ -65,34 +65,90 @@ class_declarator
 
 assignment_operator
     : = <OPERATOR>
+    | + <OPERATOR>
+    & = <OPERATOR>
+    | - <OPERATOR>
+    & = <OPERATOR>
+    | / <OPERATOR>
+    & = <OPERATOR>
+    | % <OPERATOR>
+    & = <OPERATOR>
+    | * <OPERATOR>
+    & = <OPERATOR>
     ;
 
 comparison_operator
     : = <OPERATOR>
     & = <OPERATOR>
+    | ! <OPERATOR>
+    & = <OPERATOR>
+    | > <OPERATOR>
+    & = <OPERATOR>
+    | < <OPERATOR>
+    & = <OPERATOR>
+    | > <OPERATOR>
+    | < <OPERATOR>
+    | | <OPERATOR>
+    & | <OPERATOR>
+    | & <OPERATOR>
+    & & <OPERATOR>
     ;
 
-negative_comparison_operator
+end_operator
+    : ; <OPERATOR>
+    ;
+
+maths_operator
+    : + <OPERATOR>
+    | - <OPERATOR>
+    | / <OPERATOR>
+    | % <OPERATOR>
+    | * <OPERATOR>
+    ;
+
+zone_operator
+    : { <OPERATOR>
+    | } <OPERATOR>
+    ;
+
+array_operator
+    : [ <OPERATOR>
+    | ] <OPERATOR>
+    ;
+
+return_type_operator
+    : : <OPERATOR>
+    & : <OPERATOR>
+    ;
+
+assignment_short_operator
+    : + <OPERATOR>
+    & + <OPERATOR>
+    | - <OPERATOR>
+    & - <OPERATOR>
+    | ! <OPERATOR>
+    & ! <OPERATOR>
+    ;
+
+negative_operator
     : ! <OPERATOR>
-    & = <OPERATOR>
     ;
 
-greater_equal_comparison_operator
-    : > <OPERATOR>
-    & = <OPERATOR>
+parentheses_operator
+    : ( <OPERATOR>
+    | ) <OPERATOR>
     ;
 
-greater_comparison_operator
-    : > <OPERATOR>
+separation_operator
+    : , <OPERATOR>
     ;
 
-smaller_equal_comparison_operator
-    : < <OPERATOR>
-    & = <OPERATOR>
+dot_operator
+    : . <OPERATOR>
     ;
 
-smaller_comparison_operator
-    : < <OPERATOR>
+elevational_operator
+    : ^ <OPERATOR>
     ;
 
 
