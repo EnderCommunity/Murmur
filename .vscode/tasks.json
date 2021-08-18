@@ -11,15 +11,6 @@
 				"-o",
 				"${workspaceFolder}\\compiler\\Mur.exe",
 				"-lregex"
-				//C:\\msys64\\mingw64\\bin\\gcc.exe -g start.c -o Mur.exe -lregex
-				//gcc -g start.c -o Mur.out -lm
-				//sudo valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./Mur.out
-				//"/mnt/e/files/EnderCommunity/Projects/Murmur/tests/mem-leak/test.mur"
-				//"/mnt/e/files/EnderCommunity/Projects/Murmur/tests/comments/leak-test/test.mur"
-				//"/mnt/e/files/EnderCommunity/Projects/Murmur/tests/comments/multilinear/test2.mur"
-				//"/mnt/e/files/EnderCommunity/Projects/Murmur/final-pitch.mur"
-				//"/mnt/e/files/EnderCommunity/Projects/Murmur/tests/import-statement/test.mur"
-				//"E:\files\EnderCommunity\Projects\Murmur\tests\mem-leak\test.mur"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
@@ -32,6 +23,22 @@
 				"kind": "build"
 			},
 			"detail": "compiler: \"C:\\msys64\\mingw64\\bin\\gcc.exe\""
+		},
+		{
+			"type": "process",
+			"label": "Mur: Mur.exe build active file",
+			"command": "${workspaceFolder}\\compiler\\Mur.exe",
+			"args": [
+				"${workspaceFolder}\\final-pitch.mur"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": {
+				"isDefault": true,
+				"kind": "test"
+			},
+			"problemMatcher": []
 		}
 	]
 }
