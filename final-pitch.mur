@@ -177,7 +177,7 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
         public int a = 0;
         private int b = 0;
 
-        function::constructor(int a, int b){ //You can use constructors in your classes!
+        function::AnotherClass(int a, int b){ //You can use constructors in your classes!
 
             this.a = a;
             this.b = b;

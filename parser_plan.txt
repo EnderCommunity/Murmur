@@ -61,6 +61,12 @@ class_declarator
     ;
 
 
+# Statements
+return_statement
+    : return <SYMBOL>
+    ;
+
+
 # Operators
 
 assignment_operator

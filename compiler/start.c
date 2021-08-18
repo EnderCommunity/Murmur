@@ -1,6 +1,7 @@
 #include "envi.h"
 #include "predef.h"
 #include <stdio.h>
+#include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -57,6 +58,14 @@ int main(int argc, char *argv[]){
             path[strcspn(path, "\n")] = '\0'; //Make sure to replace the new line char with a string-end char
         else
             exit(-1); //Change the exit code
+
+    }
+
+    if(access(path, F_OK) != 0){
+
+        free(COMPILER_START_DIR);
+
+        exit(-1); //This file is not accessible
 
     }
 
