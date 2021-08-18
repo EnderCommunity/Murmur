@@ -40,31 +40,50 @@
 [{<main>},98;13]->}
 [{<main>},100;13]->if(myTest != true){
 [{<main>},104;13]->}
-[{<main>},106;13]->if(1 >= 5 || 1 > 5 || 1 > 1 || 1 < 1){
+[{<main>},106;13]->if(1 >= 5 || 1 > 5 || (1 > 1 && 1 < 1)){
 [{<main>},110;13]->}
 [{<main>},112;13]->if(1 <= 5 || 1 < 5){
 [{<main>},116;13]->}
-[{<main>},120;13]->return 0;
-[{<main>},122;9]->}
-[{<main>},124;9]->private function::void Func(){
-[{<main>},132;9]->}
-[{<main>},134;9]->public function::^int Test(^int a, int b){
-[{<main>},136;13]->a = (^int) b;
-[{<main>},138;13]->return a;
-[{<main>},140;9]->}
-[{<main>},142;9]->public function::void PlusOne(ref int a){
-[{<main>},147;13]->a++;
-[{<main>},149;9]->}
-[{<main>},151;5]->}
-[{<main>},153;5]->public class AnotherClass {
-[{<main>},155;9]->public int a = 0;
-[{<main>},156;9]->private int b = 0;
-[{<main>},158;9]->function::constructor(int a, int b){
-[{<main>},160;13]->this.a = a;
-[{<main>},161;13]->this.b = b;
-[{<main>},163;9]->}
-[{<main>},165;5]->}
-[{<main>},167;5]->class Smth {
-[{<main>},169;5]->}
-[{<main>},171;1]->}
+[{<main>},118;13]->return 0;
+[{<main>},120;9]->}
+[{<main>},122;9]->private function::void Func(){
+[{<main>},130;9]->}
+[{<main>},132;9]->public function::^int Test(^int a, int b){
+[{<main>},134;13]->a = (^int) b;
+[{<main>},136;13]->return a;
+[{<main>},138;9]->}
+[{<main>},140;9]->public function::void PlusOne(ref int a){
+[{<main>},145;13]->a++;
+[{<main>},147;9]->}
+[{<main>},149;9]->public function::void myTests(){
+[{<main>},151;13]->bool myTest = false;
+[{<main>},152;13]->int a = 0, b = 0;
+[{<main>},153;13]->double c = 4, d = 3;
+[{<main>},155;13]->myTest!!;
+[{<main>},156;13]->myTest = !myTest;
+[{<main>},157;13]->a++;
+[{<main>},158;13]->a += 1;
+[{<main>},159;13]->a = a + 1;
+[{<main>},160;13]->b--;
+[{<main>},161;13]->b -= 1;
+[{<main>},162;13]->b = b - 1;
+[{<main>},164;13]->c %= d;
+[{<main>},165;13]->c % d;
+[{<main>},166;13]->c /= 0.5;
+[{<main>},167;13]->c / d;
+[{<main>},168;13]->c *= d;
+[{<main>},169;13]->c = c * d;
+[{<main>},171;9]->}
+[{<main>},173;5]->}
+[{<main>},175;5]->public class AnotherClass {
+[{<main>},177;9]->public int a = 0;
+[{<main>},178;9]->private int b = 0;
+[{<main>},180;9]->function::constructor(int a, int b){
+[{<main>},182;13]->this.a = a;
+[{<main>},183;13]->this.b = b;
+[{<main>},185;9]->}
+[{<main>},187;5]->}
+[{<main>},189;5]->class Smth {
+[{<main>},191;5]->}
+[{<main>},193;1]->}
 [FileEnd]
