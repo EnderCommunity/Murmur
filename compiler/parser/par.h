@@ -146,6 +146,10 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             crtRtnStt(tkn.__srcLin);
 
+        }else if(isRefStt(tkn.typ, tkn.val)){ //"ref_statement"
+
+            crtRefStt(tkn.__srcLin);
+
         }
         
         // Defaults

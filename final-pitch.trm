@@ -145,11 +145,11 @@ assignment_operator(=)<157>
 end_operator()<159>
 IDENTIFIER(PlusOne)<160>
 parentheses_operator(()<161>
-IDENTIFIER(ref)<162>
+ref_statement()<162>
 IDENTIFIER(b)<163>
 parentheses_operator())<164>
 parentheses_operator(()<165>
-IDENTIFIER(ref)<166>
+ref_statement()<166>
 IDENTIFIER(b)<167>
 parentheses_operator())<168>
 end_operator()<169>
@@ -252,7 +252,7 @@ return_type_operator()<277>
 IDENTIFIER(void)<279>
 IDENTIFIER(PlusOne)<280>
 parentheses_operator(()<281>
-IDENTIFIER(ref)<282>
+ref_statement()<282>
 type_specifier(int)<283>
 IDENTIFIER(a)<284>
 parentheses_operator())<285>
