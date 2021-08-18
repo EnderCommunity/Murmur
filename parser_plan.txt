@@ -66,6 +66,10 @@ return_statement
     : return <SYMBOL>
     ;
 
+ref_statement
+    : ref <SYMBOL>
+    ;
+
 
 # Operators
 
