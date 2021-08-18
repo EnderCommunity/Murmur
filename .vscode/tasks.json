@@ -4,12 +4,12 @@
 		{
 			"type": "cppbuild",
 			"label": "C/C++: gcc.exe build active file",
-			"command": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+			"command": "gcc",
 			"args": [
 				"-g",
-				"${workspaceFolder}\\compiler\\start.c",
+				"${workspaceFolder}/compiler/start.c",
 				"-o",
-				"${workspaceFolder}\\compiler\\Mur.exe",
+				"${workspaceFolder}/compiler/Mur.exe",
 				"-lregex"
 			],
 			"options": {
@@ -22,12 +22,18 @@
 				"isDefault": true,
 				"kind": "build"
 			},
-			"detail": "compiler: \"C:\\msys64\\mingw64\\bin\\gcc.exe\""
+			"detail": "C/C++ compiler"
 		},
 		{
 			"type": "process",
 			"label": "Mur: Mur.exe build active file",
-			"command": "${workspaceFolder}\\compiler\\Mur.exe",
+			"command": "${workspaceFolder}/compiler/Mur",
+			"windows": {
+				"command": "${workspaceFolder}\\compiler\\Mur.exe"
+			},
+			"linux": {
+				"command": "${workspaceFolder}/compiler/Mur.out"
+			},
 			"args": [
 				"${workspaceFolder}\\final-pitch.mur"
 			],
