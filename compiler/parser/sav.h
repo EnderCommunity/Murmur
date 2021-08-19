@@ -1,13 +1,12 @@
-char *incPrsFilPth;
 char *prsFilPth;
 FILE *prsFilPtr = NULL;
 
-void crtPrsFil(int typ){ //Create a parser file
+void crtPrsFil(char *rotPth, int typ){ //Create a parser file
 
-    incPrsFilPth = apdStr(wrkstn.Path, wrkstn.Name);
-    prsFilPth = apdStr(incPrsFilPth, (typ) ? ".trm" : ".prs");
+    //incPrsFilPth = apdStr(wrkstn.Path, wrkstn.Name);
+    prsFilPth = apdStr(rotPth, (typ) ? ".trm" : ".prs");
 
-    prsFilPtr = fopen(prsFilPth, "w");
+    prsFilPtr = fopen(prsFilPth, (typ) ? "w" : "w+");
 
     if(prsFilPtr == NULL){
 
@@ -26,7 +25,6 @@ void isrtPrsTrm(char *typ, char *val, int linId){ //Insert a terminal value
 void clsPrsFil(){ //Close the parser file
 
     free(prsFilPth);
-    free(incPrsFilPth);
     fclose(prsFilPtr);
 
 }

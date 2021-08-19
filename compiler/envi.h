@@ -113,6 +113,8 @@
 #define LEXER_BOOLEAN_STR "1006"
 #define LEXER_ZONE_LINE 1007
 #define LEXER_ZONE_LINE_STR "1007"
+#define LEXER_HEX 1008
+#define LEXER_HEX_STR "1008"
 
 
 //Parser

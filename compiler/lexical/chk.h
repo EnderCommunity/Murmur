@@ -1,4 +1,4 @@
-char* chrToStr(char chr){
+/*char* chrToStr(char chr){
 
     char *str = malloc(2*sizeof(char));
 
@@ -7,7 +7,7 @@ char* chrToStr(char chr){
 
     return str;
 
-}
+}*/
 
 int isSyb(char chr){
 

@@ -2,7 +2,7 @@
 
 # SYMBOL, STRING, CHAR,
 # NUMBER, OPERATOR, BOOLEAN,
-# ZONE_LINE
+# ZONE_LINE, HEX
 
 ZONE_LINE
     : <ZONE_LINE>
@@ -24,6 +24,10 @@ NUMBER
     : <NUMBER>
     ;
 
+HEX
+    : <HEX>
+    ;
+
 IDENTIFIER
     : <SYMBOL>
     ;
@@ -39,6 +43,7 @@ type_specifier
     | string <SYMBOL>
     | bool <SYMBOL>
     | file <SYMBOL>
+    | hex <SYMBOL>
     ;
 
 state_specifier

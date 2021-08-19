@@ -7,6 +7,7 @@
  *      | string <SYMBOL>
  *      | bool <SYMBOL>
  *      | file <SYMBOL>
+ *      | hex <SYMBOL>
  *      ;
 **/
 
@@ -19,7 +20,8 @@ int isTypSpc(int typ, char *val){
         strcmp(val, "char") == 0 ||
         strcmp(val, "string") == 0 ||
         strcmp(val, "bool") == 0 ||
-        strcmp(val, "file") == 0
+        strcmp(val, "file") == 0 ||
+        strcmp(val, "hex") == 0
     ));
 
 }

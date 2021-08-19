@@ -44,7 +44,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
     M_Token tkn = getTkn();
 
-    crtPrsFil(PARSER_TYPE_ONLY_TERMINAL); //Create a `.trm` file
+    crtPrsFil(FilStruc.pth, PARSER_TYPE_ONLY_TERMINAL); //Create a `.trm` file
 
     while(kepLop){
 
@@ -180,6 +180,10 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
         }else if(tkn.typ == LEXER_ZONE_LINE){ //This is a "ZONE_LINE"
 
             isrtPrsTrm("ZONE_LINE", tkn.val, tkn.__srcLin);
+
+        }else if(tkn.typ == LEXER_HEX){ //This is a "HEX"
+
+            isrtPrsTrm("HEX", tkn.val, tkn.__srcLin);
 
         }else{ //Unknown component!
 

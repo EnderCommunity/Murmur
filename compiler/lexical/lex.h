@@ -48,7 +48,29 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                     //Do nothing!
 
-                } else if(regChk("[.0-9]", &currChar)) { //Number
+                } else if(i + 2 < lopLen && curLin[i] == '0' && (curLin[i + 1] == 'x' || curLin[i + 1] == 'X') && regChk("[0-9A-Fa-f]", &curLin[i + 2])) { //Hex
+
+                    fprintf(lexFil, "%d `%c", LEXER_HEX, curLin[i + 2]);
+
+                    int delt = 3;
+
+                    while((delt + i < strlen(curLin)) && regChk("[0-9A-Fa-f]", &(curLin[i + delt]))){
+
+                        fprintf(lexFil, "%c", curLin[i + delt]);
+
+                        delt++;
+
+                    }
+
+                    delt--;
+
+                    i += delt;
+
+                    fprintf(lexFil, "` %d %d %d 0 | 0 0 0 0 [%s] 0x%09X 1x%09X\n", newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), curSrcPth, lin, col);
+
+                    col += delt;
+
+                }else if(regChk("[.0-9]", &currChar)) { //Number
 
                     int alowDot = 1;
 
@@ -72,7 +94,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
                         //int delt = 1 + isHex;
                         int delt = 1;
 
-                        while(delt + i < strlen(curLin) && (isdigit(curLin[i + delt]) || ((alowDot) ? curLin[i + delt] == '.' : 0))){
+                        while(delt + i < strlen(curLin) && ((isdigit(curLin[i + delt]) || ((alowDot) ? curLin[i + delt] == '.' : 0)))){
 
                             fprintf(lexFil, "%c", curLin[i + delt]);
 
