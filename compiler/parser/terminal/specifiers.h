@@ -1,6 +1,7 @@
 /**
  *  type_specifier
- *      : int <SYMBOL>
+ *      : void <SYMBOL>
+ *      | int <SYMBOL>
  *      | double <SYMBOL>
  *      | char <SYMBOL>
  *      | string <SYMBOL>
@@ -12,6 +13,7 @@
 int isTypSpc(int typ, char *val){
 
     return (typ == LEXER_SYMBOL && (
+        strcmp(val, "void") == 0 ||
         strcmp(val, "int") == 0 ||
         strcmp(val, "double") == 0 ||
         strcmp(val, "char") == 0 ||
