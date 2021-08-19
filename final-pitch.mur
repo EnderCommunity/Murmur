@@ -64,7 +64,7 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
         string globE = "Global E";
         bool globF = true;
         file globG = new FileStream("path/to/my/file.txt");
-        //hex globH = 0x000000; //Are hex variables really necessary? (tmp)
+        hex globH = 0xFF;
 
         public function::int Main(string[] envi, int length){ //This is the main
                                                        //function in the program!

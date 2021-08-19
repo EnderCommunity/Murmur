@@ -28,6 +28,7 @@
 [{<main>},64;9]->string globE = "Global E";
 [{<main>},65;9]->bool globF = true;
 [{<main>},66;9]->file globG = new FileStream("path/to/my/file.txt");
+[{<main>},67;9]->hex globH = 0xFF;
 [{<main>},69;9]->public function::int Main(string[] envi, int length){
 [{<main>},78;13]->Func();
 [{<main>},80;13]->^int a = 0;

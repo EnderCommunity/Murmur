@@ -275,3 +275,14 @@ int isStrSpc(char *str) { //Does a string only consist of whitespace?
     return 1;
 
 }
+
+char *chrToStr(char chr){
+
+    char *tmp = malloc(sizeof(char)*2);
+
+    tmp[0] = chr;
+    tmp[1] = '\0';
+
+    return tmp;
+
+}
