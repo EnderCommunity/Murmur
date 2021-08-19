@@ -37,3 +37,23 @@ void crtRefStt(int linId){ //Create a ref_statement
     isrtPrsTrm("ref_statement", "", linId);
 
 }
+
+/**
+ *  delete_statement
+ *      : delete <SYMBOL>
+ *      ;
+**/
+
+int isDelStt(int typ, char *val){
+
+    return (typ == LEXER_SYMBOL &&
+        strcmp(val, "delete") == 0
+    );
+
+}
+
+void crtDelStt(int linId){ //Create a delete_statement
+
+    isrtPrsTrm("delete_statement", "", linId);
+
+}

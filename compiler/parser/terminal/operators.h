@@ -183,8 +183,9 @@ int isAsiOpr(M_Token tkn){
 
     M_Token tmp = lokAhd(); //Get the token ahead
 
-    int cnd = (tkn.typ == LEXER_OPERATOR && (
-                tkn.val[0] == '=' || //If this is an equal, then there's
+    int subCnd = tkn.val[0] == '=',
+        cnd = (tkn.typ == LEXER_OPERATOR && (
+                subCnd || //If this is an equal, then there's
                                              //no need to check the next token
                 (
                     isMthOpr(tkn) &&
@@ -208,7 +209,7 @@ int isAsiOpr(M_Token tkn){
     if(!tmp.__ahd_filEnd) //Not the end of the file
         remTkn(tmp); //Free the token
 
-    if(cnd)
+    if(cnd && !subCnd)
         skpNxt(); //Don't forget to skip the next token
 
     return cnd;

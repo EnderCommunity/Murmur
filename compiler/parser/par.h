@@ -150,6 +150,10 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             crtRefStt(tkn.__srcLin);
 
+        }else if(isDelStt(tkn.typ, tkn.val)){ //"delete_statement"
+
+            crtDelStt(tkn.__srcLin);
+
         }
         
         // Defaults

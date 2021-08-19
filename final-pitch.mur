@@ -170,6 +170,23 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
         }
 
+        function::string myStringTest(string a){
+
+            string b = "Hi!";
+            delete b; // You can delete variables using
+                      // the keyword "delete".
+                      // (But you can only do that on
+                      // the level of your current
+                      // zone!)
+            int b = 1;
+
+            // Also, you can't delete any variables
+            // that are passed as arguments to the
+            // function, class-level variables, or
+            // constants.
+
+        }
+
     }
 
     public class AnotherClass {

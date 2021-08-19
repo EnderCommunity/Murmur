@@ -74,16 +74,21 @@
 [{<main>},168;13]->c *= d;
 [{<main>},169;13]->c = c * d;
 [{<main>},171;9]->}
-[{<main>},173;5]->}
-[{<main>},175;5]->public class AnotherClass {
-[{<main>},177;9]->public int a = 0;
-[{<main>},178;9]->private int b = 0;
-[{<main>},180;9]->function::AnotherClass(int a, int b){
-[{<main>},182;13]->this.a = a;
-[{<main>},183;13]->this.b = b;
-[{<main>},185;9]->}
-[{<main>},187;5]->}
-[{<main>},189;5]->class Smth {
-[{<main>},191;5]->}
-[{<main>},193;1]->}
+[{<main>},173;9]->function::string myStringTest(string a){
+[{<main>},175;13]->string b = "Hi!";
+[{<main>},176;13]->delete b;
+[{<main>},181;13]->int b = 1;
+[{<main>},188;9]->}
+[{<main>},190;5]->}
+[{<main>},192;5]->public class AnotherClass {
+[{<main>},194;9]->public int a = 0;
+[{<main>},195;9]->private int b = 0;
+[{<main>},197;9]->function::AnotherClass(int a, int b){
+[{<main>},199;13]->this.a = a;
+[{<main>},200;13]->this.b = b;
+[{<main>},202;9]->}
+[{<main>},204;5]->}
+[{<main>},206;5]->class Smth {
+[{<main>},208;5]->}
+[{<main>},210;1]->}
 [FileEnd]

@@ -32,7 +32,8 @@ IDENTIFIER
 # Specifiers
 
 type_specifier
-    : int <SYMBOL>
+    : void <SYMBOL>
+    | int <SYMBOL>
     | double <SYMBOL>
     | char <SYMBOL>
     | string <SYMBOL>
@@ -68,6 +69,10 @@ return_statement
 
 ref_statement
     : ref <SYMBOL>
+    ;
+
+delete_statement
+    : delete <SYMBOL>
     ;
 
 
