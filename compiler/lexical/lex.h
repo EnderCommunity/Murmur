@@ -200,7 +200,7 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                     col += delt;
 
-                } else if(isKnwnSpclChr(currChar)) { //Operator!
+                } else if(isCharSpcl(currChar)) { //Operator!
 
                     fprintf(lexFil, "%d `%c` %d %d %d 0 | 0 0 0 0 [%s] 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), curSrcPth, lin, col);
 
