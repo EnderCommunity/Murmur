@@ -103,8 +103,3 @@ void clsDatFil(){
     tmpDatCtr.ptr = NULL;
 
 }
-
-/*
-000000      100          
-^ Data ID   ^ Data type  ^ The data
-*/

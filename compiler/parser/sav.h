@@ -3,7 +3,6 @@ FILE *prsFilPtr = NULL;
 
 void crtPrsFil(char *rotPth, int typ){ //Create a parser file
 
-    //incPrsFilPth = apdStr(wrkstn.Path, wrkstn.Name);
     prsFilPth = apdStr(rotPth, (typ) ? ".trm" : ".prs");
 
     prsFilPtr = fopen(prsFilPth, (typ) ? "w" : "w+");

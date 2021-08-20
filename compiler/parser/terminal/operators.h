@@ -1,35 +1,4 @@
 /* Repetitive code */
-/*int lokForTwoOprStk(M_Token tkn, char *fstOpr, char *sndOpr){ //Look for two operators that are next to each other with no whitespace in between
-
-    M_Token tmp = lokAhd(); //Get the token ahead
-
-    int cnd = (tkn.typ == LEXER_OPERATOR &&
-        strcmp(tkn.val, fstOpr) == 0 &&
-        ((!tmp.__ahd_filEnd) ? ( //If there is a token after this line, do more checks
-
-            /**
-             *  to make sure this is the desired sequence, make sure
-             *  there's no whitespace after the first token.
-            **\/
-            (!(tkn.defVal3)) &&
-
-            /**
-             *  also, compare the second operator!
-            **\/
-            strcmp(tmp.val, sndOpr) == 0
-        ) : 0)
-    );
-
-    if(!tmp.__ahd_filEnd) //Not the end of the file
-        remTkn(tmp); //Free the token
-
-    if(cnd)
-        skpNxt(); //Don't forget to skip the next token
-
-    return cnd;
-
-}*/
-
 int lokForOneOpr(M_Token tkn, char opr){ //Look for an operator
 
     return (tkn.typ == LEXER_OPERATOR &&
@@ -447,24 +416,3 @@ void crtElvOpr(int linId){ //Create a elevational_operator
     isrtPrsTrm("elevational_operator", "", linId);
 
 }
-
-
-/*
-/\**
- *  0_operator
- *      : < <OPERATOR>
- *      ;
-**\/
-
-int is1Opr(M_Token tkn){
-
-    return lokForOneOpr(tkn, "<");
-
-}
-
-void crt1Opr(int linId){ //Create a 0_operator
-
-    isrtPrsTrm("0_operator", "", linId);
-
-}
-*/

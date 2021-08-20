@@ -27,8 +27,6 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
 
     if((endIndx > strlen(str) || endIndx < strIndx) || (strIndx < 0 || strIndx > strlen(str))){
 
-        //Throw an error!
-        //writeLogLine("Library Component", 2, "ERROR", 0, 0, 0);
         s = strlen(ERROR_STR_OUTOFBOUNDS) + 1;
 
         nStr = malloc(sizeof(char)*s);
@@ -54,25 +52,11 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
     }
 
 
-    /*Deb();
-    printf("--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------");
-    printf("@@%s@@", nStr);
-    printf("--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------");*/
-
     return nStr;
 
 }
 
 char* apdStr(char *dest, char *str){ //Append two stings
-
-    /*char* rslt = malloc((strlen(dest) + strlen(str) + 1)*sizeof(char));
-
-    strcpy(rslt, dest);
-    strcat(rslt, str);
-
-    rslt[strlen(rslt)] = '\0';
-
-    return rslt;*/
 
     char* rslt = malloc((strlen(dest) + strlen(str) + 1)*sizeof(char));
 
@@ -121,16 +105,6 @@ char* shfStr(char *str, int n){ //Shif a string to the left by 'n' chars!
     str[(l - n >= 0) ? l - n : 0] = '\0';
 
     return str;
-
-    /*int l = strlen(str);
-
-    char *tmp = malloc(sizeof(char)*(strlen(str) - n + 1)); //This ain't good...
-
-    for(int i = n; i <= l; i++)
-        tmp[i - n] = str[i];
-
-    return tmp;*/
-
 
 }
 

@@ -44,7 +44,6 @@ M_Token getTkn(){ //Get a token
     M_Token tmp;
 
     tmp.val = malloc(sizeof(char)*(MAX_LINE_LENGTH + 1));
-    //tmp.srcFile = malloc(sizeof(char)*(MAX_PATH_LENGTH + 1));
 
     fgets(tmp.val, MAX_LINE_LENGTH, lexFilPtr);
 
@@ -53,8 +52,6 @@ M_Token getTkn(){ //Get a token
     if(kepLop){
 
         prsTknCurLin++;
-
-        //printf("%s", tmp.val); //Debug
 
         tmp.__srcLinLen = strlen(tmp.val);
         tmp.__ahd_filEnd = 0;
