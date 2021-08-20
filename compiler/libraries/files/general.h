@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include "../types/String.h"
 
 static FILE* OpnStrm(char path[]){ //Open a file stream
 

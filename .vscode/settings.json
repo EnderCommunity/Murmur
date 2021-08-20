@@ -10,6 +10,7 @@
         "*.tmp": "tmpmur",
         "*.lxic": "lexmur",
         "type_traits": "c",
-        "cmath": "c"
+        "cmath": "c",
+        "cctype": "c"
     }
 }

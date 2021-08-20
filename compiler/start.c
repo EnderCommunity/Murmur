@@ -12,11 +12,9 @@ void Deb(){ //Minimal debug
 
 }
 
-#include "libraries/types/String.h"
 #include "libraries/files/general.h"
 #include "extrtyp.h"
 #include "libraries/files/gen.c"
-#include "libraries/paths/paths.h"
 
 #include <math.h>
 #include "libraries/hex/hex.h"
@@ -69,8 +67,6 @@ int main(int argc, char *argv[]){
 
     }
 
-    //NOTE: you need to check the path format!
-
     //Get the path of the folder that contains the current file
 
     DebugWithPath("Received the path: ", path, 0);
@@ -100,12 +96,6 @@ int main(int argc, char *argv[]){
     writeLogLine("Compiler Manager", 0, "Starting the preprocessor.", 0, 0, 0);
     preprocess(mainFilePtr, path, 1, tmpFileObj); //Initiate the compiling process
 
-    /*if(mainFilePtr != NULL)
-        fclose(mainFilePtr);*/
-
-    /*if(tmpFileObj.ptr != NULL)
-        fclose(tmpFileObj.ptr);*/
-
     writeLogLine("Compiler Manager", 0, "Closed all files sessions.", 0, 0, 0);
 
     endWrkstn();
@@ -116,15 +106,13 @@ int main(int argc, char *argv[]){
 
     Deb();
 
-    //exit(EXIT_SUCCESS);
-
     writeLogLine("Compiler Manager", 0, "Task finished successfully! (Ending process)", 0, 0, 0);
 
     clsLogSec();
 
     free(COMPILER_START_DIR);
 
-    return 0;
+    return EXIT_SUCCESS;
 
 }
 
@@ -143,10 +131,6 @@ void CProcess(FileInfo *fileInf, TmpFileStruc desFileObj);
 void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){ //Compile a file and it's content
 
     writeLogLine("Preprocessor", 0, "Preprocessor started!", 0, 0, 0);
-
-    //FILE *desFileStrPtr = desFileObj.ptr; //Save the start pointer!
-
-    //desFilePtr; //This file should be used to store all the code that will be compiled in the process
 
     FileInfo *fileInf = checkFlags(filePtr, path, isFull); //An object that contains the file info!
 
@@ -171,7 +155,6 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
                                         //^ change this value to the
                                         //full path of the main file
 
-        //fclose(tmpDatCtr.ptr);
         clsDatFil(); //Save & close the data file (so you can use its data later)
         fclose(filePtr); //Close the main input file stream
 
@@ -193,8 +176,6 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
         rpt(REPORT_CODE_MESSAGE, REPORT_SECTION_GENERAL, "This process is about to end", "<main>", 0, 0);
 
         clsRptFil(); //Close the ".opf" file
-
-        //(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj)
 
         /* //[START] Start the C processor
 

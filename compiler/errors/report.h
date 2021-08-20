@@ -17,18 +17,10 @@ void opnRptFil(){
 
 void clsRptFil(){
 
-    /*if(rptFilPtr != NULL){
-
-        fclose(rptFilPtr);
-        rptFilPtr = NULL;
-
-    }*/
-
     fclose(rptFilPtr);
 
 }
 
-//char *crt;
 #include "../libraries/types/number/Number.h"
 
 void srtRptSrc(char **src, int lin, int col){
@@ -69,8 +61,6 @@ void srtRptSrc(char **src, int lin, int col){
 
                     if(strcmp(tmpDat, "\0") != 0){
 
-                        //printf("\n--%s--\n", tmpDat);
-
                         char *tmpSub1Str = getStrPrt(tmpDat, getStrIndx(tmpDat, "<Zx") + 3, getStrIndx(tmpDat, ">"), 0);
                         char *tmpSub2Str = getStrPrt(tmpDat, getLstStrIndx(tmpDat, "<Zx") + 3, getLstStrIndx(tmpDat, ">"), 0);
 
@@ -91,8 +81,6 @@ void srtRptSrc(char **src, int lin, int col){
                     char *tmpDat = getDat(DATA_ZONE, tmpId);
 
                     if(strcmp(tmpDat, "\0") != 0){
-
-                        //printf("\n--%s--\n", tmpDat);
 
                         char *tmpSub1Str = getStrPrt(tmpDat, getStrIndx(tmpDat, "<Zx") + 3, getStrIndx(tmpDat, ">"), 0);
                         char *tmpSub2Str = getStrPrt(tmpDat, getLstStrIndx(tmpDat, "<Zx") + 3, getLstStrIndx(tmpDat, ">"), 0);
@@ -140,12 +128,6 @@ void srtRptSrc(char **src, int lin, int col){
 
             free(tmpStr);
 
-            /*siz += 4;
-
-            sprintf(tmp, "%s\n    %s", tmp, tmpStr);
-
-            free(tmpStr);*/
-
             lin = nxtLin;
             col = nxtCol;
             nxtLin = 0;
@@ -183,20 +165,3 @@ void rpt(const int typ, int sct, char *msg, char *src, int lin, int col){
     }
     
 }
-
-/*
-    rpt(REPORT_CODE_ERROR);
-    rpt(REPORT_CODE_WARNING);
-    rpt(REPORT_CODE_MESSAGE);
-
-#define REPORT_SECTION_GENERAL 1
-#define REPORT_SECTION_PREPROCESSOR 2
-#define REPORT_SECTION_LEXER 3
-#define REPORT_SECTION_PARSER 4
-#define REPORT_SECTION_OPTIMISER 5
-#define REPORT_SECTION_EVALUATOR 6
-#define REPORT_SECTION_BUNDLER 7
-#define REPORT_SECTION_C 8
-#define REPORT_SECTION_RUNTIME 9
-
-*/

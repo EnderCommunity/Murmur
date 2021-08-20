@@ -12,10 +12,7 @@ int getStrIndx(char *str, char *strForChk){ //Get the index of a string in a str
 
     char *subStr = strstr(str, strForChk);
 
-    if(subStr == NULL)
-        return -1;
-    else
-        return subStr - str;
+    return (subStr == NULL) ? -1 : (subStr - str);
 
 }
 
@@ -27,8 +24,6 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
 
     if((endIndx > strlen(str) || endIndx < strIndx) || (strIndx < 0 || strIndx > strlen(str))){
 
-        //Throw an error!
-        //writeLogLine("Library Component", 2, "ERROR", 0, 0, 0);
         s = strlen(ERROR_STR_OUTOFBOUNDS) + 1;
 
         nStr = malloc(sizeof(char)*s);
@@ -54,25 +49,11 @@ char* getStrPrt(char *str, int strIndx, int endIndx, int endLine) { //Get a part
     }
 
 
-    /*Deb();
-    printf("--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------");
-    printf("@@%s@@", nStr);
-    printf("--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------\n--------------------------------------------------------");*/
-
     return nStr;
 
 }
 
 char* apdStr(char *dest, char *str){ //Append two stings
-
-    /*char* rslt = malloc((strlen(dest) + strlen(str) + 1)*sizeof(char));
-
-    strcpy(rslt, dest);
-    strcat(rslt, str);
-
-    rslt[strlen(rslt)] = '\0';
-
-    return rslt;*/
 
     char* rslt = malloc((strlen(dest) + strlen(str) + 1)*sizeof(char));
 
@@ -82,20 +63,32 @@ char* apdStr(char *dest, char *str){ //Append two stings
 
 }
 
-char* remStrPrt(char *str, char *strForRem) { //Remove a part of a string (Unintended behaviours noticed, new fix)
+/*char* remStrPrt(char *str, char *strForRem) { //Remove a part of a string (Unintended behaviours noticed, new fix)
 
     int indx = getStrIndx(str, strForRem);
 
-    return (indx == -1) ?
-        str
-        :
-        ((indx != 0) ?
-            apdStr(getStrPrt(str, 0, indx - 1, 0), getStrPrt(str, indx + strlen(strForRem), strlen(str), 0))
-            :
-            getStrPrt(str, strlen(strForRem), strlen(str), 0))
-        ;
+    if(indx == -1){
 
-}
+        return str;
+
+    }else if(indx != 0){
+
+        char *tmpStr1 = getStrPrt(str, 0, indx - 1, 0),
+             *tmpStr2 = getStrPrt(str, indx + strlen(strForRem), strlen(str), 0),
+             *tmpStr3 = apdStr(tmpStr1, tmpStr2);
+
+        free(tmpStr1);
+        free(tmpStr2);
+
+        return tmpStr3;
+
+    }else{
+
+        return getStrPrt(str, strlen(strForRem), strlen(str), 0);
+
+    }
+
+}*/
 
 char* genFillStr(int len){
 
@@ -105,6 +98,7 @@ char* genFillStr(int len){
 
     for(int i = 0; i < len; i++)
         nStr[i] = FILLER_STRING_CHAR;
+
     nStr[len] = '\0';
 
     return nStr;
@@ -121,16 +115,6 @@ char* shfStr(char *str, int n){ //Shif a string to the left by 'n' chars!
     str[(l - n >= 0) ? l - n : 0] = '\0';
 
     return str;
-
-    /*int l = strlen(str);
-
-    char *tmp = malloc(sizeof(char)*(strlen(str) - n + 1)); //This ain't good...
-
-    for(int i = n; i <= l; i++)
-        tmp[i - n] = str[i];
-
-    return tmp;*/
-
 
 }
 
@@ -171,7 +155,7 @@ int getLstStrIndx(char *str, char *strForChk){ //Get the index of the last appea
 
 char* newStr(int size) { //Create a new string
 
-    char * tmp = malloc(sizeof(char)*size);
+    char *tmp = malloc(sizeof(char)*size);
 
     memset(tmp, 0x00, sizeof(char)*size); //Clear the new memory
 
@@ -179,13 +163,13 @@ char* newStr(int size) { //Create a new string
 
 }
 
-char* rszStr(char *str, int size) { //Resize a string
+/*char* rszStr(char *str, int size) { //Resize a string
 
     str = realloc(str, sizeof(char)*size);
 
     return str;
 
-}
+}*/
 
 int numOfCharInStr(char *str, char cha){ //Get the number of times a char appeared in a string
 
@@ -247,7 +231,7 @@ int isStrEmpty(char *str){
     int whiSpc = 0;
 
     for(int i = 0; str[i] != '\0'; i++)
-        if(isspace(str[i]) || str[i] == FILLER_STRING_CHAR || str[i] == '\n' || str[i] == '\t' || str[i] == '\0' || str[i] == '\a' || str[i] == '\b' || str[i] == '\f' || str[i] == '\r' || str[i] == '\v')
+        if(isspace(str[i]) || str[i] == FILLER_STRING_CHAR || str[i] == '\a' || str[i] == '\b')
             whiSpc++;
 
     return whiSpc == strlen(str);
@@ -256,15 +240,46 @@ int isStrEmpty(char *str){
 
 int isCharSpcl(char chr){
 
-    return (!isalpha(chr) && chr != '0' && chr != '1' && chr != '2' && chr != '3' && chr != '4' && chr != '5' && chr != '6' && chr != '7' && chr != '8' && chr != '9');
+    return (!isalpha(chr) && !isdigit(chr));
 
 }
 
-int isKnwnSpclChr(char chr){
+/*int isKnwnSpclChr(char chr){
 
-    return (chr == '%' || chr == '?' || chr == '/' || chr == '>' || chr == '<' || chr == '.' || chr == ',' || chr == '|' || chr == '\\' || chr == '"' || chr == '\'' || chr == ':' || chr == ';' || chr == '}' || chr == '{' || chr == ']' || chr == '[' || chr == '=' || chr == '-' || chr == '+' || chr == '_' || chr == '(' || chr == ')' || chr == '*' || chr == '&' || chr == '^' || chr == '$' || chr == '#' || chr == '@' || chr == '!' || chr == '`' || chr == '~');
+    return (chr == '%' ||
+            chr == '?' ||
+            chr == '/' ||
+            chr == '>' ||
+            chr == '<' ||
+            chr == '.' ||
+            chr == ',' ||
+            chr == '|' ||
+            chr == '\\' ||
+            chr == '"' ||
+            chr == '\'' ||
+            chr == ':' ||
+            chr == ';' ||
+            chr == '}' ||
+            chr == '{' ||
+            chr == ']' ||
+            chr == '[' ||
+            chr == '=' ||
+            chr == '-' ||
+            chr == '+' ||
+            chr == '_' ||
+            chr == '(' ||
+            chr == ')' ||
+            chr == '*' ||
+            chr == '&' ||
+            chr == '^' ||
+            chr == '$' ||
+            chr == '#' ||
+            chr == '@' ||
+            chr == '!' ||
+            chr == '`' ||
+            chr == '~');
 
-}
+}*/
 
 int isStrSpc(char *str) { //Does a string only consist of whitespace?
 

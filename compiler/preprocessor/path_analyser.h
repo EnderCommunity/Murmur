@@ -47,26 +47,6 @@ char *pthAnl(char *rootPth, char *pth){
 
     }
 
-    //printf("\n%s", fnlPth);
-
     return fnlPth;
-
-    /*if(access(fnlPth, F_OK) == 0){
-
-        return fnlPth;
-
-    }else{
-
-        char *tmpMsg = malloc(sizeof(char)*(65 + strlen(fnlPth) + 1));
-
-        sprintf(tmpMsg, "There was an attempt to access the file <%s>, which does not exist!", fnlPth);
-
-        writeLogLine("Preprocessor", 0, tmpMsg, 0, 0, 0);
-
-        free(tmpMsg);
-
-        exit(-1); //File does not exist!
-
-    }*/
 
 }

@@ -19,18 +19,6 @@ int waitForComm = 0;
 
 void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
-    //int pthDatId = savDat(DATA_PATH, filPth);
-
-    /*fileInf->mode;
-    fileInf->isFull;
-    fileInf->currLineCon;
-    fileInf->currOLineCon;
-    fileInf->path;
-    fileInf->filePtr;
-    fileInf->fileStrPtr;
-    fileInf->currLine;
-    fileInf->currCol;
-    fileInf->nextCol;*/
     int keepLoop = !feof(fileInf->filePtr), wait = 1;
 
     if(!keepLoop){
@@ -41,17 +29,14 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
     }
 
-    int linOrgLen = strlen(fileInf->currOLineCon); 
+    int linOrgLen = strlen(fileInf->currOLineCon),
+        linFstChrCnd = fileInf->currOLineCon[0] != '\r';
 
     while(keepLoop){
 
-        if(linOrgLen != 0 && fileInf->currOLineCon[0] != '\r'){
+        if(linOrgLen != 0 && linFstChrCnd){
 
             writeLogLine("Preprocessor", 0, "New processing loop started.", 1, fileInf->currLine, fileInf->currCol);
-
-            /*char *tmpStr;
-            tmpStr = apdStr("The current loop line content is -> \"", apdStr(fileInf->currLineCon, "\""));
-            writeLogLine("Preprocessor", 1, tmpStr, 0, 0, 0);*/
             writeLogLine("Preprocessor", 1, fileInf->currLineCon, 0, 0, 0);
  
             if(ENABLE_COMMENTS && ENVI_ENABLE_COMMENTS && !isStrEmpty(fileInf->currLineCon))
@@ -83,11 +68,9 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
             }
 
-            //printf("\n[Debug]nextCol: %d, currCol: %d, OLen: %d, Line: %d\n", fileInf->nextCol, fileInf->currCol, strlen(fileInf->currOLineCon), fileInf->currLine);
-
         }
 
-        if(keepLoop && (fileInf->nextCol == fileInf->currCol || fileInf->nextCol >= linOrgLen - END_OF_LINE_COUNT)){ //Get next line only if the column is still set to 1 or if it's set to the last column in the current line
+        if(keepLoop && (fileInf->nextCol == fileInf->currCol || fileInf->nextCol - linOrgLen >= 0 - END_OF_LINE_COUNT)){ //Get next line only if the column is still set to 1 or if it's set to the last column in the current line
                                                                                                                   //^ this value has been changed from "1" to "0"
 
             writeLogLine("Preprocessor", 0, "Getting the content of the next line...", 0, 0, 0);
@@ -108,9 +91,6 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
             }
 
-            //keepLoop = !feof(fileInf->filePtr);
-
-
             if(keepLoop){
 
                 fileInf->currLine++;
@@ -120,11 +100,6 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
                 if(fileInf->currOLineCon[strlen(fileInf->currOLineCon) - 1] == '\n')
                     fileInf->currOLineCon[strlen(fileInf->currOLineCon) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
-
-                //(fileInf->currOLineCon)[0] != '\r'
-
-
-                linOrgLen = strlen(fileInf->currOLineCon);
 
                 if(REMOVE_WHITESPACE_AT_LINE_START)
                     while(strlen(fileInf->currOLineCon) != 1 && isspace(fileInf->currOLineCon[0])){ //Remove the extra whitespace without losing track of the column number
@@ -136,6 +111,9 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
                     }
 
+                linOrgLen = strlen(fileInf->currOLineCon);
+                linFstChrCnd = fileInf->currOLineCon[0] != '\r';
+
                 fileInf->nextCol = fileInf->currCol;
 
 
@@ -143,11 +121,9 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
                 writeLogLine("Preprocessor", 0, "The line variable content changed successfully!", 0, 0, 0);
 
-            }else{ //Maybe do this later...
+            }else{
 
                 if(waitForComm){
-
-                    //writeLogLine("Preprocessor", 0, "The end of the file has been reached, and the comment wasn't closed!", 0, 0, 0);
 
                     rpt(REPORT_CODE_ERROR, //This is an error
                     REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
@@ -159,8 +135,6 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
                 }
 
                 if(fileInf->isSptZon){
-
-                    //writeLogLine("Preprocessor", 0, "The end of the file has been reached, and the separate zone wasn't closed!", 0, 0, 0);
 
                     rpt(REPORT_CODE_ERROR, //This is an error
                     REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
@@ -177,13 +151,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
             writeLogLine("Preprocessor", 0, "Getting the current line content starting from the specified column...", 0, 0, 0);
 
-            //Move the column content!
-            /*char *tmp1 = malloc(sizeof(char)*10); itoa(fileInf->nextCol - 1, tmp1, 10);
-            char *tmp2 = malloc(sizeof(char)*10); itoa(strlen(fileInf->currOLineCon) - 0, tmp2, 10);
-            writeLogLine("DEBUG", 1, fileInf->currOLineCon, 0, 0, 0);
-            writeLogLine("DEBUG", 1, fileInf->currLineCon, 0, 0, 0);
-            writeLogLine("DEBUG", 1, tmp1, 0, 0, 0);
-            writeLogLine("DEBUG", 1, tmp2, 0, 0, 0);*/
+            //Shift the line content!
 
             char *tmpStr = getStrPrt(fileInf->currOLineCon, fileInf->nextCol - 1 - fileInf->currCol + 1, strlen(fileInf->currOLineCon), 0);
 
@@ -191,9 +159,6 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
             strcpy(fileInf->currOLineCon, fileInf->currLineCon);
 
             free(tmpStr);
-
-            /*writeLogLine("DEBUG2", 1, fileInf->currOLineCon, 0, 0, 0);
-            writeLogLine("DEBUG2", 1, fileInf->currLineCon, 0, 0, 0);*/
 
             fileInf->currCol = fileInf->nextCol;
 

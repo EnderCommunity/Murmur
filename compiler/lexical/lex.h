@@ -1,7 +1,7 @@
 #include "../libraries/regex/reg.h"
 #include "chk.h"
 
-//1000 `value` 0 0 0 0 | 0 0 0 0 <0.'file1'.'file2'> 0x000000000 1x000000000
+//1000 `value` 0 0 0 0 | 0 0 0 0 <...> 0x000000000 1x000000000
 
 FILE* lexProc(TmpFileStruc cFileObj){
 
@@ -15,15 +15,21 @@ FILE* lexProc(TmpFileStruc cFileObj){
     if(tmpStr[strlen(tmpStr) - 1] == '\n')
         tmpStr[strlen(tmpStr) - 1] = '\0'; //Remove the new line character (\n), and replace it with a line end character (\0)!
 
-    if(tmpStr[strlen(tmpStr) - 2] == '\r') //Hmm, maybe don't do that...
-        tmpStr[strlen(tmpStr) - 2] = '\0';
+    {
+    
+        int tmpIndx = strlen(tmpStr) - 2;
+        tmpIndx = (tmpIndx != -1) ? tmpIndx : 0;
+
+        if(tmpStr[tmpIndx] == '\r') //Hmm, maybe don't do that...
+            tmpStr[tmpIndx] = '\0';
+
+    }
 
     while(getStrIndx(tmpStr, "[FileEnd]") != 0){
 
         curLin = getStrPrt(tmpStr, getStrIndx(tmpStr, "]") + 3, strlen(tmpStr), 0); //Get the current line content
 
         char *curSrcPth = getStrPrt(tmpStr, 2, getStrIndx(tmpStr, "}"), 0);
-        //"[{main},%d;%d]->%s
 
         char *tmpColStr = getStrPrt(tmpStr, getStrIndx(tmpStr, ";") + 1, getStrIndx(tmpStr, "]"), 0), *tmpLinStr = getStrPrt(tmpStr, getStrIndx(tmpStr, ",") + 1, getStrIndx(tmpStr, ";"), 0);
 
@@ -81,17 +87,11 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                     }else{
 
-                        //int isHex = (i + 2 < lopLen && curLin[i] == '0' && (curLin[i + 1] == 'x' || curLin[i + 1] == 'X'));
-
                         if(curLin[i] == '.')
                             alowDot = 0;
 
                         fprintf(lexFil, "%d `%c", LEXER_NUMBER, curLin[i]);
 
-                        //if(isHex)
-                        //    fprintf(lexFil, "%d `%c", LEXER_NUMBER, curLin[i + 1]);
-
-                        //int delt = 1 + isHex;
                         int delt = 1;
 
                         while(delt + i < strlen(curLin) && ((isdigit(curLin[i + delt]) || ((alowDot) ? curLin[i + delt] == '.' : 0)))){
@@ -200,13 +200,11 @@ FILE* lexProc(TmpFileStruc cFileObj){
 
                     col += delt;
 
-                } else if(isKnwnSpclChr(currChar)) { //Operator!
+                } else if(isCharSpcl(currChar)) { //Operator!
 
                     fprintf(lexFil, "%d `%c` %d %d %d 0 | 0 0 0 0 [%s] 0x%09X 1x%09X\n", LEXER_OPERATOR, curLin[i], newLin, whtSpcBef, (isspace(curLin[i + 1]) != 0), curSrcPth, lin, col);
 
                 } else {
-
-                    //writeLogLine("Lexer", 2, "An unknown character has been detected!", 1, lin, col);
 
                     rpt(REPORT_CODE_ERROR, //This is an error
                     REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
@@ -216,15 +214,6 @@ FILE* lexProc(TmpFileStruc cFileObj){
                     col); //The column the error occurs
 
                 }
-
-                //fprintf(lexFil, "%d `%s` 0 0 0 0 | 0 0 0 0 [%s] 0x%09X 1x%09X\n", 1000, "", "<0>", 0, 0);
-                //symbol -> 1001, string -> 1002, char -> 1003, number -> 1004, operator -> 1005
-                //LEXER_SYMBOL, LEXER_STRING, LEXER_CHAR, LEXER_NUMBER, LEXER_OPERATOR
-                //1000 `[value]` 0 0 0 0 | 0 0 0 0 [<file2>@<file1>] 0x000000000 1x000000000
-                //1000 `[value]` 0 0 0 0 | 0 0 0 0 [<file2>@<file1>] 0x000000000 1x000000000
-                //1000 `[value]` 0 0 0 0 | 0 0 0 0 [<file2>@<file1>] 0x000000000 1x000000000
-                //1000 `[value]` 0 0 0 0 | 0 0 0 0 [<file2>@<file1>] 0x000000000 1x000000000
-                //^typ ^value    ^scrFile ^srcLine(0) ^srcColumn(1)
 
                 if(newLin)
                     newLin = 0;

@@ -23,9 +23,6 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
 
     FileInfo *tmp = malloc(sizeof(FileInfo) + sizeof(char)*(MAX_PATH_LENGTH + 2*MAX_LINE_LENGTH + 12));
 
-    //memset(tmp, 0x00, sizeof(FileInfo) + sizeof(char)*(MAX_PATH_LENGTH + 2*MAX_LINE_LENGTH - 2)); //Clear the new memory
-
-    //tmp->path = malloc(sizeof(char)*MAX_PATH_LENGTH); //The max path length is 255 characters
     tmp->path = path;
     tmp->currLineCon = malloc(sizeof(char)*MAX_LINE_LENGTH);
     memset(tmp->currLineCon, 0x00, sizeof(char)*MAX_LINE_LENGTH);
@@ -61,9 +58,6 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull) { //Define an object
         if(inStrRng(tmp->currOLineCon, "<no-preprocessor-methods>")) //The compiler will not check for preprocessor methods
             ENVI_CHECK_FOR_PREPROCESSOR_METHODS = 0;
         
-        //if((ENABLE_ALLOW_SEPARATE_FLAG && inStrRng(tmp->currOLineCon, "<allow-separate>")) || tmp->mode == 'L')
-        //    ENVI_ENABLE_SEPARATE_METHOD = 1;
-
         writeLogLine("Preprocessor", 0, "The header flags have been processed successfully!", 0, 0, 0);
 
         fgets(tmp->currOLineCon, MAX_LINE_LENGTH, tmp->filePtr);
@@ -109,12 +103,3 @@ void freeFileDatObj(FileInfo *tmp){
     free(tmp);
 
 }
-
-/*FileInfo* reallocCurrLin(FileInfo *tmp){
-
-    free(tmp->currLineCon);
-    tmp->currLineCon = malloc(sizeof(char)*509);
-
-    return tmp;
-
-}*/

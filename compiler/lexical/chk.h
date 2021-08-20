@@ -1,14 +1,3 @@
-/*char* chrToStr(char chr){
-
-    char *str = malloc(2*sizeof(char));
-
-    str[0] = chr;
-    str[1] = '\0';
-
-    return str;
-
-}*/
-
 int isSyb(char chr){
 
     char *tmpChr = chrToStr(chr);

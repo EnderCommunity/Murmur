@@ -9,7 +9,6 @@ void newLogFile(char *path){
 
     if(OUTPUT_LOG_FILE){
 
-        //globalLogFile.path = path;
         globalLogFile.path = malloc((strlen(path) + 1)*sizeof(char));
         strcpy(globalLogFile.path, path);
         globalLogFile.filePtr = fopen(globalLogFile.path, "w");

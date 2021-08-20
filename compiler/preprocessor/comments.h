@@ -4,8 +4,6 @@ FileInfo* chkForCom(FileInfo *curFile){
 
     for(int i = 0; i < len; i++){
 
-        //(curFile->currLineCon)[i]; //Current character
-
         if((i - 1 != -1) ? ((curFile->currLineCon)[i - 1] != '\\') : 1) { //Look for the '\' char
 
             if(!inChr && (curFile->currLineCon)[i] == '"') //String opening/closing
@@ -54,7 +52,6 @@ FileInfo* chkForCom(FileInfo *curFile){
 
                     i = len;
 
-                    //                  "tmpIndx != tmpIndx2" IS NOT WORKING!
                 }else if(waitForComm || (tmpIndx > 1 || tmpIndx != tmpIndx2)){ //The end of this comment is in this line!
                            //^ You don't want the case "/*/" to trigger this!
 
