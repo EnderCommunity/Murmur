@@ -76,6 +76,19 @@
 #define OUTPUT_TEMP_FILE 1 //Output a `.tmp` file (stage one code)
 /* (!) Still not implemented */ #define OUTPUT_C_CODE_FILE 0 //Output a `.c` file (stage two code)
 #define OUTPUT_EXECUTABLE 1 //Output an executable file (stage three code)
+#if _WIN64 || _WIN32 //Windows
+
+    #define OUTPUT_EXECUTABLE_EXT ".exe" //Output executable ext
+
+#elif __APPLE__ //macOS
+
+    #define OUTPUT_EXECUTABLE_EXT "" //Output executable ext
+
+#else //Linux
+
+    #define OUTPUT_EXECUTABLE_EXT ".out" //Output executable ext
+
+#endif
 
 
 
