@@ -398,21 +398,3 @@ void crtDotOpr(int linId){ //Create a dot_operator
     isrtPrsTrm(PARSER_OPERATORS_DOT, "", linId);
 
 }
-
-/**
- *  elevational_operator
- *      : ^ <OPERATOR>
- *      ;
-**/
-
-int isElvOpr(M_Token tkn){
-
-    return lokForOneOpr(tkn, '^');
-
-}
-
-void crtElvOpr(int linId){ //Create a elevational_operator
-
-    isrtPrsTrm(PARSER_OPERATORS_ELEVATIONAL, "", linId);
-
-}

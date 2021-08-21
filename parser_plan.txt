@@ -38,6 +38,7 @@ IDENTIFIER
 type_specifier
     : void <SYMBOL>
     | int <SYMBOL>
+    | float <SYMBOL>
     | double <SYMBOL>
     | char <SYMBOL>
     | string <SYMBOL>
@@ -194,11 +195,6 @@ function
     & <type_specifier>
     & <IDENTIFIER>
     & <BLOCK>
-    | <function_declarator>
-    & <return_type_operator>
-    & <type_specifier>
-    & <IDENTIFIER>
-    & <BLOCK>
     ;
 
 
@@ -209,9 +205,6 @@ group
     & <group_declarator>
     & <IDENTIFIER>
     & <BLOCK>
-    | <group_declarator>
-    & <IDENTIFIER>
-    & <BLOCK>
     ;
 
 
@@ -220,9 +213,6 @@ group
 class
     : <state_specifier>
     & <class_declarator>
-    & <IDENTIFIER>
-    & <BLOCK>
-    | <class_declarator>
     & <IDENTIFIER>
     & <BLOCK>
     ;

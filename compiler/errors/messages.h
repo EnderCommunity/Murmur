@@ -41,6 +41,9 @@
 //Parser (MSG_PRS_...)
 //#define MSG_PRS_
 
+//"parser/terminal/specifiers.h"
+#define MSG_PRS_TRM_SPC_ARRAYDEFFNOTCLOSED "Array was not closed!"
+
 
 //Optimiser (MSG_OPT_...)
 //#define MSG_OPT_
