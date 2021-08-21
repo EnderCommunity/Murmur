@@ -14,7 +14,7 @@ int isRtnStt(int typ, char *val){
 
 void crtRtnStt(int linId){ //Create a return_statement
 
-    isrtPrsTrm("return_statement", "", linId);
+    isrtPrsTrm(PARSER_STATEMENTS_RETURN, "", linId);
 
 }
 
@@ -34,7 +34,7 @@ int isRefStt(int typ, char *val){
 
 void crtRefStt(int linId){ //Create a ref_statement
 
-    isrtPrsTrm("ref_statement", "", linId);
+    isrtPrsTrm(PARSER_STATEMENTS_REF, "", linId);
 
 }
 
@@ -54,6 +54,6 @@ int isDelStt(int typ, char *val){
 
 void crtDelStt(int linId){ //Create a delete_statement
 
-    isrtPrsTrm("delete_statement", "", linId);
+    isrtPrsTrm(PARSER_STATEMENTS_DELETE, "", linId);
 
 }
