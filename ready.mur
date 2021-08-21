@@ -1,8 +1,10 @@
-/* <- (not working)
+#header <the-header-is-working>
+/*
 
 You'll find all the finished features here!
 
-(not working) -> */
+*/
 
-//One-line comments are processed correctly now!
-
+using test; //The libraries system is working!
+import "final-pitch-lib.lib.mur" //The "import" method is working!
+tell "TYPE::DATA" //The "tell" method is working!
