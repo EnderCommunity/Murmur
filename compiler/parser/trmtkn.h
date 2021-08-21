@@ -6,6 +6,7 @@ typedef struct {
     char *nam; // The component name
     char *cnt; // The component content;
 
+    int __prevLinPtr;
     int __ahd_filEnd; //Did you reach the file end?
 
 } T_Comp; //A terminal component
@@ -37,6 +38,8 @@ T_Comp getTrmCmp(){ //Get a terminal component
     T_Comp tmp;
 
     tmp.val = malloc(sizeof(char)*(MAX_LINE_LENGTH + 1));
+
+    tmp.__prevLinPtr = ftell(trmCmpFilPtr);
 
     fgets(tmp.val, MAX_LINE_LENGTH, trmCmpFilPtr);
 
@@ -114,6 +117,21 @@ int nxtTknCmp(T_Comp *cmp){
     remTrmCmp(*cmp); //Remove the token
 
     *cmp = getTrmCmp(); //get a new token
+
+    return kepLopTrm;
+
+}
+
+int prvTknCmp(T_Comp *cmp){
+
+    unsigned int tmp = cmp->__prevLinPtr;
+
+    fseek(trmCmpFilPtr, tmp, SEEK_SET); //Go back
+    remTrmCmp(*cmp); //Remove the token
+
+    *cmp = getTrmCmp(); //get a new token
+
+    fseek(trmCmpFilPtr, tmp, SEEK_SET); //Go back
 
     return kepLopTrm;
 

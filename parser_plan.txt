@@ -81,6 +81,10 @@ delete_statement
     : delete <SYMBOL>
     ;
 
+setsize_statement
+    : setsize <SYMBOL>
+    ;
+
 
 # Operators
 

@@ -57,3 +57,63 @@ void crtDelStt(int linId){ //Create a delete_statement
     isrtPrsTrm(PARSER_STATEMENTS_DELETE, "", linId);
 
 }
+
+/**
+ *  setsize_statement
+ *      : setsize <SYMBOL>
+ *      ;
+**/
+
+int isSetSizStt(int typ, char *val){
+
+    return (typ == LEXER_SYMBOL &&
+        strcmp(val, "setsize") == 0
+    );
+
+}
+
+void crtSetSizStt(int linId){ //Create a setsize_statement
+
+    isrtPrsTrm(PARSER_STATEMENTS_SETSIZE, "", linId);
+
+}
+
+/**
+ *  if_statement
+ *      : if <SYMBOL>
+ *      ;
+**/
+
+int isIfStt(int typ, char *val){
+
+    return (typ == LEXER_SYMBOL &&
+        strcmp(val, "if") == 0
+    );
+
+}
+
+void crtIfStt(int linId){ //Create a if_statement
+
+    isrtPrsTrm(PARSER_STATEMENTS_IF, "", linId);
+
+}
+
+/**
+ *  else_statement
+ *      : else <SYMBOL>
+ *      ;
+**/
+
+int isElsStt(int typ, char *val){
+
+    return (typ == LEXER_SYMBOL &&
+        strcmp(val, "else") == 0
+    );
+
+}
+
+void crtElsStt(int linId){ //Create a else_statement
+
+    isrtPrsTrm(PARSER_STATEMENTS_ELSE, "", linId);
+
+}

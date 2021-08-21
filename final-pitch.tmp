@@ -30,71 +30,72 @@
 [{<main>},66;9]->public file globG = new FileStream("path/to/my/file.txt");
 [{<main>},67;9]->public hex globH = 0xFF;
 [{<main>},68;9]->public string[] globI = new Array::string[](6);
-[{<main>},69;9]->private hex[,] globJ = new Array::hex[,](8);
+[{<main>},69;9]->private hex[,] globJ = new Array::hex[,](8, 2);
 [{<main>},71;9]->public function::int Main(string[] envi, int length){
 [{<main>},80;13]->Func();
 [{<main>},82;13]->^int a = 0;
 [{<main>},85;13]->int b = 1;
 [{<main>},88;13]->^int c = Test(a, 1);
-[{<main>},90;13]->a, c = 5;
-[{<main>},92;13]->PlusOne(ref b)(ref b);
+[{<main>},90;13]->a = 1, c = 5;
+[{<main>},92;13]->PlusOne(ref b);
 [{<main>},94;13]->bool myTest = false;
 [{<main>},96;13]->if(myTest == true){
-[{<main>},100;13]->}
-[{<main>},102;13]->if(myTest != true){
-[{<main>},106;13]->}
-[{<main>},108;13]->if(1 >= 5 || 1 > 5 || (1 > 1 && 1 < 1)){
-[{<main>},112;13]->}
-[{<main>},114;13]->if(1 <= 5 || 1 < 5){
-[{<main>},118;13]->}
-[{<main>},120;13]->return 0;
-[{<main>},122;9]->}
-[{<main>},124;9]->private function::void Func(){
-[{<main>},132;9]->}
-[{<main>},134;9]->public function::^int Test(^int a, int b){
-[{<main>},136;13]->a = (^int) b;
-[{<main>},138;13]->return a;
-[{<main>},140;9]->}
-[{<main>},142;9]->public function::void PlusOne(ref int a){
-[{<main>},147;13]->a++;
-[{<main>},149;9]->}
-[{<main>},151;9]->public function::void myTests(){
-[{<main>},153;13]->bool myTest = false;
-[{<main>},154;13]->int a = 0, b = 0;
-[{<main>},155;13]->double c = 4, d = 3;
-[{<main>},157;13]->myTest!!;
-[{<main>},158;13]->myTest = !myTest;
-[{<main>},159;13]->a++;
-[{<main>},160;13]->a += 1;
-[{<main>},161;13]->a = a + 1;
-[{<main>},162;13]->b--;
-[{<main>},163;13]->b -= 1;
-[{<main>},164;13]->b = b - 1;
-[{<main>},166;13]->c %= d;
-[{<main>},167;13]->c % d;
-[{<main>},168;13]->c /= 0.5;
-[{<main>},169;13]->c / d;
-[{<main>},170;13]->c *= d;
-[{<main>},171;13]->c = c * d;
-[{<main>},173;9]->}
-[{<main>},175;9]->function::string myStringTest(string a){
-[{<main>},177;13]->string b = "Hi!";
-[{<main>},178;13]->delete b;
-[{<main>},183;13]->int b = 1;
-[{<main>},190;9]->}
-[{<main>},192;9]->function::hex[,] ReturnHexArray(){
-[{<main>},194;13]->return this.hex;
-[{<main>},196;9]->}
-[{<main>},198;5]->}
-[{<main>},200;5]->public class AnotherClass {
-[{<main>},202;9]->public int a = 0;
-[{<main>},203;9]->private int b = 0;
-[{<main>},205;9]->function::AnotherClass Construct(int a, int b){
-[{<main>},207;13]->this.a = a;
-[{<main>},208;13]->this.b = b;
-[{<main>},210;9]->}
-[{<main>},212;5]->}
-[{<main>},214;5]->class Smth {
+[{<main>},100;13]->}else{
+[{<main>},104;13]->}
+[{<main>},106;13]->if(myTest != true){
+[{<main>},110;13]->}
+[{<main>},112;13]->if(1 >= 5 || 1 > 5 || (1 > 1 && 1 < 1)){
+[{<main>},116;13]->}
+[{<main>},118;13]->if(1 <= 5 || 1 < 5){
+[{<main>},122;13]->}
+[{<main>},124;13]->return 0;
+[{<main>},126;9]->}
+[{<main>},128;9]->private function::void Func(){
+[{<main>},136;9]->}
+[{<main>},138;9]->public function::^int Test(^int a, int b){
+[{<main>},140;13]->a = (^int) b;
+[{<main>},142;13]->return a;
+[{<main>},144;9]->}
+[{<main>},146;9]->public function::void PlusOne(ref int a){
+[{<main>},151;13]->a++;
+[{<main>},153;9]->}
+[{<main>},155;9]->public function::void myTests(){
+[{<main>},157;13]->bool myTest = false;
+[{<main>},158;13]->int a = 0, b = 0;
+[{<main>},159;13]->double c = 4, d = 3;
+[{<main>},161;13]->myTest!!;
+[{<main>},162;13]->myTest = !myTest;
+[{<main>},163;13]->a++;
+[{<main>},164;13]->a += 1;
+[{<main>},165;13]->a = a + 1;
+[{<main>},166;13]->b--;
+[{<main>},167;13]->b -= 1;
+[{<main>},168;13]->b = b - 1;
+[{<main>},170;13]->c %= d;
+[{<main>},171;13]->c % d;
+[{<main>},172;13]->c /= 0.5;
+[{<main>},173;13]->c / d;
+[{<main>},174;13]->c *= d;
+[{<main>},175;13]->c = c * d;
+[{<main>},177;9]->}
+[{<main>},179;9]->function::string myStringTest(string a){
+[{<main>},181;13]->string b = "Hi!";
+[{<main>},182;13]->delete b;
+[{<main>},187;13]->int b = 1;
+[{<main>},194;9]->}
+[{<main>},196;9]->function::hex[,] ReturnHexArray(){
+[{<main>},198;13]->return this.globJ;
+[{<main>},200;9]->}
+[{<main>},202;5]->}
+[{<main>},204;5]->public class AnotherClass {
+[{<main>},206;9]->public int a = 0;
+[{<main>},207;9]->private int b = 0;
+[{<main>},209;9]->function::AnotherClass Construct(int a, int b){
+[{<main>},211;13]->this.a = a;
+[{<main>},212;13]->this.b = b;
+[{<main>},214;9]->}
 [{<main>},216;5]->}
-[{<main>},218;1]->}
+[{<main>},218;5]->class Smth {
+[{<main>},220;5]->}
+[{<main>},222;1]->}
 [FileEnd]
