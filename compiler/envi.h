@@ -163,6 +163,14 @@
 #endif
 
 
+// Optimisation (soon)
+
+#define OPTIMISE_REMOVE_UNUSED_VARIABLES 0 // Remove unused variables
+#define OPTIMISE_REMOVE_UNUSED_FUNCTIONS 0 // Remove unused functions
+#define OPTIMISE_REMOVE_UNUSED_CODE_BLOCKS 0 // Remove unsed code blocks (like code inside conditions that are impossible)
+#define OPTIMISE_FIT_STRINGS_SIZE 0 // Set a custom size for each string, corresponding to its current content, instead of using the unified strings size...
+
+
 //Errors and Warnings
 
 #define REPORT_CODE_ERROR 2
