@@ -86,7 +86,7 @@ int main(int argc, char *argv[]){
     //Start a workstation
     setupWrkstn(pathPtr);
 
-    printf("\n Workstation Path: \"%s\"\nWorkstation Name: \"%s\"\n", wrkstn.Path, wrkstn.Name);
+    printf("\nWorkstation Path: \"%s\"\nWorkstation Name: \"%s\"\n", wrkstn.Path, wrkstn.Name);
 
     //Start logging the session
     char *tmpStrPrt1 = apdStr(wrkstn.Name, ".log"), *tmpStrPrt2 = apdStr(wrkstn.Path, tmpStrPrt1);
@@ -130,9 +130,8 @@ int main(int argc, char *argv[]){
 
 #include "preprocessor/checker.h"
 #include "preprocessor/reader.h"
-#include "skip.h"
 
-#include "c/compile.c"
+#include "c/compile.h"
 
 #include "lexical/lex.h"
 
@@ -213,17 +212,17 @@ void CProcess(FileInfo *fileInf, TmpFileStruc tmpFileObj){
     if(OUTPUT_EXECUTABLE){
 
         char *cFilPth = apdStr(tmpFileObj.pth, ".c");
-        FILE *cFilPtr = fopen(cFilPth, "w");
+        //FILE *cFilPtr = fopen(cFilPth, "w");
 
-        fclose(tmpFileObj.ptr);
+        //fclose(tmpFileObj.ptr);
 
-        tmpFileObj.ptr = fopen(apdStr(tmpFileObj.pth, ".tmp"), "r");
+        //tmpFileObj.ptr = fopen(apdStr(tmpFileObj.pth, ".tmp"), "r");
 
-        cpyFileCon(cFilPtr, tmpFileObj.ptr);
+        //cpyFileCon(cFilPtr, tmpFileObj.ptr);
 
-        fclose(cFilPtr);
+        //fclose(cFilPtr);
 
-        cmplCCode(cFilPth); //Generate the binary!
+        cmpCCode(cFilPth); //Generate the binary!
 
     }
 
