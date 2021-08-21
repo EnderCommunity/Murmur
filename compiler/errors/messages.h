@@ -17,7 +17,7 @@
 #define MSG_PPC_LINKER_IMPORT_NOINPUT "No input was passed to the `import` method"
 #define MSG_PPC_LINKER_TELL_CLOSINGQUOTE "The string closing quote is missing!"
 #define MSG_PPC_LINKER_TELL_SEMICOLON "Expected a semicolon (;) at the end of the `tell` method!"
-#define MSG_PPC_LINKER_TELL_INCORRECTFORMAT "Incorrect data format (Correct format is TYPE::DATA1:DATA2)"
+//#define MSG_PPC_LINKER_TELL_INCORRECTFORMAT "Incorrect data format (Correct format is TYPE::DATA1:DATA2)"
 #define MSG_PPC_LINKER_TELL_NOSTRINGINPUT "Invalid input was passed to the `tell` method"
 #define MSG_PPC_LINKER_TELL_NOINPUT "No input was passed to the `tell` method"
 #define MSG_PPC_LINKER_USING_NODIGITSATSTART "Using numbers at the start of a symbol is not allowed!"
