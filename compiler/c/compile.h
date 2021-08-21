@@ -40,4 +40,6 @@ void cmpCCode(char *path){ //Compile a C file
 
     system(cmd);
 
+    free(cmd);
+
 }
