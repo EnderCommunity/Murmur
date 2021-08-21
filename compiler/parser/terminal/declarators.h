@@ -14,7 +14,7 @@ int isFncDcl(int typ, char *val){
 
 void crtFncDcl(int linId){ //Create a function_declarator
 
-    isrtPrsTrm("function_declarator", "", linId);
+    isrtPrsTrm(PARSER_DECLARATORS_FUNCTION, "", linId);
 
 }
 
@@ -34,7 +34,7 @@ int isGrpDcl(int typ, char *val){
 
 void crtGrpDcl(int linId){ //Create a group_declarator
 
-    isrtPrsTrm("group_declarator", "", linId);
+    isrtPrsTrm(PARSER_DECLARATORS_GROUP, "", linId);
 
 }
 
@@ -54,6 +54,6 @@ int isClsDcl(int typ, char *val){
 
 void crtClsDcl(int linId){ //Create a class_declarator
 
-    isrtPrsTrm("class_declarator", "", linId);
+    isrtPrsTrm(PARSER_DECLARATORS_CLASS, "", linId);
 
 }

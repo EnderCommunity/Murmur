@@ -1,6 +1,8 @@
 #include "gettkn.h"
 #include "sav.h"
 
+#include "names.h"
+
 #include "terminal/specifiers.h"
 #include "terminal/declarators.h"
 #include "terminal/operators.h"

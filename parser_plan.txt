@@ -189,7 +189,10 @@ BLOCK
 
 function
     : <function_declarator>
+    & <return_type_operator>
+    & <type_specifier>
     & <IDENTIFIER>
+    & (...)
     & <BLOCK>
     ;
 

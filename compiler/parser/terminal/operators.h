@@ -81,7 +81,7 @@ int isCmpOpr(M_Token tkn){
 
 void crtCmpOpr(char *val, int linId){ //Create a comparison_operator
 
-    isrtPrsTrm("comparison_operator", val, linId);
+    isrtPrsTrm(PARSER_OPERATORS_COMPARISON, val, linId);
 
 }
 
@@ -99,7 +99,7 @@ int isEndOpr(M_Token tkn){
 
 void crtEndOpr(int linId){ //Create a end_operator
 
-    isrtPrsTrm("end_operator", "", linId);
+    isrtPrsTrm(PARSER_OPERATORS_END, "", linId);
 
 }
 
@@ -128,7 +128,7 @@ int isMthOpr(M_Token tkn){
 
 void crtMthOpr(char *val, int linId){ //Create a addition_operator
 
-    isrtPrsTrm("maths_operator", val, linId);
+    isrtPrsTrm(PARSER_OPERATORS_MATHS, val, linId);
 
 }
 
@@ -187,7 +187,7 @@ int isAsiOpr(M_Token tkn){
 
 void crtAsiOpr(char * val, int linId){ //Create a assignment_operator
 
-    isrtPrsTrm("assignment_operator", val, linId);
+    isrtPrsTrm(PARSER_OPERATORS_ASSIGNMENT, val, linId);
 
 }
 
@@ -210,7 +210,7 @@ int isZonOpr(M_Token tkn){
 
 void crtZonOpr(char *val, int linId){ //Create a zone_operator
 
-    isrtPrsTrm("zone_operator", val, linId);
+    isrtPrsTrm(PARSER_OPERATORS_ZONE, (val[0] == '{') ? PARSER_GENERAL_START : PARSER_GENERAL_END, linId);
 
 }
 
@@ -234,7 +234,7 @@ int isArrOpr(M_Token tkn){
 
 void crtArrOpr(char *val, int linId){ //Create an array_operator
 
-    isrtPrsTrm("array_operator", val, linId);
+    isrtPrsTrm(PARSER_OPERATORS_ARRAY, (val[0] == '[') ? PARSER_GENERAL_START : PARSER_GENERAL_END, linId);
 
 }
 
@@ -282,7 +282,7 @@ int isAsiShrOpr(M_Token tkn){
 
 void crtAsiShrOpr(char *val, int linId){ //Create a assignment_short_operator
 
-    isrtPrsTrm("assignment_short_operator", val, linId);
+    isrtPrsTrm(PARSER_OPERATORS_ASSIGNMENT_SHORT, val, linId);
 
 }
 
@@ -319,7 +319,7 @@ int isRtrTypOpr(M_Token tkn){
 
 void crtRtrTypOpr(int linId){ //Create a return_type_operator
 
-    isrtPrsTrm("return_type_operator", "", linId);
+    isrtPrsTrm(PARSER_OPERATORS_RETURN_TYPE, "", linId);
 
 }
 
@@ -337,7 +337,7 @@ int isNgtOpr(M_Token tkn){
 
 void crtNgtOpr(int linId){ //Create a negative_operator
 
-    isrtPrsTrm("negative_operator", "", linId);
+    isrtPrsTrm(PARSER_OPERATORS_NEGATIVE, "", linId);
 
 }
 
@@ -359,7 +359,7 @@ int isPrnOpr(M_Token tkn){
 
 void crtPrnOpr(char *val, int linId){ //Create a parentheses_operator
 
-    isrtPrsTrm("parentheses_operator", val, linId);
+    isrtPrsTrm(PARSER_OPERATORS_PARENTHESES, (val[0] == '(') ? PARSER_GENERAL_START : PARSER_GENERAL_END, linId);
 
 }
 
@@ -377,7 +377,7 @@ int isSprOpr(M_Token tkn){
 
 void crtSprOpr(int linId){ //Create a separation_operator
 
-    isrtPrsTrm("separation_operator", "", linId);
+    isrtPrsTrm(PARSER_OPERATORS_SEPARATION, "", linId);
 
 }
 
@@ -395,7 +395,7 @@ int isDotOpr(M_Token tkn){
 
 void crtDotOpr(int linId){ //Create a dot_operator
 
-    isrtPrsTrm("dot_operator", "", linId);
+    isrtPrsTrm(PARSER_OPERATORS_DOT, "", linId);
 
 }
 
@@ -413,6 +413,6 @@ int isElvOpr(M_Token tkn){
 
 void crtElvOpr(int linId){ //Create a elevational_operator
 
-    isrtPrsTrm("elevational_operator", "", linId);
+    isrtPrsTrm(PARSER_OPERATORS_ELEVATIONAL, "", linId);
 
 }

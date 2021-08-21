@@ -28,7 +28,7 @@ int isTypSpc(int typ, char *val){
 
 void crtTypSpc(char *val, int linId){ //Create a type_specifier
 
-    isrtPrsTrm("type_specifier", val, linId);
+    isrtPrsTrm(PARSER_SPECIFIERS_TYPE, val, linId);
 
 }
 
@@ -50,6 +50,6 @@ int isSttSpc(int typ, char *val){
 
 void crtSttSpc(char *val, int linId){ //Create a state_specifier
 
-    isrtPrsTrm("state_specifier", val, linId);
+    isrtPrsTrm(PARSER_SPECIFIERS_STATE, val, linId);
 
 }
