@@ -23,7 +23,7 @@ of Murmur, and all the functions that it can use.
 */
 
 // (!) All the functions used outside of groups are seen by the compiler as
-//preprocessor fucntions! So any normal code outside of groups that is not a
+//preprocessor functions! So any normal code outside of groups that is not a
 //preprocessor-related feature will cause the compiler to exit with an error.
 
 //using system.io; //Tell the compiler that the program is going to use the
@@ -66,7 +66,7 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
         public file globG = new FileStream("path/to/my/file.txt");
         public hex globH = 0xFF;
         public string[] globI = new Array::string[](6);
-        private hex[,] globJ = new Array::hex[,](8);
+        private hex[,] globJ = new Array::hex[,](8, 2);
 
         public function::int Main(string[] envi, int length){ //This is the main
                                                        //function in the program!
@@ -87,9 +87,9 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
             ^int c = Test(a, 1); //You can pass all types of variables to other functions
 
-            a, c = 5; //Change the value of both variables to '5'
+            a = 1, c = 5; //Change the value of 'c' to '5'm and the value of 'a' to '1'
 
-            PlusOne(ref b)(ref b); //the value of 'b' is '3' now!
+            PlusOne(ref b); //the value of 'b' is '2' now!
 
             bool myTest = false;
 
@@ -191,7 +191,7 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
         function::hex[,] ReturnHexArray(){
 
-            return this.hex;
+            return this.globJ;
 
         }
 

@@ -103,7 +103,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][26, 1] => New processing loop started.
-[!][Preprocessor] => //preprocessor fucntions! So any normal code outside of groups that is not a
+[!][Preprocessor] => //preprocessor functions! So any normal code outside of groups that is not a
 [?][Preprocessor][26, 1] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -529,7 +529,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][69, 9] => New processing loop started.
-[!][Preprocessor] => private hex[,] globJ = new Array::hex[,](8);
+[!][Preprocessor] => private hex[,] globJ = new Array::hex[,](8, 2);
 [?][Preprocessor][69, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -624,8 +624,8 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][90, 13] => New processing loop started.
-[!][Preprocessor] => a, c = 5; //Change the value of both variables to '5'
-[?][Preprocessor][90, 23] => A single line comment has been detected!
+[!][Preprocessor] => a = 1, c = 5; //Change the value of 'c' to '5'm and the value of 'a' to '1'
+[?][Preprocessor][90, 27] => A single line comment has been detected!
 [?][Preprocessor][90, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -633,8 +633,8 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][92, 13] => New processing loop started.
-[!][Preprocessor] => PlusOne(ref b)(ref b); //the value of 'b' is '3' now!
-[?][Preprocessor][92, 36] => A single line comment has been detected!
+[!][Preprocessor] => PlusOne(ref b); //the value of 'b' is '2' now!
+[?][Preprocessor][92, 29] => A single line comment has been detected!
 [?][Preprocessor][92, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -1095,7 +1095,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][194, 13] => New processing loop started.
-[!][Preprocessor] => return this.hex;
+[!][Preprocessor] => return this.globJ;
 [?][Preprocessor][194, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -1207,4 +1207,3 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Compiler Manager] => Closed all files sessions.
 [?][Compiler Manager] => Closed the current workstation.
-[?][Compiler Manager] => Task finished successfully! (Ending process)
