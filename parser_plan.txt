@@ -188,11 +188,16 @@ BLOCK
 # Function declaration
 
 function
-    : <function_declarator>
+    : <state_specifier>
+    & <function_declarator>
     & <return_type_operator>
     & <type_specifier>
     & <IDENTIFIER>
-    & (...)
+    & <BLOCK>
+    | <function_declarator>
+    & <return_type_operator>
+    & <type_specifier>
+    & <IDENTIFIER>
     & <BLOCK>
     ;
 
@@ -200,7 +205,11 @@ function
 # Group declaration
 
 group
-    : <group_declarator>
+    : <state_specifier>
+    & <group_declarator>
+    & <IDENTIFIER>
+    & <BLOCK>
+    | <group_declarator>
     & <IDENTIFIER>
     & <BLOCK>
     ;
@@ -209,8 +218,11 @@ group
 # Class declaration
 
 class
-    : <class_declarator>
+    : <state_specifier>
+    & <class_declarator>
+    & <IDENTIFIER>
+    & <BLOCK>
+    | <class_declarator>
     & <IDENTIFIER>
     & <BLOCK>
     ;
-
