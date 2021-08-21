@@ -41,7 +41,7 @@ int getNxtLinUniVal(char *lin, int *tmp){ //Get a the next one digit value from 
 
 M_Token getTkn(){ //Get a token
 
-    M_Token tmp;
+    M_Token tmp; // A lexer token
 
     tmp.val = malloc(sizeof(char)*(MAX_LINE_LENGTH + 1));
 

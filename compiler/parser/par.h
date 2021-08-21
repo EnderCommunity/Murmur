@@ -1,7 +1,10 @@
 #include "gettkn.h"
 #include "sav.h"
+#include "trmtkn.h"
+#include "prstkn.h"
 
 #include "names.h"
+#include "infotkn.h"
 
 #include "terminal/specifiers.h"
 #include "terminal/declarators.h"
@@ -14,7 +17,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
     M_Token tkn = getTkn();
 
-    crtPrsFil(FilStruc.pth, PARSER_TYPE_ONLY_TERMINAL); //Create a `.trm` file
+    crtPrsFil(FilStruc.pth); //Create a `.trm` file
 
     while(kepLop){
 
@@ -22,9 +25,9 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
 
         // Specifiers
-        if(isTypSpc(tkn.typ, tkn.val)){ //"type_specifier"
+        if(isTypSpc(tkn)){ //"type_specifier"
 
-            crtTypSpc(tkn.val, tkn.__srcLin);
+            crtTypSpc(tkn);
 
         }else if(isSttSpc(tkn.typ, tkn.val)){ //"state_specifier"
 
@@ -101,10 +104,6 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             crtMthOpr(tkn.val, tkn.__srcLin);
 
-        }else if(isElvOpr(tkn)){ //"elevational_operator"
-
-            crtElvOpr(tkn.__srcLin);
-
         }else if(isNgtOpr(tkn)){ //"negative_operator"
 
             crtNgtOpr(tkn.__srcLin);
@@ -129,31 +128,31 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
         // Defaults
         else if(tkn.typ == LEXER_SYMBOL){ //This is an "IDENTIFIER"
 
-            isrtPrsTrm("IDENTIFIER", tkn.val, tkn.__srcLin);
+            isrtPrsTrm(PARSER_DEFAULTS_IDENTIFIER, tkn.val, tkn.__srcLin);
 
         }else if(tkn.typ == LEXER_STRING){ //This is a "STRING"
 
-            isrtPrsTrm("STRING", tkn.val, tkn.__srcLin);
+            isrtPrsTrm(PARSER_DEFAULTS_STRING, tkn.val, tkn.__srcLin);
 
         }else if(tkn.typ == LEXER_CHAR){ //This is a "CHAR"
 
-            isrtPrsTrm("CHAR", tkn.val, tkn.__srcLin);
+            isrtPrsTrm(PARSER_DEFAULTS_CHAR, tkn.val, tkn.__srcLin);
 
         }else if(tkn.typ == LEXER_BOOLEAN){ //This is a "BOOLEAN"
 
-            isrtPrsTrm("BOOLEAN", tkn.val, tkn.__srcLin);
+            isrtPrsTrm(PARSER_DEFAULTS_BOOLEAN, tkn.val, tkn.__srcLin);
 
         }else if(tkn.typ == LEXER_NUMBER){ //This is a "NUMBER"
 
-            isrtPrsTrm("NUMBER", tkn.val, tkn.__srcLin);
+            isrtPrsTrm(PARSER_DEFAULTS_NUMBER, tkn.val, tkn.__srcLin);
 
         }else if(tkn.typ == LEXER_ZONE_LINE){ //This is a "ZONE_LINE"
 
-            isrtPrsTrm("ZONE_LINE", tkn.val, tkn.__srcLin);
+            isrtPrsTrm(PARSER_DEFAULTS_ZONE_LINE, tkn.val, tkn.__srcLin);
 
         }else if(tkn.typ == LEXER_HEX){ //This is a "HEX"
 
-            isrtPrsTrm("HEX", tkn.val, tkn.__srcLin);
+            isrtPrsTrm(PARSER_DEFAULTS_HEX, tkn.val, tkn.__srcLin);
 
         }else{ //Unknown component!
 
@@ -165,8 +164,222 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
     }
 
+    char *trmCmpFilPth = malloc(sizeof(char)*(strlen(prsFilPth) + 1));
+    strcpy(trmCmpFilPth, prsFilPth);
+
     clsPrsFil();
     fclose(lexFilPtr); //Close the file stream!
+
+    //crtPrsFil(FilStruc.pth); //Create a `.prs` file
+    //`prsFilPtr` is now referring to the `.prs` file
+    rdTrmCmpFil(trmCmpFilPth);
+    crtFnlPrsFil(FilStruc.pth); //Create a `.prs` file
+
+    //Now, start making sense of the terminal components!
+    T_Comp cmp = getTrmCmp();
+
+    while(kepLopTrm){
+
+        //printf("%s(%s)<%d>\n", cmp.nam, cmp.cnt, cmp.srcLin);
+
+        if(strcmp(cmp.nam, PARSER_SPECIFIERS_STATE) == 0 || // Could be a Group, class, function, or a class-level variable
+            strcmp(cmp.nam, PARSER_DECLARATORS_FUNCTION) == 0 || // a function!
+            strcmp(cmp.nam, PARSER_DECLARATORS_GROUP) == 0 || // a group!
+            strcmp(cmp.nam, PARSER_DECLARATORS_CLASS) == 0 || // a class!
+            strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0 // a variable!
+            ){
+
+            T_Comp tmpTop = cpyCmp(cmp);
+
+            int isStat = strcmp(cmp.nam, PARSER_SPECIFIERS_STATE) == 0;
+
+            if(nxtTknCmp(&cmp)){
+
+                if((isStat) ? ( //DefVar!
+                        strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0
+                    ) : (
+                        strcmp(tmpTop.nam, PARSER_SPECIFIERS_TYPE) == 0
+                    )){
+
+                    T_Comp tmpTyp;
+
+                    if(isStat)
+                        tmpTyp = cpyCmp(cmp);
+
+                    if(!isStat || (nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0)){
+
+                        char *tmpStr = malloc(sizeof(char)*(((!isStat) ?
+                                                                (strlen(cmp.cnt) + strlen(tmpTop.cnt) + strlen("public")) :
+                                                                (strlen(cmp.cnt) + strlen(tmpTyp.cnt) + strlen(tmpTop.cnt))
+                                                            ) + 2 + 1));
+                        if(!isStat)
+                            sprintf(tmpStr, "%s,%s,public", cmp.cnt, tmpTop.cnt);
+                        else
+                            sprintf(tmpStr, "%s,%s,%s", cmp.cnt, tmpTyp.cnt, tmpTop.cnt);
+
+                        isrtPrsNTrm(PARSER_NTERMINAL_DEFINEVAR, tmpStr, tmpTop.srcLin);
+
+                        free(tmpStr);
+
+                    }else{
+
+                        isrtPrsNTrm("ERROR", "", -1);
+
+                    }
+
+                    if(isStat)
+                        remTrmCmp(tmpTyp);
+
+                }else if((isStat) ? ( //FUNCTION!
+                        strcmp(cmp.nam, PARSER_DECLARATORS_FUNCTION) == 0
+                    ) : (
+                        strcmp(tmpTop.nam, PARSER_DECLARATORS_FUNCTION) == 0
+                    )){
+
+                    if((!isStat && strcmp(cmp.nam, PARSER_OPERATORS_RETURN_TYPE) == 0) ||
+                        (nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_OPERATORS_RETURN_TYPE) == 0)
+                        ){
+
+                        nxtTknCmp(&cmp);
+
+                        if(strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0 ||
+                            strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0 ){
+
+                            T_Comp tmpRtrTyp = cpyCmp(cmp);
+                            nxtTknCmp(&cmp);
+
+                            if(strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0 ){
+
+                                char *tmpStr = malloc(sizeof(char)*(((!isStat) ? (
+                                                                        strlen(tmpRtrTyp.cnt) + strlen(cmp.cnt) + strlen("public")) : (
+                                                                        strlen(tmpRtrTyp.cnt) + strlen(cmp.cnt) + strlen(tmpTop.cnt)
+                                                                        )
+                                                                    ) + 2 + 1));
+
+                                if(!isStat)
+                                    sprintf(tmpStr, "%s,%s,public", cmp.cnt, tmpRtrTyp.cnt);
+                                else
+                                    sprintf(tmpStr, "%s,%s,%s", cmp.cnt, tmpRtrTyp.cnt, tmpTop.cnt);
+
+                                isrtPrsNTrm(PARSER_NTERMINAL_DEFINEFUNCTION, tmpStr, tmpTop.srcLin);
+
+                                free(tmpStr);
+
+                            }else{
+
+                                isrtPrsNTrm("ERROR", "", -1);
+
+                            }
+
+                            remTrmCmp(tmpRtrTyp);
+
+                        }else{
+
+                            isrtPrsNTrm("ERROR", "", -1);
+
+                        }
+
+                    }else{
+
+                        isrtPrsNTrm("ERROR", "", -1);
+
+                    }
+
+                }else if((isStat) ? ( //GROUP!
+                        strcmp(cmp.nam, PARSER_DECLARATORS_GROUP) == 0
+                    ) : (
+                        strcmp(tmpTop.nam, PARSER_DECLARATORS_GROUP) == 0
+                    )){
+
+                    if((!isStat && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0) ||
+                        (nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0)
+                        ){
+
+                        char *tmpStr = malloc(sizeof(char)*(((!isStat) ? (
+                                                                strlen(cmp.cnt) + strlen("public")) : (
+                                                                strlen(cmp.cnt) + strlen(tmpTop.cnt)
+                                                                )
+                                                            ) + 2 + 1));
+
+                        if(!isStat)
+                            sprintf(tmpStr, "%s,public", cmp.cnt);
+                        else
+                            sprintf(tmpStr, "%s,%s", cmp.cnt, tmpTop.cnt);
+
+                        isrtPrsNTrm(PARSER_NTERMINAL_DEFINEGROUP, tmpStr, tmpTop.srcLin);
+
+                        free(tmpStr);
+
+                    }else{
+
+                        isrtPrsNTrm("ERROR", "", -1);
+
+                    }
+
+                }else if((isStat) ? ( //CLASS!
+                        strcmp(cmp.nam, PARSER_DECLARATORS_CLASS) == 0
+                    ) : (
+                        strcmp(tmpTop.nam, PARSER_DECLARATORS_CLASS) == 0
+                    )){
+
+                    if((!isStat && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0) ||
+                        (nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0)
+                        ){
+
+                        char *tmpStr = malloc(sizeof(char)*(((!isStat) ? (
+                                                                strlen(cmp.cnt) + strlen("public")) : (
+                                                                strlen(cmp.cnt) + strlen(tmpTop.cnt)
+                                                                )
+                                                            ) + 2 + 1));
+
+                        if(!isStat)
+                            sprintf(tmpStr, "%s,public", cmp.cnt);
+                        else
+                            sprintf(tmpStr, "%s,%s", cmp.cnt, tmpTop.cnt);
+
+                        isrtPrsNTrm(PARSER_NTERMINAL_DEFINECLASS, tmpStr, tmpTop.srcLin);
+
+                        free(tmpStr);
+
+                    }else{
+
+                        isrtPrsNTrm("ERROR", "", -1);
+
+                    }
+
+                }else{
+
+                    isrtPrsNTrm("ERROR", "", -1);
+
+                }
+
+            }else if(0){
+
+                //
+
+            }else{
+
+                isrtPrsNTrm("ERROR", "", -1);
+
+            }
+
+            remTrmCmp(tmpTop);
+
+        }else{
+
+            isrtPrsNTrm(cmp.nam, cmp.cnt, cmp.srcLin);
+
+        }
+
+        nxtTknCmp(&cmp);
+
+    }
+
+    clsFnlPrsFil(); //Close the `.prs` file
+
+    //clsPrsFil();
+    clsTrmCmpFil();
+    //fclose(trmCmpFilPtr); //Close the file stream!
 
     //PARSER_TYPE_ALL
     //Now, create a new file for non-terminal data

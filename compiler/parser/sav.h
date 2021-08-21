@@ -1,11 +1,11 @@
 char *prsFilPth;
 FILE *prsFilPtr = NULL;
 
-void crtPrsFil(char *rotPth, int typ){ //Create a parser file
+void crtPrsFil(char *rotPth){ //Create a parser file
 
-    prsFilPth = apdStr(rotPth, (typ) ? ".trm" : ".prs");
+    prsFilPth = apdStr(rotPth, ".trm");
 
-    prsFilPtr = fopen(prsFilPth, (typ) ? "w" : "w+");
+    prsFilPtr = fopen(prsFilPth, "w");
 
     if(prsFilPtr == NULL){
 
