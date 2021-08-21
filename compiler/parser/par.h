@@ -119,9 +119,21 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             crtRefStt(tkn.__srcLin);
 
+        }else if(isIfStt(tkn.typ, tkn.val)){ //"if_statement"
+
+            crtIfStt(tkn.__srcLin);
+
+        }else if(isElsStt(tkn.typ, tkn.val)){ //"else_statement"
+
+            crtElsStt(tkn.__srcLin);
+
         }else if(isDelStt(tkn.typ, tkn.val)){ //"delete_statement"
 
             crtDelStt(tkn.__srcLin);
+
+        }else if(isSetSizStt(tkn.typ, tkn.val)){ //"setsize_statement"
+
+            crtSetSizStt(tkn.__srcLin);
 
         }
         
@@ -141,6 +153,10 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
         }else if(tkn.typ == LEXER_BOOLEAN){ //This is a "BOOLEAN"
 
             isrtPrsTrm(PARSER_DEFAULTS_BOOLEAN, tkn.val, tkn.__srcLin);
+
+        }else if(tkn.typ == LEXER_NUMBER && tkn.adtVal1 == 1){ //This is a "NUMBER"
+
+            isrtPrsTrm(PARSER_DEFAULTS_DECNUMBER, tkn.val, tkn.__srcLin);
 
         }else if(tkn.typ == LEXER_NUMBER){ //This is a "NUMBER"
 
@@ -361,6 +377,40 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             remTrmCmp(tmpTop);
 
+        }else if(strcmp(cmp.nam, PARSER_STATEMENTS_SETSIZE) == 0){ //The setsize method
+
+            T_Comp tmpBkp = cpyCmp(cmp);
+
+            if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0){
+
+                T_Comp cmpTyp = cpyCmp(cmp);
+
+                if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_NUMBER) == 0){
+
+                    char *tmpStr = malloc(sizeof(char)*(strlen(cmp.cnt) + strlen(cmpTyp.cnt) + 2));
+
+                    sprintf(tmpStr, "%s,%s", cmpTyp.cnt, cmp.cnt);
+
+                    isrtPrsNTrm(PARSER_NTERMINAL_CALLSETSIZE, tmpStr, tmpBkp.srcLin);
+
+                    free(tmpStr);
+
+                }else{
+
+                    isrtPrsNTrm("ERROR", "", -1);
+
+                }
+
+                remTrmCmp(cmpTyp);
+
+            }else{
+
+                isrtPrsNTrm("ERROR", "", -1);
+
+            }
+
+            remTrmCmp(tmpBkp);
+
         }else if(strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){ // Call a function, group, class, or variable
 
             T_Comp tmpBkp = cpyCmp(cmp);
@@ -391,18 +441,18 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             if(!lokForDot){
 
-                exit(-100);
+                isrtPrsNTrm("ERROR", "", -1);
 
             }else{
 
-                if(strcmp(cmp.nam, PARSER_OPERATORS_RETURN_TYPE) == 0){ // A function - IDENTIFIER()
+                if(strcmp(cmp.nam, PARSER_OPERATORS_PARENTHESES) == 0 &&
+                        strcmp(cmp.cnt, PARSER_GENERAL_START) == 0){ // A function - IDENTIFIER()
 
                     prvTknCmp(&cmp);
 
                     isrtPrsNTrm(PARSER_NTERMINAL_CALLFUNC, tmpStr, tmpBkp.srcLin);
 
-                }else if(strcmp(cmp.nam, PARSER_OPERATORS_PARENTHESES) == 0 &&
-                        strcmp(cmp.cnt, PARSER_GENERAL_START) == 0){ // A function - IDENTIFIER::TYPE()
+                }else if(strcmp(cmp.nam, PARSER_OPERATORS_RETURN_TYPE) == 0){ // A function - IDENTIFIER::TYPE()
 
                     if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0){
 
@@ -423,6 +473,8 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
                     }
 
                 }else{ // A variable
+
+                    prvTknCmp(&cmp);
 
                     isrtPrsNTrm(PARSER_NTERMINAL_CALLVAR, tmpStr, tmpBkp.srcLin);
 

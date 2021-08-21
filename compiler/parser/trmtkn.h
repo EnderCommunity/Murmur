@@ -124,10 +124,14 @@ int nxtTknCmp(T_Comp *cmp){
 
 int prvTknCmp(T_Comp *cmp){
 
-    fseek(trmCmpFilPtr, cmp->__prevLinPtr, SEEK_SET); //Go back
+    unsigned int tmp = cmp->__prevLinPtr;
+
+    fseek(trmCmpFilPtr, tmp, SEEK_SET); //Go back
     remTrmCmp(*cmp); //Remove the token
 
     *cmp = getTrmCmp(); //get a new token
+
+    fseek(trmCmpFilPtr, tmp, SEEK_SET); //Go back
 
     return kepLopTrm;
 
