@@ -45,15 +45,23 @@
 //Input (needed directoies and files)
 #define MUR_FILEEXT ".mur"
 #define MUR_LIB_FILEEXT ".lib.mur"
-#if _WIN64 || _WIN32
+#if _WIN64 || _WIN32 //Windows
 
-    #define C_COMPILER_EXECUTABLE_DIR "C:\\msys64\\mingw64\\bin\\gcc.exe" //The directory of your C compiler of choice
+    #define C_COMPILER_EXECUTABLE_DIR "C:\\msys64\\mingw64\\bin\\gcc.exe"
     #define MUR_LIBRARIES_DIR "resources\\libraries\\"
+    #define SYSTEM_TMP_DIR "%%temp%%/"
 
-#else
+#elif __APPLE__ //macOS
 
-    #define C_COMPILER_EXECUTABLE_DIR "gcc" //The directory of your C compiler of choice
+    #define C_COMPILER_EXECUTABLE_DIR "gcc"
     #define MUR_LIBRARIES_DIR "resources/libraries/"
+    #define SYSTEM_TMP_DIR "/var/TMP"
+
+#else //Linux
+
+    #define C_COMPILER_EXECUTABLE_DIR "gcc"
+    #define MUR_LIBRARIES_DIR "resources/libraries/"
+    #define SYSTEM_TMP_DIR "/var/tmp/"
 
 #endif
 
@@ -78,6 +86,7 @@
 #define ENABLE_ALLOW_SEPARATE_FLAG 0 //Enable the header `allow-separate` flag
 #define ENABLE_USING_STATEMENT 1 //Enable the `using` statement
 #define ENABLE_IMPORT_STATEMENT 1 //Enable the `import` statement
+#define ENABLE_TELL_STATEMENT 1 //Enable the `tell` statement
 #define ENABLE_SETSIZE_STATEMENT 1 //Enable the `setsize` statement
 #define ENABLE_DEFINE_STATEMENT 1 //Enable the `define` statement
 

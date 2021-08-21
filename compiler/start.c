@@ -39,6 +39,18 @@ int main(int argc, char *argv[]){
 
     Debug("Starting the compiler", 0);
 
+    // Add this!
+    //-i input_file
+    //-o output_dir
+    //-rn newName
+    //-fp -> full package (all needed files will
+    //                    be included in the final
+    //                    package)
+    //-mp -> minimal package (only files that are
+    //                       created by the user will
+    //                       be included in the final
+    //                       package)
+
     char path[256];
     char *pathPtr = path;
 
@@ -149,6 +161,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
     }else{
 
         crtDatFil(); //Create a ".dat" file
+        crtTllFil(); //Create a ".tll" file
         opnRptFil(); //Create a ".opf" file
 
         ppcRead(fileInf, desFileObj.ptr, "<main>"); //Let the preprocessor do its thing!
@@ -156,6 +169,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
                                         //full path of the main file
 
         clsDatFil(); //Save & close the data file (so you can use its data later)
+        clsTllFil(); //Save & close the "tell" file
         fclose(filePtr); //Close the main input file stream
 
         fclose(desFileObj.ptr);
@@ -172,6 +186,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
         free(desFileObj.pth);
         fclose(desFileObj.ptr);
         freeDatFil(); //Free the data file pointer!
+        freeTllFil(); //Free the "tell" file pointer!
 
         rpt(REPORT_CODE_MESSAGE, REPORT_SECTION_GENERAL, "This process is about to end", "<main>", 0, 0);
 
