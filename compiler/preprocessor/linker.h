@@ -128,7 +128,13 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
 
             //You can start looking now!
 
-            if(ENABLE_USING_STATEMENT && i + 5 < len && (curFile->currLineCon)[i] == 'u' && (curFile->currLineCon)[i + 1] == 's' && (curFile->currLineCon)[i + 2] == 'i' && (curFile->currLineCon)[i + 3] == 'n' && (curFile->currLineCon)[i + 4] == 'g' && (curFile->currLineCon)[i + 5] == ' '){
+            if(ENABLE_USING_STATEMENT && i + 5 < len &&
+                (curFile->currLineCon)[i] == 'u' &&
+                (curFile->currLineCon)[i + 1] == 's' &&
+                (curFile->currLineCon)[i + 2] == 'i' &&
+                (curFile->currLineCon)[i + 3] == 'n' &&
+                (curFile->currLineCon)[i + 4] == 'g' &&
+                (curFile->currLineCon)[i + 5] == ' '){
 
                 //The "using" statement has been detected!
                 writeLogLine("Preprocessor", 0, "A 'using' statement has been detected!", 1, curFile->currLine, curFile->currCol + i);
@@ -272,7 +278,21 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
                           &i,
                           stmIndx);
 
-            }else if(ENABLE_IMPORT_STATEMENT && i + 5 < len && (curFile->currLineCon)[i] == 'i' && (curFile->currLineCon)[i + 1] == 'm' && (curFile->currLineCon)[i + 2] == 'p' && (curFile->currLineCon)[i + 3] == 'o' && (curFile->currLineCon)[i + 4] == 'r' && (curFile->currLineCon)[i + 5] == 't' && ((i + 6 < len) ? ((curFile->currLineCon)[i + 6] == ' ' || (curFile->currLineCon)[i + 6] == '"' || (curFile->currLineCon)[i + 6] == ';') : 1)){
+            }else if(ENABLE_IMPORT_STATEMENT && i + 5 < len &&
+                    (curFile->currLineCon)[i] == 'i' &&
+                    (curFile->currLineCon)[i + 1] == 'm' &&
+                    (curFile->currLineCon)[i + 2] == 'p' &&
+                    (curFile->currLineCon)[i + 3] == 'o' &&
+                    (curFile->currLineCon)[i + 4] == 'r' &&
+                    (curFile->currLineCon)[i + 5] == 't' &&
+                    ((i + 6 < len) ?
+                        (
+                            (curFile->currLineCon)[i + 6] == ' ' ||
+                            (curFile->currLineCon)[i + 6] == '"' ||
+                            (curFile->currLineCon)[i + 6] == ';'
+                        ) :
+                        1
+                    )){
 
                 //The "import" statement has been detected!
                 writeLogLine("Preprocessor", 0, "An 'import' statement has been detected!", 1, curFile->currLine, curFile->currCol + i);
@@ -412,6 +432,132 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
                     rpt(REPORT_CODE_ERROR, //This is an error
                     REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
                     MSG_PPC_LINKER_IMPORT_SEMICOLON, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + i); //The column the error occurs
+
+                }
+
+                free(tmpStr); //Free the path
+
+                rmvPrcSec(&curFile,
+                          &len,
+                          &i,
+                          stmIndx);
+
+            }else if(ENABLE_TELL_STATEMENT && i + 5 < len &&
+                    (curFile->currLineCon)[i] == 't' &&
+                    (curFile->currLineCon)[i + 1] == 'e' &&
+                    (curFile->currLineCon)[i + 2] == 'l' &&
+                    (curFile->currLineCon)[i + 3] == 'l' &&
+                    (
+                        (i + 4 < len) ? (
+                            (curFile->currLineCon)[i + 4] == ' ' ||
+                            (curFile->currLineCon)[i + 4] == '"' ||
+                            (curFile->currLineCon)[i + 4] == ';'
+                        ) :
+                        1
+                    )){
+
+                //The "tell" statement has been detected!
+                writeLogLine("Preprocessor", 0, "A 'tell' statement has been detected!", 1, curFile->currLine, curFile->currCol + i);
+
+                int stmIndx = i, lokForStr = 1, pthLen = 0, isDon = 0, fndCls = 0, fndEnd = 0, isFstNoSpc = 1;
+
+                char *tmpStr = malloc(1*sizeof(char));
+
+                for(i += 5; i < len; i++){
+
+                    if((curFile->currLineCon)[i] == ';'){ //Find the end of this command!
+
+                        fndEnd = 1;
+                        break;
+
+                    }
+
+                    if(!isspace((curFile->currLineCon)[i])) {
+
+                        if(isFstNoSpc == 1){
+
+                            isFstNoSpc = 0;
+
+                            if((curFile->currLineCon)[i] != '"'){
+
+                                isFstNoSpc = -1;
+                                break;
+
+                            }
+
+                        }
+
+                        if(isDon){
+
+                            exit(-100); //Well, this is not supposed to happen!
+                            //This may not be possible, IDK.
+
+                        }
+
+                        if(lokForStr && (curFile->currLineCon)[i] == '"'){
+
+                            lokForStr = 0;
+
+                        }else if((curFile->currLineCon)[i] != '"'){ //Could crash when there's no closing quote
+
+                            tmpStr[pthLen] = (curFile->currLineCon)[i];
+                            tmpStr = realloc(tmpStr, (++pthLen + 1)*sizeof(char));
+
+                        }else{ //Well, we're done here!
+
+                            isDon = 1;
+
+                            //Start saving this data!
+                            tmpStr[pthLen] = '\0';
+
+                            insTllDat(tmpStr);
+
+                            //int orgImpPthLen = strlen(tmpStr); //Save the string length!
+                            //char *fnlPth = pthAnl(wrkstn.Path, tmpStr);
+
+                            writeLogLine("Preprocessor", 0, "Saving the content of the tell method into the `.tll` output file.", 1, curFile->currLine, stmIndx + curFile->currCol);
+
+                        }
+
+                    }
+
+                }
+
+                if(isFstNoSpc == -1){
+
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_TELL_NOSTRINGINPUT, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + i); //The column the error occurs
+
+                }else if(!isDon && lokForStr){
+
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_TELL_NOINPUT, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + stmIndx); //The column the error occurs
+
+                }else if(!isDon){
+
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_TELL_CLOSINGQUOTE, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + i); //The column the error occurs
+
+                }else if(!fndEnd || (!fndEnd && sizeof(tmpStr) == sizeof(char))) {
+
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_TELL_SEMICOLON, //This is the custom error message (check /compiler/errors/messages.h)
                     srcPth, //The source of this error
                     curFile->currLine, //The line of this error
                     curFile->currCol + i); //The column the error occurs

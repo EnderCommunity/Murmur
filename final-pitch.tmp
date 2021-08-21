@@ -7,15 +7,15 @@
 [{<Ax000004>@<Ax000003>@<main>},14;9]->}
 [{<Ax000004>@<Ax000003>@<main>},16;5]->}
 [{<Ax000004>@<Ax000003>@<main>},18;1]->}
-[{<Ax000003>@<main>},5;1]->public group LibFilNam {
-[{<Ax000003>@<main>},7;5]->public class section {
-[{<Ax000003>@<main>},9;9]->function::string myFunction(int input) {
-[{<Ax000003>@<main>},11;13]->string output;
-[{<Bx000005>@<Ax000003>@<main>},15;13]->0;
-[{<Ax000003>@<main>},18;13]->return output;
-[{<Ax000003>@<main>},20;9]->}
-[{<Ax000003>@<main>},22;5]->}
-[{<Ax000003>@<main>},24;1]->}
+[{<Ax000003>@<main>},8;1]->public group LibFilNam {
+[{<Ax000003>@<main>},10;5]->public class section {
+[{<Ax000003>@<main>},12;9]->function::string myFunction(int input) {
+[{<Ax000003>@<main>},14;13]->string output;
+[{<Bx000005>@<Ax000003>@<main>},18;13]->0;
+[{<Ax000003>@<main>},21;13]->return output;
+[{<Ax000003>@<main>},23;9]->}
+[{<Ax000003>@<main>},25;5]->}
+[{<Ax000003>@<main>},27;1]->}
 [{<main>},36;1]->define ZERO 0;
 [{<main>},40;1]->setsize int 2;
 [{<main>},41;1]->setsize double 10;

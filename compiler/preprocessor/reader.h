@@ -1,6 +1,7 @@
 void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth);
 
 #include "data.h"
+#include "tell.h"
 #include "linker.h"
 
 FileInfo* chngFileCol(FileInfo *tmp, int col){

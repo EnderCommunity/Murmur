@@ -1,6 +1,9 @@
 #header <nothing-to-see-here>
 
 import "another-library.lib.mur";
+tell "DLL::root:myLib.dll"; // You can use the "tell"
+                       // method to send messages
+                       // to the bundler
 
 public group LibFilNam {
 

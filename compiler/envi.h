@@ -86,6 +86,7 @@
 #define ENABLE_ALLOW_SEPARATE_FLAG 0 //Enable the header `allow-separate` flag
 #define ENABLE_USING_STATEMENT 1 //Enable the `using` statement
 #define ENABLE_IMPORT_STATEMENT 1 //Enable the `import` statement
+#define ENABLE_TELL_STATEMENT 1 //Enable the `tell` statement
 #define ENABLE_SETSIZE_STATEMENT 1 //Enable the `setsize` statement
 #define ENABLE_DEFINE_STATEMENT 1 //Enable the `define` statement
 
