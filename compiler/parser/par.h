@@ -422,7 +422,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                 }else{
 
-                    isrtPrsNTrm("ERROR", "", -1);
+                    rptPrs(cmpTyp.srcLin, MSG_PRS_SETSIZEINVALIDSIZEINPUT);
 
                 }
 
@@ -430,7 +430,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             }else{
 
-                isrtPrsNTrm("ERROR", "", -1);
+                rptPrs(tmpBkp.srcLin, MSG_PRS_SETSIZEINVALIDTYPEINPUT);
 
             }
 
@@ -466,7 +466,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             if(!lokForDot){
 
-                isrtPrsNTrm("ERROR", "", -1);
+                rptPrs(tmpBkp.srcLin, MSG_PRS_DOTINVALIDFOLLOWUP);
 
             }else{
 
@@ -479,7 +479,10 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                 }else if(strcmp(cmp.nam, PARSER_OPERATORS_RETURN_TYPE) == 0){ // A function - IDENTIFIER::TYPE()
 
-                    if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0){
+                    if(nxtTknCmp(&cmp) && (
+                            strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0 ||
+                            strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0
+                        )){
 
                         tmpStr = realloc(tmpStr, sizeof(char)*(strlen(cmp.nam) + strlen(cmp.cnt) + 2));
                         char *tmpStr2 = malloc(sizeof(char)*(strlen(cmp.nam) + strlen(cmp.cnt) + 2));
@@ -493,7 +496,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                     }else{
 
-                        isrtPrsNTrm("ERROR", "", -1);
+                        rptPrs(tmpBkp.srcLin, MSG_PRS_FUNCINVALIDRETURNTYPESPECIF);
 
                     }
 
