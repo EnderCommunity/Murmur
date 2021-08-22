@@ -44,6 +44,15 @@
 //"parser/terminal/specifiers.h"
 #define MSG_PRS_TRM_SPC_ARRAYDEFFNOTCLOSED "Array was not closed!"
 
+//"parser/prs.h"
+#define MSG_PRS_VARNAMEMISSING "No name is present for the variable!"
+#define MSG_PRS_FUNCRETURNTYPEMISSING "No valid return type is present for the function!"
+#define MSG_PRS_FUNCNAMEMISSING "No valid name is present for the function!"
+#define MSG_PRS_FUNCRETURNOPMISSING "Return-type declarative operator is not present!"
+#define MSG_PRS_GROUPNAMEMISSING "No valid name is present for the group!"
+#define MSG_PRS_CLASSNAMEMISSING "No valid name is present for the class!"
+#define MSG_PRS_INCORRECTUSEOFSTATE "Incorrect use of the `public`/`private` state keyword!"
+#define MSG_PRS_MISSINGSTRUCTVALUE "Missing structure-related/zone-related value!"
 
 //Optimiser (MSG_OPT_...)
 //#define MSG_OPT_

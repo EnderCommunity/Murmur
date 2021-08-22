@@ -11,6 +11,22 @@
 #include "terminal/operators.h"
 #include "terminal/statements.h"
 
+void rptPrs(int id, char *msg){
+
+    Inf_Token tmpInf = getLxrInfTkn(id);
+
+    rpt(REPORT_CODE_ERROR, //This is an error
+    REPORT_SECTION_PARSER, //The error was detected by the preprocessor
+    msg, //This is the custom error message (check /compiler/errors/messages.h)
+    tmpInf.src, //The source of this error
+    tmpInf.lin, //The line of this error
+    tmpInf.col); //The column the error occurs
+    isrtPrsNTrm("ERROR", "", -1);
+
+    delLxrInfTkn(tmpInf);
+
+}
+
 void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
     setTknFilPtr(lexFilPtr); //Setup the tokens queue
@@ -239,7 +255,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                     }else{
 
-                        isrtPrsNTrm("ERROR", "", -1);
+                        rptPrs(tmpTyp.srcLin, MSG_PRS_VARNAMEMISSING);
 
                     }
 
@@ -256,15 +272,14 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
                         (nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_OPERATORS_RETURN_TYPE) == 0)
                         ){
 
-                        nxtTknCmp(&cmp);
+                        T_Comp tmpCrd = cpyCmp(cmp);
 
-                        if(strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0 ||
+                        if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0 ||
                             strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0 ){
 
                             T_Comp tmpRtrTyp = cpyCmp(cmp);
-                            nxtTknCmp(&cmp);
 
-                            if(strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0 ){
+                            if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0 ){
 
                                 char *tmpStr = malloc(sizeof(char)*(((!isStat) ? (
                                                                         strlen(tmpRtrTyp.cnt) + strlen(cmp.cnt) + strlen("public")) : (
@@ -283,7 +298,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                             }else{
 
-                                isrtPrsNTrm("ERROR", "", -1);
+                                rptPrs(tmpRtrTyp.srcLin, MSG_PRS_FUNCNAMEMISSING);
 
                             }
 
@@ -291,13 +306,15 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                         }else{
 
-                            isrtPrsNTrm("ERROR", "", -1);
+                            rptPrs(tmpCrd.srcLin, MSG_PRS_FUNCRETURNTYPEMISSING);
 
                         }
 
+                        remTrmCmp(tmpCrd);
+
                     }else{
 
-                        isrtPrsNTrm("ERROR", "", -1);
+                        rptPrs((isStat) ? cmp.srcLin : tmpTop.srcLin, MSG_PRS_FUNCRETURNOPMISSING);
 
                     }
 
@@ -306,6 +323,8 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
                     ) : (
                         strcmp(tmpTop.nam, PARSER_DECLARATORS_GROUP) == 0
                     )){
+
+                    T_Comp tmpTop = cpyCmp(cmp);
 
                     if((!isStat && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0) ||
                         (nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0)
@@ -328,15 +347,19 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                     }else{
 
-                        isrtPrsNTrm("ERROR", "", -1);
+                        rptPrs(tmpTop.srcLin, MSG_PRS_GROUPNAMEMISSING);
 
                     }
+
+                    remTrmCmp(tmpTop);
 
                 }else if((isStat) ? ( //CLASS!
                         strcmp(cmp.nam, PARSER_DECLARATORS_CLASS) == 0
                     ) : (
                         strcmp(tmpTop.nam, PARSER_DECLARATORS_CLASS) == 0
                     )){
+
+                    T_Comp tmpTop = cpyCmp(cmp);
 
                     if((!isStat && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0) ||
                         (nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0)
@@ -359,19 +382,21 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                     }else{
 
-                        isrtPrsNTrm("ERROR", "", -1);
+                        rptPrs(tmpTop.srcLin, MSG_PRS_CLASSNAMEMISSING);
 
                     }
 
+                    remTrmCmp(tmpTop);
+
                 }else{
 
-                    isrtPrsNTrm("ERROR", "", -1);
+                    rptPrs(cmp.srcLin, MSG_PRS_INCORRECTUSEOFSTATE);
 
                 }
 
             }else{
 
-                isrtPrsNTrm("ERROR", "", -1);
+                rptPrs(tmpTop.srcLin, MSG_PRS_MISSINGSTRUCTVALUE);
 
             }
 

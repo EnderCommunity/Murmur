@@ -2,9 +2,9 @@ STRING(Test 1!)<1>
 end_operator()<2>
 STRING(Test 2!)<3>
 end_operator()<4>
-GROUP(AnotherLibrary,public)<5>
+GROUP(AnotherLibrary,public)<6>
 zone_operator(open)<7>
-CLASS(MyClass,public)<8>
+CLASS(MyClass,public)<9>
 zone_operator(open)<10>
 FUNCTION(NumOne,int,public)<11>
 parentheses_operator(open)<16>
@@ -16,9 +16,9 @@ end_operator()<21>
 zone_operator(close)<22>
 zone_operator(close)<23>
 zone_operator(close)<24>
-GROUP(LibFilNam,public)<25>
+GROUP(LibFilNam,)<26>
 zone_operator(open)<28>
-CLASS(section,public)<29>
+CLASS(section,)<30>
 zone_operator(open)<32>
 FUNCTION(myFunction,string,public)<33>
 parentheses_operator(open)<38>
@@ -42,9 +42,9 @@ SETSIZE(int,2)<57>
 end_operator()<60>
 SETSIZE(double,10)<61>
 end_operator()<64>
-GROUP(FinalPitch,public)<65>
+GROUP(FinalPitch,)<66>
 zone_operator(open)<68>
-CLASS(Program,public)<69>
+CLASS(Program,)<70>
 zone_operator(open)<72>
 DEFINE_VAR(globA,int,public)<73>
 assignment_operator(=)<76>
@@ -346,7 +346,7 @@ VAR(this.globJ)<483>
 end_operator()<484>
 zone_operator(close)<485>
 zone_operator(close)<486>
-CLASS(AnotherClass,public)<487>
+CLASS(AnotherClass,)<488>
 zone_operator(open)<490>
 DEFINE_VAR(a,int,public)<491>
 assignment_operator(=)<494>
@@ -373,7 +373,7 @@ VAR(b)<526>
 end_operator()<527>
 zone_operator(close)<528>
 zone_operator(close)<529>
-CLASS(Smth,public)<530>
+CLASS(Smth,public)<531>
 zone_operator(open)<532>
 zone_operator(close)<533>
 zone_operator(close)<534>
