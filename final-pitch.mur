@@ -57,18 +57,18 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
                     //another, in case you wanted to prevent other classes from
                     //accessing some variables or functions
 
-        public int globA = 0;
-        public double globB = 0.0;
-        public float globC = 0.0;
-        public char globD = 'D';
-        public string globE = "Global E";
-        public bool globF = true;
-        public file globG = new FileStream("path/to/my/file.txt");
-        public hex globH = 0xFF;
-        public string[] globI = new Array::string[](6);
-        private hex[,] globJ = new Array::hex[,](8, 2);
+        public variable::int globA = 0;
+        public variable::double globB = 0.0;
+        public variable::float globC = 0.0;
+        public variable::char globD = 'D';
+        public variable::string globE = "Global E";
+        public variable::bool globF = true;
+        public variable::file globG = new FileStream("path/to/my/file.txt");
+        public variable::hex globH = 0xFF;
+        public variable::string[] globI = new Array::string[](6);
+        private variable::hex[,] globJ = new Array::hex[,](8, 2);
 
-        public function::int Main(string[] envi, int length){ //This is the main
+        public function::int Main(envi::string[], length::int){ //This is the main
                                                        //function in the program!
                                                        //All Murmur programs
                                                        //should include a main
@@ -79,19 +79,19 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
             Func(); //You can access any function inside this class
 
-            ^int a = 0; //This variable will allocate the custom set amount of
+            variable::^int a = 0; //This variable will allocate the custom set amount of
                         //memory specified at the start of this program!
 
-            int b = 1; //This variable will allocate the default amount of
+            variable::int b = 1; //This variable will allocate the default amount of
                        //memory set by the compiler
 
-            ^int c = Test(a, 1); //You can pass all types of variables to other functions
+            variable::^int c = Test(a, 1); //You can pass all types of variables to other functions
 
             a = 1, c = 5; //Change the value of 'c' to '5'm and the value of 'a' to '1'
 
-            PlusOne(ref b); //the value of 'b' is '2' now!
+            PlusOne(b:ref); //the value of 'b' is '2' now!
 
-            bool myTest = false;
+            variable::bool myTest = false;
 
             if(myTest == true){ //This condition is impossible
 
@@ -135,18 +135,19 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
         }
 
-        public function::^int Test(^int a, int b){
+        public function::^int Test(a::^int, b::int){
 
-            a = (^int) b;
+            a = (^int) b; //Do not support this!
+            // First, add a library that can take care of this stuff.
 
             return a;
 
         }
 
-        public function::void PlusOne(ref int a){ //with the keyword "ref", you can make changes to the originally passed variable within this function
+        public function::void PlusOne(a::int:ref){ //with the keyword "ref", you can make changes to the originally passed variable within this function
                                     //^ "reference"
                                     //int og = 0;
-                                    //PlusOne(ref og);
+                                    //PlusOne(og:ref);
 
             a++; //the value of 'og' will change to '1'!
 
@@ -154,9 +155,9 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
         public function::void myTests(){
 
-            bool myTest = false;
-            int a = 0, b = 0;
-            double c = 4, d = 3;
+            variable::bool myTest = false;
+            variable::int a = 0, b = 0;
+            variable::double c = 4, d = 3;
 
             myTest!!; //This is the same as myTest = !myTest;
             myTest = !myTest;
@@ -176,15 +177,15 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
         }
 
-        function::string myStringTest(string a){
+        function::string myStringTest(a::string){
 
-            string b = "Hi!";
+            variable::string b = "Hi!";
             delete b; // You can delete variables using
                       // the keyword "delete".
                       // (But you can only do that on
                       // the level of your current
                       // zone!)
-            int b = 1;
+            variable::int b = 1;
 
             // Also, you can't delete any variables
             // that are passed as arguments to the
@@ -203,10 +204,10 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
     public class AnotherClass {
 
-        public int a = 0;
-        private int b = 0;
+        public variable::int a = 0;
+        private variable::int b = 0;
 
-        function::AnotherClass Construct(int a, int b){ //You can use constructors in your classes!
+        public function::AnotherClass Construct(a::int, b::int){ //You can use constructors in your classes!
 
             this.a = a;
             this.b = b;
@@ -216,7 +217,13 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
     }
 
     class Smth { //Any object with no state indicator will be set to 'public' by default
-        //
+
+        function::void myTest(a::int){
+
+            //
+
+        }
+
     }
 
 }
