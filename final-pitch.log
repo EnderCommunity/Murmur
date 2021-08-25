@@ -1,5 +1,5 @@
 [?][LOG SYSTEM] => Created a log file successfully!
-[!][Compiler Manager] => The workstation directory has been set to "E:\files\EnderCommunity\Projects\Murmur\"
+[!][Compiler Manager] => The workstation directory has been set to "/mnt/e/files/EnderCommunity/Projects/Murmur/"
 [?][Compiler Manager] => Testing the `writeLogLine` function
 [?][Compiler Manager] => Starting the preprocessor.
 [?][Preprocessor] => Preprocessor started!
@@ -155,7 +155,7 @@
 [?][Preprocessor][34, 35] => A single line comment has been detected!
 [?][Preprocessor][34, 1] => Checking for preprocessor methods...
 [?][Preprocessor][34, 1] => An 'import' statement has been detected!
-[?][Preprocessor][34, 1] => Importing the content of the file <E:\files\EnderCommunity\Projects\Murmur\final-pitch-lib.lib.mur> into the temporary output file.
+[?][Preprocessor][34, 1] => Importing the content of the file </mnt/e/files/EnderCommunity/Projects/Murmur/final-pitch-lib.lib.mur> into the temporary output file.
 [?][Preprocessor] => The header has been detected!
 [?][Preprocessor] => The header flags have been processed successfully!
 [?][Preprocessor] => Getting the content of the next line...
@@ -164,7 +164,7 @@
 [!][Preprocessor] => import "another-library.lib.mur";
 [?][Preprocessor][3, 1] => Checking for preprocessor methods...
 [?][Preprocessor][3, 1] => An 'import' statement has been detected!
-[?][Preprocessor][3, 1] => Importing the content of the file <E:\files\EnderCommunity\Projects\Murmur\another-library.lib.mur> into the temporary output file.
+[?][Preprocessor][3, 1] => Importing the content of the file </mnt/e/files/EnderCommunity/Projects/Murmur/another-library.lib.mur> into the temporary output file.
 [?][Preprocessor][1, 1] => New processing loop started.
 [!][Preprocessor] => //import "hi.co";
 [?][Preprocessor][1, 1] => A single line comment has been detected!
@@ -204,7 +204,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][10, 9] => New processing loop started.
-[!][Preprocessor] => function::int NumOne(){
+[!][Preprocessor] => func:int NumOne(){
 [?][Preprocessor][10, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -241,7 +241,7 @@
 [?][Preprocessor][18, 1] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor][3, 1] => Finished importing the content of the file <E:\files\EnderCommunity\Projects\Murmur\another-library.lib.mur> into the temporary output file.
+[?][Preprocessor][3, 1] => Finished importing the content of the file </mnt/e/files/EnderCommunity/Projects/Murmur/another-library.lib.mur> into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][4, 1] => New processing loop started.
@@ -272,7 +272,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][9, 1] => New processing loop started.
-[!][Preprocessor] => public group LibFilNam {
+[!][Preprocessor] => group::public LibFilNam {
 [?][Preprocessor][9, 1] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -280,7 +280,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][11, 5] => New processing loop started.
-[!][Preprocessor] => public class section {
+[!][Preprocessor] => class::public section {
 [?][Preprocessor][11, 5] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -288,7 +288,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][13, 9] => New processing loop started.
-[!][Preprocessor] => function::string myFunction(int input) {
+[!][Preprocessor] => func:string myFunction(input:int) {
 [?][Preprocessor][13, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -296,7 +296,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][15, 13] => New processing loop started.
-[!][Preprocessor] => string output;
+[!][Preprocessor] => var:string output;
 [?][Preprocessor][15, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -357,13 +357,13 @@
 [?][Preprocessor][28, 1] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor][34, 1] => Finished importing the content of the file <E:\files\EnderCommunity\Projects\Murmur\final-pitch-lib.lib.mur> into the temporary output file.
+[?][Preprocessor][34, 1] => Finished importing the content of the file </mnt/e/files/EnderCommunity/Projects/Murmur/final-pitch-lib.lib.mur> into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][36, 1] => New processing loop started.
-[!][Preprocessor] => define ZERO 0; //You can use the `define` function to define a variable that
+[!][Preprocessor] => define ZERO 0; //You can use the `define` function to define a var that
 [?][Preprocessor][36, 16] => A single line comment has been detected!
 [?][Preprocessor][36, 1] => Checking for preprocessor methods...
 [?][Preprocessor][36, 1] => A 'define' statement has been detected!
@@ -411,7 +411,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][45, 1] => New processing loop started.
-[!][Preprocessor] => //amount of memory for the 'int' variable, whereas "file2.mur" will be able to
+[!][Preprocessor] => //amount of memory for the 'int' var, whereas "file2.mur" will be able to
 [?][Preprocessor][45, 1] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -430,8 +430,8 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][50, 1] => New processing loop started.
-[!][Preprocessor] => public group FinalPitch { //Groups can help you keep a whole block of code within one
-[?][Preprocessor][50, 27] => A single line comment has been detected!
+[!][Preprocessor] => group::public FinalPitch { //Groups can help you keep a whole block of code within one
+[?][Preprocessor][50, 28] => A single line comment has been detected!
 [?][Preprocessor][50, 1] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -456,8 +456,8 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][56, 5] => New processing loop started.
-[!][Preprocessor] => public class Program { //Classes can be used to completely separate functions from one
-[?][Preprocessor][56, 28] => A single line comment has been detected!
+[!][Preprocessor] => class::public Program { //Classes can be used to completely separate functions from one
+[?][Preprocessor][56, 29] => A single line comment has been detected!
 [?][Preprocessor][56, 5] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -468,68 +468,68 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][58, 21] => New processing loop started.
-[!][Preprocessor] => //accessing some variables or functions
+[!][Preprocessor] => //accessing some vars or functions
 [?][Preprocessor][58, 21] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][60, 9] => New processing loop started.
-[!][Preprocessor] => public int globA = 0;
+[!][Preprocessor] => var::public:int globA = 0;
 [?][Preprocessor][60, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][61, 9] => New processing loop started.
-[!][Preprocessor] => public double globB = 0.0;
+[!][Preprocessor] => var::public:double globB = 0.0;
 [?][Preprocessor][61, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][62, 9] => New processing loop started.
-[!][Preprocessor] => public float globC = 0.0;
+[!][Preprocessor] => var::public:float globC = 0.0;
 [?][Preprocessor][62, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][63, 9] => New processing loop started.
-[!][Preprocessor] => public char globD = 'D';
+[!][Preprocessor] => var::public:char globD = 'D';
 [?][Preprocessor][63, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][64, 9] => New processing loop started.
-[!][Preprocessor] => public string globE = "Global E";
+[!][Preprocessor] => var::public:string globE = "Global E";
 [?][Preprocessor][64, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][65, 9] => New processing loop started.
-[!][Preprocessor] => public bool globF = true;
+[!][Preprocessor] => var::public:bool globF = true;
 [?][Preprocessor][65, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][66, 9] => New processing loop started.
-[!][Preprocessor] => public file globG = new FileStream("path/to/my/file.txt");
+[!][Preprocessor] => var::public:file globG = new FileStream("path/to/my/file.txt");
 [?][Preprocessor][66, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][67, 9] => New processing loop started.
-[!][Preprocessor] => public hex globH = 0xFF;
+[!][Preprocessor] => var::public:hex globH = 0xFF;
 [?][Preprocessor][67, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][68, 9] => New processing loop started.
-[!][Preprocessor] => public string[] globI = new Array::string[](6);
+[!][Preprocessor] => var::public:string[] globI = new Array:string[](6);
 [?][Preprocessor][68, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][69, 9] => New processing loop started.
-[!][Preprocessor] => private hex[,] globJ = new Array::hex[,](8, 2);
+[!][Preprocessor] => var::private:hex[,] globJ = new Array:hex[,](8, 2);
 [?][Preprocessor][69, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -537,8 +537,8 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][71, 9] => New processing loop started.
-[!][Preprocessor] => public function::int Main(string[] envi, int length){ //This is the main
-[?][Preprocessor][71, 63] => A single line comment has been detected!
+[!][Preprocessor] => func::public:int Main(envi:string[], length:int){ //This is the main
+[?][Preprocessor][71, 59] => A single line comment has been detected!
 [?][Preprocessor][71, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -587,36 +587,36 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][82, 13] => New processing loop started.
-[!][Preprocessor] => ^int a = 0; //This variable will allocate the custom set amount of
-[?][Preprocessor][82, 25] => A single line comment has been detected!
+[!][Preprocessor] => var:^int a = 0; //This var will allocate the custom set amount of
+[?][Preprocessor][82, 29] => A single line comment has been detected!
 [?][Preprocessor][82, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][83, 25] => New processing loop started.
+[?][Preprocessor][83, 29] => New processing loop started.
 [!][Preprocessor] => //memory specified at the start of this program!
-[?][Preprocessor][83, 25] => A single line comment has been detected!
+[?][Preprocessor][83, 29] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][85, 13] => New processing loop started.
-[!][Preprocessor] => int b = 1; //This variable will allocate the default amount of
-[?][Preprocessor][85, 24] => A single line comment has been detected!
+[!][Preprocessor] => var:int b = 1; //This var will allocate the default amount of
+[?][Preprocessor][85, 28] => A single line comment has been detected!
 [?][Preprocessor][85, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][86, 24] => New processing loop started.
+[?][Preprocessor][86, 28] => New processing loop started.
 [!][Preprocessor] => //memory set by the compiler
-[?][Preprocessor][86, 24] => A single line comment has been detected!
+[?][Preprocessor][86, 28] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][88, 13] => New processing loop started.
-[!][Preprocessor] => ^int c = Test(a, 1); //You can pass all types of variables to other functions
-[?][Preprocessor][88, 34] => A single line comment has been detected!
+[!][Preprocessor] => var:^int c = Test(a, 1); //You can pass all types of vars to other functions
+[?][Preprocessor][88, 38] => A single line comment has been detected!
 [?][Preprocessor][88, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -633,7 +633,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][92, 13] => New processing loop started.
-[!][Preprocessor] => PlusOne(ref b); //the value of 'b' is '2' now!
+[!][Preprocessor] => PlusOne(b:ref); //the value of 'b' is '2' now!
 [?][Preprocessor][92, 29] => A single line comment has been detected!
 [?][Preprocessor][92, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
@@ -642,7 +642,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][94, 13] => New processing loop started.
-[!][Preprocessor] => bool myTest = false;
+[!][Preprocessor] => var:bool myTest = false;
 [?][Preprocessor][94, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -778,7 +778,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][128, 9] => New processing loop started.
-[!][Preprocessor] => private function::void Func(){
+[!][Preprocessor] => func::private:void Func(){
 [?][Preprocessor][128, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -818,7 +818,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][138, 9] => New processing loop started.
-[!][Preprocessor] => public function::^int Test(^int a, int b){
+[!][Preprocessor] => func::public:^int Test(a::^int, b::int){
 [?][Preprocessor][138, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
@@ -826,398 +826,424 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][140, 13] => New processing loop started.
-[!][Preprocessor] => a = (^int) b;
+[!][Preprocessor] => a = (^int) b; //Do not support this!
+[?][Preprocessor][140, 27] => A single line comment has been detected!
 [?][Preprocessor][140, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][141, 13] => New processing loop started.
+[!][Preprocessor] => // First, add a library that can take care of this stuff.
+[?][Preprocessor][141, 13] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][142, 13] => New processing loop started.
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][143, 13] => New processing loop started.
 [!][Preprocessor] => return a;
-[?][Preprocessor][142, 13] => Checking for preprocessor methods...
+[?][Preprocessor][143, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][144, 9] => New processing loop started.
+[?][Preprocessor][145, 9] => New processing loop started.
 [!][Preprocessor] => }
-[?][Preprocessor][144, 9] => Checking for preprocessor methods...
+[?][Preprocessor][145, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][146, 9] => New processing loop started.
-[!][Preprocessor] => public function::void PlusOne(ref int a){ //with the keyword "ref", you can make changes to the originally passed variable within this function
-[?][Preprocessor][146, 51] => A single line comment has been detected!
-[?][Preprocessor][146, 9] => Checking for preprocessor methods...
+[?][Preprocessor][147, 9] => New processing loop started.
+[!][Preprocessor] => func::public:void PlusOne(a::int:ref){ //with the keyword "ref", you can make changes to the originally passed var within this function
+[?][Preprocessor][147, 48] => A single line comment has been detected!
+[?][Preprocessor][147, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
-[?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][147, 37] => New processing loop started.
-[!][Preprocessor] => //^ "reference"
-[?][Preprocessor][147, 37] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][148, 37] => New processing loop started.
-[!][Preprocessor] => //int og = 0;
+[!][Preprocessor] => //^ "reference"
 [?][Preprocessor][148, 37] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][149, 37] => New processing loop started.
-[!][Preprocessor] => //PlusOne(ref og);
+[!][Preprocessor] => //int og = 0;
 [?][Preprocessor][149, 37] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][150, 37] => New processing loop started.
+[!][Preprocessor] => //PlusOne(og:ref);
+[?][Preprocessor][150, 37] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][151, 13] => New processing loop started.
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][152, 13] => New processing loop started.
 [!][Preprocessor] => a++; //the value of 'og' will change to '1'!
-[?][Preprocessor][151, 18] => A single line comment has been detected!
-[?][Preprocessor][151, 13] => Checking for preprocessor methods...
+[?][Preprocessor][152, 18] => A single line comment has been detected!
+[?][Preprocessor][152, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][153, 9] => New processing loop started.
+[?][Preprocessor][154, 9] => New processing loop started.
 [!][Preprocessor] => }
-[?][Preprocessor][153, 9] => Checking for preprocessor methods...
+[?][Preprocessor][154, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][155, 9] => New processing loop started.
-[!][Preprocessor] => public function::void myTests(){
-[?][Preprocessor][155, 9] => Checking for preprocessor methods...
+[?][Preprocessor][156, 9] => New processing loop started.
+[!][Preprocessor] => func::public:void myTests(){
+[?][Preprocessor][156, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][157, 13] => New processing loop started.
-[!][Preprocessor] => bool myTest = false;
-[?][Preprocessor][157, 13] => Checking for preprocessor methods...
-[?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][158, 13] => New processing loop started.
-[!][Preprocessor] => int a = 0, b = 0;
+[!][Preprocessor] => var:bool myTest = false;
 [?][Preprocessor][158, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][159, 13] => New processing loop started.
-[!][Preprocessor] => double c = 4, d = 3;
+[!][Preprocessor] => var:int a = 0, b = 0;
 [?][Preprocessor][159, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][161, 13] => New processing loop started.
-[!][Preprocessor] => myTest!!; //This is the same as myTest = !myTest;
-[?][Preprocessor][161, 23] => A single line comment has been detected!
-[?][Preprocessor][161, 13] => Checking for preprocessor methods...
+[?][Preprocessor][160, 13] => New processing loop started.
+[!][Preprocessor] => var:double c = 4, d = 3;
+[?][Preprocessor][160, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][162, 13] => New processing loop started.
-[!][Preprocessor] => myTest = !myTest;
+[!][Preprocessor] => myTest!!; //This is the same as myTest = !myTest;
+[?][Preprocessor][162, 23] => A single line comment has been detected!
 [?][Preprocessor][162, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][163, 13] => New processing loop started.
-[!][Preprocessor] => a++; //This is the same as a += 1;
-[?][Preprocessor][163, 18] => A single line comment has been detected!
+[!][Preprocessor] => myTest = !myTest;
 [?][Preprocessor][163, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][164, 13] => New processing loop started.
-[!][Preprocessor] => a += 1;
+[!][Preprocessor] => a++; //This is the same as a += 1;
+[?][Preprocessor][164, 18] => A single line comment has been detected!
 [?][Preprocessor][164, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][165, 13] => New processing loop started.
-[!][Preprocessor] => a = a + 1;
+[!][Preprocessor] => a += 1;
 [?][Preprocessor][165, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][166, 13] => New processing loop started.
-[!][Preprocessor] => b--; //This is the same as b -= 1;
-[?][Preprocessor][166, 18] => A single line comment has been detected!
+[!][Preprocessor] => a = a + 1;
 [?][Preprocessor][166, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][167, 13] => New processing loop started.
-[!][Preprocessor] => b -= 1;
+[!][Preprocessor] => b--; //This is the same as b -= 1;
+[?][Preprocessor][167, 18] => A single line comment has been detected!
 [?][Preprocessor][167, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][168, 13] => New processing loop started.
-[!][Preprocessor] => b = b - 1;
+[!][Preprocessor] => b -= 1;
 [?][Preprocessor][168, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][170, 13] => New processing loop started.
-[!][Preprocessor] => c %= d; //This is the same as  c = c % d;
-[?][Preprocessor][170, 21] => A single line comment has been detected!
-[?][Preprocessor][170, 13] => Checking for preprocessor methods...
+[?][Preprocessor][169, 13] => New processing loop started.
+[!][Preprocessor] => b = b - 1;
+[?][Preprocessor][169, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][171, 13] => New processing loop started.
-[!][Preprocessor] => c % d; //The result is 1!
-[?][Preprocessor][171, 20] => A single line comment has been detected!
+[!][Preprocessor] => c %= d; //This is the same as  c = c % d;
+[?][Preprocessor][171, 21] => A single line comment has been detected!
 [?][Preprocessor][171, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][172, 13] => New processing loop started.
-[!][Preprocessor] => c /= 0.5; //This is the same as  c = c / 0.5;
-[?][Preprocessor][172, 23] => A single line comment has been detected!
+[!][Preprocessor] => c % d; //The result is 1!
+[?][Preprocessor][172, 20] => A single line comment has been detected!
 [?][Preprocessor][172, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][173, 13] => New processing loop started.
-[!][Preprocessor] => c / d; //The result is 0.66666666!
-[?][Preprocessor][173, 20] => A single line comment has been detected!
+[!][Preprocessor] => c /= 0.5; //This is the same as  c = c / 0.5;
+[?][Preprocessor][173, 23] => A single line comment has been detected!
 [?][Preprocessor][173, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][174, 13] => New processing loop started.
-[!][Preprocessor] => c *= d; //This is the same as  c = c * d;
-[?][Preprocessor][174, 21] => A single line comment has been detected!
+[!][Preprocessor] => c / d; //The result is 0.66666666!
+[?][Preprocessor][174, 20] => A single line comment has been detected!
 [?][Preprocessor][174, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][175, 13] => New processing loop started.
-[!][Preprocessor] => c = c * d;
+[!][Preprocessor] => c *= d; //This is the same as  c = c * d;
+[?][Preprocessor][175, 21] => A single line comment has been detected!
 [?][Preprocessor][175, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][176, 13] => New processing loop started.
+[!][Preprocessor] => c = c * d;
+[?][Preprocessor][176, 13] => Checking for preprocessor methods...
+[?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][177, 9] => New processing loop started.
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][178, 9] => New processing loop started.
 [!][Preprocessor] => }
-[?][Preprocessor][177, 9] => Checking for preprocessor methods...
+[?][Preprocessor][178, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][179, 9] => New processing loop started.
-[!][Preprocessor] => function::string myStringTest(string a){
-[?][Preprocessor][179, 9] => Checking for preprocessor methods...
+[?][Preprocessor][180, 9] => New processing loop started.
+[!][Preprocessor] => func:string myStringTest(a::string){
+[?][Preprocessor][180, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][181, 13] => New processing loop started.
-[!][Preprocessor] => string b = "Hi!";
-[?][Preprocessor][181, 13] => Checking for preprocessor methods...
-[?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][182, 13] => New processing loop started.
-[!][Preprocessor] => delete b; // You can delete variables using
-[?][Preprocessor][182, 23] => A single line comment has been detected!
+[!][Preprocessor] => var:string b = "Hi!";
 [?][Preprocessor][182, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][183, 23] => New processing loop started.
-[!][Preprocessor] => // the keyword "delete".
+[?][Preprocessor][183, 13] => New processing loop started.
+[!][Preprocessor] => delete b; // You can delete vars using
 [?][Preprocessor][183, 23] => A single line comment has been detected!
+[?][Preprocessor][183, 13] => Checking for preprocessor methods...
+[?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][184, 23] => New processing loop started.
-[!][Preprocessor] => // (But you can only do that on
+[!][Preprocessor] => // the keyword "delete".
 [?][Preprocessor][184, 23] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][185, 23] => New processing loop started.
-[!][Preprocessor] => // the level of your current
+[!][Preprocessor] => // (But you can only do that on
 [?][Preprocessor][185, 23] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][186, 23] => New processing loop started.
-[!][Preprocessor] => // zone!)
+[!][Preprocessor] => // the level of your current
 [?][Preprocessor][186, 23] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][187, 13] => New processing loop started.
-[!][Preprocessor] => int b = 1;
-[?][Preprocessor][187, 13] => Checking for preprocessor methods...
+[?][Preprocessor][187, 23] => New processing loop started.
+[!][Preprocessor] => // zone!)
+[?][Preprocessor][187, 23] => A single line comment has been detected!
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][188, 13] => New processing loop started.
+[!][Preprocessor] => var:int b = 1;
+[?][Preprocessor][188, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][189, 13] => New processing loop started.
-[!][Preprocessor] => // Also, you can't delete any variables
-[?][Preprocessor][189, 13] => A single line comment has been detected!
-[?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][190, 13] => New processing loop started.
-[!][Preprocessor] => // that are passed as arguments to the
+[!][Preprocessor] => // Also, you can't delete any vars
 [?][Preprocessor][190, 13] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][191, 13] => New processing loop started.
-[!][Preprocessor] => // function, class-level variables, or
+[!][Preprocessor] => // that are passed as arguments to the
 [?][Preprocessor][191, 13] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][192, 13] => New processing loop started.
-[!][Preprocessor] => // constants.
+[!][Preprocessor] => // function, class-level vars, or
 [?][Preprocessor][192, 13] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][193, 13] => New processing loop started.
+[!][Preprocessor] => // constants.
+[?][Preprocessor][193, 13] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][194, 9] => New processing loop started.
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][195, 9] => New processing loop started.
 [!][Preprocessor] => }
-[?][Preprocessor][194, 9] => Checking for preprocessor methods...
+[?][Preprocessor][195, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][196, 9] => New processing loop started.
-[!][Preprocessor] => function::hex[,] ReturnHexArray(){
-[?][Preprocessor][196, 9] => Checking for preprocessor methods...
+[?][Preprocessor][197, 9] => New processing loop started.
+[!][Preprocessor] => func:hex[,] ReturnHexArray(){
+[?][Preprocessor][197, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][198, 13] => New processing loop started.
+[?][Preprocessor][199, 13] => New processing loop started.
 [!][Preprocessor] => return this.globJ;
-[?][Preprocessor][198, 13] => Checking for preprocessor methods...
+[?][Preprocessor][199, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][200, 9] => New processing loop started.
+[?][Preprocessor][201, 9] => New processing loop started.
 [!][Preprocessor] => }
-[?][Preprocessor][200, 9] => Checking for preprocessor methods...
+[?][Preprocessor][201, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][202, 5] => New processing loop started.
+[?][Preprocessor][203, 5] => New processing loop started.
 [!][Preprocessor] => }
-[?][Preprocessor][202, 5] => Checking for preprocessor methods...
+[?][Preprocessor][203, 5] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][204, 5] => New processing loop started.
-[!][Preprocessor] => public class AnotherClass {
-[?][Preprocessor][204, 5] => Checking for preprocessor methods...
+[?][Preprocessor][205, 5] => New processing loop started.
+[!][Preprocessor] => class::public AnotherClass {
+[?][Preprocessor][205, 5] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][206, 9] => New processing loop started.
-[!][Preprocessor] => public int a = 0;
-[?][Preprocessor][206, 9] => Checking for preprocessor methods...
-[?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][207, 9] => New processing loop started.
-[!][Preprocessor] => private int b = 0;
+[!][Preprocessor] => var::public:int a = 0;
 [?][Preprocessor][207, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][209, 9] => New processing loop started.
-[!][Preprocessor] => function::AnotherClass Construct(int a, int b){ //You can use constructors in your classes!
-[?][Preprocessor][209, 57] => A single line comment has been detected!
-[?][Preprocessor][209, 9] => Checking for preprocessor methods...
+[?][Preprocessor][208, 9] => New processing loop started.
+[!][Preprocessor] => var::private:int b = 0;
+[?][Preprocessor][208, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][211, 13] => New processing loop started.
-[!][Preprocessor] => this.a = a;
-[?][Preprocessor][211, 13] => Checking for preprocessor methods...
+[?][Preprocessor][210, 9] => New processing loop started.
+[!][Preprocessor] => func::public:AnotherClass Construct(a:int, b:int){ //You can use constructors in your classes!
+[?][Preprocessor][210, 60] => A single line comment has been detected!
+[?][Preprocessor][210, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][212, 13] => New processing loop started.
-[!][Preprocessor] => this.b = b;
+[!][Preprocessor] => this.a = a;
 [?][Preprocessor][212, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][214, 9] => New processing loop started.
-[!][Preprocessor] => }
-[?][Preprocessor][214, 9] => Checking for preprocessor methods...
+[?][Preprocessor][213, 13] => New processing loop started.
+[!][Preprocessor] => this.b = b;
+[?][Preprocessor][213, 13] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][216, 5] => New processing loop started.
+[?][Preprocessor][215, 9] => New processing loop started.
 [!][Preprocessor] => }
-[?][Preprocessor][216, 5] => Checking for preprocessor methods...
+[?][Preprocessor][215, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][218, 5] => New processing loop started.
+[?][Preprocessor][217, 5] => New processing loop started.
+[!][Preprocessor] => }
+[?][Preprocessor][217, 5] => Checking for preprocessor methods...
+[?][Preprocessor] => Inserted the filtered code into the temporary output file.
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][219, 5] => New processing loop started.
 [!][Preprocessor] => class Smth { //Any object with no state indicator will be set to 'public' by default
-[?][Preprocessor][218, 18] => A single line comment has been detected!
-[?][Preprocessor][218, 5] => Checking for preprocessor methods...
+[?][Preprocessor][219, 18] => A single line comment has been detected!
+[?][Preprocessor][219, 5] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][219, 9] => New processing loop started.
-[!][Preprocessor] => //
-[?][Preprocessor][219, 9] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][220, 5] => New processing loop started.
+[?][Preprocessor][221, 9] => New processing loop started.
+[!][Preprocessor] => func:void myTest(a:int){
+[?][Preprocessor][221, 9] => Checking for preprocessor methods...
+[?][Preprocessor] => Inserted the filtered code into the temporary output file.
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][223, 13] => New processing loop started.
+[!][Preprocessor] => //
+[?][Preprocessor][223, 13] => A single line comment has been detected!
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][225, 9] => New processing loop started.
 [!][Preprocessor] => }
-[?][Preprocessor][220, 5] => Checking for preprocessor methods...
+[?][Preprocessor][225, 9] => Checking for preprocessor methods...
+[?][Preprocessor] => Inserted the filtered code into the temporary output file.
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor] => Getting the content of the next line...
+[?][Preprocessor] => The line variable content changed successfully!
+[?][Preprocessor][227, 5] => New processing loop started.
+[!][Preprocessor] => }
+[?][Preprocessor][227, 5] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => Last line detected!
 [?][Preprocessor] => The line variable content changed successfully!
-[?][Preprocessor][222, 1] => New processing loop started.
+[?][Preprocessor][229, 1] => New processing loop started.
 [!][Preprocessor] => }
-[?][Preprocessor][222, 1] => Checking for preprocessor methods...
+[?][Preprocessor][229, 1] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Compiler Manager] => Closed all files sessions.

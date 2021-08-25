@@ -185,7 +185,7 @@ int isAsiOpr(M_Token tkn){
 
 }
 
-void crtAsiOpr(char * val, int linId){ //Create a assignment_operator
+void crtAsiOpr(char *val, int linId){ //Create a assignment_operator
 
     isrtPrsTrm(PARSER_OPERATORS_ASSIGNMENT, val, linId);
 
@@ -288,13 +288,13 @@ void crtAsiShrOpr(char *val, int linId){ //Create a assignment_short_operator
 
 
 /**
- *  return_type_operator
+ *  state_operator
  *      : : <OPERATOR>
  *      & : <OPERATOR>
  *      ;
 **/
 
-int isRtrTypOpr(M_Token tkn){
+int isSttOpr(M_Token tkn){
 
 
     M_Token tmp = lokAhd(); //Get the token ahead
@@ -317,9 +317,27 @@ int isRtrTypOpr(M_Token tkn){
 
 }
 
-void crtRtrTypOpr(int linId){ //Create a return_type_operator
+void crtSttOpr(int linId){ //Create a state_operator
 
-    isrtPrsTrm(PARSER_OPERATORS_RETURN_TYPE, "", linId);
+    isrtPrsTrm(PARSER_OPERATORS_STATE, "", linId);
+
+}
+
+/**
+ *  info_operator
+ *      : : <OPERATOR>
+ *      ;
+**/
+
+int isInfOpr(M_Token tkn){
+
+    return lokForOneOpr(tkn, ':');
+
+}
+
+void crtInfOpr(int linId){ //Create an info_operator
+
+    isrtPrsTrm(PARSER_OPERATORS_INFO, "", linId);
 
 }
 

@@ -2,15 +2,15 @@
 [{<Ax000002>@<main>},1;1]->"Test 2!";
 [{<Ax000004>@<Ax000003>@<main>},6;1]->group AnotherLibrary {
 [{<Ax000004>@<Ax000003>@<main>},8;5]->class MyClass {
-[{<Ax000004>@<Ax000003>@<main>},10;9]->function::int NumOne(){
+[{<Ax000004>@<Ax000003>@<main>},10;9]->func:int NumOne(){
 [{<Ax000004>@<Ax000003>@<main>},12;13]->return 1;
 [{<Ax000004>@<Ax000003>@<main>},14;9]->}
 [{<Ax000004>@<Ax000003>@<main>},16;5]->}
 [{<Ax000004>@<Ax000003>@<main>},18;1]->}
-[{<Ax000003>@<main>},9;1]->public group LibFilNam {
-[{<Ax000003>@<main>},11;5]->public class section {
-[{<Ax000003>@<main>},13;9]->function::string myFunction(int input) {
-[{<Ax000003>@<main>},15;13]->string output;
+[{<Ax000003>@<main>},9;1]->group::public LibFilNam {
+[{<Ax000003>@<main>},11;5]->class::public section {
+[{<Ax000003>@<main>},13;9]->func:string myFunction(input:int) {
+[{<Ax000003>@<main>},15;13]->var:string output;
 [{<Bx000005>@<Ax000003>@<main>},19;13]->0;
 [{<Ax000003>@<main>},22;13]->return output;
 [{<Ax000003>@<main>},24;9]->}
@@ -19,26 +19,26 @@
 [{<main>},36;1]->define ZERO 0;
 [{<main>},40;1]->setsize int 2;
 [{<main>},41;1]->setsize double 10;
-[{<main>},50;1]->public group FinalPitch {
-[{<main>},56;5]->public class Program {
-[{<main>},60;9]->public int globA = 0;
-[{<main>},61;9]->public double globB = 0.0;
-[{<main>},62;9]->public float globC = 0.0;
-[{<main>},63;9]->public char globD = 'D';
-[{<main>},64;9]->public string globE = "Global E";
-[{<main>},65;9]->public bool globF = true;
-[{<main>},66;9]->public file globG = new FileStream("path/to/my/file.txt");
-[{<main>},67;9]->public hex globH = 0xFF;
-[{<main>},68;9]->public string[] globI = new Array::string[](6);
-[{<main>},69;9]->private hex[,] globJ = new Array::hex[,](8, 2);
-[{<main>},71;9]->public function::int Main(string[] envi, int length){
+[{<main>},50;1]->group::public FinalPitch {
+[{<main>},56;5]->class::public Program {
+[{<main>},60;9]->var::public:int globA = 0;
+[{<main>},61;9]->var::public:double globB = 0.0;
+[{<main>},62;9]->var::public:float globC = 0.0;
+[{<main>},63;9]->var::public:char globD = 'D';
+[{<main>},64;9]->var::public:string globE = "Global E";
+[{<main>},65;9]->var::public:bool globF = true;
+[{<main>},66;9]->var::public:file globG = new FileStream("path/to/my/file.txt");
+[{<main>},67;9]->var::public:hex globH = 0xFF;
+[{<main>},68;9]->var::public:string[] globI = new Array:string[](6);
+[{<main>},69;9]->var::private:hex[,] globJ = new Array:hex[,](8, 2);
+[{<main>},71;9]->func::public:int Main(envi:string[], length:int){
 [{<main>},80;13]->Func();
-[{<main>},82;13]->^int a = 0;
-[{<main>},85;13]->int b = 1;
-[{<main>},88;13]->^int c = Test(a, 1);
+[{<main>},82;13]->var:^int a = 0;
+[{<main>},85;13]->var:int b = 1;
+[{<main>},88;13]->var:^int c = Test(a, 1);
 [{<main>},90;13]->a = 1, c = 5;
-[{<main>},92;13]->PlusOne(ref b);
-[{<main>},94;13]->bool myTest = false;
+[{<main>},92;13]->PlusOne(b:ref);
+[{<main>},94;13]->var:bool myTest = false;
 [{<main>},96;13]->if(myTest == true){
 [{<main>},100;13]->}else{
 [{<main>},104;13]->}
@@ -50,52 +50,54 @@
 [{<main>},122;13]->}
 [{<main>},124;13]->return 0;
 [{<main>},126;9]->}
-[{<main>},128;9]->private function::void Func(){
+[{<main>},128;9]->func::private:void Func(){
 [{<main>},136;9]->}
-[{<main>},138;9]->public function::^int Test(^int a, int b){
+[{<main>},138;9]->func::public:^int Test(a::^int, b::int){
 [{<main>},140;13]->a = (^int) b;
-[{<main>},142;13]->return a;
-[{<main>},144;9]->}
-[{<main>},146;9]->public function::void PlusOne(ref int a){
-[{<main>},151;13]->a++;
-[{<main>},153;9]->}
-[{<main>},155;9]->public function::void myTests(){
-[{<main>},157;13]->bool myTest = false;
-[{<main>},158;13]->int a = 0, b = 0;
-[{<main>},159;13]->double c = 4, d = 3;
-[{<main>},161;13]->myTest!!;
-[{<main>},162;13]->myTest = !myTest;
-[{<main>},163;13]->a++;
-[{<main>},164;13]->a += 1;
-[{<main>},165;13]->a = a + 1;
-[{<main>},166;13]->b--;
-[{<main>},167;13]->b -= 1;
-[{<main>},168;13]->b = b - 1;
-[{<main>},170;13]->c %= d;
-[{<main>},171;13]->c % d;
-[{<main>},172;13]->c /= 0.5;
-[{<main>},173;13]->c / d;
-[{<main>},174;13]->c *= d;
-[{<main>},175;13]->c = c * d;
-[{<main>},177;9]->}
-[{<main>},179;9]->function::string myStringTest(string a){
-[{<main>},181;13]->string b = "Hi!";
-[{<main>},182;13]->delete b;
-[{<main>},187;13]->int b = 1;
-[{<main>},194;9]->}
-[{<main>},196;9]->function::hex[,] ReturnHexArray(){
-[{<main>},198;13]->return this.globJ;
-[{<main>},200;9]->}
-[{<main>},202;5]->}
-[{<main>},204;5]->public class AnotherClass {
-[{<main>},206;9]->public int a = 0;
-[{<main>},207;9]->private int b = 0;
-[{<main>},209;9]->function::AnotherClass Construct(int a, int b){
-[{<main>},211;13]->this.a = a;
-[{<main>},212;13]->this.b = b;
-[{<main>},214;9]->}
-[{<main>},216;5]->}
-[{<main>},218;5]->class Smth {
-[{<main>},220;5]->}
-[{<main>},222;1]->}
+[{<main>},143;13]->return a;
+[{<main>},145;9]->}
+[{<main>},147;9]->func::public:void PlusOne(a::int:ref){
+[{<main>},152;13]->a++;
+[{<main>},154;9]->}
+[{<main>},156;9]->func::public:void myTests(){
+[{<main>},158;13]->var:bool myTest = false;
+[{<main>},159;13]->var:int a = 0, b = 0;
+[{<main>},160;13]->var:double c = 4, d = 3;
+[{<main>},162;13]->myTest!!;
+[{<main>},163;13]->myTest = !myTest;
+[{<main>},164;13]->a++;
+[{<main>},165;13]->a += 1;
+[{<main>},166;13]->a = a + 1;
+[{<main>},167;13]->b--;
+[{<main>},168;13]->b -= 1;
+[{<main>},169;13]->b = b - 1;
+[{<main>},171;13]->c %= d;
+[{<main>},172;13]->c % d;
+[{<main>},173;13]->c /= 0.5;
+[{<main>},174;13]->c / d;
+[{<main>},175;13]->c *= d;
+[{<main>},176;13]->c = c * d;
+[{<main>},178;9]->}
+[{<main>},180;9]->func:string myStringTest(a::string){
+[{<main>},182;13]->var:string b = "Hi!";
+[{<main>},183;13]->delete b;
+[{<main>},188;13]->var:int b = 1;
+[{<main>},195;9]->}
+[{<main>},197;9]->func:hex[,] ReturnHexArray(){
+[{<main>},199;13]->return this.globJ;
+[{<main>},201;9]->}
+[{<main>},203;5]->}
+[{<main>},205;5]->class::public AnotherClass {
+[{<main>},207;9]->var::public:int a = 0;
+[{<main>},208;9]->var::private:int b = 0;
+[{<main>},210;9]->func::public:AnotherClass Construct(a:int, b:int){
+[{<main>},212;13]->this.a = a;
+[{<main>},213;13]->this.b = b;
+[{<main>},215;9]->}
+[{<main>},217;5]->}
+[{<main>},219;5]->class Smth {
+[{<main>},221;9]->func:void myTest(a:int){
+[{<main>},225;9]->}
+[{<main>},227;5]->}
+[{<main>},229;1]->}
 [FileEnd]

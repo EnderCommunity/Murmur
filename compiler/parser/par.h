@@ -11,19 +11,35 @@
 #include "terminal/operators.h"
 #include "terminal/statements.h"
 
-void rptPrs(int id, char *msg){
+void rptPrs(int id, int colOff, char *msg){
 
     Inf_Token tmpInf = getLxrInfTkn(id);
+
+    printf("\n[%d,%d]", id, colOff);
 
     rpt(REPORT_CODE_ERROR, //This is an error
     REPORT_SECTION_PARSER, //The error was detected by the preprocessor
     msg, //This is the custom error message (check /compiler/errors/messages.h)
     tmpInf.src, //The source of this error
     tmpInf.lin, //The line of this error
-    tmpInf.col); //The column the error occurs
+    tmpInf.col + colOff); //The column the error occurs
     isrtPrsNTrm("ERROR", "", -1);
 
     delLxrInfTkn(tmpInf);
+
+}
+
+int canAsg(T_Comp cmp){
+
+    return (
+        strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0 ||
+        strcmp(cmp.nam, PARSER_DEFAULTS_STRING) == 0 ||
+        strcmp(cmp.nam, PARSER_DEFAULTS_CHAR) == 0 ||
+        strcmp(cmp.nam, PARSER_DEFAULTS_BOOLEAN) == 0 ||
+        strcmp(cmp.nam, PARSER_DEFAULTS_NUMBER) == 0 ||
+        strcmp(cmp.nam, PARSER_DEFAULTS_DECNUMBER) == 0 ||
+        strcmp(cmp.nam, PARSER_DEFAULTS_HEX) == 0
+    );
 
 }
 
@@ -56,6 +72,10 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             crtFncDcl(tkn.__srcLin);
 
+        }else if(isVarDcl(tkn.typ, tkn.val)){ //"variable_declarator"
+
+            crtVarDcl(tkn.__srcLin);
+
         }else if(isGrpDcl(tkn.typ, tkn.val)){ //"group_declarator"
 
             crtGrpDcl(tkn.__srcLin);
@@ -75,9 +95,13 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             crtZonOpr(tkn.val, tkn.__srcLin);
 
-        }else if(isRtrTypOpr(tkn)){ //"return_type_operator"
+        }else if(isSttOpr(tkn)){ //"state_operator"
 
-            crtRtrTypOpr(tkn.__srcLin);
+            crtSttOpr(tkn.__srcLin);
+
+        }else if(isInfOpr(tkn)){ //"info_operator"
+
+            crtInfOpr(tkn.__srcLin);
 
         }else if(isArrOpr(tkn)){ //"array_operator"
 
@@ -214,7 +238,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
         //printf("%s(%s)<%d>\n", cmp.nam, cmp.cnt, cmp.srcLin);
 
-        if(strcmp(cmp.nam, PARSER_SPECIFIERS_STATE) == 0 || // Could be a Group, class, function, or a class-level variable
+        /*if(strcmp(cmp.nam, PARSER_SPECIFIERS_STATE) == 0 || // Could be a Group, class, function, or a class-level variable
             strcmp(cmp.nam, PARSER_DECLARATORS_FUNCTION) == 0 || // a function!
             strcmp(cmp.nam, PARSER_DECLARATORS_GROUP) == 0 || // a group!
             strcmp(cmp.nam, PARSER_DECLARATORS_CLASS) == 0 || // a class!
@@ -402,6 +426,448 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             remTrmCmp(tmpTop);
 
+        }*/
+
+        if(strcmp(cmp.nam, PARSER_DECLARATORS_VARIABLE) == 0){ // A variable!
+
+            T_Comp tmpTop = cpyCmp(cmp);
+
+            if(nxtTknCmp(&cmp)){
+
+                //::public:val:val:val:val:val:val name
+
+                int isPub = 1; // Is public?
+                char *tmpTyp = NULL;
+
+                while(kepLopTrm && (strcmp(cmp.nam, PARSER_OPERATORS_STATE) == 0 || strcmp(cmp.nam, PARSER_OPERATORS_INFO) == 0)){
+
+                    T_Comp tmpMid = cpyCmp(cmp);
+
+                    if(nxtTknCmp(&cmp)){
+
+                        if(strcmp(tmpMid.nam, PARSER_OPERATORS_STATE) == 0){ //A state
+
+                            if(strcmp(cmp.nam, PARSER_SPECIFIERS_STATE) == 0){
+
+                                isPub = strcmp(cmp.cnt, WORD_STATE_PUBLIC) == 0;
+
+                            }else{
+
+                                rptPrs(cmp.srcLin,
+                                       2,
+                                       MSG_PRS_INFOINDIC_INVALIDINFO);
+
+                            }
+
+                        }else{ //Other info!
+
+                            if(strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0 || strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){
+
+                                tmpTyp = malloc(sizeof(char)*(strlen(cmp.cnt) + 1));
+                                strcpy(tmpTyp, cmp.cnt);
+
+                            }else{
+
+                                rptPrs(cmp.srcLin,
+                                       1,
+                                       MSG_PRS_INFOINDIC_INVALIDINFO);
+
+                            }
+
+                        }
+
+                    }else{
+
+                        rptPrs(tmpTop.srcLin,
+                               1 + (tmpMid.nam[1] == ':'),
+                               MSG_PRS_INFOINDIC_INVALIDINFO);
+
+                    }
+
+                    nxtTknCmp(&cmp);
+
+                    remTrmCmp(tmpMid);
+
+                }
+
+                if(kepLopTrm && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){
+
+                    if(tmpTyp != NULL){
+
+                        char *tmpStr = malloc(sizeof(char)*(
+                            strlen(cmp.cnt) +
+                            strlen(tmpTyp) +
+                            1 +
+                            2 +
+                            1
+                        ));
+
+                        sprintf(tmpStr, "%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+
+                        isrtPrsNTrm(PARSER_NTERMINAL_DEFINEVAR, tmpStr, cmp.srcLin);
+
+                        free(tmpStr);
+
+                        T_Comp tmpCmp = cpyCmp(cmp);
+
+                        while(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_OPERATORS_END) != 0){
+
+                            if(strcmp(cmp.nam, PARSER_OPERATORS_ASSIGNMENT) == 0){
+
+                                if(strcmp(cmp.cnt, "=") == 0 && nxtTknCmp(&cmp)){
+
+                                    isrtPrsMltNTrm(PARSER_NTERMINAL_ASSIGN, tmpCmp.cnt, cmp.srcLin);
+
+                                    int prvIncAsi = 0; // Make sure to ignore the
+                                                       // "PARSER_OPERATORS_SEPARATION"
+                                                       // component inside parentheses!
+
+                                    while(kepLopTrm &&
+                                          strcmp(cmp.nam, PARSER_OPERATORS_END) != 0 &&
+                                          ((prvIncAsi == 0) ? strcmp(cmp.nam, PARSER_OPERATORS_SEPARATION) != 0 : 1)){
+
+                                        if(strcmp(cmp.nam, PARSER_OPERATORS_PARENTHESES) == 0){
+
+                                            prvIncAsi += (strcmp(cmp.cnt, PARSER_GENERAL_START) == 0) ? 1 : -1;
+
+                                        }
+
+                                        isrtPrsNTrm(cmp.nam, cmp.cnt, cmp.srcLin);
+
+                                        nxtTknCmp(&cmp);
+
+                                    }
+
+                                    prvTknCmp(&cmp);
+
+                                    isrtPrsEndNTrm(); //End the assign function
+
+                                }else{
+
+                                    rptPrs(cmp.srcLin,
+                                           0,
+                                           MSG_PRS_VAR_INVALIDDECLASSIGNMENT);
+
+                                }
+
+                            }else if(strcmp(cmp.nam, PARSER_OPERATORS_SEPARATION) == 0){
+
+                                if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){
+
+                                    char *subTmpStr = malloc(sizeof(char)*(
+                                        strlen(cmp.cnt) +
+                                        strlen(tmpTyp) +
+                                        1 +
+                                        2 +
+                                        1
+                                    ));
+
+                                    sprintf(subTmpStr, "%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+
+                                    isrtPrsNTrm(PARSER_NTERMINAL_DEFINEVAR, subTmpStr, cmp.srcLin);
+
+                                    free(subTmpStr);
+
+                                }else{
+
+                                    rptPrs(cmp.srcLin,
+                                           0,
+                                           MSG_PRS_VAR_INVALIDSUBVAR);
+
+                                }
+
+                            }else{
+
+                                rptPrs(tmpTop.srcLin,
+                                       strlen(WORD_STATEMENT_VARIABLE),
+                                       MSG_PRS_VAR_SEMICOLON);
+
+                            }
+
+                            remTrmCmp(tmpCmp);
+                            tmpCmp = cpyCmp(cmp);
+
+                        }
+
+                        remTrmCmp(tmpCmp);
+
+                        if(!kepLopTrm){
+
+                            rptPrs(cmp.srcLin,
+                                   0,
+                                   MSG_PRS_VAR_SEMICOLON);
+
+                        }
+
+                        free(tmpTyp);
+
+                    }else{
+
+                        rptPrs(tmpTop.srcLin,
+                               strlen(WORD_STATEMENT_VARIABLE),
+                               MSG_PRS_VAR_NOVALIDTYPE);
+
+                    }
+
+                }else{
+
+                    rptPrs(cmp.srcLin,
+                           0,
+                           MSG_PRS_VAR_NOVALIDNAME);
+
+                }
+
+            }else{
+
+                rptPrs(tmpTop.srcLin,
+                       strlen(WORD_STATEMENT_VARIABLE),
+                       MSG_PRS_VAR_NOVALIDTYPE);
+
+            }
+
+            remTrmCmp(tmpTop);
+
+        }else if(strcmp(cmp.nam, PARSER_DECLARATORS_FUNCTION) == 0){ // A function!
+
+            T_Comp tmpTop = cpyCmp(cmp);
+
+            if(nxtTknCmp(&cmp)){
+
+                int isPub = 1; // Is public?
+                char *tmpTyp = NULL;
+
+                while(kepLopTrm && (strcmp(cmp.nam, PARSER_OPERATORS_STATE) == 0 || strcmp(cmp.nam, PARSER_OPERATORS_INFO) == 0)){
+
+                    T_Comp tmpMid = cpyCmp(cmp);
+
+                    if(nxtTknCmp(&cmp)){
+
+                        if(strcmp(tmpMid.nam, PARSER_OPERATORS_STATE) == 0){ //A state
+
+                            if(strcmp(cmp.nam, PARSER_SPECIFIERS_STATE) == 0){
+
+                                isPub = strcmp(cmp.cnt, WORD_STATE_PUBLIC) == 0;
+
+                            }else{
+
+                                rptPrs(cmp.srcLin,
+                                       2,
+                                       MSG_PRS_INFOINDIC_INVALIDINFO);
+
+                            }
+
+                        }else{ //Other info!
+
+                            if(strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0 || strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){
+
+                                tmpTyp = malloc(sizeof(char)*(strlen(cmp.cnt) + 1));
+                                strcpy(tmpTyp, cmp.cnt);
+
+                            }else{
+
+                                rptPrs(cmp.srcLin,
+                                       1,
+                                       MSG_PRS_INFOINDIC_INVALIDINFO);
+
+                            }
+
+                        }
+
+                    }else{
+
+                        rptPrs(tmpTop.srcLin,
+                               1 + (tmpMid.nam[1] == ':'),
+                               MSG_PRS_INFOINDIC_INVALIDINFO);
+
+                    }
+
+                    nxtTknCmp(&cmp);
+
+                    remTrmCmp(tmpMid);
+
+                }
+
+                if(kepLopTrm && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){
+
+                    if(tmpTyp != NULL){
+
+                        char *tmpStr = malloc(sizeof(char)*(
+                            strlen(cmp.cnt) +
+                            strlen(tmpTyp) +
+                            1 +
+                            2 +
+                            1
+                        ));
+
+                        sprintf(tmpStr, "%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+
+                        isrtPrsNTrm(PARSER_NTERMINAL_DEFINEFUNCTION, tmpStr, cmp.srcLin);
+
+                        free(tmpStr);
+                        free(tmpTyp);
+
+                    }else{
+
+                        rptPrs(tmpTop.srcLin,
+                               strlen(WORD_STATEMENT_VARIABLE),
+                               MSG_PRS_FUNCTION_NOVALIDNAME);
+
+                    }
+
+                }else{
+
+                    rptPrs(cmp.srcLin,
+                           0,
+                           MSG_PRS_FUNCTION_NOVALIDNAME);
+
+                }
+
+            }else{
+
+                rptPrs(tmpTop.srcLin,
+                       strlen(WORD_STATEMENT_VARIABLE),
+                       MSG_PRS_FUNCTION_NOVALIDTYPE);
+
+            }
+
+            remTrmCmp(tmpTop);
+
+        }else if(strcmp(cmp.nam, PARSER_DECLARATORS_CLASS) == 0){ // A class!
+
+            T_Comp tmpTop = cpyCmp(cmp);
+
+            if(nxtTknCmp(&cmp)){
+
+                int isPub = 1; // Is public?
+
+                while(kepLopTrm && strcmp(cmp.nam, PARSER_OPERATORS_STATE) == 0){
+
+                    if(nxtTknCmp(&cmp)){
+
+                        if(strcmp(cmp.nam, PARSER_SPECIFIERS_STATE) == 0){
+
+                            isPub = strcmp(cmp.cnt, WORD_STATE_PUBLIC) == 0;
+
+                        }else{
+
+                            rptPrs(cmp.srcLin,
+                                   2,
+                                   MSG_PRS_INFOINDIC_INVALIDINFO);
+
+                        }
+
+                    }else{
+
+                        rptPrs(tmpTop.srcLin,
+                               2,
+                               MSG_PRS_INFOINDIC_INVALIDINFO);
+
+                    }
+
+                    nxtTknCmp(&cmp);
+
+                }
+
+                if(kepLopTrm && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){
+
+                    char *tmpStr = malloc(sizeof(char)*(
+                        strlen(cmp.cnt) +
+                        2 +
+                        1
+                    ));
+
+                    sprintf(tmpStr, "%s,%d", cmp.cnt, isPub);
+
+                    isrtPrsNTrm(PARSER_NTERMINAL_DEFINECLASS, tmpStr, tmpTop.srcLin);
+
+                    free(tmpStr);
+
+                }else{
+
+                    rptPrs(tmpTop.srcLin,
+                           strlen(WORD_STATEMENT_CLASS),
+                           MSG_PRS_CLASS_NAMEMISSING);
+
+                }
+
+            }else{
+
+                rptPrs(tmpTop.srcLin,
+                       strlen(WORD_STATEMENT_CLASS),
+                       MSG_PRS_CLASS_NAMEMISSING);
+
+            }
+
+            remTrmCmp(tmpTop);
+
+        }else if(strcmp(cmp.nam, PARSER_DECLARATORS_GROUP) == 0){ // A group!
+
+            T_Comp tmpTop = cpyCmp(cmp);
+
+            if(nxtTknCmp(&cmp)){
+
+                int isPub = 1; // Is public?
+
+                while(kepLopTrm && strcmp(cmp.nam, PARSER_OPERATORS_STATE) == 0){
+
+                    if(nxtTknCmp(&cmp)){
+
+                        if(strcmp(cmp.nam, PARSER_SPECIFIERS_STATE) == 0){
+
+                            isPub = strcmp(cmp.cnt, WORD_STATE_PUBLIC) == 0;
+
+                        }else{
+
+                            rptPrs(cmp.srcLin,
+                                   2,
+                                   MSG_PRS_INFOINDIC_INVALIDINFO);
+
+                        }
+
+                    }else{
+
+                        rptPrs(tmpTop.srcLin,
+                               2,
+                               MSG_PRS_INFOINDIC_INVALIDINFO);
+
+                    }
+
+                    nxtTknCmp(&cmp);
+
+                }
+
+                if(kepLopTrm && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){
+
+                    char *tmpStr = malloc(sizeof(char)*(
+                        strlen(cmp.cnt) +
+                        2 +
+                        1
+                    ));
+
+                    sprintf(tmpStr, "%s,%d", cmp.cnt, isPub);
+
+                    isrtPrsNTrm(PARSER_NTERMINAL_DEFINEGROUP, tmpStr, tmpTop.srcLin);
+
+                    free(tmpStr);
+
+                }else{
+
+                    rptPrs(tmpTop.srcLin,
+                           strlen(WORD_STATEMENT_CLASS),
+                           MSG_PRS_CLASS_NAMEMISSING);
+
+                }
+
+            }else{
+
+                rptPrs(tmpTop.srcLin,
+                       strlen(WORD_STATEMENT_CLASS),
+                       MSG_PRS_CLASS_NAMEMISSING);
+
+            }
+
+            remTrmCmp(tmpTop);
+
         }else if(strcmp(cmp.nam, PARSER_STATEMENTS_SETSIZE) == 0){ //The setsize method
 
             T_Comp tmpBkp = cpyCmp(cmp);
@@ -422,7 +888,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                 }else{
 
-                    rptPrs(cmpTyp.srcLin, MSG_PRS_SETSIZEINVALIDSIZEINPUT);
+                    rptPrs(cmpTyp.srcLin, 0, MSG_PRS_SETSIZEINVALIDSIZEINPUT);
 
                 }
 
@@ -430,13 +896,13 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             }else{
 
-                rptPrs(tmpBkp.srcLin, MSG_PRS_SETSIZEINVALIDTYPEINPUT);
+                rptPrs(tmpBkp.srcLin, 0, MSG_PRS_SETSIZEINVALIDTYPEINPUT);
 
             }
 
             remTrmCmp(tmpBkp);
 
-        }else if(strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){ // Call a function, group, class, or variable
+        }/*else if(strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){ // Call a function, group, class, or variable
 
             T_Comp tmpBkp = cpyCmp(cmp);
             char *tmpStr = malloc(sizeof(char)*(strlen(cmp.cnt) + 1));
@@ -466,7 +932,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             if(!lokForDot){
 
-                rptPrs(tmpBkp.srcLin, MSG_PRS_DOTINVALIDFOLLOWUP);
+                rptPrs(tmpBkp.srcLin, 0, MSG_PRS_DOTINVALIDFOLLOWUP);
 
             }else{
 
@@ -496,7 +962,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                     }else{
 
-                        rptPrs(tmpBkp.srcLin, MSG_PRS_FUNCINVALIDRETURNTYPESPECIF);
+                        rptPrs(tmpBkp.srcLin, 0, MSG_PRS_FUNCINVALIDRETURNTYPESPECIF);
 
                     }
 
@@ -514,6 +980,11 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             remTrmCmp(tmpBkp);
 
+        }*/
+        else if(strcmp(cmp.nam, PARSER_OPERATORS_END) == 0){
+
+            // Don't do anything!
+
         }else{
 
             isrtPrsNTrm(cmp.nam, cmp.cnt, cmp.srcLin);
@@ -523,6 +994,8 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
         nxtTknCmp(&cmp);
 
     }
+
+    remTrmCmp(cmp);
 
     clsFnlPrsFil(); //Close the `.prs` file
 

@@ -7,7 +7,7 @@ group AnotherLibrary {
 
     class MyClass {
 
-        function::int NumOne(){
+        func:int NumOne(){
 
             return 1;
 

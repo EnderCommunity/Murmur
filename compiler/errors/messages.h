@@ -50,13 +50,23 @@
 #define MSG_PRS_FUNCNAMEMISSING "No valid name is present for the function!"
 #define MSG_PRS_FUNCRETURNOPMISSING "Return-type declarative operator is not present!"
 #define MSG_PRS_GROUPNAMEMISSING "No valid name is present for the group!"
-#define MSG_PRS_CLASSNAMEMISSING "No valid name is present for the class!"
 #define MSG_PRS_INCORRECTUSEOFSTATE "Incorrect use of the `public`/`private` state keyword!"
 #define MSG_PRS_MISSINGSTRUCTVALUE "Missing structure-related/zone-related value!"
 #define MSG_PRS_SETSIZEINVALIDSIZEINPUT "Invalid `setsize` size input!"
 #define MSG_PRS_SETSIZEINVALIDTYPEINPUT "Invalid `setsize` type input!"
 #define MSG_PRS_DOTINVALIDFOLLOWUP "Dot (.) operator not followed by a valid continuation!"
 #define MSG_PRS_FUNCINVALIDRETURNTYPESPECIF "No valid return type is present for the function call!"
+
+#define MSG_PRS_VAR_NOVALIDTYPE "No valid type is present for the variable!"
+#define MSG_PRS_INFOINDIC_INVALIDINFO "No valid info is present after the data indicator (::)/(:)!"
+#define MSG_PRS_VAR_NOVALIDNAME "No valid name is present for the variable!"
+#define MSG_PRS_VAR_SEMICOLON "Expected a semicolon (;) at the end of the variable definition!"
+#define MSG_PRS_VAR_INVALIDSUBVAR "Invalid (sub) variable name!"
+#define MSG_PRS_VAR_INVALIDDECLASSIGNMENT "Invalid variable assignment!"
+#define MSG_PRS_CLASS_NAMEMISSING "No valid name is present for the class!"
+#define MSG_PRS_FUNCTION_NOVALIDTYPE "No valid return type is present for the function!"
+#define MSG_PRS_FUNCTION_NOVALIDNAME "No valid name is present for the function!"
+
 
 //Optimiser (MSG_OPT_...)
 //#define MSG_OPT_
