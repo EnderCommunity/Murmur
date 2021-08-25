@@ -995,6 +995,8 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
     }
 
+    remTrmCmp(cmp);
+
     clsFnlPrsFil(); //Close the `.prs` file
 
     //clsPrsFil();
