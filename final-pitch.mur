@@ -135,7 +135,7 @@ group::public FinalPitch { //Groups can help you keep a whole block of code with
 
         }
 
-        func::public:^int Test(a::^int, b::int){
+        func::public:^int Test(a:^int, b:int){
 
             a = (^int) b; //Do not support this!
             // First, add a library that can take care of this stuff.
@@ -144,7 +144,7 @@ group::public FinalPitch { //Groups can help you keep a whole block of code with
 
         }
 
-        func::public:void PlusOne(a::int:ref){ //with the keyword "ref", you can make changes to the originally passed var within this function
+        func::public:void PlusOne(a:int:ref){ //with the keyword "ref", you can make changes to the originally passed var within this function
                                     //^ "reference"
                                     //int og = 0;
                                     //PlusOne(og:ref);
@@ -177,7 +177,7 @@ group::public FinalPitch { //Groups can help you keep a whole block of code with
 
         }
 
-        func:string myStringTest(a::string){
+        func:string myStringTest(a:string){
 
             var:string b = "Hi!";
             delete b; // You can delete vars using
