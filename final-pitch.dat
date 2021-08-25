@@ -1,6 +1,6 @@
-Ax000001 ./resources/libraries/test.lib.mur <Zx00000001F> <Zx000000001>
-Ax000002 ./resources/libraries/foldertest/test2.lib.mur <Zx000000020> <Zx000000001>
-Ax000003 /mnt/e/files/EnderCommunity/Projects/Murmur/final-pitch-lib.lib.mur <Zx000000022> <Zx000000001>
-Ax000004 /mnt/e/files/EnderCommunity/Projects/Murmur/another-library.lib.mur <Zx000000003> <Zx000000001>
+Ax000001 E:\files\EnderCommunity\Projects\Murmur\compiler\resources\libraries\test.lib.mur <Zx00000001F> <Zx000000001>
+Ax000002 E:\files\EnderCommunity\Projects\Murmur\compiler\resources\libraries\foldertest\test2.lib.mur <Zx000000020> <Zx000000001>
+Ax000003 E:\files\EnderCommunity\Projects\Murmur\final-pitch-lib.lib.mur <Zx000000022> <Zx000000001>
+Ax000004 E:\files\EnderCommunity\Projects\Murmur\another-library.lib.mur <Zx000000003> <Zx000000001>
 Bx000005 <Zx000000011> <Zx00000000D>
 #
