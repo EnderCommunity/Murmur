@@ -11,7 +11,7 @@ typedef struct {
 
 } T_Comp; //A terminal component
 
-int kepLopTrm = 1;
+int kepLopTrm = 1, curTrmZon = 0;
 FILE *trmCmpFilPtr = NULL;
 
 void rdTrmCmpFil(char *pth){
@@ -58,6 +58,9 @@ T_Comp getTrmCmp(){ //Get a terminal component
 
         tmp.nam = getStrPrt(tmp.val, 0, getStrIndx(tmp.val, "("), 0);
         tmp.cnt = getStrPrt(tmp.val, getStrIndx(tmp.val, "(") + 1, getStrIndx(tmp.val, ")"), 0);
+
+        if(strcmp(tmp.nam, PARSER_OPERATORS_ZONE) == 0)
+            (strcmp(tmp.cnt, PARSER_GENERAL_START) == 0) ? curTrmZon++ : curTrmZon--;
 
     }
 
