@@ -1,3 +1,11 @@
+// Static words
+#define WORD_STATEMENT_GROUP "group"
+#define WORD_STATEMENT_CLASS "class"
+#define WORD_STATEMENT_VARIABLE "var"
+#define WORD_STATEMENT_FUNCTION "func"
+#define WORD_STATE_PUBLIC "public"
+#define WORD_STATE_PRIVATE "private"
+
 // General
 #define PARSER_GENERAL_START "open"
 #define PARSER_GENERAL_END "close"
@@ -16,6 +24,7 @@
 
 // Declarators
 #define PARSER_DECLARATORS_FUNCTION "function_declarator"
+#define PARSER_DECLARATORS_VARIABLE "variable_declarator"
 #define PARSER_DECLARATORS_GROUP "group_declarator"
 #define PARSER_DECLARATORS_CLASS "class_declarator"
 
@@ -27,7 +36,8 @@
 #define PARSER_OPERATORS_ZONE "zone_operator"
 #define PARSER_OPERATORS_ARRAY "array_operator"
 #define PARSER_OPERATORS_ASSIGNMENT_SHORT "assignment_short_operator"
-#define PARSER_OPERATORS_RETURN_TYPE "return_type_operator"
+#define PARSER_OPERATORS_STATE "state_operator"
+#define PARSER_OPERATORS_INFO "info_operator"
 #define PARSER_OPERATORS_NEGATIVE "negative_operator"
 #define PARSER_OPERATORS_PARENTHESES "parentheses_operator"
 #define PARSER_OPERATORS_SEPARATION "separation_operator"
@@ -48,7 +58,8 @@
 #define PARSER_NTERMINAL_DEFINEVAR "DEFINE_VAR"
 #define PARSER_NTERMINAL_DEFINEGROUP "GROUP"
 #define PARSER_NTERMINAL_DEFINECLASS "CLASS"
-#define PARSER_NTERMINAL_DEFINEFUNCTION "FUNCTION"
+#define PARSER_NTERMINAL_DEFINEFUNCTION "DEFINE_FUNCTION"
 #define PARSER_NTERMINAL_CALLVAR "VAR"
 #define PARSER_NTERMINAL_CALLFUNC "CALL"
+#define PARSER_NTERMINAL_ASSIGN "ASSIGN"
 #define PARSER_NTERMINAL_CALLSETSIZE "SETSIZE"

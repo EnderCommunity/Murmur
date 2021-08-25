@@ -33,7 +33,7 @@ using foldertest.test2;
 
 import "final-pitch-lib.lib.mur"; //Import another Murmur file!
 
-define ZERO 0; //You can use the `define` function to define a variable that
+define ZERO 0; //You can use the `define` function to define a var that
                //will be replaced by the provided value before the execution
                //of this code
 
@@ -42,33 +42,33 @@ setsize double 10; //You can do the same with all the built-in types
 
 //import "path/to/my/file2.mur"; //You need to pay attention to the importing order
 //of your files! For example, "file.mur" will not be able to use the custom set
-//amount of memory for the 'int' variable, whereas "file2.mur" will be able to
+//amount of memory for the 'int' var, whereas "file2.mur" will be able to
 //use it with no problem whatsoever.
 
 // (!) Modules may not be necessary anymore with this new arrangement
 
-public group FinalPitch { //Groups can help you keep a whole block of code within one
+group::public FinalPitch { //Groups can help you keep a whole block of code within one
               //structure to better organise your code
 
     //Groups can only contain classes, any normal code here will cause the
     //program to crash.
 
-    public class Program { //Classes can be used to completely separate functions from one
+    class::public Program { //Classes can be used to completely separate functions from one
                     //another, in case you wanted to prevent other classes from
-                    //accessing some variables or functions
+                    //accessing some vars or functions
 
-        public variable::int globA = 0;
-        public variable::double globB = 0.0;
-        public variable::float globC = 0.0;
-        public variable::char globD = 'D';
-        public variable::string globE = "Global E";
-        public variable::bool globF = true;
-        public variable::file globG = new FileStream("path/to/my/file.txt");
-        public variable::hex globH = 0xFF;
-        public variable::string[] globI = new Array::string[](6);
-        private variable::hex[,] globJ = new Array::hex[,](8, 2);
+        var::public:int globA = 0;
+        var::public:double globB = 0.0;
+        var::public:float globC = 0.0;
+        var::public:char globD = 'D';
+        var::public:string globE = "Global E";
+        var::public:bool globF = true;
+        var::public:file globG = new FileStream("path/to/my/file.txt");
+        var::public:hex globH = 0xFF;
+        var::public:string[] globI = new Array:string[](6);
+        var::private:hex[,] globJ = new Array:hex[,](8, 2);
 
-        public function::int Main(envi::string[], length::int){ //This is the main
+        func::public:int Main(envi:string[], length:int){ //This is the main
                                                        //function in the program!
                                                        //All Murmur programs
                                                        //should include a main
@@ -79,19 +79,19 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
             Func(); //You can access any function inside this class
 
-            variable::^int a = 0; //This variable will allocate the custom set amount of
-                        //memory specified at the start of this program!
+            var:^int a = 0; //This var will allocate the custom set amount of
+                            //memory specified at the start of this program!
 
-            variable::int b = 1; //This variable will allocate the default amount of
-                       //memory set by the compiler
+            var:int b = 1; //This var will allocate the default amount of
+                           //memory set by the compiler
 
-            variable::^int c = Test(a, 1); //You can pass all types of variables to other functions
+            var:^int c = Test(a, 1); //You can pass all types of vars to other functions
 
             a = 1, c = 5; //Change the value of 'c' to '5'm and the value of 'a' to '1'
 
             PlusOne(b:ref); //the value of 'b' is '2' now!
 
-            variable::bool myTest = false;
+            var:bool myTest = false;
 
             if(myTest == true){ //This condition is impossible
 
@@ -125,7 +125,7 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
         }
 
-        private function::void Func(){
+        func::private:void Func(){
                         //^ This is the return type of the function!
 
             //This is a private function! (It can be accessed only by
@@ -135,7 +135,7 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
         }
 
-        public function::^int Test(a::^int, b::int){
+        func::public:^int Test(a::^int, b::int){
 
             a = (^int) b; //Do not support this!
             // First, add a library that can take care of this stuff.
@@ -144,7 +144,7 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
         }
 
-        public function::void PlusOne(a::int:ref){ //with the keyword "ref", you can make changes to the originally passed variable within this function
+        func::public:void PlusOne(a::int:ref){ //with the keyword "ref", you can make changes to the originally passed var within this function
                                     //^ "reference"
                                     //int og = 0;
                                     //PlusOne(og:ref);
@@ -153,11 +153,11 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
         }
 
-        public function::void myTests(){
+        func::public:void myTests(){
 
-            variable::bool myTest = false;
-            variable::int a = 0, b = 0;
-            variable::double c = 4, d = 3;
+            var:bool myTest = false;
+            var:int a = 0, b = 0;
+            var:double c = 4, d = 3;
 
             myTest!!; //This is the same as myTest = !myTest;
             myTest = !myTest;
@@ -177,24 +177,24 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
         }
 
-        function::string myStringTest(a::string){
+        func:string myStringTest(a::string){
 
-            variable::string b = "Hi!";
-            delete b; // You can delete variables using
+            var:string b = "Hi!";
+            delete b; // You can delete vars using
                       // the keyword "delete".
                       // (But you can only do that on
                       // the level of your current
                       // zone!)
-            variable::int b = 1;
+            var:int b = 1;
 
-            // Also, you can't delete any variables
+            // Also, you can't delete any vars
             // that are passed as arguments to the
-            // function, class-level variables, or
+            // function, class-level vars, or
             // constants.
 
         }
 
-        function::hex[,] ReturnHexArray(){
+        func:hex[,] ReturnHexArray(){
 
             return this.globJ;
 
@@ -202,12 +202,12 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
     }
 
-    public class AnotherClass {
+    class::public AnotherClass {
 
-        public variable::int a = 0;
-        private variable::int b = 0;
+        var::public:int a = 0;
+        var::private:int b = 0;
 
-        public function::AnotherClass Construct(a::int, b::int){ //You can use constructors in your classes!
+        func::public:AnotherClass Construct(a:int, b:int){ //You can use constructors in your classes!
 
             this.a = a;
             this.b = b;
@@ -218,7 +218,7 @@ public group FinalPitch { //Groups can help you keep a whole block of code withi
 
     class Smth { //Any object with no state indicator will be set to 'public' by default
 
-        function::void myTest(a::int){
+        func:void myTest(a:int){
 
             //
 

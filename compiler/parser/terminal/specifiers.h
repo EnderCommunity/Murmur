@@ -139,8 +139,8 @@ void crtTypSpc(M_Token tkn){ //Create a type_specifier
 int isSttSpc(int typ, char *val){
 
     return (typ == LEXER_SYMBOL && (
-        strcmp(val, "public") == 0 ||
-        strcmp(val, "private") == 0
+        strcmp(val, WORD_STATE_PUBLIC) == 0 ||
+        strcmp(val, WORD_STATE_PRIVATE) == 0
     ));
 
 }

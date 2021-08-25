@@ -114,9 +114,16 @@ void skpNxtCmp(){ //Skip the next token!
 
 int nxtTknCmp(T_Comp *cmp){
 
+    T_Comp tmp = cpyCmp(*cmp);
+
     remTrmCmp(*cmp); //Remove the token
 
     *cmp = getTrmCmp(); //get a new token
+
+    if(kepLopTrm)
+        remTrmCmp(tmp);
+    else
+        *cmp = tmp;
 
     return kepLopTrm;
 

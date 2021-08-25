@@ -6,13 +6,13 @@ tell "DLL::root:myLib.dll"; // You can use the "tell"
                             // to the bundler
 tell "flag::myflag";
 
-public group LibFilNam {
+group::public LibFilNam {
 
-    public class section {
+    class::public section {
 
-        function::string myFunction(int input) {
+        func:string myFunction(input:int) {
 
-            string output;
+            var:string output;
 
             <<<
             /*Do some stuff in C*/

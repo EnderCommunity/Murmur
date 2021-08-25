@@ -1,13 +1,13 @@
 /**
  *  function_declarator
- *      : function <SYMBOL>
+ *      : func <SYMBOL>
  *      ;
 **/
 
 int isFncDcl(int typ, char *val){
 
     return (typ == LEXER_SYMBOL &&
-        strcmp(val, "function") == 0
+        strcmp(val, WORD_STATEMENT_FUNCTION) == 0
     );
 
 }
@@ -15,6 +15,26 @@ int isFncDcl(int typ, char *val){
 void crtFncDcl(int linId){ //Create a function_declarator
 
     isrtPrsTrm(PARSER_DECLARATORS_FUNCTION, "", linId);
+
+}
+
+/**
+ *  variable_declarator
+ *      : var <SYMBOL>
+ *      ;
+**/
+
+int isVarDcl(int typ, char *val){
+
+    return (typ == LEXER_SYMBOL &&
+        strcmp(val, WORD_STATEMENT_VARIABLE) == 0
+    );
+
+}
+
+void crtVarDcl(int linId){ //Create a variable_declarator
+
+    isrtPrsTrm(PARSER_DECLARATORS_VARIABLE, "", linId);
 
 }
 
@@ -27,7 +47,7 @@ void crtFncDcl(int linId){ //Create a function_declarator
 int isGrpDcl(int typ, char *val){
 
     return (typ == LEXER_SYMBOL &&
-        strcmp(val, "group") == 0
+        strcmp(val, WORD_STATEMENT_GROUP) == 0
     );
 
 }
@@ -47,7 +67,7 @@ void crtGrpDcl(int linId){ //Create a group_declarator
 int isClsDcl(int typ, char *val){
 
     return (typ == LEXER_SYMBOL &&
-        strcmp(val, "class") == 0
+        strcmp(val, WORD_STATEMENT_CLASS) == 0
     );
 
 }

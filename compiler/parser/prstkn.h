@@ -27,3 +27,15 @@ void isrtPrsNTrm(char *nam, char *cnt, int srcLin){ //Insert a terminal value
     fprintf(prsFnlFilPtr, "%s(%s)<%d>\n", nam, cnt, srcLin);
 
 }
+
+void isrtPrsMltNTrm(char *nam, char *cnt, int srcLin){ //Insert a terminal value
+
+    fprintf(prsFnlFilPtr, "%s(%s)<%d>:\n", nam, cnt, srcLin);
+
+}
+
+void isrtPrsEndNTrm(){ //Insert a terminal value
+
+    fprintf(prsFnlFilPtr, ";\n");
+
+}
