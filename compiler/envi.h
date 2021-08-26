@@ -117,6 +117,9 @@
 #define DATA_PATH_STR "A"
 #define DATA_ZONE 'B'
 #define DATA_ZONE_STR "B"
+#define DATA_VALUE 'C'
+#define DATA_VALUE_STR "C"
+//The data character 'Z' is reserved for extra data!
 
 
 //Lexer

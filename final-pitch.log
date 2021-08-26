@@ -367,7 +367,6 @@
 [?][Preprocessor][36, 16] => A single line comment has been detected!
 [?][Preprocessor][36, 1] => Checking for preprocessor methods...
 [?][Preprocessor][36, 1] => A 'define' statement has been detected!
-[?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][37, 16] => New processing loop started.
@@ -386,7 +385,6 @@
 [!][Preprocessor] => setsize int 2; //Set a custom size of memory (in bytes) to allocate for any type
 [?][Preprocessor][40, 16] => A single line comment has been detected!
 [?][Preprocessor][40, 1] => Checking for preprocessor methods...
-[?][Preprocessor][40, 1] => A 'setsize' statement has been detected!
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -394,7 +392,6 @@
 [!][Preprocessor] => setsize double 10; //You can do the same with all the built-in types
 [?][Preprocessor][41, 20] => A single line comment has been detected!
 [?][Preprocessor][41, 1] => Checking for preprocessor methods...
-[?][Preprocessor][41, 1] => A 'setsize' statement has been detected!
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!

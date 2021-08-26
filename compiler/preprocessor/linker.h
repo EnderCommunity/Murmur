@@ -576,12 +576,133 @@ FileInfo* chkForPprFunc(FileInfo *curFile, FILE *dstFilPtr, char *srcPth){
                 //The "define" statement has been detected!
                 writeLogLine("Preprocessor", 0, "A 'define' statement has been detected!", 1, curFile->currLine, curFile->currCol + i);
 
-            }else if(ENABLE_SETSIZE_STATEMENT && i + 7 < len && (curFile->currLineCon)[i] == 's' && (curFile->currLineCon)[i + 1] == 'e' && (curFile->currLineCon)[i + 2] == 't' && (curFile->currLineCon)[i + 3] == 's' && (curFile->currLineCon)[i + 4] == 'i' && (curFile->currLineCon)[i + 5] == 'z' && (curFile->currLineCon)[i + 6] == 'e' && (curFile->currLineCon)[i + 7] == ' '){
+                int stmIndx = i, lokForNum = 1, isFsh = 0, varLen = 1, valLen = 1, skpFrsSpc = 0, fndSpc = 0;
+
+                char *varId = malloc(sizeof(char)*varLen),
+                     *varVal = malloc(sizeof(char)*valLen);
+                varId[0] = '\0';
+
+                for(i += 7; i < len; i++){
+
+                    if((curFile->currLineCon)[i] == ';'){
+
+                        isFsh = 1;
+                        break;
+
+                    }
+
+                    if(skpFrsSpc && !fndSpc && isspace((curFile->currLineCon)[i]))
+                        fndSpc = 1;
+
+                    if(!isspace((curFile->currLineCon)[i])){
+
+                        skpFrsSpc = 1;
+
+                        if(!fndSpc && lokForNum && isdigit((curFile->currLineCon)[i])) { //Only accept names that start with letters
+
+                            rpt(REPORT_CODE_ERROR, //This is an error
+                            REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                            MSG_PPC_LINKER_DEFINE_NODIGITSATSTART, //This is the custom error message (check /compiler/errors/messages.h)
+                            srcPth, //The source of this error
+                            curFile->currLine, //The line of this error
+                            curFile->currCol + i); //The column the error occurs
+
+                        }else if(!fndSpc && !isalpha((curFile->currLineCon)[i]) && !isdigit((curFile->currLineCon)[i]) && (curFile->currLineCon)[i] != '_'){
+
+                            rpt(REPORT_CODE_ERROR, //This is an error
+                            REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                            MSG_PPC_LINKER_DEFINE_RESTRICTEDNAMING, //This is the custom error message (check /compiler/errors/messages.h)
+                            srcPth, //The source of this error
+                            curFile->currLine, //The line of this error
+                            curFile->currCol + i); //The column the error occurs
+
+                        }else if(!fndSpc){
+
+                            varLen++;
+
+                            varId = realloc(varId, sizeof(char)*varLen);
+
+                            varId[varLen - 2] = (curFile->currLineCon)[i];
+
+                            varId[varLen - 1] = '\0';
+
+                        }else{
+
+                            valLen++;
+
+                            varVal = realloc(varVal, sizeof(char)*valLen);
+
+                            varVal[valLen - 2] = (curFile->currLineCon)[i];
+
+                            varVal[valLen - 1] = '\0';
+                            //varVal
+
+                        }
+
+                        lokForNum = 0;
+
+                    }
+
+                }
+
+                if(lokForNum){
+
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_DEFINE_MISSINGNAME, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + stmIndx); //The column the error occurs
+
+                }else if(!fndSpc){
+
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_DEFINE_MISSINGVALUE, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + stmIndx); //The column the error occurs
+
+                }else if(!isFsh){
+
+                    rpt(REPORT_CODE_ERROR, //This is an error
+                    REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
+                    MSG_PPC_LINKER_DEFINE_SEMICOLON, //This is the custom error message (check /compiler/errors/messages.h)
+                    srcPth, //The source of this error
+                    curFile->currLine, //The line of this error
+                    curFile->currCol + len); //The column the error occurs
+
+                }else{
+
+                    char *tmpDatStr = malloc(sizeof(char)*(
+                        strlen(varId) +
+                        strlen(varVal) +
+                        1 +
+                        1
+                    ));
+
+                    sprintf(tmpDatStr, "%s %s", varId, varVal);
+
+                    savDat(DATA_VALUE, tmpDatStr);
+
+                    free(tmpDatStr);
+
+                }
+
+                free(varId);
+                free(varVal);
+
+                rmvPrcSec(&curFile,
+                          &len,
+                          &i,
+                          stmIndx);
+
+            }/*else if(ENABLE_SETSIZE_STATEMENT && i + 7 < len && (curFile->currLineCon)[i] == 's' && (curFile->currLineCon)[i + 1] == 'e' && (curFile->currLineCon)[i + 2] == 't' && (curFile->currLineCon)[i + 3] == 's' && (curFile->currLineCon)[i + 4] == 'i' && (curFile->currLineCon)[i + 5] == 'z' && (curFile->currLineCon)[i + 6] == 'e' && (curFile->currLineCon)[i + 7] == ' '){
 
                 //The "setsize" statement has been detected!
                 writeLogLine("Preprocessor", 0, "A 'setsize' statement has been detected!", 1, curFile->currLine, curFile->currCol + i);
 
-            }
+            }*/
 
         }
 

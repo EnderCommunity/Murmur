@@ -16,7 +16,6 @@
 [{<Ax000003>@<main>},24;9]->}
 [{<Ax000003>@<main>},26;5]->}
 [{<Ax000003>@<main>},28;1]->}
-[{<main>},36;1]->define ZERO 0;
 [{<main>},40;1]->setsize int 2;
 [{<main>},41;1]->setsize double 10;
 [{<main>},50;1]->group::public FinalPitch {
