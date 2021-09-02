@@ -119,6 +119,8 @@
 #define DATA_ZONE_STR "B"
 #define DATA_VALUE 'C'
 #define DATA_VALUE_STR "C"
+#define TELL_VALUE 'D'
+#define TELL_VALUE_STR "D"
 //The data character 'Z' is reserved for extra data!
 
 

@@ -160,7 +160,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
     }else{
 
         crtDatFil(); //Create a ".dat" file
-        crtTllFil(); //Create a ".tll" file
+        //crtTllFil(); //Create a ".tll" file
         opnRptFil(); //Create a ".opf" file
 
         ppcRead(fileInf, desFileObj.ptr, "<main>"); //Let the preprocessor do its thing!
@@ -168,7 +168,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
                                         //full path of the main file
 
         clsDatFil(); //Save & close the data file (so you can use its data later)
-        clsTllFil(); //Save & close the "tell" file
+        //clsTllFil(); //Save & close the "tell" file
         fclose(filePtr); //Close the main input file stream
 
         fclose(desFileObj.ptr);
@@ -185,7 +185,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
         free(desFileObj.pth);
         fclose(desFileObj.ptr);
         freeDatFil(); //Free the data file pointer!
-        freeTllFil(); //Free the "tell" file pointer!
+        //freeTllFil(); //Free the "tell" file pointer!
 
         rpt(REPORT_CODE_MESSAGE, REPORT_SECTION_GENERAL, "This process is about to end", "<main>", 0, 0);
 

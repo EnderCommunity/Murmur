@@ -11,7 +11,7 @@
 [{<Ax000003>@<main>},11;5]->class::public section {
 [{<Ax000003>@<main>},13;9]->func:string myFunction(input:int) {
 [{<Ax000003>@<main>},15;13]->var:string output;
-[{<Bx000005>@<Ax000003>@<main>},19;13]->0;
+[{<Bx000007>@<Ax000003>@<main>},19;13]->0;
 [{<Ax000003>@<main>},22;13]->return output;
 [{<Ax000003>@<main>},24;9]->}
 [{<Ax000003>@<main>},26;5]->}
