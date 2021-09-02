@@ -57,7 +57,7 @@ void srtRptSrc(char **src, int lin, int col){
 
                 if(tmpStr[1] == DATA_PATH){
 
-                    char *tmpDat = getDat(DATA_PATH, tmpId);
+                    char *tmpDat = getDat(DATA_PATH, tmpId, 0);
 
                     if(strcmp(tmpDat, "\0") != 0){
 
@@ -78,7 +78,7 @@ void srtRptSrc(char **src, int lin, int col){
 
                 }else if(tmpStr[1] == DATA_ZONE){
 
-                    char *tmpDat = getDat(DATA_ZONE, tmpId);
+                    char *tmpDat = getDat(DATA_ZONE, tmpId, 0);
 
                     if(strcmp(tmpDat, "\0") != 0){
 

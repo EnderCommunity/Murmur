@@ -41,7 +41,7 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
             writeLogLine("Preprocessor", 1, fileInf->currLineCon, 0, 0, 0);
  
             if(ENABLE_COMMENTS && ENVI_ENABLE_COMMENTS && !isStrEmpty(fileInf->currLineCon))
-                fileInf = chkForCom(fileInf); //Remove the comments
+                chkForCom(&fileInf); //Remove the comments
 
             if(REMOVE_WHITESPACE_AT_LINE_END && !waitForComm && !isStrEmpty(fileInf->currLineCon)){
 
@@ -57,7 +57,14 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
             if(ENABLE_PREPROCESSOR_METHODS && ENVI_CHECK_FOR_PREPROCESSOR_METHODS && !waitForComm && !isStrEmpty(fileInf->currLineCon)){
 
                 writeLogLine("Preprocessor", 0, "Checking for preprocessor methods...", 1, fileInf->currLine, fileInf->currCol);
-                fileInf = chkForPprFunc(fileInf, desFilPtr, filPth); //Check for the preprocessor functions
+                chkForPprFunc(&fileInf, desFilPtr, filPth); //Check for the preprocessor functions
+
+            }
+
+            if(ENABLE_PREPROCESSOR_METHODS && ENVI_CHECK_FOR_PREPROCESSOR_METHODS && !waitForComm && !isStrEmpty(fileInf->currLineCon)){
+
+                writeLogLine("Preprocessor", 0, "Checking for constants...", 1, fileInf->currLine, fileInf->currCol);
+                chkForCnst(&fileInf); //Replace the defined constants
 
             }
 

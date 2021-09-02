@@ -190,3 +190,4 @@
 #define REPORT_SECTION_RUNTIME 9
 
 #define ERROR_STR_OUTOFBOUNDS "::ERR_OOB::" //an "out of bounds" error string
+#define ERROR_FIL_ENDOFFILE "::ERR_EOF::" //an "out of bounds" error string
