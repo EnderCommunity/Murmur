@@ -117,6 +117,9 @@
 #define DATA_PATH_STR "A"
 #define DATA_ZONE 'B'
 #define DATA_ZONE_STR "B"
+#define DATA_VALUE 'C'
+#define DATA_VALUE_STR "C"
+//The data character 'Z' is reserved for extra data!
 
 
 //Lexer
@@ -187,3 +190,4 @@
 #define REPORT_SECTION_RUNTIME 9
 
 #define ERROR_STR_OUTOFBOUNDS "::ERR_OOB::" //an "out of bounds" error string
+#define ERROR_FIL_ENDOFFILE "::ERR_EOF::" //an "out of bounds" error string

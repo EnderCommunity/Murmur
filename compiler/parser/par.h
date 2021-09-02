@@ -1,9 +1,10 @@
+#include "names.h"
+
 #include "gettkn.h"
 #include "sav.h"
 #include "trmtkn.h"
 #include "prstkn.h"
 
-#include "names.h"
 #include "infotkn.h"
 
 #include "terminal/specifiers.h"
@@ -236,7 +237,13 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
     while(kepLopTrm){
 
-        if(strcmp(cmp.nam, PARSER_DECLARATORS_VARIABLE) == 0){ // A variable!
+        //curTrmZon:
+        //0 - outside
+        //1 - inside a group
+        //2 - inside a class
+        //3 - inside a function
+
+        if(curTrmZon > 1 && strcmp(cmp.nam, PARSER_DECLARATORS_VARIABLE) == 0){ // A variable!
 
             T_Comp tmpTop = cpyCmp(cmp);
 
@@ -433,7 +440,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             remTrmCmp(tmpTop);
 
-        }else if(strcmp(cmp.nam, PARSER_DECLARATORS_FUNCTION) == 0){ // A function!
+        }else if(curTrmZon == 2 && strcmp(cmp.nam, PARSER_DECLARATORS_FUNCTION) == 0){ // A function!
 
             T_Comp tmpTop = cpyCmp(cmp);
 
@@ -538,7 +545,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             remTrmCmp(tmpTop);
 
-        }else if(strcmp(cmp.nam, PARSER_DECLARATORS_CLASS) == 0){ // A class!
+        }else if(curTrmZon == 1 && strcmp(cmp.nam, PARSER_DECLARATORS_CLASS) == 0){ // A class!
 
             T_Comp tmpTop = cpyCmp(cmp);
 
@@ -606,7 +613,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             remTrmCmp(tmpTop);
 
-        }else if(strcmp(cmp.nam, PARSER_DECLARATORS_GROUP) == 0){ // A group!
+        }else if(curTrmZon == 0 && strcmp(cmp.nam, PARSER_DECLARATORS_GROUP) == 0){ // A group!
 
             T_Comp tmpTop = cpyCmp(cmp);
 
@@ -674,7 +681,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             remTrmCmp(tmpTop);
 
-        }else if(strcmp(cmp.nam, PARSER_STATEMENTS_SETSIZE) == 0){ //The setsize method
+        }else if(curTrmZon == 0 && strcmp(cmp.nam, PARSER_STATEMENTS_SETSIZE) == 0){ //The setsize method
 
             T_Comp tmpBkp = cpyCmp(cmp);
 

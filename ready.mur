@@ -6,5 +6,9 @@ You'll find all the finished features here!
 */
 
 using test; //The libraries system is working!
-import "final-pitch-lib.lib.mur" //The "import" method is working!
-tell "TYPE::DATA" //The "tell" method is working!
+import "final-pitch-lib.lib.mur"; //The "import" method is working!
+
+tell "TYPE::DATA"; //The "tell" method is working! (but its data is not being used yet!)
+define ZERO 0; //The "define" method is working! (but its data is not being used yet!)
+setsize int 2; //The "sets
+ize" method is working! (But its data is not being used yet!)

@@ -89,7 +89,11 @@ group::public FinalPitch { //Groups can help you keep a whole block of code with
 
             a = 1, c = 5; //Change the value of 'c' to '5'm and the value of 'a' to '1'
 
-            PlusOne(b:ref); //the value of 'b' is '2' now!
+            a = c = 6; // The same as a = 6, c = 6;
+            //a & c = self + 5; // EXP: The same as a = a + 5, c = c + 5;
+            //a | c = self + 5; // EXP: The same as if(a) a = a + 5; if(c) c = c + 5;
+
+            PlusOne(b:refer); //the value of 'b' is '2' now!
 
             var:bool myTest = false;
 
@@ -121,7 +125,7 @@ group::public FinalPitch { //Groups can help you keep a whole block of code with
 
             }
 
-            return 0; //This is the final program output code
+            return ZERO; //This is the final program output code
 
         }
 
@@ -144,10 +148,10 @@ group::public FinalPitch { //Groups can help you keep a whole block of code with
 
         }
 
-        func::public:void PlusOne(a:int:ref){ //with the keyword "ref", you can make changes to the originally passed var within this function
+        func::public:void PlusOne(a:int:refer){ //with the keyword "ref", you can make changes to the originally passed var within this function
                                     //^ "reference"
                                     //int og = 0;
-                                    //PlusOne(og:ref);
+                                    //PlusOne(og:refer);
 
             a++; //the value of 'og' will change to '1'!
 

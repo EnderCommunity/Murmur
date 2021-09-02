@@ -27,7 +27,7 @@ void crtRtnStt(int linId){ //Create a return_statement
 int isRefStt(int typ, char *val){
 
     return (typ == LEXER_SYMBOL &&
-        strcmp(val, "ref") == 0
+        strcmp(val, "refer") == 0
     );
 
 }
