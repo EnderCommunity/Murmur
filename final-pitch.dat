@@ -2,6 +2,8 @@ Ax000001 E:\files\EnderCommunity\Projects\Murmur\compiler\resources\libraries\te
 Ax000002 E:\files\EnderCommunity\Projects\Murmur\compiler\resources\libraries\foldertest\test2.lib.mur <Zx000000020> <Zx000000001>
 Ax000003 E:\files\EnderCommunity\Projects\Murmur\final-pitch-lib.lib.mur <Zx000000022> <Zx000000001>
 Ax000004 E:\files\EnderCommunity\Projects\Murmur\another-library.lib.mur <Zx000000003> <Zx000000001>
-Bx000005 <Zx000000011> <Zx00000000D>
-Cx000006 ZERO  0 <Zx000000024> <Zx00000000D>
+Dx000005 DLL::root:myLib.dll <Zx000000004> <Zx00000001A>
+Dx000006 flag::myflag <Zx000000007> <Zx000000013>
+Bx000007 <Zx000000011> <Zx00000000D>
+Cx000008 ZERO 0 <Zx000000024> <Zx00000000E>
 #

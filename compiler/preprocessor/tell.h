@@ -1,39 +1,16 @@
-typedef struct {
-    FILE *ptr;
-    FILE *strPtr;
-    char *pth;
-} tllFil;
+void insTllDat(char *dat, int lin, int col){
 
-tllFil tmpTllFil;
+    char *tmpStr = malloc(sizeof(char)*(
+        strlen(dat) +
+        10 +
+        18 +
+        1
+    ));
 
-void crtTllFil(){
+    sprintf(tmpStr, "%s <Zx%09X> <Zx%09X>", dat, lin, col);
 
-    tmpTllFil.pth = malloc(sizeof(char)*(strlen(wrkstn.Path) + strlen(wrkstn.Name) + 6));
+    savDat(TELL_VALUE, tmpStr);
 
-    sprintf(tmpTllFil.pth, "%s%c%s.tll", wrkstn.Path, PATH_SLASH_TYP_CHAR, wrkstn.Name);
-
-    tmpTllFil.ptr = fopen(tmpTllFil.pth, "w"); //Create a new data file in "write mode"
-    //fclose(tmpTllFil.ptr);
-    //tmpTllFil.ptr = fopen(tmpTllFil.pth, "a+"); //Create a new data file in "write mode"
-
-}
-
-void freeTllFil(){
-
-    free(tmpTllFil.pth);
-
-}
-
-void insTllDat(char *dat){
-
-    fprintf(tmpTllFil.ptr, "%s\n", dat);
-
-}
-
-void clsTllFil(){
-
-    fprintf(tmpTllFil.ptr, "::end::");
-    fclose(tmpTllFil.ptr);
-    tmpTllFil.ptr = NULL;
+    free(tmpStr);
 
 }

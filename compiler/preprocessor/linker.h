@@ -513,7 +513,7 @@ void chkForPprFunc(FileInfo **curFile, FILE *dstFilPtr, char *srcPth){
                             //Start saving this data!
                             tmpStr[pthLen] = '\0';
 
-                            insTllDat(tmpStr);
+                            insTllDat(tmpStr, (*curFile)->currLine, (*curFile)->currCol + i);
 
                             //int orgImpPthLen = strlen(tmpStr); //Save the string length!
                             //char *fnlPth = pthAnl(wrkstn.Path, tmpStr);
@@ -576,7 +576,7 @@ void chkForPprFunc(FileInfo **curFile, FILE *dstFilPtr, char *srcPth){
                 //The "define" statement has been detected!
                 writeLogLine("Preprocessor", 0, "A 'define' statement has been detected!", 1, (*curFile)->currLine, (*curFile)->currCol + i);
 
-                int stmIndx = i, lokForNum = 1, isFsh = 0, varLen = 1, valLen = 1, skpFrsSpc = 0, fndSpc = 0, alwSpc = 0;
+                int stmIndx = i, lokForNum = 1, isFsh = 0, varLen = 1, valLen = 1, skpFrsSpc = 0, fndSpc = 0, alwSpc = 0, lckSpc = 0, freLckSpc = 0;
 
                 char *varId = malloc(sizeof(char)*varLen),
                      *varVal = malloc(sizeof(char)*valLen);
@@ -594,11 +594,11 @@ void chkForPprFunc(FileInfo **curFile, FILE *dstFilPtr, char *srcPth){
                     if(skpFrsSpc && !fndSpc && isspace(((*curFile)->currLineCon)[i]))
                         fndSpc = 1;
 
-                    if(!isspace(((*curFile)->currLineCon)[i]) || alwSpc){
+                    if(!isspace(((*curFile)->currLineCon)[i]) || ((lckSpc && !freLckSpc) ? 0 : alwSpc)){
 
                         skpFrsSpc = 1;
 
-                        if(!fndSpc && lokForNum && isdigit(((*curFile)->currLineCon)[i])) { //Only accept names that start with letters
+                        if(!lckSpc && !fndSpc && lokForNum && isdigit(((*curFile)->currLineCon)[i])) { //Only accept names that start with letters
 
                             rpt(REPORT_CODE_ERROR, //This is an error
                             REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
@@ -607,7 +607,7 @@ void chkForPprFunc(FileInfo **curFile, FILE *dstFilPtr, char *srcPth){
                             (*curFile)->currLine, //The line of this error
                             (*curFile)->currCol + i); //The column the error occurs
 
-                        }else if(!fndSpc && !isalpha(((*curFile)->currLineCon)[i]) && !isdigit(((*curFile)->currLineCon)[i]) && ((*curFile)->currLineCon)[i] != '_'){
+                        }else if(!lckSpc && !fndSpc && !isalpha(((*curFile)->currLineCon)[i]) && !isdigit(((*curFile)->currLineCon)[i]) && ((*curFile)->currLineCon)[i] != '_'){
 
                             rpt(REPORT_CODE_ERROR, //This is an error
                             REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
@@ -616,7 +616,7 @@ void chkForPprFunc(FileInfo **curFile, FILE *dstFilPtr, char *srcPth){
                             (*curFile)->currLine, //The line of this error
                             (*curFile)->currCol + i); //The column the error occurs
 
-                        }else if(!fndSpc){
+                        }else if(!lckSpc && !fndSpc){
 
                             varLen++;
 
@@ -630,14 +630,22 @@ void chkForPprFunc(FileInfo **curFile, FILE *dstFilPtr, char *srcPth){
 
                         }else{
 
-                            valLen++;
+                            if(lckSpc)
+                                freLckSpc = 1;
 
-                            varVal = realloc(varVal, sizeof(char)*valLen);
+                            if(!lckSpc)
+                                lckSpc = 1;
+                            else{
 
-                            varVal[valLen - 2] = ((*curFile)->currLineCon)[i];
+                                valLen++;
 
-                            varVal[valLen - 1] = '\0';
-                            //varVal
+                                varVal = realloc(varVal, sizeof(char)*valLen);
+
+                                varVal[valLen - 2] = ((*curFile)->currLineCon)[i];
+
+                                varVal[valLen - 1] = '\0';
+
+                            }
 
                         }
 
