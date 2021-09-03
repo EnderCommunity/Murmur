@@ -61,12 +61,13 @@ void ppcRead(FileInfo *fileInf, FILE *desFilPtr, char *filPth){
 
             }
 
-            if(ENABLE_PREPROCESSOR_METHODS && ENVI_CHECK_FOR_PREPROCESSOR_METHODS && !waitForComm && !isStrEmpty(fileInf->currLineCon)){
+            /*if(ENABLE_PREPROCESSOR_METHODS && ENVI_CHECK_FOR_PREPROCESSOR_METHODS && !waitForComm && !isStrEmpty(fileInf->currLineCon)){
 
                 writeLogLine("Preprocessor", 0, "Checking for constants...", 1, fileInf->currLine, fileInf->currCol);
                 chkForCnst(&fileInf); //Replace the defined constants
 
-            }
+            }*/
+            //^ Do this in the lexer ^
 
             if(!waitForComm && !isStrEmpty(fileInf->currLineCon)){
 
