@@ -1,5 +1,5 @@
 [?][LOG SYSTEM] => Created a log file successfully!
-[!][Compiler Manager] => The workstation directory has been set to "E:\files\EnderCommunity\Projects\Murmur\"
+[!][Compiler Manager] => The workstation directory has been set to "F:\files\EnderCommunity\Projects\Murmur\"
 [?][Compiler Manager] => Testing the `writeLogLine` function
 [?][Compiler Manager] => Starting the preprocessor.
 [?][Preprocessor] => Preprocessor started!
@@ -157,7 +157,7 @@
 [?][Preprocessor][34, 35] => A single line comment has been detected!
 [?][Preprocessor][34, 1] => Checking for preprocessor methods...
 [?][Preprocessor][34, 1] => An 'import' statement has been detected!
-[?][Preprocessor][34, 1] => Importing the content of the file <E:\files\EnderCommunity\Projects\Murmur\final-pitch-lib.lib.mur> into the temporary output file.
+[?][Preprocessor][34, 1] => Importing the content of the file <F:\files\EnderCommunity\Projects\Murmur\final-pitch-lib.lib.mur> into the temporary output file.
 [?][Preprocessor] => The header has been detected!
 [?][Preprocessor] => The header flags have been processed successfully!
 [?][Preprocessor] => Getting the content of the next line...
@@ -166,7 +166,7 @@
 [!][Preprocessor] => import "another-library.lib.mur";
 [?][Preprocessor][3, 1] => Checking for preprocessor methods...
 [?][Preprocessor][3, 1] => An 'import' statement has been detected!
-[?][Preprocessor][3, 1] => Importing the content of the file <E:\files\EnderCommunity\Projects\Murmur\another-library.lib.mur> into the temporary output file.
+[?][Preprocessor][3, 1] => Importing the content of the file <F:\files\EnderCommunity\Projects\Murmur\another-library.lib.mur> into the temporary output file.
 [?][Preprocessor][1, 1] => New processing loop started.
 [!][Preprocessor] => //import "hi.co";
 [?][Preprocessor][1, 1] => A single line comment has been detected!
@@ -250,7 +250,7 @@
 [?][Preprocessor][18, 1] => Checking for constants...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor][3, 1] => Finished importing the content of the file <E:\files\EnderCommunity\Projects\Murmur\another-library.lib.mur> into the temporary output file.
+[?][Preprocessor][3, 1] => Finished importing the content of the file <F:\files\EnderCommunity\Projects\Murmur\another-library.lib.mur> into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][4, 1] => New processing loop started.
@@ -375,7 +375,7 @@
 [?][Preprocessor][28, 1] => Checking for constants...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
-[?][Preprocessor][34, 1] => Finished importing the content of the file <E:\files\EnderCommunity\Projects\Murmur\final-pitch-lib.lib.mur> into the temporary output file.
+[?][Preprocessor][34, 1] => Finished importing the content of the file <F:\files\EnderCommunity\Projects\Murmur\final-pitch-lib.lib.mur> into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor] => Getting the content of the next line...

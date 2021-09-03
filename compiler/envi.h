@@ -45,21 +45,19 @@
 //Input (needed directoies and files)
 #define MUR_FILEEXT ".mur"
 #define MUR_LIB_FILEEXT ".lib.mur"
+#define C_COMPILER_EXECUTABLE_DIR "gcc"
 #if _WIN64 || _WIN32 //Windows
 
-    #define C_COMPILER_EXECUTABLE_DIR "C:\\msys64\\mingw64\\bin\\gcc.exe"
     #define MUR_LIBRARIES_DIR "resources\\libraries\\"
     #define SYSTEM_TMP_DIR "%%temp%%/"
 
 #elif __APPLE__ //macOS
 
-    #define C_COMPILER_EXECUTABLE_DIR "gcc"
     #define MUR_LIBRARIES_DIR "resources/libraries/"
     #define SYSTEM_TMP_DIR "/var/TMP"
 
 #else //Linux
 
-    #define C_COMPILER_EXECUTABLE_DIR "gcc"
     #define MUR_LIBRARIES_DIR "resources/libraries/"
     #define SYSTEM_TMP_DIR "/var/tmp/"
 
