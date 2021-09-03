@@ -24,7 +24,7 @@ Do NOT use Mur for any important stuff, it's an experimental programming languag
 This documentation is not complete, as Mur is not really complete either right now.
 :::
 
-## The Development Environment (outdated)
+## The Development Environment
 
 To start working with *Mur* on Windows, you need to [download MSYS2](https://www.msys2.org/#installation).
 

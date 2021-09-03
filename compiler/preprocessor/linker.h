@@ -4,13 +4,30 @@
 
 void insSubFil(FILE *subTmpPtr, FILE *dstFilPtr, FileInfo **curFile, char *fnlPth, char *srcPth, int rptColSft, int datColSft){
 
-    FileInfo *subFilInf = checkFlags(subTmpPtr, fnlPth, 0); //An object that contains the sub-file info!
+    char *tmpSrcStr = malloc(sizeof(char)*(strlen(srcPth) + strlen(fnlPth) + 4)), // The source of this code
+         *tmpFlgSrcStr = malloc(sizeof(char)*(strlen(srcPth) + strlen(fnlPth) + 4)), // Another copy of the source
+         *tmpDatStr = malloc(sizeof(char)*(strlen(fnlPth) + 26 + 3));
 
-    printf("\n[Debug] [Sub] Mode: %c\n", subFilInf->mode);
-    printf("[Debug] [Sub] Is Full: %d\n", subFilInf->isFull);
-    printf("[Debug] [Sub] Current Line Content: %s\n", subFilInf->currLineCon);
-    printf("[Debug] [Sub] Current Line Original Content: %s\n", subFilInf->currOLineCon);
-    printf("[Debug] [Sub] Path: %s\n", subFilInf->path);
+    sprintf(tmpDatStr, "%s <Zx%09X> <Zx%09X>", fnlPth, (*curFile)->currLine, (*curFile)->currCol + datColSft);
+    int pthDatId = savDat(DATA_PATH, tmpDatStr);
+    free(tmpDatStr);
+
+    sprintf(tmpSrcStr, "<%cx%06X>@%s", DATA_PATH, pthDatId, srcPth);
+    strcpy(tmpFlgSrcStr, tmpSrcStr);
+
+    FileInfo *subFilInf = checkFlags(subTmpPtr, fnlPth, 0, tmpFlgSrcStr); //An object that contains the sub-file info!
+
+    free(tmpFlgSrcStr);
+
+    if(DEBUG_OUTPUT_TO_CONSOLE){
+
+        printf("[Debug] [Sub] Mode: %c\n", subFilInf->mode);
+        printf("[Debug] [Sub] Is Full: %d\n", subFilInf->isFull);
+        printf("[Debug] [Sub] Current Line Content: %s\n", subFilInf->currLineCon);
+        printf("[Debug] [Sub] Current Line Original Content: %s\n", subFilInf->currOLineCon);
+        printf("[Debug] [Sub] Path: %s\n", subFilInf->path);
+
+    }
 
     if(subFilInf->mode == 'U'){ //This is neither a `.mur` file nor a `.lib.mur` file
 
@@ -21,25 +38,10 @@ void insSubFil(FILE *subTmpPtr, FILE *dstFilPtr, FileInfo **curFile, char *fnlPt
         (*curFile)->currLine, //The line of this error
         (*curFile)->currCol + rptColSft); //The column the error occurs
 
-    }else{
-
-        char *tmpSrcStr = malloc(sizeof(char)*(strlen(srcPth) + strlen(fnlPth) + 4));
-
-        char *tmpDatStr = malloc(sizeof(char)*(strlen(fnlPth) + 26 + 3));
-
-        sprintf(tmpDatStr, "%s <Zx%09X> <Zx%09X>", fnlPth, (*curFile)->currLine, (*curFile)->currCol + datColSft);
-
-        int pthDatId = savDat(DATA_PATH, tmpDatStr);
-
-        free(tmpDatStr);
-
-        sprintf(tmpSrcStr, "<%cx%06X>@%s", DATA_PATH, pthDatId, srcPth);
-
+    }else
         ppcRead(subFilInf, dstFilPtr, tmpSrcStr); //Let the preprocessor do its thing, again!
 
-        free(tmpSrcStr);
-
-    }
+    free(tmpSrcStr);
 
     fclose(subTmpPtr);
 

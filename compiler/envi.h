@@ -43,6 +43,7 @@
 
 
 //Input (needed directoies and files)
+#define ROOT_SOURCE_PATH "<main>"
 #define MUR_FILEEXT ".mur"
 #define MUR_LIB_FILEEXT ".lib.mur"
 #define C_COMPILER_EXECUTABLE_DIR "gcc"
@@ -68,6 +69,9 @@
 
 #define REMOVE_WHITESPACE_AT_LINE_START 1 //Remove the extra whitespace at the start of each line
 #define REMOVE_WHITESPACE_AT_LINE_END 1 //Remove the extra whitespace at the end of each line
+#define OUTPUT_TO_CONSOLE 0 //Output the warnings and errors to the console
+#define DEBUG_OUTPUT_TO_CONSOLE 1 //Output debug messages to the console
+#define OUTPUT_OPF_FILE 1 //Output a `.opf` file (Errors and warnings)
 #define OUTPUT_LOG_FILE 1 //Output a `.log` file (Logs files may affect the speed of
 //the compiler severely. The log file stream is constantly closed and re-opened to
 //ensure that the user will get the logs even when the compiler crashes.)
