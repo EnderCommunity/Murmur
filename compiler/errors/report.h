@@ -5,19 +5,24 @@ FILE *rptFilPtr;
 
 void opnRptFil(){
 
-    char *tmpPth = malloc(sizeof(char)*(strlen(wrkstn.Path) + strlen(wrkstn.Name) + 6));
+    if(OUTPUT_OPF_FILE){
 
-    sprintf(tmpPth, "%s%c%s.opf", wrkstn.Path, PATH_SLASH_TYP_CHAR, wrkstn.Name);
+        char *tmpPth = malloc(sizeof(char)*(strlen(wrkstn.Path) + strlen(wrkstn.Name) + 6));
 
-    rptFilPtr = fopen(tmpPth, "w"); //Create a new data file in "write mode"
+        sprintf(tmpPth, "%s%c%s.opf", wrkstn.Path, PATH_SLASH_TYP_CHAR, wrkstn.Name);
 
-    free(tmpPth);
+        rptFilPtr = fopen(tmpPth, "w"); //Create a new data file in "write mode"
+
+        free(tmpPth);
+
+    }
 
 }
 
 void clsRptFil(){
 
-    fclose(rptFilPtr);
+    if(OUTPUT_OPF_FILE)
+        fclose(rptFilPtr);
 
 }
 
@@ -148,9 +153,15 @@ void rpt(const int typ, int sct, char *msg, char *src, int lin, int col){
 
     srtRptSrc(&src, lin, col);
 
-    fprintf(rptFilPtr, "[%s] %s%s\n", (typ == REPORT_CODE_WARNING) ? "Warning" : ((typ == REPORT_CODE_MESSAGE) ?  "Message" : "Error")
-                             , msg
-                             , src);
+    if(OUTPUT_OPF_FILE)
+        fprintf(rptFilPtr, "[%s] %s%s\n", (typ == REPORT_CODE_WARNING) ? "Warning" : ((typ == REPORT_CODE_MESSAGE) ?  "Message" : "Error")
+                                        , msg
+                                        , src);
+
+    if(OUTPUT_TO_CONSOLE)
+        printf("[%s] %s%s\n", (typ == REPORT_CODE_WARNING) ? "Warning" : ((typ == REPORT_CODE_MESSAGE) ?  "Message" : "Error")
+                                        , msg
+                                        , src);
 
     free(src);
 

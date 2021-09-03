@@ -20,24 +20,32 @@ void RegDebEnd(){ //Stop the timer
 
     timSpt += (double)(timEnd - timBeg) / CLOCKS_PER_SEC;
  
-    printf("\n[Debug] The elapsed time is %f seconds\n", timSpt);
+    printf("[Compiler] The elapsed time is %f seconds\n", timSpt);
 
 }
 
 void Debug(char msg[], int pause){ //A simple debug message
 
-    printf("[Debug] %s\n", msg);
+    if(DEBUG_OUTPUT_TO_CONSOLE){
 
-    if(pause)
-        SYSTEM_COMMANDS_PAUSE;
+        printf("[Debug] %s\n", msg);
+
+        if(pause)
+            SYSTEM_COMMANDS_PAUSE;
+
+    }
 
 }
 
 void DebugWithPath(char msg[], char path[], int pause){ //A debug message with a path within the message itself
 
-    printf("[Debug] %s%s\n", msg, path);
+    if(DEBUG_OUTPUT_TO_CONSOLE){
 
-    if(pause)
-        SYSTEM_COMMANDS_PAUSE;
+        printf("[Debug] %s%s\n", msg, path);
+
+        if(pause)
+            SYSTEM_COMMANDS_PAUSE;
+
+    }
 
 }

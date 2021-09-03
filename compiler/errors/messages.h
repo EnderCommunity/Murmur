@@ -35,6 +35,11 @@
 #define MSG_PPC_READER_MLCOMMENTEND "End of file has been reached, and the comment wasn't closed!"
 #define MSG_PPC_READER_SPRZONEEND "End of file has been reached, and the separate zone wasn't closed!"
 
+//"preprocessor/process.h"
+#define MSG_PPC_PROCESS_FLAGCLOSINGQUOTEMISSING "Flag closing quote is missing!"
+#define MSG_PPC_PROCESS_FLAGEMPTY "Flag is empty!"
+#define MSG_PPC_PROCESS_FLAGUNKNOWN "Unknown flag!"
+
 
 //Lexer (MSG_LXR_...)
 //#define MSG_LXR_

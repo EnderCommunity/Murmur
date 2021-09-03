@@ -7,8 +7,12 @@
 
 void Deb(){ //Minimal debug
 
-    printf("[Debug] ");
-    SYSTEM_COMMANDS_PAUSE;
+    if(DEBUG_OUTPUT_TO_CONSOLE){
+
+        printf("[Debug] ");
+        SYSTEM_COMMANDS_PAUSE;
+
+    }
 
 }
 
@@ -54,7 +58,7 @@ int main(int argc, char *argv[]){
     char path[256];
     char *pathPtr = path;
 
-    if (argc > 1){
+    if(argc > 1){
 
         strcpy(path, argv[1]);
 
@@ -86,7 +90,8 @@ int main(int argc, char *argv[]){
     //Start a workstation
     setupWrkstn(pathPtr);
 
-    printf("\nWorkstation Path: \"%s\"\nWorkstation Name: \"%s\"\n", wrkstn.Path, wrkstn.Name);
+    if(DEBUG_OUTPUT_TO_CONSOLE)
+        printf("[Debug] Workstation Path: \"%s\"\n[Debug] Workstation Name: \"%s\"\n", wrkstn.Path, wrkstn.Name);
 
     //Start logging the session
     char *tmpStrPrt1 = apdStr(wrkstn.Name, ".log"), *tmpStrPrt2 = apdStr(wrkstn.Path, tmpStrPrt1);
@@ -143,13 +148,19 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
 
     writeLogLine("Preprocessor", 0, "Preprocessor started!", 0, 0, 0);
 
-    FileInfo *fileInf = checkFlags(filePtr, path, isFull); //An object that contains the file info!
+    opnRptFil(); //Create a ".opf" file
 
-    printf("\n[Debug] Mode: %c\n", fileInf->mode);
-    printf("[Debug] Is Full: %d\n", fileInf->isFull);
-    printf("[Debug] Current Line Content: %s\n", fileInf->currLineCon);
-    printf("[Debug] Current Line Original Content: %s\n", fileInf->currOLineCon);
-    printf("[Debug] Path: %s\n", fileInf->path);
+    FileInfo *fileInf = checkFlags(filePtr, path, isFull, ROOT_SOURCE_PATH); //An object that contains the file info!
+
+    if(DEBUG_OUTPUT_TO_CONSOLE){
+
+        printf("[Debug] Mode: %c\n", fileInf->mode);
+        printf("[Debug] Is Full: %d\n", fileInf->isFull);
+        printf("[Debug] Current Line Content: %s\n", fileInf->currLineCon);
+        printf("[Debug] Current Line Original Content: %s\n", fileInf->currOLineCon);
+        printf("[Debug] Path: %s\n", fileInf->path);
+
+    }
 
     if(fileInf->mode == 'U'){ //This is neither a `.mur` file nor a `.lib.mur` file
 
@@ -161,9 +172,8 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
 
         crtDatFil(); //Create a ".dat" file
         //crtTllFil(); //Create a ".tll" file
-        opnRptFil(); //Create a ".opf" file
 
-        ppcRead(fileInf, desFileObj.ptr, "<main>"); //Let the preprocessor do its thing!
+        ppcRead(fileInf, desFileObj.ptr, ROOT_SOURCE_PATH); //Let the preprocessor do its thing!
                                         //^ change this value to the
                                         //full path of the main file
 
