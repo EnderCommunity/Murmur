@@ -26,19 +26,40 @@ This documentation is not complete, as Mur is not really complete either right n
 
 ## The Development Environment (outdated)
 
-To start working with *Mur* on Windows, you need to [download MSYS2](https://www.msys2.org/#installation). And it's also recommended that you use [Visual Studio Code](https://code.visualstudio.com/). You need to install all the available features in *MSYS2*. And, in case you decided to use *Visual Studio Code*, make sure to [install the C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools). Also, make sure to [add the gcc compiler to your PATH](https://www.youtube.com/watch?v=mQra00mT3Dg)!
+To start working with *Mur* on Windows, you need to [download MSYS2](https://www.msys2.org/#installation).
 
-Execute the folllowing commands in your *MSYS2* console:
+It's also recommended that you use [Visual Studio Code](https://code.visualstudio.com/). (Make sure to [install the C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools))
 
-```cmd
+Also, make sure to [add the gcc compiler to your PATH](https://www.youtube.com/watch?v=mQra00mT3Dg)!
+
+Execute the folllowing commands for windows:
+
+```bat
+::set up (MSYS2 console)
 pacman -Syu
-:: Run these commands only if the compiler fails
-::pacman -S mingw-w64-x86_64-toolchain
-::pacman -S mingw-w64-x86_64-pcre
-::pacman -S mingw-w64-x86_64-pcre2
+pacman -S mingw-w64-x86_64-toolchain
+::build (local terminal)
+gcc -g start.c -o Mur.exe -lregex
+::run (local terminal)
+./Mur.exe
 ```
 
-When you're done with the setup process, make sure that the `C_COMPILER_EXECUTABLE_DIR` enviroment variable is set to your `gcc.exe` executable! You might also want to make sure that the `.vscode` compiler path is correct.
+As for Linux, execute the folllowing commands:
+
+```bat
+::set up (local terminal)
+sudo apt-get update
+sudo apt-get install build-essential
+sudo apt-get install valgrind
+::build (local terminal)
+gcc -g start.c -o Mur.out -lm
+::run (local terminal)
+./Mur.out
+::mem-debug (local terminal)
+sudo valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./Mur.out
+```
+
+When you're done with the setup process, make sure that the `C_COMPILER_EXECUTABLE_DIR` enviroment variable is set to your `gcc.exe` executable! You might also want to make sure that the `.vscode` compiler path is correct. (you can leave the `C_COMPILER_EXECUTABLE_DIR` value as it is if you're sure you did set up your PATH global variable correctly)
 
 ### Extensions
 
