@@ -724,7 +724,7 @@ void chkForPprFunc(FileInfo **curFile, FILE *dstFilPtr, char *srcPth){
 
 }
 
-void chkForCnst(FileInfo **curFile){
+/*void chkForCnst(FileInfo **curFile){
 
     //Remember, constants can be anywhere
     //outside quotes!
@@ -737,7 +737,7 @@ void chkForCnst(FileInfo **curFile){
 
         //char *val = getDatByNam(DATA_VALUE, tmpStr, 1);
 
-        /*if(hitSpc > 0 && !isspace(((*curFile)->currLineCon)[i])){
+        /\*if(hitSpc > 0 && !isspace(((*curFile)->currLineCon)[i])){
 
             char *tmpStr = getStrPrt((*curFile)->currLineCon, prvSpc, hitSpc, 0),
                  *val = getDatByNam(DATA_VALUE, tmpStr, 1);
@@ -774,8 +774,8 @@ void chkForCnst(FileInfo **curFile){
             prvSpc = -hitSpc;
             hitSpc = i;
 
-        }*/
+        }*\/
 
     }
 
-}
+}*/
