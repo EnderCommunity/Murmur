@@ -16,7 +16,7 @@ void rptPrs(int id, int colOff, char *msg){
 
     Inf_Token tmpInf = getLxrInfTkn(id);
 
-    printf("\n[%d,%d]", id, colOff);
+    //printf("\n[%d,%d]", id, colOff);
 
     rpt(REPORT_CODE_ERROR, //This is an error
     REPORT_SECTION_PARSER, //The error was detected by the preprocessor

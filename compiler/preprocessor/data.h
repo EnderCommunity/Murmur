@@ -136,7 +136,7 @@ char* getDatByNam(char typ, char *valNam, int goBck){
 
             if(strcmp(tmpNamStr, valNam) == 0){
 
-                printf("\nYAY!");
+                //printf("\nYAY!");
 
                 free(val);
                 val = getStrPrt(dat, spcIndx + 1, strlen(dat), 0);

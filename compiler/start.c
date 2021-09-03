@@ -171,14 +171,12 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
     }else{
 
         crtDatFil(); //Create a ".dat" file
-        //crtTllFil(); //Create a ".tll" file
 
         ppcRead(fileInf, desFileObj.ptr, ROOT_SOURCE_PATH); //Let the preprocessor do its thing!
                                         //^ change this value to the
                                         //full path of the main file
 
         clsDatFil(); //Save & close the data file (so you can use its data later)
-        //clsTllFil(); //Save & close the "tell" file
         fclose(filePtr); //Close the main input file stream
 
         fclose(desFileObj.ptr);
