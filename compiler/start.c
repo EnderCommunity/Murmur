@@ -176,7 +176,6 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
                                         //^ change this value to the
                                         //full path of the main file
 
-        clsDatFil(); //Save & close the data file (so you can use its data later)
         fclose(filePtr); //Close the main input file stream
 
         fclose(desFileObj.ptr);
@@ -197,6 +196,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
 
         rpt(REPORT_CODE_MESSAGE, REPORT_SECTION_GENERAL, "This process is about to end", "<main>", 0, 0);
 
+        clsDatFil(); //Close the data file
         clsRptFil(); //Close the ".opf" file
 
         /* //[START] Start the C processor

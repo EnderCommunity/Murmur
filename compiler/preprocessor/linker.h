@@ -692,10 +692,11 @@ void chkForPprFunc(FileInfo **curFile, FILE *dstFilPtr, char *srcPth){
                         1 +
                         10 +
                         18 +
+                        2 +
                         1
                     ));
 
-                    sprintf(tmpDatStr, "%s %s <Zx%09X> <Zx%09X>", varId, varVal, (*curFile)->currLine, (*curFile)->currCol + i - strlen(varVal) + 1);
+                    sprintf(tmpDatStr, "%s `%s` <Zx%09X> <Zx%09X>", varId, varVal, (*curFile)->currLine, (*curFile)->currCol + i - strlen(varVal) + 1);
 
                     savDat(DATA_VALUE, tmpDatStr);
 

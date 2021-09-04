@@ -202,7 +202,7 @@ parentheses_operator(close)<343>
 zone_operator(open)<344>
 zone_operator(close)<345>
 return_statement()<346>
-IDENTIFIER(ZERO)<347>
+NUMBER(0)<347>
 zone_operator(close)<349>
 DEFINE_FUNCTION(Func,void,0)<356>
 parentheses_operator(open)<357>
