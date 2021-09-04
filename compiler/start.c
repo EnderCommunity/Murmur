@@ -140,6 +140,7 @@ int main(int argc, char *argv[]){
 
 #include "lexical/lex.h"
 
+#include "lexical/rtr.h"
 #include "parser/par.h"
 
 void CProcess(FileInfo *fileInf, TmpFileStruc desFileObj);
