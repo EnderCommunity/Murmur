@@ -210,7 +210,7 @@ void lexChkLop(char **curSrcPth, FILE **lexFil, char **curLin, int lopLen, int l
                     //int tmpLin = 1, tmpCol = 1;
 
                     // Value found!
-                    lexChkLop(&tmpSrcPthStr, lexFil, &fnlVal, strlen(fnlVal), 1, 1, newLin, 1);
+                    lexChkLop(&tmpSrcPthStr, lexFil, &fnlVal, strlen(fnlVal), lin, col, newLin, 1);
                     //^ This is causing a crash!!! ^
 
                     free(fnlVal);

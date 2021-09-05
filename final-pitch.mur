@@ -36,12 +36,9 @@ import "final-pitch-lib.lib.mur"; //Import another Murmur file!
 define ZERO 0; //You can use the `define` function to define a var that
                //will be replaced by the provided value before the execution
                //of this code
-//define STZS setsize;
 
 setsize int 2; //Set a custom size of memory (in bytes) to allocate for any type
 setsize double 10; //You can do the same with all the built-in types
-//setsize; //You can do the same with all the built-in types
-//STZS;
 
 //import "path/to/my/file2.mur"; //You need to pay attention to the importing order
 //of your files! For example, "file.mur" will not be able to use the custom set

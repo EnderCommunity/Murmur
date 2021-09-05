@@ -1,10 +1,12 @@
 FILE *lexFilPtr;
+unsigned int lexFilFstPos;
 int kepLop = 1;
 int prsTknCurLin = 0; //The current line in the file
 
 void setTknFilPtr(FILE *tmp){
 
     lexFilPtr = tmp;
+    lexFilFstPos = ftell(lexFilPtr);
 
 }
 
