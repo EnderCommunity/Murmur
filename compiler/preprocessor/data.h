@@ -111,12 +111,10 @@ char *getDat(char typ, int id, int goBck){
 
 }
 
-char* getDatByNam(char typ, char *valNam, int goBck){
+int getDatByNam(char typ, char *valNam, int goBck){
 
-    int idx = 1, brk = 0;
+    int idx = 1, brk = 0, rstId = -1;
     char *dat = getDat(typ, idx, goBck);
-    char *val = malloc(sizeof(char)*(1));
-    val[0] = '\0';
 
     //printf("\n%s", getDat('C', 6, 1));
 
@@ -138,8 +136,7 @@ char* getDatByNam(char typ, char *valNam, int goBck){
 
                 //printf("\nYAY!");
 
-                free(val);
-                val = getStrPrt(dat, spcIndx + 1, strlen(dat), 0);
+                rstId = idx;
 
                 brk = 1;
 
@@ -164,7 +161,7 @@ char* getDatByNam(char typ, char *valNam, int goBck){
 
     free(dat);
 
-    return val;
+    return rstId;
 
 }
 

@@ -102,6 +102,36 @@ void srtRptSrc(char **src, int lin, int col){
 
                     }
 
+                }if(tmpStr[1] == DATA_VALUE){
+
+                    char *tmpDat = getDat(DATA_VALUE, tmpId, 0);
+
+                    if(strcmp(tmpDat, "\0") != 0){
+
+                        char *tmpSub1Str = getStrPrt(tmpDat, getStrIndx(tmpDat, "<Zx") + 3, getStrIndx(tmpDat, ">"), 0);
+                        char *tmpSub2Str = getStrPrt(tmpDat, getLstStrIndx(tmpDat, "<Zx") + 3, getLstStrIndx(tmpDat, ">"), 0);
+
+                        nxtLin = lin;
+                        nxtCol = col;
+                        lin = hexToInt(tmpSub1Str);
+                        col = hexToInt(tmpSub2Str);
+
+                        printf("%s", tmpDat);
+
+                        char *tmpPth = getStrPrt(tmpDat, 0, getStrIndx(tmpDat, "<Zx") - 1, 0);
+
+                        free(tmpStr);
+                        tmpStr = tmpPth;
+
+                        free(tmpDat);
+
+                        free(tmpStr);
+
+                        tmpStr = malloc(sizeof(char)*(9));
+                        strcpy(tmpStr, "constant");
+
+                    }
+
                 }
 
             }else{

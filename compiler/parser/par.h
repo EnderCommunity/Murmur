@@ -225,7 +225,6 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
     strcpy(trmCmpFilPth, prsFilPth);
 
     clsPrsFil();
-    fclose(lexFilPtr); //Close the file stream!
 
     //crtPrsFil(FilStruc.pth); //Create a `.prs` file
     //`prsFilPtr` is now referring to the `.prs` file
@@ -815,6 +814,8 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
     //clsPrsFil();
     clsTrmCmpFil();
     //fclose(trmCmpFilPtr); //Close the file stream!
+
+    fclose(lexFilPtr); //Close the file stream!
 
     //PARSER_TYPE_ALL
     //Now, create a new file for non-terminal data

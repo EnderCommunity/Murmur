@@ -118,6 +118,26 @@ char* shfStr(char *str, int n){ //Shif a string to the left by 'n' chars!
 
 }
 
+char* shfStrSaf(char *str, int n){ //Shif a string to the left by 'n' chars! (safe)
+
+    char *tmp = malloc(sizeof(char)*(
+        strlen(str) +
+        1
+    ));
+
+    strcpy(tmp, str);
+
+    int i, l = strlen(tmp);
+
+    for(i = n; i < l; i++)
+        tmp[i - n] = tmp[i];
+
+    tmp[(l - n >= 0) ? l - n : 0] = '\0';
+
+    return tmp;
+
+}
+
 int inStrRng(char *str, char *strForChk){ //Check if a string exists inside a string
 
     return strstr(str, strForChk) != NULL;
