@@ -69,11 +69,12 @@
 
 #define OUTPUT_INPUT_COLLECTION_FILE_EXTENSION ".tmp"
 #define OUTPUT_DATA_FILE_EXTENSION ".dat"
-#define OUTPUT_LEXER_FILE_EXTENSION ".lxic"
+#define OUTPUT_LEXER_FILE_EXTENSION ".lxr"
 #define OUTPUT_PARSER_TERMINAL_FILE_EXTENSION ".trm"
 #define OUTPUT_PARSER_FILE_EXTENSION ".prs"
 #define OUTPUT_INFO_FILE_EXTENSION ".opf"
 #define OUTPUT_LOG_FILE_EXTENSION ".log"
+//Note: file extensions can only be 3 letters long
 #define REMOVE_WHITESPACE_AT_LINE_START 1 //Remove the extra whitespace at the start of each line
 #define REMOVE_WHITESPACE_AT_LINE_END 1 //Remove the extra whitespace at the end of each line
 #define OUTPUT_TO_CONSOLE 0 //Output the warnings and errors to the console

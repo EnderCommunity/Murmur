@@ -94,7 +94,7 @@ int main(int argc, char *argv[]){
         printf("[Debug] Workstation Path: \"%s\"\n[Debug] Workstation Name: \"%s\"\n", wrkstn.Path, wrkstn.Name);
 
     //Start logging the session
-    char *tmpStrPrt1 = apdStr(wrkstn.Name, ".log"), *tmpStrPrt2 = apdStr(wrkstn.Path, tmpStrPrt1);
+    char *tmpStrPrt1 = apdStr(wrkstn.Name, OUTPUT_LOG_FILE_EXTENSION), *tmpStrPrt2 = apdStr(wrkstn.Path, tmpStrPrt1);
     newLogFile(tmpStrPrt2);
 
     free(tmpStrPrt2);
@@ -181,7 +181,7 @@ void preprocess(FILE *filePtr, char *path, int isFull, TmpFileStruc desFileObj){
 
         fclose(desFileObj.ptr);
 
-        char *tmpPthStr = apdStr(desFileObj.pth, ".tmp");
+        char *tmpPthStr = apdStr(desFileObj.pth, OUTPUT_INPUT_COLLECTION_FILE_EXTENSION);
         desFileObj.ptr = fopen(tmpPthStr, "r"); //Switch the file mode to "read mode"
 
         free(tmpPthStr);
@@ -225,7 +225,7 @@ void CProcess(FileInfo *fileInf, TmpFileStruc tmpFileObj){
 
         //fclose(tmpFileObj.ptr);
 
-        //tmpFileObj.ptr = fopen(apdStr(tmpFileObj.pth, ".tmp"), "r");
+        //tmpFileObj.ptr = fopen(apdStr(tmpFileObj.pth, OUTPUT_INPUT_COLLECTION_FILE_EXTENSION), "r");
 
         //cpyFileCon(cFilPtr, tmpFileObj.ptr);
 

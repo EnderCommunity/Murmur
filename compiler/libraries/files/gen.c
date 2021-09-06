@@ -10,7 +10,7 @@ static TmpFileStruc genFilStr(char *pth){ //Create a new file in the `/tmp` dire
 
         oth = pth;
  
-        str = apdStr(pth, ".tmp");
+        str = apdStr(pth, OUTPUT_INPUT_COLLECTION_FILE_EXTENSION);
 
     }else{
 
@@ -22,7 +22,7 @@ static TmpFileStruc genFilStr(char *pth){ //Create a new file in the `/tmp` dire
 
         strcpy(oth, str);
 
-        str = apdStr(str, ".tmp");
+        str = apdStr(str, OUTPUT_INPUT_COLLECTION_FILE_EXTENSION);
 
     }
 
