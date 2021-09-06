@@ -130,7 +130,7 @@ void chkForPprFunc(FileInfo **curFile, FILE *dstFilPtr, char *srcPth){
 
             //You can start looking now!
 
-            if(ENABLE_USING_STATEMENT && i + 5 < len &&
+            if(ENABLE_USING_STATEMENT && ENVI_ENABLE_USING_METHOD && i + 5 < len &&
                 ((*curFile)->currLineCon)[i] == 'u' &&
                 ((*curFile)->currLineCon)[i + 1] == 's' &&
                 ((*curFile)->currLineCon)[i + 2] == 'i' &&
@@ -280,7 +280,7 @@ void chkForPprFunc(FileInfo **curFile, FILE *dstFilPtr, char *srcPth){
                           &i,
                           stmIndx);
 
-            }else if(ENABLE_IMPORT_STATEMENT && i + 5 < len &&
+            }else if(ENABLE_IMPORT_STATEMENT && ENVI_ENABLE_IMPORT_METHOD && i + 5 < len &&
                     ((*curFile)->currLineCon)[i] == 'i' &&
                     ((*curFile)->currLineCon)[i + 1] == 'm' &&
                     ((*curFile)->currLineCon)[i + 2] == 'p' &&

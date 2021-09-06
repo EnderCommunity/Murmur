@@ -9,7 +9,7 @@ void opnRptFil(){
 
         char *tmpPth = malloc(sizeof(char)*(strlen(wrkstn.Path) + strlen(wrkstn.Name) + 6));
 
-        sprintf(tmpPth, "%s%c%s.opf", wrkstn.Path, PATH_SLASH_TYP_CHAR, wrkstn.Name);
+        sprintf(tmpPth, "%s%c%s%s", wrkstn.Path, PATH_SLASH_TYP_CHAR, wrkstn.Name, OUTPUT_INFO_FILE_EXTENSION);
 
         rptFilPtr = fopen(tmpPth, "w"); //Create a new data file in "write mode"
 

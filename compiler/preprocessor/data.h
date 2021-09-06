@@ -11,7 +11,7 @@ void crtDatFil(){
 
     tmpDatCtr.pth = malloc(sizeof(char)*(strlen(wrkstn.Path) + strlen(wrkstn.Name) + 6));
 
-    sprintf(tmpDatCtr.pth, "%s%c%s.dat", wrkstn.Path, PATH_SLASH_TYP_CHAR, wrkstn.Name);
+    sprintf(tmpDatCtr.pth, "%s%c%s%s", wrkstn.Path, PATH_SLASH_TYP_CHAR, wrkstn.Name, OUTPUT_DATA_FILE_EXTENSION);
 
     tmpDatCtr.ptr = fopen(tmpDatCtr.pth, "w"); //Create a new data file in "write mode"
     fclose(tmpDatCtr.ptr);

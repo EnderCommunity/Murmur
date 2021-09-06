@@ -2,7 +2,7 @@ FILE *prsFnlFilPtr = NULL;
 
 void crtFnlPrsFil(char *pth){ //Create a `.prs` file!
 
-    char *tmpPth = apdStr(pth, ".prs");
+    char *tmpPth = apdStr(pth, OUTPUT_PARSER_FILE_EXTENSION);
 
     prsFnlFilPtr = fopen(tmpPth, "w");
 

@@ -43,3 +43,12 @@ void cmpCCode(char *path){ //Compile a C file
     free(cmd);
 
 }
+
+//gcc <INPUT> -o <OUTPUT>
+
+// -Os <I>
+//      Optimise for size
+// -fdata-sections -ffunction-sections <IO> -Wl,--gc-sections
+//      Remove un-used functions
+// -Wall -save-temps <I>
+//      Get all intermediate files

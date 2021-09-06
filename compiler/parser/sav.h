@@ -3,7 +3,7 @@ FILE *prsFilPtr = NULL;
 
 void crtPrsFil(char *rotPth){ //Create a parser file
 
-    prsFilPth = apdStr(rotPth, ".trm");
+    prsFilPth = apdStr(rotPth, OUTPUT_PARSER_TERMINAL_FILE_EXTENSION);
 
     prsFilPtr = fopen(prsFilPth, "w");
 

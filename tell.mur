@@ -1,0 +1,44 @@
+// You can use the "tell" method to pass some
+// data to the bundler.
+tell "<TYPE>::<DATA>";
+
+// Note: the "tell" method is only accessible
+// by libraries! It's better if you try not
+// to use this method.
+
+// All the planned message types are:
+// DLL:
+//      Tells the bundler to add a DLL
+//      library to the output project folder.
+//      (DLL::<SOURCE>:<LIBRARY>)
+//      <SOURCE>:
+//                The source of this DLL file
+//                [root/dir]
+//      <LIBRARY>:
+//                The DLL file path
+//                [<PATH>]
+// FLAG:
+//      Tells the bundler to use a C flag
+//      whilst compiling the final C code.
+//      (FLAG::<POSITION>:<FLAG>)
+//      <POSITION>:
+//                The position of this flag.
+//                (before or after the input
+//                and output part of the build
+//                command)
+//                [before/after]
+//      <FLAG>:
+//                The flag
+//                [<STRING>]
+// FILE:
+//      Tells the bundler to add a file
+//      to the output project folder.
+//      (FILE::<TYPE>:<FILE>)
+//      <TYPE>:
+//                The type of this file
+//                [media/code/data/...]
+//      <FILE>:
+//                The file path
+//                [<PATH>]
+// NAME:
+//      DESC

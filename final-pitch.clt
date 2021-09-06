@@ -1,0 +1,104 @@
+[{<Ax000001>@<main>},1;1]->"Test 1!";
+[{<Ax000002>@<main>},1;1]->"Test 2!";
+[{<Ax000004>@<Ax000003>@<main>},6;1]->group AnotherLibrary {
+[{<Ax000004>@<Ax000003>@<main>},8;5]->class MyClass {
+[{<Ax000004>@<Ax000003>@<main>},10;9]->func:int NumOne(){
+[{<Ax000004>@<Ax000003>@<main>},12;13]->return 1;
+[{<Ax000004>@<Ax000003>@<main>},14;9]->}
+[{<Ax000004>@<Ax000003>@<main>},16;5]->}
+[{<Ax000004>@<Ax000003>@<main>},18;1]->}
+[{<Ax000003>@<main>},9;1]->group::public LibFilNam {
+[{<Ax000003>@<main>},11;5]->class::public section {
+[{<Ax000003>@<main>},13;9]->func:string myFunction(input:int) {
+[{<Ax000003>@<main>},15;13]->var:string output;
+[{<Bx000007>@<Ax000003>@<main>},19;13]->0;
+[{<Ax000003>@<main>},22;13]->return output;
+[{<Ax000003>@<main>},24;9]->}
+[{<Ax000003>@<main>},26;5]->}
+[{<Ax000003>@<main>},28;1]->}
+[{<main>},42;1]->setsize int 2;
+[{<main>},43;1]->setsize double 10;
+[{<main>},52;1]->group::public FinalPitch {
+[{<main>},58;5]->class::public Program {
+[{<main>},62;9]->var::public:int globA = 0;
+[{<main>},63;9]->var::public:double globB = 0.0;
+[{<main>},64;9]->var::public:float globC = 0.0;
+[{<main>},65;9]->var::public:char globD = 'D';
+[{<main>},66;9]->var::public:string globE = "Global E";
+[{<main>},67;9]->var::public:bool globF = true;
+[{<main>},68;9]->var::public:file globG = types.create.fileStream("path/to/my/file.txt");
+[{<main>},69;9]->var::public:hex globH = 0xFF;
+[{<main>},70;9]->var::public:string[] globI = types.create.Array:string[](6);
+[{<main>},71;9]->var::private:hex[,] globJ = types.create.Array:hex[](8, 2);
+[{<main>},73;9]->func::public:int Main(envi:string[], length:int){
+[{<main>},82;13]->Func();
+[{<main>},84;13]->var:^int a = 0;
+[{<main>},87;13]->var:int b = 1;
+[{<main>},90;13]->var:^int c = Test(a, 1);
+[{<main>},92;13]->a = 1, c = 5;
+[{<main>},94;13]->a = c = 6;
+[{<main>},98;13]->PlusOne(b:refer);
+[{<main>},100;13]->var:bool myTest = false;
+[{<main>},102;13]->if(myTest == true){
+[{<main>},106;13]->}else{
+[{<main>},110;13]->}
+[{<main>},112;13]->if(myTest != true){
+[{<main>},116;13]->}
+[{<main>},118;13]->if(1 >= 5 || 1 > 5 || (1 > 1 && 1 < 1)){
+[{<main>},122;13]->}
+[{<main>},124;13]->if(1 <= 5 || 1 < 5){
+[{<main>},128;13]->}
+[{<main>},130;13]->io.console.print("Hello there!");
+[{<main>},132;13]->return ZERO;
+[{<main>},134;9]->}
+[{<main>},136;9]->func::private:void Func(){
+[{<main>},144;9]->}
+[{<main>},146;9]->func::public:^int Test(a:^int, b:int){
+[{<main>},148;13]->a = (^int) b;
+[{<main>},151;13]->return a;
+[{<main>},153;9]->}
+[{<main>},155;9]->func::public:void PlusOne(a:int:refer){
+[{<main>},160;13]->a++;
+[{<main>},162;9]->}
+[{<main>},164;9]->func::public:void myTests(){
+[{<main>},166;13]->var:bool myTest = false;
+[{<main>},167;13]->var:int a = 0, b = 0;
+[{<main>},168;13]->var:double c = 4, d = 3;
+[{<main>},170;13]->myTest!!;
+[{<main>},171;13]->myTest = !myTest;
+[{<main>},172;13]->a++;
+[{<main>},173;13]->a += 1;
+[{<main>},174;13]->a = a + 1;
+[{<main>},175;13]->b--;
+[{<main>},176;13]->b -= 1;
+[{<main>},177;13]->b = b - 1;
+[{<main>},179;13]->c %= d;
+[{<main>},180;13]->c % d;
+[{<main>},181;13]->c /= 0.5;
+[{<main>},182;13]->c / d;
+[{<main>},183;13]->c *= d;
+[{<main>},184;13]->c = c * d;
+[{<main>},186;9]->}
+[{<main>},188;9]->func:string myStringTest(a:string){
+[{<main>},190;13]->var:string b = "Hi!";
+[{<main>},191;13]->delete b;
+[{<main>},196;13]->var:int b = 1;
+[{<main>},203;9]->}
+[{<main>},205;9]->func:hex[,] ReturnHexArray(){
+[{<main>},207;13]->return this.globJ;
+[{<main>},209;9]->}
+[{<main>},211;5]->}
+[{<main>},213;5]->class::public AnotherClass {
+[{<main>},215;9]->var::public:int a = 0;
+[{<main>},216;9]->var::private:int b = 0;
+[{<main>},218;9]->func::public:AnotherClass Construct(a:int, b:int){
+[{<main>},220;13]->this.a = a;
+[{<main>},221;13]->this.b = b;
+[{<main>},223;9]->}
+[{<main>},225;5]->}
+[{<main>},227;5]->class Smth {
+[{<main>},229;9]->func:void myTest(a:int){
+[{<main>},233;9]->}
+[{<main>},235;5]->}
+[{<main>},237;1]->}
+[FileEnd]

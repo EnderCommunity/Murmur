@@ -266,7 +266,7 @@ void lexChkLop(char **curSrcPth, FILE **lexFil, char **curLin, int lopLen, int l
 
 FILE* lexProc(TmpFileStruc cFileObj){
 
-    char *tmpLexPthStr = apdStr(cFileObj.pth, ".lxic");
+    char *tmpLexPthStr = apdStr(cFileObj.pth, OUTPUT_LEXER_FILE_EXTENSION);
 
     FILE *lexFil = fopen(tmpLexPthStr, "w"); //Create a new lexer file in "write mode"
 
