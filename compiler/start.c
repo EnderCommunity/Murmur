@@ -220,7 +220,7 @@ void CProcess(FileInfo *fileInf, TmpFileStruc tmpFileObj){
 
     if(OUTPUT_EXECUTABLE){
 
-        char *cFilPth = apdStr(tmpFileObj.pth, ".c");
+        char *cFilPth = apdStr(tmpFileObj.pth, OUTPUT_C_FILE_EXTENSION);
         //FILE *cFilPtr = fopen(cFilPth, "w");
 
         //fclose(tmpFileObj.ptr);
