@@ -4,7 +4,7 @@ import "another-library.lib.mur";
 tell "DLL::root:myLib.dll"; // You can use the "tell"
                             // method to send messages
                             // to the bundler
-tell "flag::myflag";
+tell "FLAG::myflag";
 
 group::public LibFilNam {
 

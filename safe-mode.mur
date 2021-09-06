@@ -1,0 +1,32 @@
+#header <safe-mode>
+// This is a mur file that runs in "safe mode".
+// "Safe mode" prevents importing any non-built-in
+// files into this file that are outside of this
+// file's root directory.
+
+import "../file.mur"; // This won't work, and this
+                      // will result in an error whilst
+                      // compiling this program.
+
+import "./file.mur";  // This will work, as this file
+                      // is within the root directory
+                      // of this program.
+
+// Built-in libraries won't get affected by
+// "safe mode", as they count as trusted
+// code.
+// (If you wish to disable the built-in
+// libraries, you can the the <no-using>
+// flag.)
+
+using test; //This will work just fine.
+
+// Editing, deleting, and copying files within
+// the file's root directory won't work.
+// You can read the content of these files,
+// but you can't modify it.
+
+file test1 = types.create.fileStream("../file.txt"); // This won't work!
+file test2 = types.create.fileStream("./file.txt"); // This will work!
+// Note: maybe you could create a "files" library
+// for the "file" type.

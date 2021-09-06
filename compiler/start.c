@@ -136,7 +136,7 @@ int main(int argc, char *argv[]){
 #include "preprocessor/checker.h"
 #include "preprocessor/reader.h"
 
-#include "c/compile.h"
+#include "bundler/c/compile.h"
 
 #include "lexical/lex.h"
 

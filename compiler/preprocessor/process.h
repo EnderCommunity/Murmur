@@ -84,7 +84,15 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull, char *srcPth) { //De
                     ENVI_ENABLE_COMMENTS = 0;
                 else if(strcmp(tmpSubStr, "no-preprocessor-methods") == 0) //The compiler will not check for preprocessor methods
                     ENVI_CHECK_FOR_PREPROCESSOR_METHODS = 0;
-                else //Unknown flag!
+                else if(strcmp(tmpSubStr, "debug-mode") == 0)
+                    ENVI_ENABLE_DEBUG_MODE = 1;
+                else if(strcmp(tmpSubStr, "no-import") == 0)
+                    ENVI_ENABLE_IMPORT_METHOD = 0;
+                else if(strcmp(tmpSubStr, "no-using") == 0)
+                    ENVI_ENABLE_USING_METHOD = 0;
+                else if(strcmp(tmpSubStr, "safe-mode") == 0){
+                    exit(-100); // Safe-mode is not supported yet!
+                }else //Unknown flag!
                     rpt(REPORT_CODE_WARNING, //This is an error
                     REPORT_SECTION_PREPROCESSOR, //The error was detected by the preprocessor
                     MSG_PPC_PROCESS_FLAGUNKNOWN, //This is the custom error message (check /compiler/errors/messages.h)
