@@ -67,13 +67,16 @@
 
 //Output (NOTE: some of these files might still get generated in the `/tmp` directory)
 
-#define OUTPUT_INPUT_COLLECTION_FILE_EXTENSION ".tmp"
+#define OUTPUT_INPUT_COLLECTION_FILE_EXTENSION ".clt"
 #define OUTPUT_DATA_FILE_EXTENSION ".dat"
 #define OUTPUT_LEXER_FILE_EXTENSION ".lxr"
 #define OUTPUT_PARSER_TERMINAL_FILE_EXTENSION ".trm"
 #define OUTPUT_PARSER_FILE_EXTENSION ".prs"
 #define OUTPUT_INFO_FILE_EXTENSION ".opf"
 #define OUTPUT_LOG_FILE_EXTENSION ".log"
+/* Unused! */#define OUTPUT_EVALUATOR_FILE_EXTENSION ".val"
+/* Unused! */#define OUTPUT_OPTIMISER_FILE_EXTENSION ".opt"
+/* Unused! */#define OUTPUT_C_FILE_EXTENSION ".c"
 //Note: file extensions can only be 3 letters long
 #define REMOVE_WHITESPACE_AT_LINE_START 1 //Remove the extra whitespace at the start of each line
 #define REMOVE_WHITESPACE_AT_LINE_END 1 //Remove the extra whitespace at the end of each line
