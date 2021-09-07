@@ -82,24 +82,23 @@
 [{<main>},190;9]->func:string myStringTest(a:string){
 [{<main>},192;13]->var:string b = "Hi!";
 [{<main>},193;13]->delete b;
-[{<main>},198;13]->var:int b = 1, c = 0;
-[{<main>},200;13]->delete d, c;
-[{<main>},207;9]->}
-[{<main>},209;9]->func:hex[,] ReturnHexArray(){
-[{<main>},211;13]->return this.globJ;
-[{<main>},213;9]->}
-[{<main>},215;5]->}
-[{<main>},217;5]->class::public AnotherClass {
-[{<main>},219;9]->var::public:int a = 0;
-[{<main>},220;9]->var::private:int b = 0;
-[{<main>},222;9]->func::public:AnotherClass Construct(a:int, b:int){
-[{<main>},224;13]->this.a = a;
-[{<main>},225;13]->this.b = b;
-[{<main>},227;9]->}
-[{<main>},229;5]->}
-[{<main>},231;5]->class Smth {
-[{<main>},233;9]->func:void myTest(a:int){
-[{<main>},237;9]->}
-[{<main>},239;5]->}
-[{<main>},241;1]->}
+[{<main>},199;13]->var:int b = 100, c = 0;
+[{<main>},208;9]->}
+[{<main>},210;9]->func:hex[,] ReturnHexArray(){
+[{<main>},212;13]->return this.globJ;
+[{<main>},214;9]->}
+[{<main>},216;5]->}
+[{<main>},218;5]->class::public AnotherClass {
+[{<main>},220;9]->var::public:int a = 0;
+[{<main>},221;9]->var::private:int b = 0;
+[{<main>},223;9]->func::public:AnotherClass Construct(a:int, b:int){
+[{<main>},225;13]->this.a = a;
+[{<main>},226;13]->this.b = b;
+[{<main>},228;9]->}
+[{<main>},230;5]->}
+[{<main>},232;5]->class Smth {
+[{<main>},234;9]->func:void myTest(a:int){
+[{<main>},238;9]->}
+[{<main>},240;5]->}
+[{<main>},242;1]->}
 [FileEnd]

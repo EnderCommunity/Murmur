@@ -714,7 +714,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             remTrmCmp(tmpBkp);
 
-        }else if(0 && curTrmZon > 2 && strcmp(cmp.nam, PARSER_STATEMENTS_DELETE) == 0){ //The delete method
+        }else if(curTrmZon > 2 && strcmp(cmp.nam, PARSER_STATEMENTS_DELETE) == 0){ //The delete method
 
             T_Comp tmpBkp = cpyCmp(cmp);
 
@@ -728,58 +728,29 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
                 //If the char "," is detected, start a loop.
                 //If not, just end the operation.
 
-                int isEnd;
+                int isEnd = 0;
 
                 while(nxtTknCmp(&cmp) && (
-                    isEnd = strcmp(cmp.nam, PARSER_OPERATORS_END) == 0 ||
+                    (isEnd = (strcmp(cmp.nam, PARSER_OPERATORS_END) == 0)) ||
                     strcmp(cmp.nam, PARSER_OPERATORS_SEPARATION) == 0
                 )){
 
-                    if(!isEnd && nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){
-
+                    if(isEnd)
+                        break; //Stop the loop!
+                    else if(!isEnd && nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0)
                         isrtPrsNTrm(PARSER_NTERMINAL_DELETE, cmp.cnt, cmp.srcLin);
-
-                    }else if(!isEnd){
-
-                        //Oops, something went wrong!
-
-                    }
+                    else
+                        rptPrs(cmp.srcLin, 0, MSG_PRS_DELETEMISSINGINPUT);
 
                 }
 
-                if(!isEnd){
-
-                    //Error: missing ";"
-
-                }else{
-
-                    //
-
-                }
-
-                /*if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_NUMBER) == 0){
-
-                    char *tmpStr = malloc(sizeof(char)*(strlen(cmp.cnt) + strlen(cmpTyp.cnt) + 2));
-
-                    sprintf(tmpStr, "%s,%s", cmpTyp.cnt, cmp.cnt);
-
-                    isrtPrsNTrm(PARSER_NTERMINAL_CALLSETSIZE, tmpStr, tmpBkp.srcLin);
-
-                    free(tmpStr);
-
-                }else{
-
-                    rptPrs(cmpTyp.srcLin, 0, MSG_PRS_SETSIZEINVALIDSIZEINPUT);
-
-                }*/
+                if(!isEnd)
+                    rptPrs(tmpBkp.srcLin, 0, MSG_PRS_DELETEMISSINGEND);
 
                 remTrmCmp(cmpTyp);
 
-            }else{
-
+            }else
                 rptPrs(tmpBkp.srcLin, 0, MSG_PRS_DELETEMISSINGINPUT);
-
-            }
 
             remTrmCmp(tmpBkp);
 

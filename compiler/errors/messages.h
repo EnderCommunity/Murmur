@@ -67,7 +67,7 @@
 #define MSG_PRS_DOTINVALIDFOLLOWUP "Dot (.) operator not followed by a valid continuation!"
 #define MSG_PRS_FUNCINVALIDRETURNTYPESPECIF "No valid return type is present for the function call!"
 #define MSG_PRS_DELETEMISSINGINPUT "Missing valid `delete` input!"
-
+#define MSG_PRS_DELETEMISSINGEND "Expected a semicolon (;) at the end of the delete method!"
 #define MSG_PRS_VAR_NOVALIDTYPE "No valid type is present for the variable!"
 #define MSG_PRS_INFOINDIC_INVALIDINFO "No valid info is present after the data indicator (::)/(:)!"
 #define MSG_PRS_VAR_NOVALIDNAME "No valid name is present for the variable!"
