@@ -195,7 +195,9 @@ group::public FinalPitch { //Groups can help you keep a whole block of code with
                       // (But you can only do that on
                       // the level of your current
                       // zone!)
-            var:int b = 1;
+            var:int b = 1, c = 0;
+
+            delete d, c;
 
             // Also, you can't delete any vars
             // that are passed as arguments to the
