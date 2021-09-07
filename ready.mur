@@ -1,4 +1,9 @@
 #header <the-header-is-working>
+// The currently working flags are:
+// <no-comments>
+// <no-preprocessor-methods>
+// <no-import>
+// <no-using>
 /*
 
 You'll find all the finished features here!

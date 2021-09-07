@@ -16,89 +16,89 @@
 [{<Ax000003>@<main>},24;9]->}
 [{<Ax000003>@<main>},26;5]->}
 [{<Ax000003>@<main>},28;1]->}
-[{<main>},42;1]->setsize int 2;
-[{<main>},43;1]->setsize double 10;
-[{<main>},52;1]->group::public FinalPitch {
-[{<main>},58;5]->class::public Program {
-[{<main>},62;9]->var::public:int globA = 0;
-[{<main>},63;9]->var::public:double globB = 0.0;
-[{<main>},64;9]->var::public:float globC = 0.0;
-[{<main>},65;9]->var::public:char globD = 'D';
-[{<main>},66;9]->var::public:string globE = "Global E";
-[{<main>},67;9]->var::public:bool globF = true;
-[{<main>},68;9]->var::public:file globG = types.create.fileStream("path/to/my/file.txt");
-[{<main>},69;9]->var::public:hex globH = 0xFF;
-[{<main>},70;9]->var::public:string[] globI = types.create.Array:string[](6);
-[{<main>},71;9]->var::private:hex[,] globJ = types.create.Array:hex[](8, 2);
-[{<main>},73;9]->func::public:int Main(envi:string[], length:int){
-[{<main>},82;13]->Func();
-[{<main>},84;13]->var:^int a = 0;
-[{<main>},87;13]->var:int b = 1;
-[{<main>},90;13]->var:^int c = Test(a, 1);
-[{<main>},92;13]->a = 1, c = 5;
-[{<main>},94;13]->a = c = 6;
-[{<main>},98;13]->PlusOne(b:refer);
-[{<main>},100;13]->var:bool myTest = false;
-[{<main>},102;13]->if(myTest == true){
-[{<main>},106;13]->}else{
-[{<main>},110;13]->}
-[{<main>},112;13]->if(myTest != true){
-[{<main>},116;13]->}
-[{<main>},118;13]->if(1 >= 5 || 1 > 5 || (1 > 1 && 1 < 1)){
-[{<main>},122;13]->}
-[{<main>},124;13]->if(1 <= 5 || 1 < 5){
-[{<main>},128;13]->}
-[{<main>},130;13]->io.console.print("Hello there!");
-[{<main>},132;13]->return ZERO;
-[{<main>},134;9]->}
-[{<main>},136;9]->func::private:void Func(){
-[{<main>},144;9]->}
-[{<main>},146;9]->func::public:^int Test(a:^int, b:int){
-[{<main>},148;13]->a = (^int) b;
-[{<main>},151;13]->return a;
-[{<main>},153;9]->}
-[{<main>},155;9]->func::public:void PlusOne(a:int:refer){
-[{<main>},160;13]->a++;
-[{<main>},162;9]->}
-[{<main>},164;9]->func::public:void myTests(){
-[{<main>},166;13]->var:bool myTest = false;
-[{<main>},167;13]->var:int a = 0, b = 0;
-[{<main>},168;13]->var:double c = 4, d = 3;
-[{<main>},170;13]->myTest!!;
-[{<main>},171;13]->myTest = !myTest;
-[{<main>},172;13]->a++;
-[{<main>},173;13]->a += 1;
-[{<main>},174;13]->a = a + 1;
-[{<main>},175;13]->b--;
-[{<main>},176;13]->b -= 1;
-[{<main>},177;13]->b = b - 1;
-[{<main>},179;13]->c %= d;
-[{<main>},180;13]->c % d;
-[{<main>},181;13]->c /= 0.5;
-[{<main>},182;13]->c / d;
-[{<main>},183;13]->c *= d;
-[{<main>},184;13]->c = c * d;
-[{<main>},186;9]->}
-[{<main>},188;9]->func:string myStringTest(a:string){
-[{<main>},190;13]->var:string b = "Hi!";
-[{<main>},191;13]->delete b;
-[{<main>},196;13]->var:int b = 1;
-[{<main>},203;9]->}
-[{<main>},205;9]->func:hex[,] ReturnHexArray(){
-[{<main>},207;13]->return this.globJ;
-[{<main>},209;9]->}
-[{<main>},211;5]->}
-[{<main>},213;5]->class::public AnotherClass {
-[{<main>},215;9]->var::public:int a = 0;
-[{<main>},216;9]->var::private:int b = 0;
-[{<main>},218;9]->func::public:AnotherClass Construct(a:int, b:int){
-[{<main>},220;13]->this.a = a;
-[{<main>},221;13]->this.b = b;
-[{<main>},223;9]->}
-[{<main>},225;5]->}
-[{<main>},227;5]->class Smth {
-[{<main>},229;9]->func:void myTest(a:int){
-[{<main>},233;9]->}
-[{<main>},235;5]->}
-[{<main>},237;1]->}
+[{<main>},44;1]->setsize int 2;
+[{<main>},45;1]->setsize double 10;
+[{<main>},54;1]->group::public FinalPitch {
+[{<main>},60;5]->class::public Program {
+[{<main>},64;9]->var::public:int globA = 0;
+[{<main>},65;9]->var::public:double globB = 0.0;
+[{<main>},66;9]->var::public:float globC = 0.0;
+[{<main>},67;9]->var::public:char globD = 'D';
+[{<main>},68;9]->var::public:string globE = "Global E";
+[{<main>},69;9]->var::public:bool globF = true;
+[{<main>},70;9]->var::public:file globG = types.create.fileStream("path/to/my/file.txt");
+[{<main>},71;9]->var::public:hex globH = 0xFF;
+[{<main>},72;9]->var::public:string[] globI = types.create.Array:string[](6);
+[{<main>},73;9]->var::private:hex[,] globJ = types.create.Array:hex[](8, 2);
+[{<main>},75;9]->func::public:int Main(envi:string[], length:int){
+[{<main>},84;13]->Func();
+[{<main>},86;13]->var:^int a = 0;
+[{<main>},89;13]->var:int b = 1;
+[{<main>},92;13]->var:^int c = Test(a, 1);
+[{<main>},94;13]->a = 1, c = 5;
+[{<main>},96;13]->a = c = 6;
+[{<main>},100;13]->PlusOne(b:refer);
+[{<main>},102;13]->var:bool myTest = false;
+[{<main>},104;13]->if(myTest == true){
+[{<main>},108;13]->}else{
+[{<main>},112;13]->}
+[{<main>},114;13]->if(myTest != true){
+[{<main>},118;13]->}
+[{<main>},120;13]->if(1 >= 5 || 1 > 5 || (1 > 1 && 1 < 1)){
+[{<main>},124;13]->}
+[{<main>},126;13]->if(1 <= 5 || 1 < 5){
+[{<main>},130;13]->}
+[{<main>},132;13]->io.console.print("Hello there!");
+[{<main>},134;13]->return ZERO;
+[{<main>},136;9]->}
+[{<main>},138;9]->func::private:void Func(){
+[{<main>},146;9]->}
+[{<main>},148;9]->func::public:^int Test(a:^int, b:int){
+[{<main>},150;13]->a = (^int) b;
+[{<main>},153;13]->return a;
+[{<main>},155;9]->}
+[{<main>},157;9]->func::public:void PlusOne(a:int:refer){
+[{<main>},162;13]->a++;
+[{<main>},164;9]->}
+[{<main>},166;9]->func::public:void myTests(){
+[{<main>},168;13]->var:bool myTest = false;
+[{<main>},169;13]->var:int a = 0, b = 0;
+[{<main>},170;13]->var:double c = 4, d = 3;
+[{<main>},172;13]->myTest!!;
+[{<main>},173;13]->myTest = !myTest;
+[{<main>},174;13]->a++;
+[{<main>},175;13]->a += 1;
+[{<main>},176;13]->a = a + 1;
+[{<main>},177;13]->b--;
+[{<main>},178;13]->b -= 1;
+[{<main>},179;13]->b = b - 1;
+[{<main>},181;13]->c %= d;
+[{<main>},182;13]->c % d;
+[{<main>},183;13]->c /= 0.5;
+[{<main>},184;13]->c / d;
+[{<main>},185;13]->c *= d;
+[{<main>},186;13]->c = c * d;
+[{<main>},188;9]->}
+[{<main>},190;9]->func:string myStringTest(a:string){
+[{<main>},192;13]->var:string b = "Hi!";
+[{<main>},193;13]->delete b;
+[{<main>},198;13]->var:int b = 1;
+[{<main>},205;9]->}
+[{<main>},207;9]->func:hex[,] ReturnHexArray(){
+[{<main>},209;13]->return this.globJ;
+[{<main>},211;9]->}
+[{<main>},213;5]->}
+[{<main>},215;5]->class::public AnotherClass {
+[{<main>},217;9]->var::public:int a = 0;
+[{<main>},218;9]->var::private:int b = 0;
+[{<main>},220;9]->func::public:AnotherClass Construct(a:int, b:int){
+[{<main>},222;13]->this.a = a;
+[{<main>},223;13]->this.b = b;
+[{<main>},225;9]->}
+[{<main>},227;5]->}
+[{<main>},229;5]->class Smth {
+[{<main>},231;9]->func:void myTest(a:int){
+[{<main>},235;9]->}
+[{<main>},237;5]->}
+[{<main>},239;1]->}
 [FileEnd]
