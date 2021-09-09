@@ -31,6 +31,8 @@ of Murmur, and all the functions that it can use.
 using test;
 using foldertest.test2;
 // using types;
+// using files; // The "file" type should be managed
+//              // by this library
 // using io;
 
 import "final-pitch-lib.lib.mur"; //Import another Murmur file!
@@ -193,7 +195,10 @@ group::public FinalPitch { //Groups can help you keep a whole block of code with
                       // (But you can only do that on
                       // the level of your current
                       // zone!)
-            var:int b = 1;
+
+            var:int b = 100, c = 0;
+
+            delete d, c;
 
             // Also, you can't delete any vars
             // that are passed as arguments to the

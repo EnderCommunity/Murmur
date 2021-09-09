@@ -1,16 +1,17 @@
-#header <safe-mode>
+#header <safe-mode> <my-other-flag>
 // This is a mur file that runs in "safe mode".
 // "Safe mode" prevents importing any non-built-in
-// files into this file that are outside of this
-// file's root directory.
+// files into this file.
+// Also, any flag that comes after the <safe-mode>
+// flag will be ignored. For example, in this file,
+// the <my-other-flag> flag won't affect this file/
+// code in any way.
 
-import "../file.mur"; // This won't work, and this
+import "./file.mur"; // This won't work, and this
                       // will result in an error whilst
                       // compiling this program.
 
-import "./file.mur";  // This will work, as this file
-                      // is within the root directory
-                      // of this program.
+import "./file.lib.mur"; // This also won't work
 
 // Built-in libraries won't get affected by
 // "safe mode", as they count as trusted
@@ -21,12 +22,8 @@ import "./file.mur";  // This will work, as this file
 
 using test; //This will work just fine.
 
-// Editing, deleting, and copying files within
-// the file's root directory won't work.
-// You can read the content of these files,
-// but you can't modify it.
+// Editing, deleting, copying, and reading files
+// won't work.
 
-file test1 = types.create.fileStream("../file.txt"); // This won't work!
-file test2 = types.create.fileStream("./file.txt"); // This will work!
-// Note: maybe you could create a "files" library
-// for the "file" type.
+file test1 = types.create.fileStream("./file.txt"); // This won't work!
+file test2 = types.create.fileStream("/dir/to/my/important/file.txt"); // This won't work!

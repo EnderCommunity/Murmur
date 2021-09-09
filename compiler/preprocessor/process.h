@@ -70,8 +70,8 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull, char *srcPth) { //De
 
         //printf("\n`%s`", tmpStr);
 
-        int indx, indxShft = 0;
-        while((indx = getStrIndx(tmpStr, "<")) != -1){
+        int indx, indxShft = 0, alwMorFlg = 1;
+        while(alwMorFlg && (indx = getStrIndx(tmpStr, "<")) != -1){
 
             int endIndx = getStrIndx(tmpStr, ">");
 
@@ -91,6 +91,8 @@ FileInfo* defFileDatObj(FILE* file, char *path, int isFull, char *srcPth) { //De
                 else if(strcmp(tmpSubStr, "no-using") == 0)
                     ENVI_ENABLE_USING_METHOD = 0;
                 else if(strcmp(tmpSubStr, "safe-mode") == 0){
+                    ENVI_ENABLE_IMPORT_METHOD = 0;
+                    alwMorFlg = 0;
                     exit(-100); // Safe-mode is not supported yet!
                 }else //Unknown flag!
                     rpt(REPORT_CODE_WARNING, //This is an error

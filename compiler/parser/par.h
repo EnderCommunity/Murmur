@@ -714,6 +714,50 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             remTrmCmp(tmpBkp);
 
+        }else if(curTrmZon > 2 && strcmp(cmp.nam, PARSER_STATEMENTS_DELETE) == 0){ //The delete method
+
+            T_Comp tmpBkp = cpyCmp(cmp);
+
+            if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){
+
+                T_Comp cmpTyp = cpyCmp(cmp);
+
+                isrtPrsNTrm(PARSER_NTERMINAL_DELETE, cmp.cnt, cmp.srcLin);
+
+                //Wait for the char ";", or the char ",".
+                //If the char "," is detected, start a loop.
+                //If not, just end the operation.
+
+                int isEnd = 0;
+
+                while(nxtTknCmp(&cmp) && (
+                    (isEnd = (strcmp(cmp.nam, PARSER_OPERATORS_END) == 0)) ||
+                    strcmp(cmp.nam, PARSER_OPERATORS_SEPARATION) == 0
+                )){
+
+                    if(isEnd)
+                        break; //Stop the loop!
+                    else if(!isEnd && nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0)
+                        isrtPrsNTrm(PARSER_NTERMINAL_DELETE, cmp.cnt, cmp.srcLin);
+                    else
+                        rptPrs(cmp.srcLin, 0, MSG_PRS_DELETEMISSINGINPUT);
+
+                }
+
+                if(!isEnd){
+
+                    rptPrs(tmpBkp.srcLin, 0, MSG_PRS_DELETEMISSINGEND);
+                    break;
+
+                }
+
+                remTrmCmp(cmpTyp);
+
+            }else
+                rptPrs(tmpBkp.srcLin, 0, MSG_PRS_DELETEMISSINGINPUT);
+
+            remTrmCmp(tmpBkp);
+
         }/*else if(strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){ // Call a function, group, class, or variable
 
             T_Comp tmpBkp = cpyCmp(cmp);
