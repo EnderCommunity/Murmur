@@ -744,8 +744,12 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                 }
 
-                if(!isEnd)
+                if(!isEnd){
+
                     rptPrs(tmpBkp.srcLin, 0, MSG_PRS_DELETEMISSINGEND);
+                    break;
+
+                }
 
                 remTrmCmp(cmpTyp);
 

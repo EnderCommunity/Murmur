@@ -83,6 +83,7 @@
 [{<main>},192;13]->var:string b = "Hi!";
 [{<main>},193;13]->delete b;
 [{<main>},199;13]->var:int b = 100, c = 0;
+[{<main>},201;13]->delete d, c;
 [{<main>},208;9]->}
 [{<main>},210;9]->func:hex[,] ReturnHexArray(){
 [{<main>},212;13]->return this.globJ;

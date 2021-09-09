@@ -198,7 +198,7 @@ group::public FinalPitch { //Groups can help you keep a whole block of code with
 
             var:int b = 100, c = 0;
 
-            //delete d, c;
+            delete d, c;
 
             // Also, you can't delete any vars
             // that are passed as arguments to the
