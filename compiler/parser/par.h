@@ -234,6 +234,21 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
     //Now, start making sense of the terminal components!
     T_Comp cmp = getTrmCmp();
 
+    char *curGrp = malloc(sizeof(char)*( // The current group name
+        MAX_LINE_LENGTH +
+        1
+    )), *curCls = malloc(sizeof(char)*( // The current class name
+        MAX_LINE_LENGTH +
+        1
+    ));
+
+    strcpy(curGrp, "NULL");
+    strcpy(curCls, "NULL");
+
+    // To-Do:
+    // 1) Make it so the variables `curGrp` and `curCls`
+    //    will get reset once their group/class is closed! 
+
     while(kepLopTrm){
 
         //curTrmZon:
@@ -309,12 +324,15 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
                         char *tmpStr = malloc(sizeof(char)*(
                             strlen(cmp.cnt) +
                             strlen(tmpTyp) +
+                            strlen(curGrp) +
+                            strlen(curCls) +
+                            2 +
                             1 +
                             2 +
                             1
                         ));
 
-                        sprintf(tmpStr, "%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+                        sprintf(tmpStr, "%s.%s.%s,%s,%d", curGrp, curCls, cmp.cnt, tmpTyp, isPub);
 
                         isrtPrsNTrm(PARSER_NTERMINAL_DEFINEVAR, tmpStr, cmp.srcLin);
 
@@ -506,12 +524,15 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
                         char *tmpStr = malloc(sizeof(char)*(
                             strlen(cmp.cnt) +
                             strlen(tmpTyp) +
+                            strlen(curGrp) +
+                            strlen(curCls) +
+                            2 +
                             1 +
                             2 +
                             1
                         ));
 
-                        sprintf(tmpStr, "%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+                        sprintf(tmpStr, "%s.%s.%s,%s,%d", curGrp, curCls, cmp.cnt, tmpTyp, isPub);
 
                         isrtPrsNTrm(PARSER_NTERMINAL_DEFINEFUNCTION, tmpStr, cmp.srcLin);
 
@@ -584,11 +605,15 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                     char *tmpStr = malloc(sizeof(char)*(
                         strlen(cmp.cnt) +
+                        strlen(curGrp) +
+                        1 +
                         2 +
                         1
                     ));
 
-                    sprintf(tmpStr, "%s,%d", cmp.cnt, isPub);
+                    strcpy(curCls, cmp.cnt);
+
+                    sprintf(tmpStr, "%s.%s,%d", curGrp, cmp.cnt, isPub);
 
                     isrtPrsNTrm(PARSER_NTERMINAL_DEFINECLASS, tmpStr, tmpTop.srcLin);
 
@@ -656,6 +681,8 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
                         1
                     ));
 
+                    strcpy(curGrp, cmp.cnt);
+
                     sprintf(tmpStr, "%s,%d", cmp.cnt, isPub);
 
                     isrtPrsNTrm(PARSER_NTERMINAL_DEFINEGROUP, tmpStr, tmpTop.srcLin);
@@ -665,16 +692,16 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
                 }else{
 
                     rptPrs(tmpTop.srcLin,
-                           strlen(WORD_STATEMENT_CLASS),
-                           MSG_PRS_CLASS_NAMEMISSING);
+                           strlen(WORD_STATEMENT_GROUP),
+                           MSG_PRS_GROUP_NAMEMISSING);
 
                 }
 
             }else{
 
                 rptPrs(tmpTop.srcLin,
-                       strlen(WORD_STATEMENT_CLASS),
-                       MSG_PRS_CLASS_NAMEMISSING);
+                       strlen(WORD_STATEMENT_GROUP),
+                       MSG_PRS_GROUP_NAMEMISSING);
 
             }
 
@@ -837,7 +864,23 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
             remTrmCmp(tmpBkp);
 
         }*/
-        else if(strcmp(cmp.nam, PARSER_OPERATORS_END) == 0){
+        else if(0 && strcmp(cmp.nam, PARSER_OPERATORS_ZONE) == 0){ // Manage zone operators
+
+            //curTrmZon:
+            //0 - outside
+            //1 - inside a group
+            //2 - inside a class
+            //3 - inside a function
+
+            curTrmZon;
+
+            if(curTrmZon > 2) { // If you're inside a function
+                //
+            }
+
+            //
+
+        }else if(strcmp(cmp.nam, PARSER_OPERATORS_END) == 0){
 
             // Don't do anything!
 
@@ -850,6 +893,9 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
         nxtTknCmp(&cmp);
 
     }
+
+    free(curGrp);
+    free(curCls);
 
     remTrmCmp(cmp);
 
