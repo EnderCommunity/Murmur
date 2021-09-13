@@ -1,9 +1,7 @@
 STRING(Test 1!)<1>
 STRING(Test 2!)<3>
 DEFINE_GROUP(AnotherLibrary,1)<5>
-zone_operator(open)<7>
 DEFINE_CLASS(AnotherLibrary.MyClass,1)<8>
-zone_operator(open)<10>
 DEFINE_FUNCTION(AnotherLibrary.MyClass.NumOne,int,1)<14>
 parentheses_operator(open)<15>
 parentheses_operator(close)<16>
