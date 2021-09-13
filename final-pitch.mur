@@ -67,7 +67,7 @@ group::public FinalPitch { //Groups can help you keep a whole block of code with
         var::public:char globD = 'D';
         var::public:string globE = "Global E";
         var::public:bool globF = true;
-        var::public:file globG = types.create.fileStream("path/to/my/file.txt");
+        var::public:file globG = files.create.fileStream("path/to/my/file.txt");
         var::public:hex globH = 0xFF;
         var::public:string[] globI = types.create.Array:string[](6);
         var::private:hex[,] globJ = types.create.Array:hex[](8, 2);

@@ -234,6 +234,20 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
     //Now, start making sense of the terminal components!
     T_Comp cmp = getTrmCmp();
 
+    char *curGrp = malloc(sizeof(char)*( // The current group name
+        MAX_LINE_LENGTH +
+        1
+    )), *curCls = malloc(sizeof(char)*( // The current class name
+        MAX_LINE_LENGTH +
+        1
+    ));
+
+    int lokForCndEnd = 0, // Should the parser look for the end of a condition?
+        PrhPsd = 0; // How many parentheses were passed since the start of this condition
+
+    strcpy(curGrp, "NULL");
+    strcpy(curCls, "NULL");
+
     while(kepLopTrm){
 
         //curTrmZon:
@@ -241,6 +255,12 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
         //1 - inside a group
         //2 - inside a class
         //3 - inside a function
+
+        if(lokForCndEnd && strcmp(cmp.nam, PARSER_OPERATORS_PARENTHESES) == 0){
+
+            PrhPsd += (strcmp(cmp.cnt, PARSER_GENERAL_END) == 0) ? -1 : 1;
+
+        }
 
         if(curTrmZon > 1 && strcmp(cmp.nam, PARSER_DECLARATORS_VARIABLE) == 0){ // A variable!
 
@@ -306,15 +326,37 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                     if(tmpTyp != NULL){
 
-                        char *tmpStr = malloc(sizeof(char)*(
-                            strlen(cmp.cnt) +
-                            strlen(tmpTyp) +
-                            1 +
-                            2 +
-                            1
-                        ));
+                        char *tmpStr;
 
-                        sprintf(tmpStr, "%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+                        if(curTrmZon > 2) {
+
+                            tmpStr = malloc(sizeof(char)*(
+                                strlen(cmp.cnt) +
+                                strlen(tmpTyp) +
+                                1 +
+                                1 +
+                                2 +
+                                1
+                            ));
+
+                            sprintf(tmpStr, "~%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+
+                        }else{
+
+                            tmpStr = malloc(sizeof(char)*(
+                                strlen(cmp.cnt) +
+                                strlen(tmpTyp) +
+                                strlen(curGrp) +
+                                strlen(curCls) +
+                                2 +
+                                1 +
+                                2 +
+                                1
+                            ));
+
+                            sprintf(tmpStr, "%s.%s.%s,%s,%d", curGrp, curCls, cmp.cnt, tmpTyp, isPub);
+
+                        }
 
                         isrtPrsNTrm(PARSER_NTERMINAL_DEFINEVAR, tmpStr, cmp.srcLin);
 
@@ -366,15 +408,37 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                                 if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){
 
-                                    char *subTmpStr = malloc(sizeof(char)*(
-                                        strlen(cmp.cnt) +
-                                        strlen(tmpTyp) +
-                                        1 +
-                                        2 +
-                                        1
-                                    ));
+                                    char *subTmpStr;
 
-                                    sprintf(subTmpStr, "%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+                                    if(curTrmZon > 2) {
+
+                                        subTmpStr = malloc(sizeof(char)*(
+                                            strlen(cmp.cnt) +
+                                            strlen(tmpTyp) +
+                                            1 +
+                                            1 +
+                                            2 +
+                                            1
+                                        ));
+
+                                        sprintf(subTmpStr, "~%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+
+                                    }else{
+
+                                        subTmpStr = malloc(sizeof(char)*(
+                                            strlen(cmp.cnt) +
+                                            strlen(tmpTyp) +
+                                            strlen(curGrp) +
+                                            strlen(curCls) +
+                                            2 +
+                                            1 +
+                                            2 +
+                                            1
+                                        ));
+
+                                        sprintf(subTmpStr, "%s.%s.%s,%s,%d", curGrp, curCls, cmp.cnt, tmpTyp, isPub);
+
+                                    }
 
                                     isrtPrsNTrm(PARSER_NTERMINAL_DEFINEVAR, subTmpStr, cmp.srcLin);
 
@@ -506,12 +570,15 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
                         char *tmpStr = malloc(sizeof(char)*(
                             strlen(cmp.cnt) +
                             strlen(tmpTyp) +
+                            strlen(curGrp) +
+                            strlen(curCls) +
+                            2 +
                             1 +
                             2 +
                             1
                         ));
 
-                        sprintf(tmpStr, "%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+                        sprintf(tmpStr, "%s.%s.%s,%s,%d", curGrp, curCls, cmp.cnt, tmpTyp, isPub);
 
                         isrtPrsNTrm(PARSER_NTERMINAL_DEFINEFUNCTION, tmpStr, cmp.srcLin);
 
@@ -584,11 +651,15 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                     char *tmpStr = malloc(sizeof(char)*(
                         strlen(cmp.cnt) +
+                        strlen(curGrp) +
+                        1 +
                         2 +
                         1
                     ));
 
-                    sprintf(tmpStr, "%s,%d", cmp.cnt, isPub);
+                    strcpy(curCls, cmp.cnt);
+
+                    sprintf(tmpStr, "%s.%s,%d", curGrp, cmp.cnt, isPub);
 
                     isrtPrsNTrm(PARSER_NTERMINAL_DEFINECLASS, tmpStr, tmpTop.srcLin);
 
@@ -656,6 +727,8 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
                         1
                     ));
 
+                    strcpy(curGrp, cmp.cnt);
+
                     sprintf(tmpStr, "%s,%d", cmp.cnt, isPub);
 
                     isrtPrsNTrm(PARSER_NTERMINAL_DEFINEGROUP, tmpStr, tmpTop.srcLin);
@@ -665,16 +738,16 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
                 }else{
 
                     rptPrs(tmpTop.srcLin,
-                           strlen(WORD_STATEMENT_CLASS),
-                           MSG_PRS_CLASS_NAMEMISSING);
+                           strlen(WORD_STATEMENT_GROUP),
+                           MSG_PRS_GROUP_NAMEMISSING);
 
                 }
 
             }else{
 
                 rptPrs(tmpTop.srcLin,
-                       strlen(WORD_STATEMENT_CLASS),
-                       MSG_PRS_CLASS_NAMEMISSING);
+                       strlen(WORD_STATEMENT_GROUP),
+                       MSG_PRS_GROUP_NAMEMISSING);
 
             }
 
@@ -758,86 +831,50 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             remTrmCmp(tmpBkp);
 
-        }/*else if(strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){ // Call a function, group, class, or variable
+        }else if(curTrmZon > 2 && strcmp(cmp.nam, PARSER_STATEMENTS_IF) == 0){ // The if statement
 
-            T_Comp tmpBkp = cpyCmp(cmp);
-            char *tmpStr = malloc(sizeof(char)*(strlen(cmp.cnt) + 1));
-            strcpy(tmpStr, cmp.cnt);
 
-            int lokForDot = 1;
+            if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_OPERATORS_PARENTHESES) == 0){
 
-            while(nxtTknCmp(&cmp) && strcmp(cmp.nam, (lokForDot) ? PARSER_OPERATORS_DOT : PARSER_DEFAULTS_IDENTIFIER) == 0){
+                isrtPrsMltNTrm(PARSER_NTERMINAL_IF, "", cmp.srcLin);
 
-                int valLen = strlen(cmp.cnt);
-                valLen = (valLen == 0 ? 1 : valLen);
-
-                tmpStr = realloc(tmpStr, sizeof(char)*(strlen(tmpStr) + valLen + 1));
-                char *tmpStr2 = malloc(sizeof(char)*(strlen(tmpStr) + valLen + 1));
-
-                sprintf(tmpStr2, "%s%s", tmpStr, (strlen(cmp.cnt) == 0) ? "." : cmp.cnt);
-                strcpy(tmpStr, tmpStr2);
-
-                free(tmpStr2);
-
-                remTrmCmp(tmpBkp);
-                tmpBkp = cpyCmp(cmp);
-
-                lokForDot = !lokForDot;
-
-            }
-
-            if(!lokForDot){
-
-                rptPrs(tmpBkp.srcLin, 0, MSG_PRS_DOTINVALIDFOLLOWUP);
+                lokForCndEnd = 1;
+                PrhPsd = 0;
 
             }else{
 
-                if(strcmp(cmp.nam, PARSER_OPERATORS_PARENTHESES) == 0 &&
-                        strcmp(cmp.cnt, PARSER_GENERAL_START) == 0){ // A function - IDENTIFIER()
-
-                    prvTknCmp(&cmp);
-
-                    isrtPrsNTrm(PARSER_NTERMINAL_CALLFUNC, tmpStr, tmpBkp.srcLin);
-
-                }else if(strcmp(cmp.nam, PARSER_OPERATORS_RETURN_TYPE) == 0){ // A function - IDENTIFIER::TYPE()
-
-                    if(nxtTknCmp(&cmp) && (
-                            strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0 ||
-                            strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0
-                        )){
-
-                        tmpStr = realloc(tmpStr, sizeof(char)*(strlen(cmp.nam) + strlen(cmp.cnt) + 2));
-                        char *tmpStr2 = malloc(sizeof(char)*(strlen(cmp.nam) + strlen(cmp.cnt) + 2));
-
-                        sprintf(tmpStr2, "%s:%s", tmpStr, cmp.cnt);
-                        strcpy(tmpStr, tmpStr2);
-
-                        free(tmpStr2);
-
-                        isrtPrsNTrm(PARSER_NTERMINAL_CALLFUNC, tmpStr, tmpBkp.srcLin);
-
-                    }else{
-
-                        rptPrs(tmpBkp.srcLin, 0, MSG_PRS_FUNCINVALIDRETURNTYPESPECIF);
-
-                    }
-
-                }else{ // A variable
-
-                    prvTknCmp(&cmp);
-
-                    isrtPrsNTrm(PARSER_NTERMINAL_CALLVAR, tmpStr, tmpBkp.srcLin);
-
-                }
+                rptPrs(cmp.srcLin,
+                       0,
+                       MSG_PRS_IF_CONDITIONSINSIDEPARENTHESES);
 
             }
 
-            free(tmpStr);
+        }else if(lokForCndEnd && PrhPsd == -1 && strcmp(cmp.nam, PARSER_OPERATORS_PARENTHESES) == 0 && strcmp(cmp.cnt, PARSER_GENERAL_END) == 0){
 
-            remTrmCmp(tmpBkp);
+            isrtPrsEndNTrm(); // End the "if"/"else if"/"else" statement
 
-        }*/
-        else if(strcmp(cmp.nam, PARSER_OPERATORS_END) == 0){
+            lokForCndEnd = PrhPsd = 0;
+
+        }else if(curTrmZon < 4 && strcmp(cmp.nam, PARSER_OPERATORS_ZONE) == 0){ // Manage zone operators
+
+            //curTrmZon:
+            //0 - outside
+            //1 - inside a group
+            //2 - inside a class
+            //3 - inside a function
+
+            if(strcmp(cmp.cnt, PARSER_GENERAL_END) == 0)
+                isrtPrsNTrm(PARSER_NTERMINAL_ENDDEFINITION, "", cmp.srcLin);
+
+            /*if(curTrmZon > 2) { // If you're inside a function
+
+                //
+
+            }*/
+
+            //
+
+        }else if(strcmp(cmp.nam, PARSER_OPERATORS_END) == 0){
 
             // Don't do anything!
 
@@ -850,6 +887,9 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
         nxtTknCmp(&cmp);
 
     }
+
+    free(curGrp);
+    free(curCls);
 
     remTrmCmp(cmp);
 
