@@ -132,7 +132,7 @@ info_operator()<142>
 type_specifier(file)<143>
 IDENTIFIER(globG)<144>
 assignment_operator(=)<145>
-IDENTIFIER(types)<146>
+IDENTIFIER(files)<146>
 dot_operator()<147>
 IDENTIFIER(create)<148>
 dot_operator()<149>
