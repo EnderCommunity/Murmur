@@ -78,6 +78,7 @@
 #define MSG_PRS_GROUP_NAMEMISSING "No valid name is present for the group!"
 #define MSG_PRS_FUNCTION_NOVALIDTYPE "No valid return type is present for the function!"
 #define MSG_PRS_FUNCTION_NOVALIDNAME "No valid name is present for the function!"
+#define MSG_PRS_IF_CONDITIONSINSIDEPARENTHESES "The `if` statement only accepts conditions inside parentheses!"
 
 
 //Optimiser (MSG_OPT_...)

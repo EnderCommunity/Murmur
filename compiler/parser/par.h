@@ -242,6 +242,9 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
         1
     ));
 
+    int lokForCndEnd = 0, // Should the parser look for the end of a condition?
+        PrhPsd = 0; // How many parentheses were passed since the start of this condition
+
     strcpy(curGrp, "NULL");
     strcpy(curCls, "NULL");
 
@@ -256,6 +259,12 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
         //1 - inside a group
         //2 - inside a class
         //3 - inside a function
+
+        if(lokForCndEnd && strcmp(cmp.nam, PARSER_OPERATORS_PARENTHESES) == 0){
+
+            PrhPsd += (strcmp(cmp.cnt, PARSER_GENERAL_END) == 0) ? -1 : 1;
+
+        }
 
         if(curTrmZon > 1 && strcmp(cmp.nam, PARSER_DECLARATORS_VARIABLE) == 0){ // A variable!
 
@@ -864,7 +873,31 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
             remTrmCmp(tmpBkp);
 
         }*/
-        else if(curTrmZon < 4 && strcmp(cmp.nam, PARSER_OPERATORS_ZONE) == 0){ // Manage zone operators
+        else if(curTrmZon > 2 && strcmp(cmp.nam, PARSER_STATEMENTS_IF) == 0){ // The if statement
+
+
+            if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_OPERATORS_PARENTHESES) == 0){
+
+                isrtPrsMltNTrm(PARSER_NTERMINAL_IF, "", cmp.srcLin);
+
+                lokForCndEnd = 1;
+                PrhPsd = 0;
+
+            }else{
+
+                rptPrs(cmp.srcLin,
+                       0,
+                       MSG_PRS_IF_CONDITIONSINSIDEPARENTHESES);
+
+            }
+
+        }else if(lokForCndEnd && PrhPsd == -1 && strcmp(cmp.nam, PARSER_OPERATORS_PARENTHESES) == 0 && strcmp(cmp.cnt, PARSER_GENERAL_END) == 0){
+
+            isrtPrsEndNTrm(); // End the "if"/"else if"/"else" statement
+
+            lokForCndEnd = PrhPsd = 0;
+
+        }else if(curTrmZon < 4 && strcmp(cmp.nam, PARSER_OPERATORS_ZONE) == 0){ // Manage zone operators
 
             //curTrmZon:
             //0 - outside
