@@ -248,10 +248,6 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
     strcpy(curGrp, "NULL");
     strcpy(curCls, "NULL");
 
-    // To-Do:
-    // 1) Make it so the variables `curGrp` and `curCls`
-    //    will get reset once their group/class is closed! 
-
     while(kepLopTrm){
 
         //curTrmZon:
@@ -835,86 +831,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             remTrmCmp(tmpBkp);
 
-        }/*else if(strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){ // Call a function, group, class, or variable
-
-            T_Comp tmpBkp = cpyCmp(cmp);
-            char *tmpStr = malloc(sizeof(char)*(strlen(cmp.cnt) + 1));
-            strcpy(tmpStr, cmp.cnt);
-
-            int lokForDot = 1;
-
-            while(nxtTknCmp(&cmp) && strcmp(cmp.nam, (lokForDot) ? PARSER_OPERATORS_DOT : PARSER_DEFAULTS_IDENTIFIER) == 0){
-
-                int valLen = strlen(cmp.cnt);
-                valLen = (valLen == 0 ? 1 : valLen);
-
-                tmpStr = realloc(tmpStr, sizeof(char)*(strlen(tmpStr) + valLen + 1));
-                char *tmpStr2 = malloc(sizeof(char)*(strlen(tmpStr) + valLen + 1));
-
-                sprintf(tmpStr2, "%s%s", tmpStr, (strlen(cmp.cnt) == 0) ? "." : cmp.cnt);
-                strcpy(tmpStr, tmpStr2);
-
-                free(tmpStr2);
-
-                remTrmCmp(tmpBkp);
-                tmpBkp = cpyCmp(cmp);
-
-                lokForDot = !lokForDot;
-
-            }
-
-            if(!lokForDot){
-
-                rptPrs(tmpBkp.srcLin, 0, MSG_PRS_DOTINVALIDFOLLOWUP);
-
-            }else{
-
-                if(strcmp(cmp.nam, PARSER_OPERATORS_PARENTHESES) == 0 &&
-                        strcmp(cmp.cnt, PARSER_GENERAL_START) == 0){ // A function - IDENTIFIER()
-
-                    prvTknCmp(&cmp);
-
-                    isrtPrsNTrm(PARSER_NTERMINAL_CALLFUNC, tmpStr, tmpBkp.srcLin);
-
-                }else if(strcmp(cmp.nam, PARSER_OPERATORS_RETURN_TYPE) == 0){ // A function - IDENTIFIER::TYPE()
-
-                    if(nxtTknCmp(&cmp) && (
-                            strcmp(cmp.nam, PARSER_SPECIFIERS_TYPE) == 0 ||
-                            strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0
-                        )){
-
-                        tmpStr = realloc(tmpStr, sizeof(char)*(strlen(cmp.nam) + strlen(cmp.cnt) + 2));
-                        char *tmpStr2 = malloc(sizeof(char)*(strlen(cmp.nam) + strlen(cmp.cnt) + 2));
-
-                        sprintf(tmpStr2, "%s:%s", tmpStr, cmp.cnt);
-                        strcpy(tmpStr, tmpStr2);
-
-                        free(tmpStr2);
-
-                        isrtPrsNTrm(PARSER_NTERMINAL_CALLFUNC, tmpStr, tmpBkp.srcLin);
-
-                    }else{
-
-                        rptPrs(tmpBkp.srcLin, 0, MSG_PRS_FUNCINVALIDRETURNTYPESPECIF);
-
-                    }
-
-                }else{ // A variable
-
-                    prvTknCmp(&cmp);
-
-                    isrtPrsNTrm(PARSER_NTERMINAL_CALLVAR, tmpStr, tmpBkp.srcLin);
-
-                }
-
-            }
-
-            free(tmpStr);
-
-            remTrmCmp(tmpBkp);
-
-        }*/
-        else if(curTrmZon > 2 && strcmp(cmp.nam, PARSER_STATEMENTS_IF) == 0){ // The if statement
+        }else if(curTrmZon > 2 && strcmp(cmp.nam, PARSER_STATEMENTS_IF) == 0){ // The if statement
 
 
             if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_OPERATORS_PARENTHESES) == 0){
