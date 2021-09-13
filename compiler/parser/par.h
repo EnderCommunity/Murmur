@@ -864,7 +864,7 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
             remTrmCmp(tmpBkp);
 
         }*/
-        else if(0 && strcmp(cmp.nam, PARSER_OPERATORS_ZONE) == 0){ // Manage zone operators
+        else if(curTrmZon < 3 && strcmp(cmp.nam, PARSER_OPERATORS_ZONE) == 0){ // Manage zone operators
 
             //curTrmZon:
             //0 - outside
@@ -872,10 +872,13 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
             //2 - inside a class
             //3 - inside a function
 
-            curTrmZon;
+            if(strcmp(cmp.cnt, PARSER_GENERAL_END) == 0)
+                isrtPrsNTrm(PARSER_NTERMINAL_ENDDEFINITION, "", cmp.srcLin);
 
             if(curTrmZon > 2) { // If you're inside a function
+
                 //
+
             }
 
             //
