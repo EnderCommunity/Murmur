@@ -5,7 +5,6 @@ DEFINE_CLASS(AnotherLibrary.MyClass,1)<8>
 DEFINE_FUNCTION(AnotherLibrary.MyClass.NumOne,int,1)<14>
 parentheses_operator(open)<15>
 parentheses_operator(close)<16>
-zone_operator(open)<17>
 return_statement()<18>
 NUMBER(1)<19>
 END_DEFINITION()<21>
@@ -19,7 +18,6 @@ IDENTIFIER(input)<41>
 info_operator()<42>
 type_specifier(int)<43>
 parentheses_operator(close)<44>
-zone_operator(open)<45>
 DEFINE_VARIABLE(LibFilNam.section.output,string,1)<49>
 ZONE_LINE(0;)<51>
 return_statement()<52>
@@ -108,7 +106,6 @@ IDENTIFIER(length)<228>
 info_operator()<229>
 type_specifier(int)<230>
 parentheses_operator(close)<231>
-zone_operator(open)<232>
 IDENTIFIER(Func)<233>
 parentheses_operator(open)<234>
 parentheses_operator(close)<235>
@@ -158,10 +155,10 @@ comparison_operator(=)<296>
 BOOLEAN(true)<298>
 parentheses_operator(close)<299>
 zone_operator(open)<300>
-zone_operator(close)<301>
+END_DEFINITION()<301>
 else_statement()<302>
 zone_operator(open)<303>
-zone_operator(close)<304>
+END_DEFINITION()<304>
 if_statement()<305>
 parentheses_operator(open)<306>
 IDENTIFIER(myTest)<307>
@@ -169,7 +166,7 @@ comparison_operator(!)<308>
 BOOLEAN(true)<310>
 parentheses_operator(close)<311>
 zone_operator(open)<312>
-zone_operator(close)<313>
+END_DEFINITION()<313>
 if_statement()<314>
 parentheses_operator(open)<315>
 NUMBER(1)<316>
@@ -191,7 +188,7 @@ NUMBER(1)<335>
 parentheses_operator(close)<336>
 parentheses_operator(close)<337>
 zone_operator(open)<338>
-zone_operator(close)<339>
+END_DEFINITION()<339>
 if_statement()<340>
 parentheses_operator(open)<341>
 NUMBER(1)<342>
@@ -203,7 +200,7 @@ comparison_operator(~<)<0>
 NUMBER(5)<350>
 parentheses_operator(close)<351>
 zone_operator(open)<352>
-zone_operator(close)<353>
+END_DEFINITION()<353>
 IDENTIFIER(io)<354>
 dot_operator()<355>
 IDENTIFIER(console)<356>
@@ -218,7 +215,6 @@ END_DEFINITION()<366>
 DEFINE_FUNCTION(FinalPitch.Program.Func,void,0)<373>
 parentheses_operator(open)<374>
 parentheses_operator(close)<375>
-zone_operator(open)<376>
 END_DEFINITION()<377>
 DEFINE_FUNCTION(FinalPitch.Program.Test,^int,1)<385>
 parentheses_operator(open)<386>
@@ -230,7 +226,6 @@ IDENTIFIER(b)<392>
 info_operator()<393>
 type_specifier(int)<394>
 parentheses_operator(close)<395>
-zone_operator(open)<396>
 IDENTIFIER(a)<397>
 assignment_operator(=)<398>
 parentheses_operator(open)<399>
@@ -248,14 +243,12 @@ type_specifier(int)<419>
 info_operator()<420>
 ref_statement()<421>
 parentheses_operator(close)<422>
-zone_operator(open)<423>
 IDENTIFIER(a)<424>
 assignment_short_operator(+)<425>
 END_DEFINITION()<428>
 DEFINE_FUNCTION(FinalPitch.Program.myTests,void,1)<435>
 parentheses_operator(open)<436>
 parentheses_operator(close)<437>
-zone_operator(open)<438>
 DEFINE_VARIABLE(FinalPitch.Program.myTest,bool,1)<442>
 ASSIGN(myTest)<444>:
 BOOLEAN(false)<444>
@@ -329,7 +322,6 @@ IDENTIFIER(a)<542>
 info_operator()<543>
 type_specifier(string)<544>
 parentheses_operator(close)<545>
-zone_operator(open)<546>
 DEFINE_VARIABLE(FinalPitch.Program.b,string,1)<550>
 ASSIGN(b)<552>:
 STRING(Hi!)<552>
@@ -349,7 +341,6 @@ END_DEFINITION()<573>
 DEFINE_FUNCTION(FinalPitch.Program.ReturnHexArray,hex[2],1)<580>
 parentheses_operator(open)<581>
 parentheses_operator(close)<582>
-zone_operator(open)<583>
 return_statement()<584>
 IDENTIFIER(this)<585>
 dot_operator()<586>
@@ -375,7 +366,6 @@ IDENTIFIER(b)<629>
 info_operator()<630>
 type_specifier(int)<631>
 parentheses_operator(close)<632>
-zone_operator(open)<633>
 IDENTIFIER(this)<634>
 dot_operator()<635>
 IDENTIFIER(a)<636>
@@ -395,7 +385,6 @@ IDENTIFIER(a)<656>
 info_operator()<657>
 type_specifier(int)<658>
 parentheses_operator(close)<659>
-zone_operator(open)<660>
 END_DEFINITION()<661>
 END_DEFINITION()<662>
 END_DEFINITION()<663>
