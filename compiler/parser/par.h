@@ -330,18 +330,37 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                     if(tmpTyp != NULL){
 
-                        char *tmpStr = malloc(sizeof(char)*(
-                            strlen(cmp.cnt) +
-                            strlen(tmpTyp) +
-                            strlen(curGrp) +
-                            strlen(curCls) +
-                            2 +
-                            1 +
-                            2 +
-                            1
-                        ));
+                        char *tmpStr;
 
-                        sprintf(tmpStr, "%s.%s.%s,%s,%d", curGrp, curCls, cmp.cnt, tmpTyp, isPub);
+                        if(curTrmZon > 2) {
+
+                            tmpStr = malloc(sizeof(char)*(
+                                strlen(cmp.cnt) +
+                                strlen(tmpTyp) +
+                                1 +
+                                1 +
+                                2 +
+                                1
+                            ));
+
+                            sprintf(tmpStr, "~%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+
+                        }else{
+
+                            tmpStr = malloc(sizeof(char)*(
+                                strlen(cmp.cnt) +
+                                strlen(tmpTyp) +
+                                strlen(curGrp) +
+                                strlen(curCls) +
+                                2 +
+                                1 +
+                                2 +
+                                1
+                            ));
+
+                            sprintf(tmpStr, "%s.%s.%s,%s,%d", curGrp, curCls, cmp.cnt, tmpTyp, isPub);
+
+                        }
 
                         isrtPrsNTrm(PARSER_NTERMINAL_DEFINEVAR, tmpStr, cmp.srcLin);
 
