@@ -412,18 +412,37 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
                                 if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_DEFAULTS_IDENTIFIER) == 0){
 
-                                    char *subTmpStr = malloc(sizeof(char)*(
-                                        strlen(cmp.cnt) +
-                                        strlen(tmpTyp) +
-                                        strlen(curGrp) +
-                                        strlen(curCls) +
-                                        2 +
-                                        1 +
-                                        2 +
-                                        1
-                                    ));
+                                    char *subTmpStr;
 
-                                    sprintf(subTmpStr, "%s.%s.%s,%s,%d", curGrp, curCls, cmp.cnt, tmpTyp, isPub);
+                                    if(curTrmZon > 2) {
+
+                                        subTmpStr = malloc(sizeof(char)*(
+                                            strlen(cmp.cnt) +
+                                            strlen(tmpTyp) +
+                                            1 +
+                                            1 +
+                                            2 +
+                                            1
+                                        ));
+
+                                        sprintf(subTmpStr, "~%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+
+                                    }else{
+
+                                        subTmpStr = malloc(sizeof(char)*(
+                                            strlen(cmp.cnt) +
+                                            strlen(tmpTyp) +
+                                            strlen(curGrp) +
+                                            strlen(curCls) +
+                                            2 +
+                                            1 +
+                                            2 +
+                                            1
+                                        ));
+
+                                        sprintf(subTmpStr, "%s.%s.%s,%s,%d", curGrp, curCls, cmp.cnt, tmpTyp, isPub);
+
+                                    }
 
                                     isrtPrsNTrm(PARSER_NTERMINAL_DEFINEVAR, subTmpStr, cmp.srcLin);
 
