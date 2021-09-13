@@ -253,7 +253,7 @@ DEFINE_VARIABLE(FinalPitch.Program.a,int,1)<449>
 ASSIGN(a)<451>:
 NUMBER(0)<451>
 ;
-DEFINE_VARIABLE(b,int,1)<453>
+DEFINE_VARIABLE(FinalPitch.Program.b,int,1)<453>
 ASSIGN(b)<455>:
 NUMBER(0)<455>
 ;
@@ -261,7 +261,7 @@ DEFINE_VARIABLE(FinalPitch.Program.c,double,1)<460>
 ASSIGN(c)<462>:
 NUMBER(4)<462>
 ;
-DEFINE_VARIABLE(d,double,1)<464>
+DEFINE_VARIABLE(FinalPitch.Program.d,double,1)<464>
 ASSIGN(d)<466>:
 NUMBER(3)<466>
 ;
@@ -327,7 +327,7 @@ DEFINE_VARIABLE(FinalPitch.Program.b,int,1)<560>
 ASSIGN(b)<562>:
 NUMBER(100)<562>
 ;
-DEFINE_VARIABLE(c,int,1)<564>
+DEFINE_VARIABLE(FinalPitch.Program.c,int,1)<564>
 ASSIGN(c)<566>:
 NUMBER(0)<566>
 ;

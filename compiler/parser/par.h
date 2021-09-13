@@ -396,12 +396,15 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
                                     char *subTmpStr = malloc(sizeof(char)*(
                                         strlen(cmp.cnt) +
                                         strlen(tmpTyp) +
+                                        strlen(curGrp) +
+                                        strlen(curCls) +
+                                        2 +
                                         1 +
                                         2 +
                                         1
                                     ));
 
-                                    sprintf(subTmpStr, "%s,%s,%d", cmp.cnt, tmpTyp, isPub);
+                                    sprintf(subTmpStr, "%s.%s.%s,%s,%d", curGrp, curCls, cmp.cnt, tmpTyp, isPub);
 
                                     isrtPrsNTrm(PARSER_NTERMINAL_DEFINEVAR, subTmpStr, cmp.srcLin);
 
