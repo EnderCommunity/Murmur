@@ -5,7 +5,7 @@
 
 group AnotherLibrary {
 
-    class MyClass {
+    class MyClass { // Make `<name>:int` possible
 
         func:int NumOne(){
 
