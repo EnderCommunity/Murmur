@@ -149,12 +149,12 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][33, 1] => New processing loop started.
-[!][Preprocessor] => // using types;
+[!][Preprocessor] => // using array;
 [?][Preprocessor][33, 1] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][34, 1] => New processing loop started.
-[!][Preprocessor] => // using files; // The "file" type should be managed
+[!][Preprocessor] => // using file; // The "file" type should be managed
 [?][Preprocessor][34, 1] => A single line comment has been detected!
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
@@ -539,7 +539,7 @@
 [?][Preprocessor] => Getting the content of the next line...
 [?][Preprocessor] => The line variable content changed successfully!
 [?][Preprocessor][72, 9] => New processing loop started.
-[!][Preprocessor] => var::public:file globG = new files.stream("path/to/my/file.txt");
+[!][Preprocessor] => var::public:file globG = new file.stream("path/to/my/file.txt");
 [?][Preprocessor][72, 9] => Checking for preprocessor methods...
 [?][Preprocessor] => Inserted the filtered code into the temporary output file.
 [?][Preprocessor] => Getting the content of the next line...
