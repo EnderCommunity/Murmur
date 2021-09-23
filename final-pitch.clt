@@ -28,8 +28,8 @@
 [{<main>},71;9]->var::public:bool globF = true;
 [{<main>},72;9]->var::public:file globG = new files.stream("path/to/my/file.txt");
 [{<main>},73;9]->var::public:hex globH = 0xFF;
-[{<main>},74;9]->var::public:string[] globI = new types.Array:string[](6);
-[{<main>},75;9]->var::private:hex[,] globJ = new types.Array:hex[](8, 2);
+[{<main>},74;9]->var::public:string[] globI = new array.string(6);
+[{<main>},75;9]->var::private:hex[,] globJ = new array.hex(8, 2);
 [{<main>},77;9]->func::public:int Main(envi:string[], length:int){
 [{<main>},86;13]->Func();
 [{<main>},88;13]->var:^int a = 0;
@@ -89,17 +89,17 @@
 [{<main>},214;13]->return this.globJ;
 [{<main>},216;9]->}
 [{<main>},218;5]->}
-[{<main>},220;5]->class::public AnotherClass {
-[{<main>},222;9]->var::public:int a = 0;
-[{<main>},223;9]->var::private:int b = 0;
-[{<main>},225;9]->func::public:AnotherClass Construct(a:int, b:int){
-[{<main>},227;13]->this.a = a;
-[{<main>},228;13]->this.b = b;
-[{<main>},230;9]->}
-[{<main>},232;5]->}
-[{<main>},234;5]->class Smth {
-[{<main>},236;9]->func:void myTest(a:int){
-[{<main>},240;9]->}
-[{<main>},242;5]->}
-[{<main>},244;1]->}
+[{<main>},224;5]->class::public AnotherClass {
+[{<main>},226;9]->var::public:int a = 0;
+[{<main>},227;9]->var::private:int b = 0;
+[{<main>},229;9]->func::public:AnotherClass Construct(a:int, b:int){
+[{<main>},231;13]->this.a = a;
+[{<main>},232;13]->this.b = b;
+[{<main>},234;9]->}
+[{<main>},236;5]->}
+[{<main>},238;5]->class Smth {
+[{<main>},240;9]->func:void myTest(a:int){
+[{<main>},244;9]->}
+[{<main>},246;5]->}
+[{<main>},248;1]->}
 [FileEnd]

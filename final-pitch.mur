@@ -71,8 +71,8 @@ group::public FinalPitch { // Groups can help you keep a whole block of code wit
         var::public:bool globF = true;
         var::public:file globG = new files.stream("path/to/my/file.txt");
         var::public:hex globH = 0xFF;
-        var::public:string[] globI = new types.Array:string[](6);
-        var::private:hex[,] globJ = new types.Array:hex[](8, 2);
+        var::public:string[] globI = new array.string(6);
+        var::private:hex[,] globJ = new array.hex(8, 2);
 
         func::public:int Main(envi:string[], length:int){ //This is the main
                                                        //function in the program!
@@ -216,6 +216,10 @@ group::public FinalPitch { // Groups can help you keep a whole block of code wit
         }
 
     }
+
+    // Note to myself:
+    // - Define the behaviour of the "this" statement (make it so it points to the current class zone)
+    // - Make the return type a required argument when calling functions (`MyNameSpace.MyClass.MyFunction(); ==> MyNameSpace.MyClass.MyFunction:ReturnType();`)
 
     class::public AnotherClass {
 
