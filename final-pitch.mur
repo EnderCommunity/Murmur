@@ -30,8 +30,8 @@
                  //input/output library in the folder "system"
 using test;
 using foldertest.test2;
-// using types;
-// using files; // The "file" type should be managed
+// using array;
+// using file; // The "file" type should be managed
 //              // by this library
 // using io;
 
@@ -69,7 +69,7 @@ group::public FinalPitch { // Groups can help you keep a whole block of code wit
         var::public:char globD = 'D';
         var::public:string globE = "Global E";
         var::public:bool globF = true;
-        var::public:file globG = new files.stream("path/to/my/file.txt");
+        var::public:file globG = new file.stream("path/to/my/file.txt");
         var::public:hex globH = 0xFF;
         var::public:string[] globI = new array.string(6);
         var::private:hex[,] globJ = new array.hex(8, 2);

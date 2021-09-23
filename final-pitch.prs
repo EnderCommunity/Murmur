@@ -56,7 +56,7 @@ BOOLEAN(true)<136>
 DEFINE_VARIABLE(FinalPitch.Program.globG,file,1)<144>
 ASSIGN(globG)<146>:
 IDENTIFIER(new)<146>
-IDENTIFIER(files)<147>
+type_specifier(file)<147>
 dot_operator()<148>
 IDENTIFIER(stream)<149>
 parentheses_operator(open)<150>
