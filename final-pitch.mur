@@ -1,32 +1,32 @@
 #header <nothing-to-see-here>
-//^ The header is used to give the compiler nessessary information before it
-//starts compiling the code. Flags start with the operators "--". If you do not
-//wish to pass any information to the compiler, you can just remove it.
+// ^ The header is used to give the compiler nessessary information before it
+// starts compiling the code. Flags start with the operators "--". If you do not
+// wish to pass any information to the compiler, you can just remove it.
 
-//The available flags are:
-//"no-comments": can be used to tell the compiler to not look for comments in this
-//file
-//"no-preprocessor-methods": can be used to tell the compiler that this file does
-//not contain any preprocessor methods
-//"skip-processor": can be used to tell the compiler to not compile the code after
-//the header, and jump to the C compiler compiling stage.
+// The available flags are:
+// "no-comments": can be used to tell the compiler to not look for comments in this
+// file
+// "no-preprocessor-methods": can be used to tell the compiler that this file does
+// not contain any preprocessor methods
+// "skip-processor": can be used to tell the compiler to not compile the code after
+// the header, and jump to the C compiler compiling stage.
 
 /*
 
-Murmur | (C) EnderCommunity
-------------------------------------------------------------------------------------
-This is a pitch file for Murmur that will include the syntax and structure
-of Murmur, and all the functions that it can use.
+    Murmur | (C) EnderCommunity
+    ------------------------------------------------------------------------------------
+    This is a pitch file for Murmur that will include the syntax and structure
+    of Murmur, and all the functions that it can use.
 
-(!) This is nowhere near being final, this is all just a pitch.
+    (!) This is nowhere near being final, this is all just a pitch.
 
 */
 
 // (!) All the functions used outside of groups are seen by the compiler as
-//preprocessor functions! So any normal code outside of groups that is not a
-//preprocessor-related feature will cause the compiler to exit with an error.
+// preprocessor functions! So any normal code outside of groups that is not a
+// preprocessor-related feature will cause the compiler to exit with an error.
 
-//using system.io; //Tell the compiler that the program is going to use the
+// using system.io; //Tell the compiler that the program is going to use the
                  //input/output library in the folder "system"
 using test;
 using foldertest.test2;
@@ -35,32 +35,34 @@ using foldertest.test2;
 //              // by this library
 // using io;
 
-import "final-pitch-lib.lib.mur"; //Import another Murmur file!
+import "final-pitch-lib.lib.mur"; // Import another Murmur file!
 
-define ZERO 0; //You can use the `define` function to define a var that
-               //will be replaced by the provided value before the execution
-               //of this code
+define ZERO 0; // You can use the `define` function to define a var that
+               // will be replaced by the provided value before the execution
+               // of this code
 
-setsize int 2; //Set a custom size of memory (in bytes) to allocate for any type
-setsize double 10; //You can do the same with all the built-in types
+setsize int 2; // Set a custom size of memory (in bytes) to allocate for any type
+setsize double 10; // You can do the same with all the built-in types
 
-//import "path/to/my/file2.mur"; //You need to pay attention to the importing order
-//of your files! For example, "file.mur" will not be able to use the custom set
-//amount of memory for the 'int' var, whereas "file2.mur" will be able to
-//use it with no problem whatsoever.
+// import "path/to/my/file2.mur"; //You need to pay attention to the importing order
+// of your files! For example, "file.mur" will not be able to use the custom set
+// amount of memory for the 'int' var, whereas "file2.mur" will be able to
+// use it with no problem whatsoever.
 
 // (!) Modules may not be necessary anymore with this new arrangement
 
-group::public FinalPitch { //Groups can help you keep a whole block of code within one
-              //structure to better organise your code
+group::public FinalPitch { // Groups can help you keep a whole block of code within one
+              // structure to better organise your code
 
-    //Groups can only contain classes, any normal code here will cause the
-    //program to crash.
+    // Groups can only contain classes, any normal code here will cause the
+    // program to crash.
 
-    class::public Program { //Classes can be used to completely separate functions from one
-                    //another, in case you wanted to prevent other classes from
-                    //accessing some vars or functions
+    class::public Program { // Classes can be used to completely separate functions from one
+                    // another, in case you wanted to prevent other classes from
+                    // accessing some vars or functions
 
+        // These at class-level variables!
+        // They can only be accessed using the class object ("this", or any class reference)
         var::public:int globA = 0;
         var::public:double globB = 0.0;
         var::public:float globC = 0.0;
