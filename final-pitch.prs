@@ -148,13 +148,12 @@ BOOLEAN(true)<287>
 ;
 zone_operator(open)<289>
 END_DEFINITION()<290>
-else_statement()<291>
-IF()<293>:
+ELIF()<293>:
 BOOLEAN(false)<294>
 ;
 zone_operator(open)<296>
 END_DEFINITION()<297>
-else_statement()<298>
+ELSE()<299>
 zone_operator(open)<299>
 END_DEFINITION()<300>
 IF()<302>:

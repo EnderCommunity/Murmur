@@ -6,10 +6,11 @@ typedef struct {
     char *nam; // The component name
     char *cnt; // The component content;
 
-    int __prevLinPtr;
-    int __ahd_filEnd; //Did you reach the file end?
+    int __prevLinPtr; // The pointer of the previous line
+    int __ahd_filEnd; // Did you reach the file end?
+    int __alwLopTwc; // Allow this token to be processed twice
 
-} T_Comp; //A terminal component
+} T_Comp; // A terminal component
 
 int kepLopTrm = 1, curTrmZon = 0;
 FILE *trmCmpFilPtr = NULL;
@@ -40,6 +41,8 @@ T_Comp getTrmCmp(){ //Get a terminal component
     tmp.val = malloc(sizeof(char)*(MAX_LINE_LENGTH + 1));
 
     tmp.__prevLinPtr = ftell(trmCmpFilPtr);
+    tmp.__ahd_filEnd = 0;
+    tmp.__alwLopTwc = 0;
 
     fgets(tmp.val, MAX_LINE_LENGTH, trmCmpFilPtr);
 
@@ -117,16 +120,21 @@ void skpNxtCmp(){ //Skip the next token!
 
 int nxtTknCmp(T_Comp *cmp){
 
-    T_Comp tmp = cpyCmp(*cmp);
+    if(!(*cmp).__alwLopTwc){
 
-    remTrmCmp(*cmp); //Remove the token
+        T_Comp tmp = cpyCmp(*cmp);
 
-    *cmp = getTrmCmp(); //get a new token
+        remTrmCmp(*cmp); //Remove the token
 
-    if(kepLopTrm)
-        remTrmCmp(tmp);
-    else
-        *cmp = tmp;
+        *cmp = getTrmCmp(); //get a new token
+
+        if(kepLopTrm)
+            remTrmCmp(tmp);
+        else
+            *cmp = tmp;
+
+    }else
+        (*cmp).__alwLopTwc = 0;
 
     return kepLopTrm;
 
@@ -144,5 +152,11 @@ int prvTknCmp(T_Comp *cmp){
     fseek(trmCmpFilPtr, tmp, SEEK_SET); //Go back
 
     return kepLopTrm;
+
+}
+
+int prcCmpTwc(T_Comp *cmp){
+
+    (*cmp).__alwLopTwc = 1;
 
 }

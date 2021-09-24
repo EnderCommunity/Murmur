@@ -852,13 +852,13 @@ void PrsProc(TmpFileStruc FilStruc, FILE *lexFilPtr){
 
             }
 
-        }else if(0 && curTrmZon > 2 && !lokForCndEnd && strcmp(cmp.nam, PARSER_STATEMENTS_ELSE) == 0){ // The else & "else if" statement
+        }else if(curTrmZon > 2 && !lokForCndEnd && strcmp(cmp.nam, PARSER_STATEMENTS_ELSE) == 0){ // The else & "else if" statement
 
             if(nxtTknCmp(&cmp) && strcmp(cmp.nam, PARSER_OPERATORS_ZONE) == 0 && strcmp(cmp.cnt, PARSER_GENERAL_START) == 0){
 
                 isrtPrsNTrm(PARSER_NTERMINAL_ELSE, "", cmp.srcLin);
 
-                prvTknCmp(&cmp);
+                prcCmpTwc(&cmp); // `prvTknCmp` wasn't working as intended, check that function later.
 
             }else if(strcmp(cmp.nam, PARSER_STATEMENTS_IF) == 0){
 
