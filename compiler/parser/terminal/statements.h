@@ -19,8 +19,28 @@ void crtRtnStt(int linId){ //Create a return_statement
 }
 
 /**
+ *  this_statement
+ *      : this <SYMBOL>
+ *      ;
+**/
+
+int isThsStt(int typ, char *val){
+
+    return (typ == LEXER_SYMBOL &&
+        strcmp(val, "this") == 0
+    );
+
+}
+
+void crtThsStt(int linId){ //Create a this_statement
+
+    isrtPrsTrm(PARSER_STATEMENTS_THIS, "", linId);
+
+}
+
+/**
  *  ref_statement
- *      : return <SYMBOL>
+ *      : refer <SYMBOL>
  *      ;
 **/
 
