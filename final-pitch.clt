@@ -40,66 +40,67 @@
 [{<main>},102;13]->PlusOne(b:refer);
 [{<main>},104;13]->var:bool myTest = false;
 [{<main>},106;13]->if(myTest == true){
-[{<main>},110;13]->}else{
-[{<main>},114;13]->}
-[{<main>},116;13]->if(myTest != true){
-[{<main>},120;13]->}
-[{<main>},122;13]->if(1 >= 5 || 1 > 5 || (1 > 1 && 1 < 1)){
-[{<main>},126;13]->}
-[{<main>},128;13]->if(1 <= 5 || 1 < 5){
-[{<main>},132;13]->}
-[{<main>},134;13]->io.console.print("Hello there!");
-[{<main>},136;13]->return ZERO;
-[{<main>},138;9]->}
-[{<main>},140;9]->func::private:void Func(){
-[{<main>},148;9]->}
-[{<main>},150;9]->func::public:^int Test(a:^int, b:int){
-[{<main>},152;13]->a = (^int) b;
-[{<main>},155;13]->return a;
-[{<main>},157;9]->}
-[{<main>},159;9]->func::public:void PlusOne(a:int:refer){
-[{<main>},164;13]->a++;
-[{<main>},166;9]->}
-[{<main>},168;9]->func::public:void myTests(){
-[{<main>},170;13]->var:bool myTest = false;
-[{<main>},171;13]->var:int a = 0, b = 0;
-[{<main>},172;13]->var:double c = 4, d = 3;
-[{<main>},174;13]->myTest!!;
-[{<main>},175;13]->myTest = !myTest;
-[{<main>},176;13]->a++;
-[{<main>},177;13]->a += 1;
-[{<main>},178;13]->a = a + 1;
-[{<main>},179;13]->b--;
-[{<main>},180;13]->b -= 1;
-[{<main>},181;13]->b = b - 1;
-[{<main>},183;13]->c %= d;
-[{<main>},184;13]->c % d;
-[{<main>},185;13]->c /= 0.5;
-[{<main>},186;13]->c / d;
-[{<main>},187;13]->c *= d;
-[{<main>},188;13]->c = c * d;
-[{<main>},190;9]->}
-[{<main>},192;9]->func:string myStringTest(a:string){
-[{<main>},194;13]->var:string b = "Hi!";
-[{<main>},195;13]->delete b;
-[{<main>},201;13]->var:int b = 100, c = 0;
-[{<main>},203;13]->delete d, c;
-[{<main>},210;9]->}
-[{<main>},212;9]->func:hex[,] ReturnHexArray(){
-[{<main>},214;13]->return this.globJ;
-[{<main>},216;9]->}
-[{<main>},218;5]->}
-[{<main>},224;5]->class::public AnotherClass {
-[{<main>},226;9]->var::public:int a = 0;
-[{<main>},227;9]->var::private:int b = 0;
-[{<main>},229;9]->func::public:AnotherClass Construct(a:int, b:int){
-[{<main>},231;13]->this.a = a;
-[{<main>},232;13]->this.b = b;
-[{<main>},234;9]->}
-[{<main>},236;5]->}
-[{<main>},238;5]->class Smth {
-[{<main>},240;9]->func:void myTest(a:int){
-[{<main>},244;9]->}
-[{<main>},246;5]->}
-[{<main>},248;1]->}
+[{<main>},110;13]->}else if(false){
+[{<main>},114;13]->}else{
+[{<main>},118;13]->}
+[{<main>},120;13]->if(myTest != true){
+[{<main>},124;13]->}
+[{<main>},126;13]->if(1 >= 5 || 1 > 5 || (1 > 1 && 1 < 1)){
+[{<main>},130;13]->}
+[{<main>},132;13]->if(1 <= 5 || 1 < 5){
+[{<main>},136;13]->}
+[{<main>},138;13]->io.console.print("Hello there!");
+[{<main>},140;13]->return ZERO;
+[{<main>},142;9]->}
+[{<main>},144;9]->func::private:void Func(){
+[{<main>},152;9]->}
+[{<main>},154;9]->func::public:^int Test(a:^int, b:int){
+[{<main>},156;13]->a = (^int) b;
+[{<main>},159;13]->return a;
+[{<main>},161;9]->}
+[{<main>},163;9]->func::public:void PlusOne(a:int:refer){
+[{<main>},168;13]->a++;
+[{<main>},170;9]->}
+[{<main>},172;9]->func::public:void myTests(){
+[{<main>},174;13]->var:bool myTest = false;
+[{<main>},175;13]->var:int a = 0, b = 0;
+[{<main>},176;13]->var:double c = 4, d = 3;
+[{<main>},178;13]->myTest!!;
+[{<main>},179;13]->myTest = !myTest;
+[{<main>},180;13]->a++;
+[{<main>},181;13]->a += 1;
+[{<main>},182;13]->a = a + 1;
+[{<main>},183;13]->b--;
+[{<main>},184;13]->b -= 1;
+[{<main>},185;13]->b = b - 1;
+[{<main>},187;13]->c %= d;
+[{<main>},188;13]->c % d;
+[{<main>},189;13]->c /= 0.5;
+[{<main>},190;13]->c / d;
+[{<main>},191;13]->c *= d;
+[{<main>},192;13]->c = c * d;
+[{<main>},194;9]->}
+[{<main>},196;9]->func:string myStringTest(a:string){
+[{<main>},198;13]->var:string b = "Hi!";
+[{<main>},199;13]->delete b;
+[{<main>},205;13]->var:int b = 100, c = 0;
+[{<main>},207;13]->delete d, c;
+[{<main>},214;9]->}
+[{<main>},216;9]->func:hex[,] ReturnHexArray(){
+[{<main>},218;13]->return this.globJ;
+[{<main>},220;9]->}
+[{<main>},222;5]->}
+[{<main>},228;5]->class::public AnotherClass {
+[{<main>},230;9]->var::public:int a = 0;
+[{<main>},231;9]->var::private:int b = 0;
+[{<main>},233;9]->func::public:AnotherClass Construct(a:int, b:int){
+[{<main>},235;13]->this.a = a;
+[{<main>},236;13]->this.b = b;
+[{<main>},238;9]->}
+[{<main>},240;5]->}
+[{<main>},242;5]->class Smth {
+[{<main>},244;9]->func:void myTest(a:int){
+[{<main>},248;9]->}
+[{<main>},250;5]->}
+[{<main>},252;1]->}
 [FileEnd]
